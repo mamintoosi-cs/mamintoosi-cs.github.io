@@ -8,8 +8,4 @@
 	و
 	<a href="https://mamintoosi.github.io/slides/"> سعیدی‌فرد </a>
                            
-*نکته* اگر می‌خواهید به صورت آفلاین از پرزنت‌ها استفاده کنید، در صفحه هر پرزنت، اسلاید آخر که وابستگی اینترنتی دارد را حذف کنید
-
 </div>
-
-`<section data-external="../../lib/info.html"> </section>`
