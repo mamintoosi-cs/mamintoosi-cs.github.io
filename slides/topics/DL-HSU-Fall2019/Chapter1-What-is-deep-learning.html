@@ -85,10 +85,18 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
  <h2>Source book</h2>
 	Deep Learning with Python, 
 	<br>
+	<small>
 	by: FRANÇOIS CHOLLET
+	</small>
 	<br>
-	<img height="400" src="./images/DeepLearningWithPython-book-cover.jpg" alt="Deep Learning with Python" xstyle="border:none;box-shadow:none">
- 
+	<img height="300" src="./images/DeepLearningWithPython-book-cover.jpg" alt="Deep Learning with Python" xstyle="border:none;box-shadow:none">
+	<br>
+	<small>
+	<a href="https://www.manning.com/books/deep-learning-with-python">https://www.manning.com/books/deep-learning-with-python </a>
+	<br>
+	<a href="https://livebook.manning.com/book/deep-learning-with-python/"> LiveBook</a><br>
+	<a href="https://github.com/fchollet/deep-learning-with-python-notebooks"> Github: Jupyter Notebooks </a>
+	</small>
 </section>
 
 <section>
@@ -99,9 +107,9 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
   </section>
 
   <section>
-   <h2>Domains and Applications</h2>
+   <h2>Applications</h2>
    <p>Google Street-View (and ReCaptchas)</p>
-   <img width="598" height="400" src="./images/house-numbers_598x400.png" alt="House Numbers" xstyle="border:none;box-shadow:none">
+   <img width="500" height="300" src="./images/house-numbers_598x400.png" alt="House Numbers" xstyle="border:none;box-shadow:none">
    <p><i>
      <a href="http://arxiv.org/abs/1312.6082" target="_blank">Better</a> 
       than
@@ -111,7 +119,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
   <section class="future" hidden="" style="top: -20px; display: none;">
    <h2>Image Classification</h2>
-   <img width="574" height="469" src="./images/ImageNet-Results_574x469.png" alt="ImageNet Results" style="border:none;box-shadow:none">
+   <img width="500" height="400" src="./images/ImageNet-Results_574x469.png" alt="ImageNet Results" style="border:none;box-shadow:none">
    <p><i>(now better than human level)</i></p>
   </section>
 
@@ -123,10 +131,12 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 
   <section class="future" hidden="" style="top: -350px; display: block;">
    <h2>Speech Recognition</h2>
-   <p>Android feature since <a href="http://www.phonearena.com/news/The-secret-of-Googles-amazing-voice-recognition-revealed-it-works-like-a-brain_id39938" target="_blank">Jellybean (v4.3, 2012)</a> using Cloud</p>
+   <p>Android feature since <a href="http://www.phonearena.com/news/The-secret-of-Googles-amazing-voice-recognition-revealed-it-works-like-a-brain_id39938" target="_blank">Jellybean (v4.3, 2012)</a> </p>
    <p>Trained in ~5 days on 800 machine cluster</p>
-   <img width="444" height="360" src="./images/speech_444x360.png" alt="Speech Recognition" xstyle="border:none;box-shadow:none">
+   <img width="444" height="260" src="./images/speech_444x360.png" alt="Speech Recognition" xstyle="border:none;box-shadow:none">
+   <small>
    <p>Embedded in phone since Android <a href="http://googleresearch.blogspot.sg/2015/08/the-neural-networks-behind-google-voice.html" target="_blank">Lollipop (v5.0, 2014)</a></p>
+   </small>
   </section>
 
   <section class="future" hidden="" style="top: -268px; display: block;">
@@ -157,7 +167,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 </section>
 
 
-<section data-background="./images/GeoffHinton.jpeg">
+<section >
 	<section class="" style="top: -277px; display: block;">
 		<h3>Machine learning vs. Classical programming</h3>
 		<h4>Machine learning: a new programming paradigm</h4>
@@ -235,7 +245,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
     <li>Fed with lots of Data</li>
    </ul>
   </section>
-  <section data-transition="convex">
+  <section data-transition="convex" data-background="./images/GeoffHinton.jpeg">
    <h2>History</h2>
    <ul class="fix-spacing">
     <li>1980+ : Lots of enthusiasm for NNs</li>
@@ -263,505 +273,97 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 			<tr>
 				<td>Google </td>
 				<td>Hinton (Toronto)</td>
-				<td><img src="images/GeoffHinton.jpeg" width="90"></td>
+				<td><img src="images/GeoffHinton.jpeg" width="80"></td>
 			</tr>
 			<tr>
 				<td>Facebook</td>
 				<td>LeCun (NYC)</td>
-				<td><img src="images/YannLeCun.jpeg" width="90"></td>
+				<td><img src="images/YannLeCun.jpeg" width="80"></td>
 			</tr>
 			<tr>
 				<td>Universities</td>
 				<td>Bengio (Montreal)</td>
-				<td><img src="images/YoshuaBengio.jpeg" width="90"></td>
+				<td><img src="images/YoshuaBengio.jpeg" width="80"></td>
 			</tr>
 			<tr>
 				<td>Baidu</td>
 				<td>Ng (Stanford)</td>
-				<td><img src="images/AndrewNg.jpeg" width="90"></td>
+				<td><img src="images/AndrewNg.jpeg" width="80"></td>
 			</tr>
 		</tbody>
 	</table>
   </section>
-  <section>
+  <section data-background="./images/AndrewNg.jpeg">
    <h2>Andrew Ng:</h2>
    <blockquote cite="https://www.gsb.stanford.edu/insights/andrew-ng-why-ai-new-electricity">
 						&ldquo;AI is the new electricity.&rdquo;
 	</blockquote>
   </section>
-</section>
-
-
-<section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
-  <section class="past" style="top: -180.5px; display: block;" hidden="">
-   <h2>Basic Approach</h2>
-   <ul class="fix-spacing">
-    <li>Same as original Neural Networks since 1980s</li>
-    <li>Simple mathematical units ...</li>
-    <li style="list-style-type:none"> ... combine to compute a complex function</li>
-   </ul>
-  </section>
-
-  <section class="past" style="top: -320px; display: block;" hidden="">
-   <h2>Single "Neuron"</h2>
-   <img width="602" height="381" src="./images/one-neuron_602x381.png" alt="One Neuron" style="border:none;box-shadow:none">
-   <p>Change weights to change output function</p>
-  </section>
-
-  <section class="present" style="top: -313px; display: block;">
-   <h2>Multi-Layer</h2>
-   <p>Layers of neurons combine and <br>can form more complex functions</p>
-   <img width="356" height="324" src="./images/multi-layer_356x324.png" alt="Multi-Layer" style="border:none;box-shadow:none">
-  </section>
-
-<!--
-  <section>
-   <h2>Supervised Learning</h2>
-   <ul class="fix-spacing">
-    <li><strong>while</strong> not done :</li>
-    <li style="list-style-type:none">
-      <ul>
-        <li>Pick a training case (<code>x</code> &rarr; <code>target_y</code>)</li>
-        <li>Evaluate <code>output_y</code> from the <code>x</code></li>
-        <li>Modify the weights so that <code>output_y</code> is closer to <code>target_y</code> for that <code>x</code></li>
-      </ul>
-    </li>
-   </ul>
-  </section>
-
-  <section>
-   <h2>Gradient Descent</h2>
-   <p>Follow the gradient of the error <br />w.r.t the connection weights</p>
-   <img width="364" height="306" src="img/gradient-descent_364x306.png" alt="Gradient-Descent" style="border:none;box-shadow:none">
-  </section>
-!-->
-
-</section>
-
-<section data-background-transition="zoom">
-  <section style="top: -350px; display: block;">
-   <h2>Workshop : Neurons and Features</h2>
-   <ul>
-    <li style="list-style-type:none">
-     <ul>
-      <li>Go to the Javascript Example : TensorFlow</li>
-     </ul>
-    </li>
-   </ul>
-   <img width="507" height="387" src="./images/Tensorflow-PlayGound-local_507x387.png" alt="TensorFlow Playground" style="border:none;box-shadow:none">
-   <p><small>(or search online for TensorFlow Playground)</small></p>
-  </section>
   
-  <section data-background-transition="concave">
-   <h2>TensorFlow Playground</h2>
-   <img width="778" height="443" src="./images/Tensorflow-PlayGound-layout_778x443.png" alt="TensorFlow Layout" style="border:none;box-shadow:none">
-  </section>
-
-  <section class="future" style="top: -213px; display: block;">
-   <h2>Things to Understand</h2>
-   <ul>
-    <li>Hands-on : </li>
-    <li style="list-style-type:none">
-     <ul>
-      <li>Goal : learning to predict regions</li>
-      <li>Input features</li>
-      <li>What a single neuron can learn</li>
-      <li>The blame game</li>
-      <li>How deep networks 'create' features</li>
-     </ul>
-    </li>
-   </ul>
-  </section>
-  
-<!--
-  <section>
-   <h2>Things to Do</h2>
-   <ul>
-    <li>Investigate : </li>
-    <li style="list-style-type:none">
-     <ul>
-      <li>Minimal set of features</li>
-      <li>Minimal # of layers</li>
-      <li>Minimal widths</li>
-      <li>Effect of going less-minimal...</li>
-     </ul>
-    </li>
-   </ul>
-  </section>
-!-->
-</section>
-
-
-<!--
-<section>
-  <section>
-   <h2>Workshop : SGD</h2>
-    <ul>
-     <li style="list-style-type:none">
-      <ul>
-        <li>Go to : <code>http://ConvNetJS.com/</code></li>
-        <li>Look for : "Image 'painting'"</li>
-      </ul>
-    </li>
-   </ul>
-   <ximg width="473" height="665" src="img/ConvNetJS-Painting_473x665.png" alt="ConvNetJS Image Painting" style="border:none;box-shadow:none">
-   <img width="844" height="418" src="img/ConvNetJS-Painting_844x418.png" alt="ConvNetJS Image Painting" style="border:none;box-shadow:none">
-  </section>
-  
-  <section>
-   <h2>Simple Network</h2>
-   <img width="574" height="435" src="img/ConvNetJS-Painting-5_574x435.png" alt="ConvNetJS Painting : 5" style="border:none;box-shadow:none">
-  </section>
-  <section>
-   <h2>Wider Network</h2>
-   <img width="573" height="443" src="img/ConvNetJS-Painting-20_573x443.png" alt="ConvNetJS Painting : 20" style="border:none;box-shadow:none">
-  </section>
-  <section>
-   <h2>Two-Ply Network</h2>
-   <img width="571" height="427" src="img/ConvNetJS-Painting-10-10_571x427.png" alt="ConvNetJS Painting : 10+10" style="border:none;box-shadow:none">
-  </section>
-  <section>
-   <h2>Deep Network and Time</h2>
-   <img width="575" height="435" src="img/ConvNetJS-Painting-7x20_575x435.png" alt="ConvNetJS Painting : 10x7" style="border:none;box-shadow:none">
-  </section>
-</section>
-!-->
-
-<!--
-<section>
-  <section>
-   <h2>"Hello World" &rarr; MNIST</h2>
-   <ul class="fix-spacing">
-    <li>Nice dataset from the late 1980s</li>
-    <li>Training set of 50,000 28x28 images</li>
-    <li>Now end-of-life as a useful benchmark</li>
-   </ul>
-   <br />
-   <img width="255" height="204" src="img/mnist_100_digits_255x204.png" alt="MNIST digits" style="border:none;box-shadow:none">
-  </section>
-
-  <section>
-   <h2>Simple Network</h2>
-   <img width="829" height="425" src="img/netvis-mnist-100S_829x425.png" alt="Multi-Layer" style="border:none;box-shadow:none">
-   <p><i>... around 2-3% error rate on the test set</i></p>
-  </section>
-  
-  <section>
-   <h2>Workshop : MNIST</h2>
-   <ul class="fix-spacing">
-    <li>Go to : <code>http://ConvNetJS.com/</code></li>
-    <li>Look for : "Classify MNIST"</li>
-    <li><i>... CNN approach (rather than MLP)</i></li>
-   </ul>
-   <img width="473" height="444" src="img/ConvNetJS-MNIST_473x444.png" alt="ConvNetJS MNIST" style="border:none;box-shadow:none">
-  </section>
-
-  <section>
-   <h2>"LeNet"</h2>
-   <img width="759" height="209" src="img/lenet5_759x209.png" alt="LeNet5 Convolutional Layers" style="border:none;box-shadow:none">
-   <p><i>... around 0.8% error rate on the test set</i></p>
-  </section>
-</section>
-!-->
-
-<section hidden="" class="stack future" style="top: 0px; display: block;">
-  <section style="top: -308px; display: block;">
-   <h2>Image Classification</h2>
-   <br>
-   <img width="850" height="314" src="./images/ilsvrc1_850x314.png" alt="ImageNet Karpathy" style="border:none;box-shadow:none">
-   <p>In 2012, Deep Learning started to beat other approaches...</p>
-  </section>
-
-  <section class="future" style="top: -309.5px; display: block;">
-   <h2>What is a CNN?</h2>
-   <ul class="fix-spacing">
-    <li>Pixels in an images are 'organised' : </li>
-    <li style="list-style-type:none">
-      <ul>
-        <li>Up/down left/right</li>
-        <li>Translational invariance</li>
-      </ul>
-    </li>
-    <li>Idea : Use whole image as feature</li>
-    <li style="list-style-type:none">
-      <ul>
-        <li>Update parameters of 'Photoshop filters'</li>
-      </ul>
-    </li>
-    <li>Mathematical term : 'convolution kernel'</li>
-    <li style="list-style-type:none">
-      <ul>
-        <li>CNN = Convolutional Neural Network</li>
-      </ul>
-    </li>
-   </ul>
-  </section>
-  
-  <section >
-   <h2>CNN Filter</h2>
-   <img width="464" height="358" src="./images/CNN-diagram_464x358.png" alt="CNN Diagram" style="border:none;box-shadow:none">
-  </section>
-
-  <section >
-   <h2>Play with a Filter</h2>
-   <img width="600" height="452" src="./images/CNN-demo_600x452.png" alt="Convolution Demo" style="border:none;box-shadow:none">
-  </section>
-
-  <section >
-   <h2>CNN Flow</h2>
-   <img width="800" height="383" src="./images/CNN-car-to-label_800x383.png" alt="CNN flow" style="border:none;box-shadow:none">
-  </section>
-</section>
-
-
-<section hidden="" class="stack future" style="top: 0px; display: block;">
-  <section style="top: -350px; display: block;">
-   <h2>Image Competition</h2>
-   <ul class="fix-spacing">
-    <li>ImageNet aka ILSVRC</li>
-    <li>over 15 million labeled high-resolution images...</li>
-    <li style="list-style-type:none"> ... in over 22,000 categories</li>
-   </ul>
-   <br>
-   <img width="850" height="314" src="./images/ilsvrc1_850x314.png" alt="ImageNet Karpathy" style="border:none;box-shadow:none">
-  </section>
-
-  <section >
-   <h2>More Complex Networks</h2>
-   <img width="614" height="286" src="./images/googlenet-arch_1228x573.jpg" alt="Google ImageNet" style="border:none;box-shadow:none">
-   <p><i>GoogLeNet (2014)</i></p>
-  </section>
-  
-  <section >
-   <h2>3-ImageNet-googlenet</h2>
-   <ul class="fix-spacing">
-    <li>Play with a pre-trained network</li>
-   </ul>
-  </section>
-
-</section>
-
-
-<section hidden="" class="stack future" style="top: -20px; display: none;">
-  <section style="top: -20px; display: none;">
-   <h2>... Even More Complex</h2>
-   <img width="800" height="299" src="./images/inception03_800x299.png" alt="Google Inception v3" style="border:none;box-shadow:none">
-   <p><i>Google Inception-v3 (2015)</i></p>
-  </section>
-  
-  <section >
-   <h2>... and Deeper</h2>
-   <img width="756" height="443" src="./images/RevolutionOfDepth_756x443.png" alt="Revolution of Depth" style="border:none;box-shadow:none">
-   <p><i>Microsoft ResNet (2015)</i></p>
-  </section>
-  
-</section>
-
-<section hidden="" class="stack future" style="top: -20px; display: none;">
-  <section style="top: -20px; display: none;">
-   <h2>More CNNs ?</h2>
-   <ul class="fix-spacing">
-    <li>Since CNNs are good at images ...</li>
-    <li>... make everything into images</li>
-   </ul>
-  </section>
-
-  <section >
-   <h2>Let's Abuse a CNN</h2>
-   <ul class="fix-spacing">
-    <li>For example : <b>Speech Recognition</b></li>
-    <li>Make this into an Image Recognition task</li>
-   </ul>
-  </section>
-  
-  <section >
-   <h2>Speech Data 'stamps'</h2>
-   <img width="484" height="344" src="./images/CNN-for-speech_data_484x344.png" alt="speech/SpeechRecognition_Dat" style="border:none;box-shadow:none">
-   <code>'speech/SpeechRecognition_Data.ipynb'</code>
-  </section>
-
-  <section >
-   <h2>CNN Speech Recognition</h2>
-   <ximg width="484" height="344" src="img/CNN-for-speech_data_484x344.png" alt="speech/SpeechRecognition_Dat" style="border:none;box-shadow:none">
-    
-   <code>'speech/SpeechRecognition_Learn.ipynb'</code>
-     
-<pre>stamps.shape: (31, 64, 32)
-labels.shape: (31,)
-batch_input_fn sizing :  (31, 64, 32, 1)
-
-INFO:tensorflow:Starting evaluation at 2017-03-18-04:31:04
-INFO:tensorflow:Evaluation [1/1]
-INFO:tensorflow:Finished evaluation at 2017-03-18-04:31:05
-{'accuracy': 1.0, 'loss': 0.0068151536, 'global_step': 3830}
-</pre>
-  </ximg></section>
-  
-</section>
-
-
-<!--
-<section>
-  <section>
-   <h2>5-Commerce</h2>
-   <ul class="fix-spacing">
-    <li></li>
-   </ul>
-   <ximg width="473" height="444" src="img/ConvNetJS-MNIST_473x444.png" alt="ConvNetJS MNIST" style="border:none;box-shadow:none">
-  </section>
 </section>
 
 <section>
-  <section>
-   <h2>6-Visual-Art</h2>
+  <section data-transition="convex">
+   <h3>2011, Image Classification</h3>
+   <img width="750" height="314" src="./images/ilsvrc1_850x314.png" alt="ImageNet Karpathy" style="border:none;box-shadow:none">
+   <small>
+   ImageNet challenge was difficult at the time, consisting of classifying highresolution color images into 1,000 different categories after training on 1.4 million images
+   </small>
+  </section>
+  <section data-transition="convex">
+   <h4>Deep Learning started to beat other approaches...</h4>
+   <small>
    <ul class="fix-spacing">
-    <li></li>
+    <li>In 2011, Dan Ciresan from IDSIA began to win academic image-classification competitions with GPU-trained deep neural networks</li>
+    <li>In 2011, the top-five accuracy of the winning model, based on classical approaches to computer vision, was only 74.3%.</li>
+    <li style="list-style-type:none">Then, in 2012, a team led by Alex Krizhevsky and advised by Geoffrey Hinton was able to achieve a top-five accuracy of 83.6%—a significant breakthrough</li>
+	<li>By 2015, the winner reached an accuracy of 96.4%, and the classification task on ImageNet was considered to be a completely solved problem  </li>
    </ul>
-   <ximg width="473" height="444" src="img/ConvNetJS-MNIST_473x444.png" alt="ConvNetJS MNIST" style="border:none;box-shadow:none">
+   </small>
+  </section>
+  <section data-transition="convex">
+   <h3>What makes deep learning different?</h3>
+	It completely automates what used to be the most crucial step in a machine-learning workflow:
+	<br>	<em> feature engineering </em>
+  </section>
+  <section data-transition="convex">
+   <h3>Why deep learning? Why now?</h3>
+   
+	<p>In general, three technical forces are driving advances:</p>
+	<small>
+	<ol class="fix-spacing">
+     <li>Hardware</li>
+	 NVIDIA GPUs, Google TPUs
+     <li>Datasets and benchmarks</li>
+	 Flickr, YouTube videos and Wikipedia
+     <li> Algorithmic advances</li>
+	   <ul class="fix-spacing">
+		<li>Better activation functions </li>
+		<li>Better weight-initialization schemes</li>
+		<li>Better optimization schemes</li>
+	   </ul>
+    </ol>
+	</small>
   </section>
 </section>
-!-->
-
-<!--
-<section>
-  <section>
-   <h2>LSTM Units</h2>
-   <img width="412" height="470" src="img/LSTM_412x470.png" alt="LSTM" style="border:none;box-shadow:none">
-  </section>
-
-  <section>
-   <h2>8-Natural-Language</h2>
-   <ul class="fix-spacing">
-    <li></li>
-   </ul>
-   <ximg width="473" height="444" src="img/ConvNetJS-MNIST_473x444.png" alt="ConvNetJS MNIST" style="border:none;box-shadow:none">
-  </section>
-
-  <section>
-   <h2>Poetry : Epoch 1</h2>
-   <pre><code data-trim contenteditable>
-JDa&amp;g#sdWI&amp;MKW^gE)I}&amp;lt;UNK>f;6g)^5*|dXdBw6m\2&amp;XcXVy\ph8G&amp;lt;gAM&amp;>e4+mv5}OX8G*Yw9&amp;n3XW{h@&amp;T\Fk%BPMMI
-OV&amp;*C_] ._f$v4I~$@Z^&amp;[2
-mOVe`4W)"L-KClkO]wu]\$LCNadyo$h;>$jV7X$XK#4,T(y"sa6W0LWf\'_{\#XD]p%ck[;O`!Px\#E>/Or(.YZ|a]2}q|@a9.g3nV,U^qM	$+:nlk0sd;V-Z&amp;;7Y@Z "l-7P^C
-"xBF~~{n} n\ Pcbc9f?=y)FIc1h5kvjIi
-C&amp;lt;UNK>s	DWJr_$ZQtu"BTYm'|SMj-]Z&amp;lt;Vqj*.lh%IYW|q.GK:eNI"r>833?+RuUsOj_)a{\T}gH.zZR^(daC3mg5P0iFi]bqGo4?T|\>0_H&amp;g889voTh=~)^DDRYND46z1J]x;&amp;lt;U>>%eNIRckL)N8n&amp;lt;UNK>n3i)+Ln8
-?)9.#s7X]}$*sxZ"3tf ")
-@'HW.;I5)C.*%}&amp;lt;jcNLN+Z__RWoryOb#
-/`r
-   </code></pre>
-  </section>
-  
-  <section>
-   <h2>Poetry : Epoch 100</h2>
-   <pre><code data-trim contenteditable>
-Som the riscele his nreing the timest stordor hep pIs dach suedests her, so for farmauteds?
-By arnouy ig wore
-Thou hoasul dove he five grom ays he bare as bleen,
-The seend,
-And, an neeer,
-Whis with the rauk with, for be collenss ore his son froven faredure:
-Then andy bround'd the CowE nom shmlls everom thoy men ellone per in the lave ofpen the way ghiind, thour eyes in is ple gull heart sind, I I wild,
-Frreasuce anspeve, wrom fant beiver, not the afan
-And in thou' histwish a it wheme-tis lating ble the liveculd;
-Noorroint he fhallought, othelts.
-   </code></pre>
-  </section>
-  
-  <section>
-   <h2>Poetry : Epoch 1000</h2>
-   <pre><code data-trim contenteditable>
-AWhis grook my glass' to his sweet,
-Bub my fears liken?
-And of live every in seedher;
-A Lood stall,
-But tare tought than thencer sud earth,
-Use'st bee sechion,
-For all exprit' are a daud in heaven doth her infook perust the fork the tent.
-
-For maud,
-The pittent gover
-This and rimp,
-Who new
-  
-Thoir oldes and did hards, cound.
-   </code></pre>
-  </section>
-  
-  <section>
-   <h2>Plays : Epoch 338</h2>
-   <h3>Larger network...</h3>
-   <pre><code data-trim contenteditable>
-DEDENIUS	Why shoulmeying to to wife,
-	And thou say: and wall you teading for
-	that struke you down as sweet one.
-	With be more bornow, bly unjout on the account:
-	I duked you did four conlian unfortuned drausing-
-	to sicgia stranss, or not sleepplins his arms
-	Gentlemen? as write lord; gave sold.
-
-AENEMUUNS	Met that will knop unhian, where ever have
-	of the keep his jangst?icks he I love hide,
-	Jach heard which offen, sir!'
-
-	[Exit PATIIUS, MARGARUS arr	[Enter CLOTHUR]
-   </code></pre>
-  </section>
-
-</section>
-
-<section>
-
-  <section>
-   <h2>Image Labelling</h2>
-   <img width="642" height="484" src="img/image-labelling_642x484.png" alt="Image Labelling" style="border:none;box-shadow:none">
-  </section>
-
-  <section>
-   <h2>Image Labels</h2>
-   <img width="667" height="419" src="img/image-labelling-results_667x419.png" alt="Labelling Results" style="border:none;box-shadow:none">
-  </section>
-  
-</section>
-!-->
-
-<!--
-<section>
- <h2>"A.I. Effect"</h2>
- <ul class="fix-spacing">
-  <li><a href="https://en.wikipedia.org/wiki/AI_effect" target="_blank">A.I. is whatever hasn't been done yet</a></li>
- </ul>
-</section>
-!-->
-
-
-<section hidden="" class="future" style="top: -337.5px; display: none;">
- <h2>Wrap-up</h2>
- <ul class="fix-spacing">
-  <li>Deep Learning may deserve some hype...</li>
-  <li>Field is advancing very rapidly</li>
-  <li>Having a GPU is VERY helpful</li>
- </ul>
-
-</section>
-
 
 <section hidden="" class="future" style="top: -270.5px; display: none;">
- <h1>- پرسش؟ -</h1>
+ <h3>- Question? -</h3>
  <br>
  m.amintoosi @ gmail.com
  <br>
- <p>صفحه شخصی : <a href="http://mamintoosi.ir/">http://mamintoosi.ir</a></p>
- <p>صفحه من در گیت‌هاب : <a href="https://mamintoosi.github.io/">http://mamintoosi.github.io</a></p>
- <p>گیت‌هاب : <a href="https://github.com/mamintoosi">mamintoosi</a></p>
+ <p>webpage : <a href="http://mamintoosi.ir/">http://mamintoosi.ir</a></p>
+ <p>webpage in github : <a href="https://mamintoosi.github.io/">http://mamintoosi.github.io</a></p>
+ <p>github : <a href="https://github.com/mamintoosi">mamintoosi</a></p>
  <hr>
- <h6>
+<!-- <small>
  <p> مطالب و سبک اسلاید برگرفته از 
 	<a href="https://github.com/mdda/deep-learning-workshop"> Martin Andrews </a>
 	و
 	<a href="https://hameds.github.io/slides/"> سعیدی‌فرد </a>
  </p>
- </h6>
- 
+ </small>
+--> 
 </section>	
 
 </div>
