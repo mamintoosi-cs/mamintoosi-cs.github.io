@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 
-<title>Deep Learning Course, HSU</title>
+<title>Deep Learning Course, Chapter 1</title>
 
 <meta name="description" content="Deep Learning Course, Hakim Sabzevari University, Department of Computer Science">
 <meta name="author" content="Mahmood Amintoosi">
@@ -100,475 +100,101 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 </section>
 
 <section>
-  <section data-background="#dddddd">
    <h2>Chapter 2</h2>
-   <h3>Before we begin: the mathematical building blocks of neural networks</h3>
-  </section>
-
+   <h3>The mathematical building blocks of neural networks</h3>
+   <p>This chapter covers:</p>
+   <ul class="fix-spacing">
+	  <li>A first example of a neural network</li>
+	  <li>Tensors and tensor operations</li>
+	  <li>How neural networks learn via backpropagation and gradient descent</li>
+   </ul>
+</section>
 <section>
-   <code>'speech/SpeechRecognition_Learn.ipynb'</code>
-     
-<pre>stamps.shape: (31, 64, 32)
-labels.shape: (31,)
-batch_input_fn sizing :  (31, 64, 32, 1)
+	<section>
+	 <h3>A first look at a neural network</h3>
+	 <code> 2.1-a-first-look-at-a-neural-network</code>
+	 <pre>
+	 <code class="hljs" data-trim>
+		import keras
+		from keras.datasets import mnist
+		(train_images, train_labels), (test_images, test_labels) = mnist.load_data()
+		from keras import models
+		from keras import layers
 
-INFO:tensorflow:Starting evaluation at 2017-03-18-04:31:04
-INFO:tensorflow:Evaluation [1/1]
-INFO:tensorflow:Finished evaluation at 2017-03-18-04:31:05
-{'accuracy': 1.0, 'loss': 0.0068151536, 'global_step': 3830}
-</pre>
-  </ximg></section>
-  
-</section>
+		network = models.Sequential()
+		network.add(layers.Dense(512, activation='relu', input_shape=(28 * 28,)))
+		network.add(layers.Dense(10, activation='softmax'))
+		
+		network.compile(optimizer='rmsprop',
+					loss='mean_squared_error',
+					metrics=['accuracy'])
+		train_images = train_images.reshape((60000, 28 * 28))
+		train_images = train_images.astype('float32') / 255
 
-<section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
-  <section class="past" style="top: -180.5px; display: block;" hidden="">
-   <h2>Basic Approach</h2>
-   <ul class="fix-spacing">
-    <li>Same as original Neural Networks since 1980s</li>
-    <li>Simple mathematical units ...</li>
-    <li style="list-style-type:none"> ... combine to compute a complex function</li>
-   </ul>
-  </section>
+		test_images = test_images.reshape((10000, 28 * 28))
+		test_images = test_images.astype('float32') / 255
+		from keras.utils import to_categorical
 
-  <section class="past" style="top: -320px; display: block;" hidden="">
-   <h2>Single "Neuron"</h2>
-   <img width="602" height="381" src="./images/one-neuron_602x381.png" alt="One Neuron" style="border:none;box-shadow:none">
-   <p>Change weights to change output function</p>
-  </section>
-
-  <section class="present" style="top: -313px; display: block;">
-   <h2>Multi-Layer</h2>
-   <p>Layers of neurons combine and <br>can form more complex functions</p>
-   <img width="356" height="324" src="./images/multi-layer_356x324.png" alt="Multi-Layer" style="border:none;box-shadow:none">
-  </section>
-
-<!--
-  <section>
-   <h2>Supervised Learning</h2>
-   <ul class="fix-spacing">
-    <li><strong>while</strong> not done :</li>
-    <li style="list-style-type:none">
-      <ul>
-        <li>Pick a training case (<code>x</code> &rarr; <code>target_y</code>)</li>
-        <li>Evaluate <code>output_y</code> from the <code>x</code></li>
-        <li>Modify the weights so that <code>output_y</code> is closer to <code>target_y</code> for that <code>x</code></li>
-      </ul>
-    </li>
-   </ul>
-  </section>
-
-  <section>
-   <h2>Gradient Descent</h2>
-   <p>Follow the gradient of the error <br />w.r.t the connection weights</p>
-   <img width="364" height="306" src="img/gradient-descent_364x306.png" alt="Gradient-Descent" style="border:none;box-shadow:none">
-  </section>
-!-->
-
-</section>
-
-<section data-background-transition="zoom">
-  <section style="top: -350px; display: block;">
-   <h2>Workshop : Neurons and Features</h2>
-   <ul>
-    <li style="list-style-type:none">
-     <ul>
-      <li>Go to the Javascript Example : TensorFlow</li>
-     </ul>
-    </li>
-   </ul>
-   <img width="507" height="387" src="./images/Tensorflow-PlayGound-local_507x387.png" alt="TensorFlow Playground" style="border:none;box-shadow:none">
-   <p><small>(or search online for TensorFlow Playground)</small></p>
-  </section>
-  
-  <section data-background-transition="concave">
-   <h2>TensorFlow Playground</h2>
-   <img width="778" height="443" src="./images/Tensorflow-PlayGound-layout_778x443.png" alt="TensorFlow Layout" style="border:none;box-shadow:none">
-  </section>
-
-  <section class="future" style="top: -213px; display: block;">
-   <h2>Things to Understand</h2>
-   <ul>
-    <li>Hands-on : </li>
-    <li style="list-style-type:none">
-     <ul>
-      <li>Goal : learning to predict regions</li>
-      <li>Input features</li>
-      <li>What a single neuron can learn</li>
-      <li>The blame game</li>
-      <li>How deep networks 'create' features</li>
-     </ul>
-    </li>
-   </ul>
-  </section>
-  
-<!--
-  <section>
-   <h2>Things to Do</h2>
-   <ul>
-    <li>Investigate : </li>
-    <li style="list-style-type:none">
-     <ul>
-      <li>Minimal set of features</li>
-      <li>Minimal # of layers</li>
-      <li>Minimal widths</li>
-      <li>Effect of going less-minimal...</li>
-     </ul>
-    </li>
-   </ul>
-  </section>
-!-->
-</section>
-
-
-<!--
-<section>
-  <section>
-   <h2>Workshop : SGD</h2>
-    <ul>
-     <li style="list-style-type:none">
-      <ul>
-        <li>Go to : <code>http://ConvNetJS.com/</code></li>
-        <li>Look for : "Image 'painting'"</li>
-      </ul>
-    </li>
-   </ul>
-   <ximg width="473" height="665" src="img/ConvNetJS-Painting_473x665.png" alt="ConvNetJS Image Painting" style="border:none;box-shadow:none">
-   <img width="844" height="418" src="img/ConvNetJS-Painting_844x418.png" alt="ConvNetJS Image Painting" style="border:none;box-shadow:none">
-  </section>
-  
-  <section>
-   <h2>Simple Network</h2>
-   <img width="574" height="435" src="img/ConvNetJS-Painting-5_574x435.png" alt="ConvNetJS Painting : 5" style="border:none;box-shadow:none">
-  </section>
-  <section>
-   <h2>Wider Network</h2>
-   <img width="573" height="443" src="img/ConvNetJS-Painting-20_573x443.png" alt="ConvNetJS Painting : 20" style="border:none;box-shadow:none">
-  </section>
-  <section>
-   <h2>Two-Ply Network</h2>
-   <img width="571" height="427" src="img/ConvNetJS-Painting-10-10_571x427.png" alt="ConvNetJS Painting : 10+10" style="border:none;box-shadow:none">
-  </section>
-  <section>
-   <h2>Deep Network and Time</h2>
-   <img width="575" height="435" src="img/ConvNetJS-Painting-7x20_575x435.png" alt="ConvNetJS Painting : 10x7" style="border:none;box-shadow:none">
-  </section>
-</section>
-!-->
-
-<!--
-<section>
-  <section>
-   <h2>"Hello World" &rarr; MNIST</h2>
-   <ul class="fix-spacing">
-    <li>Nice dataset from the late 1980s</li>
-    <li>Training set of 50,000 28x28 images</li>
-    <li>Now end-of-life as a useful benchmark</li>
-   </ul>
-   <br />
-   <img width="255" height="204" src="img/mnist_100_digits_255x204.png" alt="MNIST digits" style="border:none;box-shadow:none">
-  </section>
-
-  <section>
-   <h2>Simple Network</h2>
-   <img width="829" height="425" src="img/netvis-mnist-100S_829x425.png" alt="Multi-Layer" style="border:none;box-shadow:none">
-   <p><i>... around 2-3% error rate on the test set</i></p>
-  </section>
-  
-  <section>
-   <h2>Workshop : MNIST</h2>
-   <ul class="fix-spacing">
-    <li>Go to : <code>http://ConvNetJS.com/</code></li>
-    <li>Look for : "Classify MNIST"</li>
-    <li><i>... CNN approach (rather than MLP)</i></li>
-   </ul>
-   <img width="473" height="444" src="img/ConvNetJS-MNIST_473x444.png" alt="ConvNetJS MNIST" style="border:none;box-shadow:none">
-  </section>
-
-  <section>
-   <h2>"LeNet"</h2>
-   <img width="759" height="209" src="img/lenet5_759x209.png" alt="LeNet5 Convolutional Layers" style="border:none;box-shadow:none">
-   <p><i>... around 0.8% error rate on the test set</i></p>
-  </section>
-</section>
-!-->
-
-<section hidden="" class="stack future" style="top: 0px; display: block;">
-
-  <section class="future" style="top: -309.5px; display: block;">
-   <h2>What is a CNN?</h2>
-   <ul class="fix-spacing">
-    <li>Pixels in an images are 'organised' : </li>
-    <li style="list-style-type:none">
-      <ul>
-        <li>Up/down left/right</li>
-        <li>Translational invariance</li>
-      </ul>
-    </li>
-    <li>Idea : Use whole image as feature</li>
-    <li style="list-style-type:none">
-      <ul>
-        <li>Update parameters of 'Photoshop filters'</li>
-      </ul>
-    </li>
-    <li>Mathematical term : 'convolution kernel'</li>
-    <li style="list-style-type:none">
-      <ul>
-        <li>CNN = Convolutional Neural Network</li>
-      </ul>
-    </li>
-   </ul>
-  </section>
-  
-  <section >
-   <h2>CNN Filter</h2>
-   <img width="464" height="358" src="./images/CNN-diagram_464x358.png" alt="CNN Diagram" style="border:none;box-shadow:none">
-  </section>
-
-  <section >
-   <h2>Play with a Filter</h2>
-   <img width="600" height="452" src="./images/CNN-demo_600x452.png" alt="Convolution Demo" style="border:none;box-shadow:none">
-  </section>
-
-  <section >
-   <h2>CNN Flow</h2>
-   <img width="800" height="383" src="./images/CNN-car-to-label_800x383.png" alt="CNN flow" style="border:none;box-shadow:none">
-  </section>
-</section>
-
-
-<section hidden="" class="stack future" style="top: 0px; display: block;">
-  <section style="top: -350px; display: block;">
-   <h2>Image Competition</h2>
-   <ul class="fix-spacing">
-    <li>ImageNet aka ILSVRC</li>
-    <li>over 15 million labeled high-resolution images...</li>
-    <li style="list-style-type:none"> ... in over 22,000 categories</li>
-   </ul>
-   <br>
-   <img width="850" height="314" src="./images/ilsvrc1_850x314.png" alt="ImageNet Karpathy" style="border:none;box-shadow:none">
-  </section>
-
-  <section >
-   <h2>More Complex Networks</h2>
-   <img width="614" height="286" src="./images/googlenet-arch_1228x573.jpg" alt="Google ImageNet" style="border:none;box-shadow:none">
-   <p><i>GoogLeNet (2014)</i></p>
-  </section>
-  
-  <section >
-   <h2>3-ImageNet-googlenet</h2>
-   <ul class="fix-spacing">
-    <li>Play with a pre-trained network</li>
-   </ul>
-  </section>
-
-</section>
-
-
-<section hidden="" class="stack future" style="top: -20px; display: none;">
-  <section style="top: -20px; display: none;">
-   <h2>... Even More Complex</h2>
-   <img width="800" height="299" src="./images/inception03_800x299.png" alt="Google Inception v3" style="border:none;box-shadow:none">
-   <p><i>Google Inception-v3 (2015)</i></p>
-  </section>
-  
-  <section >
-   <h2>... and Deeper</h2>
-   <img width="756" height="443" src="./images/RevolutionOfDepth_756x443.png" alt="Revolution of Depth" style="border:none;box-shadow:none">
-   <p><i>Microsoft ResNet (2015)</i></p>
-  </section>
-  
-</section>
-
-<section hidden="" class="stack future" style="top: -20px; display: none;">
-  <section style="top: -20px; display: none;">
-   <h2>More CNNs ?</h2>
-   <ul class="fix-spacing">
-    <li>Since CNNs are good at images ...</li>
-    <li>... make everything into images</li>
-   </ul>
-  </section>
-
-  <section >
-   <h2>Let's Abuse a CNN</h2>
-   <ul class="fix-spacing">
-    <li>For example : <b>Speech Recognition</b></li>
-    <li>Make this into an Image Recognition task</li>
-   </ul>
-  </section>
-  
-  <section >
-   <h2>Speech Data 'stamps'</h2>
-   <img width="484" height="344" src="./images/CNN-for-speech_data_484x344.png" alt="speech/SpeechRecognition_Dat" style="border:none;box-shadow:none">
-   <code>'speech/SpeechRecognition_Data.ipynb'</code>
-  </section>
-
-  <section >
-   <h2>CNN Speech Recognition</h2>
-   <ximg width="484" height="344" src="img/CNN-for-speech_data_484x344.png" alt="speech/SpeechRecognition_Dat" style="border:none;box-shadow:none">
-    
-   <code>'speech/SpeechRecognition_Learn.ipynb'</code>
-     
-<pre>stamps.shape: (31, 64, 32)
-labels.shape: (31,)
-batch_input_fn sizing :  (31, 64, 32, 1)
-
-INFO:tensorflow:Starting evaluation at 2017-03-18-04:31:04
-INFO:tensorflow:Evaluation [1/1]
-INFO:tensorflow:Finished evaluation at 2017-03-18-04:31:05
-{'accuracy': 1.0, 'loss': 0.0068151536, 'global_step': 3830}
-</pre>
-  </ximg></section>
-  
-</section>
-
-
-<!--
-<section>
-  <section>
-   <h2>5-Commerce</h2>
-   <ul class="fix-spacing">
-    <li></li>
-   </ul>
-   <ximg width="473" height="444" src="img/ConvNetJS-MNIST_473x444.png" alt="ConvNetJS MNIST" style="border:none;box-shadow:none">
-  </section>
+		train_labels = to_categorical(train_labels)
+		test_labels = to_categorical(test_labels)
+		network.fit(train_images, train_labels, epochs=5, batch_size=128)
+	 </code>
+	 </pre>
+	</section>
+	<section>
+	<h3>Online Documentation</h3>
+	<a href="https://keras.io/losses/"> Keras </a>
+	</section>
 </section>
 
 <section>
   <section>
-   <h2>6-Visual-Art</h2>
-   <ul class="fix-spacing">
-    <li></li>
-   </ul>
-   <ximg width="473" height="444" src="img/ConvNetJS-MNIST_473x444.png" alt="ConvNetJS MNIST" style="border:none;box-shadow:none">
+   <h3>Data representations for neural networks</h3>
+   <h4>Tensors</h4>
+   <img src="images/tensors.png" width="600">
   </section>
-</section>
-!-->
-
-<!--
-<section>
   <section>
-   <h2>LSTM Units</h2>
-   <img width="412" height="470" src="img/LSTM_412x470.png" alt="LSTM" style="border:none;box-shadow:none">
+  <p align="left">
+	  Don’t confuse a 5D
+	vector with a 5D tensor! A 5D vector has only one axis and has five dimensions along its
+	axis, whereas a 5D tensor has five axes (and may have any number of dimensions
+	along each axis).
+  </p>
+  <p class="fragment" align="left">Dimensionality can denote either the number of entries along a specific axis (as in the case of our 5D vector) or the number of axes in a tensor (such as a
+	5D tensor), which can be confusing at times. In the latter case, it’s technically more
+	correct to talk about a tensor of rank 5 (the rank of a tensor being the number of axes),
+	but the ambiguous notation 5D tensor is common regardless.
+  </p>
   </section>
-
   <section>
-   <h2>8-Natural-Language</h2>
-   <ul class="fix-spacing">
-    <li></li>
-   </ul>
-   <ximg width="473" height="444" src="img/ConvNetJS-MNIST_473x444.png" alt="ConvNetJS MNIST" style="border:none;box-shadow:none">
+   <h4>2.2.6 Manipulating tensors in Numpy</h4>
+   <code> my_slice = train_images[:, 14:, 14:] </code>
+   <br><br><br>
+   <span class="fragment">
+   <h4 >2.2.7 The notion of data batches</h4>
+   <code> batch = train_images[128 * n:128 * (n + 1)] </code>   
+   </span>
   </section>
-
   <section>
-   <h2>Poetry : Epoch 1</h2>
-   <pre><code data-trim contenteditable>
-JDa&amp;g#sdWI&amp;MKW^gE)I}&amp;lt;UNK>f;6g)^5*|dXdBw6m\2&amp;XcXVy\ph8G&amp;lt;gAM&amp;>e4+mv5}OX8G*Yw9&amp;n3XW{h@&amp;T\Fk%BPMMI
-OV&amp;*C_] ._f$v4I~$@Z^&amp;[2
-mOVe`4W)"L-KClkO]wu]\$LCNadyo$h;>$jV7X$XK#4,T(y"sa6W0LWf\'_{\#XD]p%ck[;O`!Px\#E>/Or(.YZ|a]2}q|@a9.g3nV,U^qM	$+:nlk0sd;V-Z&amp;;7Y@Z "l-7P^C
-"xBF~~{n} n\ Pcbc9f?=y)FIc1h5kvjIi
-C&amp;lt;UNK>s	DWJr_$ZQtu"BTYm'|SMj-]Z&amp;lt;Vqj*.lh%IYW|q.GK:eNI"r>833?+RuUsOj_)a{\T}gH.zZR^(daC3mg5P0iFi]bqGo4?T|\>0_H&amp;g889voTh=~)^DDRYND46z1J]x;&amp;lt;U>>%eNIRckL)N8n&amp;lt;UNK>n3i)+Ln8
-?)9.#s7X]}$*sxZ"3tf ")
-@'HW.;I5)C.*%}&amp;lt;jcNLN+Z__RWoryOb#
-/`r
-   </code></pre>
+   <h4>2.2.8 Real-world examples of data tensors</h4>
+   
+	<ol>
+		<li>Vector data—2D tensors of shape </li>
+		<code class="fragment"> (samples, features)</code>
+		<li>Timeseries data or sequence data—3D tensors of shape</li>
+		<code class="fragment"> (samples, timesteps, features)</code>
+		<li> Images—4D tensors of shape</li>
+		<code class="fragment"> (samples, height, width, channels)  or  <br>(samples, channels, height, width)</code>
+		<li> Video—5D tensors of shape </li>
+		<small>
+		<code class="fragment"> (samples, frames, height, width, channels) or  <br>(samples, frames, channels, height, width)</code>
+		</small>
+	</ol>
+   	
   </section>
-  
-  <section>
-   <h2>Poetry : Epoch 100</h2>
-   <pre><code data-trim contenteditable>
-Som the riscele his nreing the timest stordor hep pIs dach suedests her, so for farmauteds?
-By arnouy ig wore
-Thou hoasul dove he five grom ays he bare as bleen,
-The seend,
-And, an neeer,
-Whis with the rauk with, for be collenss ore his son froven faredure:
-Then andy bround'd the CowE nom shmlls everom thoy men ellone per in the lave ofpen the way ghiind, thour eyes in is ple gull heart sind, I I wild,
-Frreasuce anspeve, wrom fant beiver, not the afan
-And in thou' histwish a it wheme-tis lating ble the liveculd;
-Noorroint he fhallought, othelts.
-   </code></pre>
-  </section>
-  
-  <section>
-   <h2>Poetry : Epoch 1000</h2>
-   <pre><code data-trim contenteditable>
-AWhis grook my glass' to his sweet,
-Bub my fears liken?
-And of live every in seedher;
-A Lood stall,
-But tare tought than thencer sud earth,
-Use'st bee sechion,
-For all exprit' are a daud in heaven doth her infook perust the fork the tent.
-
-For maud,
-The pittent gover
-This and rimp,
-Who new
-  
-Thoir oldes and did hards, cound.
-   </code></pre>
-  </section>
-  
-  <section>
-   <h2>Plays : Epoch 338</h2>
-   <h3>Larger network...</h3>
-   <pre><code data-trim contenteditable>
-DEDENIUS	Why shoulmeying to to wife,
-	And thou say: and wall you teading for
-	that struke you down as sweet one.
-	With be more bornow, bly unjout on the account:
-	I duked you did four conlian unfortuned drausing-
-	to sicgia stranss, or not sleepplins his arms
-	Gentlemen? as write lord; gave sold.
-
-AENEMUUNS	Met that will knop unhian, where ever have
-	of the keep his jangst?icks he I love hide,
-	Jach heard which offen, sir!'
-
-	[Exit PATIIUS, MARGARUS arr	[Enter CLOTHUR]
-   </code></pre>
-  </section>
-
 </section>
 
 <section>
-
-  <section>
-   <h2>Image Labelling</h2>
-   <img width="642" height="484" src="img/image-labelling_642x484.png" alt="Image Labelling" style="border:none;box-shadow:none">
-  </section>
-
-  <section>
-   <h2>Image Labels</h2>
-   <img width="667" height="419" src="img/image-labelling-results_667x419.png" alt="Labelling Results" style="border:none;box-shadow:none">
-  </section>
-  
-</section>
-!-->
-
-<!--
-<section>
- <h2>"A.I. Effect"</h2>
- <ul class="fix-spacing">
-  <li><a href="https://en.wikipedia.org/wiki/AI_effect" target="_blank">A.I. is whatever hasn't been done yet</a></li>
- </ul>
-</section>
-!-->
-
-
-<section hidden="" class="future" style="top: -337.5px; display: none;">
- <h2>Wrap-up</h2>
- <ul class="fix-spacing">
-  <li>Deep Learning may deserve some hype...</li>
-  <li>Field is advancing very rapidly</li>
-  <li>Having a GPU is VERY helpful</li>
- </ul>
-
-</section>
-
-
-<section hidden="" class="future" style="top: -270.5px; display: none;">
  <h3>- Question? -</h3>
  <br>
  m.amintoosi @ gmail.com
@@ -602,6 +228,7 @@ Reveal.initialize({
 	progress: true,
 	center: true,
 	hash: true,
+	slideNumber: true,
 
 	transition: 'slide', // none/fade/slide/convex/concave/zoom
 

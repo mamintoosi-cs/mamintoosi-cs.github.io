@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 
-<title>Deep Learning Course, HSU</title>
+<title>Deep Learning Course, Chapter 1</title>
 
 <meta name="description" content="Deep Learning Course, Hakim Sabzevari University, Department of Computer Science">
 <meta name="author" content="Mahmood Amintoosi">
@@ -180,7 +180,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
     <li>Examples of the expected output</li>
 	<li>A way to measure whether the algorithm is doing a good job</li>
    </ul>
-   <p>
+   <p class="fragment" align="left">
    A machine-learning model transforms its input data into meaningful outputs, a process that is “learned” from exposure to known examples of inputs and outputs. Therefore, the central problem in machine learning and deep learning is to meaningfully transform data.
    </p>
   </section>
@@ -316,7 +316,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
    <ul class="fix-spacing">
     <li>In 2011, Dan Ciresan from IDSIA began to win academic image-classification competitions with GPU-trained deep neural networks</li>
     <li>In 2011, the top-five accuracy of the winning model, based on classical approaches to computer vision, was only 74.3%.</li>
-    <li style="list-style-type:none">Then, in 2012, a team led by Alex Krizhevsky and advised by Geoffrey Hinton was able to achieve a top-five accuracy of 83.6%—a significant breakthrough</li>
+    <li>In 2012, a team led by Alex Krizhevsky and advised by Geoffrey Hinton was able to achieve a top-five accuracy of 83.6%—a significant breakthrough</li>
 	<li>By 2015, the winner reached an accuracy of 96.4%, and the classification task on ImageNet was considered to be a completely solved problem  </li>
    </ul>
    </small>
@@ -327,23 +327,26 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 	<br>	<em> feature engineering </em>
   </section>
   <section data-transition="convex">
-   <h3>Why deep learning? Why now?</h3>
-   
+   <h3>Why deep learning? Why now?</h3>   
 	<p>In general, three technical forces are driving advances:</p>
-	<small>
-	<ol class="fix-spacing">
-     <li>Hardware</li>
+	<xsmall>
+	<ol>
+     <li >Hardware</li>
 	 NVIDIA GPUs, Google TPUs
+	 <span class="fragment">
      <li>Datasets and benchmarks</li>
 	 Flickr, YouTube videos and Wikipedia
+	 </span>
+	 <span class="fragment">
      <li> Algorithmic advances</li>
-	   <ul class="fix-spacing">
+	   <ul>
 		<li>Better activation functions </li>
 		<li>Better weight-initialization schemes</li>
 		<li>Better optimization schemes</li>
 	   </ul>
+	 </span>  
     </ol>
-	</small>
+	</xsmall>
   </section>
 </section>
 
@@ -380,6 +383,7 @@ Reveal.initialize({
 	progress: true,
 	center: true,
 	hash: true,
+	slideNumber: true,
 
 	transition: 'slide', // none/fade/slide/convex/concave/zoom
 
