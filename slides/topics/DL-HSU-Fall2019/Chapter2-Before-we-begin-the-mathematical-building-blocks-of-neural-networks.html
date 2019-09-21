@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+
+<title>Deep Learning Course, Chapter 2</title>
+
+<meta name="description" content="Deep Learning Course, Hakim Sabzevari University, Department of Computer Science">
+<meta name="author" content="Mahmood Amintoosi">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../../css/reset.css">
+<link rel="stylesheet" href="../../css/reveal.css">
+<link rel="stylesheet" href="../../css/theme/serif.css" id="theme">
+
+<!-- Theme used for syntax highlighting of code -->
+<link rel="stylesheet" href="../../lib/css/monokai.css">
+
+<!-- Printing and PDF exports -->
+<script>
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? '../../css/print/pdf.css' : '../../css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+
+<!--[if lt IE 9]>
+<script src="../../lib/js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+<!--
+<section>
+	<h1>Reveal.js</h1>
+	<h3>The HTML Presentation Framework</h3>
+	<p>
+		<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> and <a href="https://github.com/hakimel/reveal.js/graphs/contributors">contributors</a></small>
+	</p>
+</section>
+<section id="themes">
+	<h2>Themes</h2>
+	<p>
+		reveal.js comes with a few themes built in: <br>
+		<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. 
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/black.css'); return false;">Black (default)</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/white.css'); return false;">White</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/league.css'); return false;">League</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/sky.css'); return false;">Sky</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/beige.css'); return false;">Beige</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/simple.css'); return false;">Simple</a> <br>
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/serif.css'); return false;">Serif</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/blood.css'); return false;">Blood</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/night.css'); return false;">Night</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/moon.css'); return false;">Moon</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/solarized.css'); return false;">Solarized</a>
+	</p>
+</section> -->
+<section>
+ <h1>یادگیری عمیق</h1>
+ <h3>دانشگاه حکیم سبزواری</h3>
+ <h4>محمود امین‌طوسی</h4>
+ <h3>Deep Learning</h3>
+ <h4>Mahmood Amintoosi</h4>
+ <p>
+  <small><a href="http://https://mamintoosi.github.io/">m.amintoosi</a> @ <a href="http://hsu.ac.ir/">hsu.ac.ir</a></small>
+ </p>
+ <p>
+  <small>پاییز ۹۸</small>
+ </p>
+</section>
+
+<section>
+ <h2>Source book</h2>
+	Deep Learning with Python, 
+	<br>
+	<small>
+	by: FRANÇOIS CHOLLET
+	</small>
+	<br>
+	<img height="300" src="./images/DeepLearningWithPython-book-cover.jpg" alt="Deep Learning with Python" xstyle="border:none;box-shadow:none">
+	<br>
+	<small>
+	<a href="https://www.manning.com/books/deep-learning-with-python">https://www.manning.com/books/deep-learning-with-python </a>
+	<br>
+	<a href="https://livebook.manning.com/book/deep-learning-with-python/"> LiveBook</a><br>
+	<a href="https://github.com/fchollet/deep-learning-with-python-notebooks"> Github: Jupyter Notebooks </a>
+	</small>
+</section>
+
+<section>
+   <h2>Chapter 2</h2>
+   <h3>Before we begin: the mathematical building blocks of neural networks</h3>
+   <p>This chapter covers:</p>
+   <ul class="fix-spacing">
+	  <li>A first example of a neural network</li>
+	  <li>Tensors and tensor operations</li>
+	  <li>How neural networks learn via backpropagation and gradient descent</li>
+   </ul>
+</section>
+<section>
+	<section>
+	 <h3>A first look at a neural network</h3>
+	 <code> 2.1-a-first-look-at-a-neural-network</code>
+	 <pre>
+	 <code class="hljs" data-trim>
+		import keras
+		from keras.datasets import mnist
+		(train_images, train_labels), (test_images, test_labels) = mnist.load_data()
+		from keras import models
+		from keras import layers
+
+		network = models.Sequential()
+		network.add(layers.Dense(512, activation='sigmiod', input_shape=(28 * 28,)))
+		network.add(layers.Dense(10, activation='sigmiod'))
+		
+		network.compile(optimizer='sgd',
+					loss='mean_squared_error',
+					metrics=['accuracy'])
+		train_images = train_images.reshape((60000, 28 * 28))
+		train_images = train_images.astype('float32') / 255
+
+		test_images = test_images.reshape((10000, 28 * 28))
+		test_images = test_images.astype('float32') / 255
+		from keras.utils import to_categorical
+
+		train_labels = to_categorical(train_labels)
+		test_labels = to_categorical(test_labels)
+		network.fit(train_images, train_labels, epochs=5, batch_size=128)
+	 </code>
+	 </pre>
+	</section>
+	<section>
+	<h3>Compilation step</h3>
+	<ul>
+		<li> A loss function—How the network will be able to measure its performance on
+		the training data, and thus how it will be able to steer itself in the right direction.
+		</li>
+		<li class="fragment"> An optimizer—The mechanism through which the network will update itself
+		based on the data it sees and its loss function.
+		</li>
+		<li class="fragment"> Metrics to monitor during training and testing—Here, we’ll only care about accuracy (the fraction of the images that were correctly classified)
+		</li>
+	</ul>
+	<span class="fragment" align-"left">Online Documentation: 
+	<a href="https://keras.io/losses/"> Keras </a>
+	</span>
+	</section>
+	<section data-background-iframe="https://keras.io/losses/" data-background-interactive>
+	<!--
+	<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0.9, 0.9, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
+		<h2>Keras Documentation</h2>
+		<p>Since reveal.js runs on the web, you can easily embed other web content. Try interacting with the page in the background.</p>
+	</div>-->
+	</section>
+</section>
+
+<section>
+  <section>
+   <h3>Data representations for neural networks</h3>
+   <h4>Tensors</h4>
+   <img src="images/tensors.png" width="600">
+  </section>
+  <section>
+  <p align="left">
+	  Don’t confuse a 5D
+	vector with a 5D tensor! A 5D vector has only one axis and has five dimensions along its
+	axis, whereas a 5D tensor has five axes (and may have any number of dimensions
+	along each axis).
+  </p>
+  <p class="fragment" align="left">Dimensionality can denote either the number of entries along a specific axis (as in the case of our 5D vector) or the number of axes in a tensor (such as a
+	5D tensor), which can be confusing at times. In the latter case, it’s technically more
+	correct to talk about a tensor of rank 5 (the rank of a tensor being the number of axes),
+	but the ambiguous notation 5D tensor is common regardless.
+  </p>
+  </section>
+  <section>
+   <h4>2.2.6 Manipulating tensors in Numpy</h4>
+   <code> my_slice = train_images[:, 14:, 14:] </code>
+   <br><br><br>
+   <span class="fragment">
+   <h4 >2.2.7 The notion of data batches</h4>
+   <code> batch = train_images[128 * n:128 * (n + 1)] </code>   
+   </span>
+  </section>
+  <section>
+   <h4>2.2.8 Real-world examples of data tensors</h4> 
+	<ol>
+		<li>Vector data—2D tensors of shape </li>
+		<code class="fragment"> (samples, features)</code>
+		<li>Timeseries data or sequence data—3D tensors of shape</li>
+		<code class="fragment"> (samples, timesteps, features)</code>
+		<li> Images—4D tensors of shape</li>
+		<code class="fragment"> (samples, height, width, channels)  or  <br>(samples, channels, height, width)</code>
+		<li> Video—5D tensors of shape </li>
+		<small>
+		<code class="fragment"> (samples, frames, height, width, channels) or  <br>(samples, frames, channels, height, width)</code>
+		</small>
+	</ol>   	
+  </section>
+  <section>
+	<h3> The gears of neural networks: tensor operations </h3>
+		<ol>
+		<li>Element-wise operations</li>
+		<li>Broadcasting</li>
+		<li>Tensor dot</li>
+		<li>Tensor reshaping</li>
+	</ol>  
+  </section>
+
+  <section>
+	<h3>A geometric interpretation of deep learning</h3>
+	<img src="images/Figure 2.9 Uncrumpling.jpg">
+  </section>
+</section>
+
+<section>
+<h3> The engine of neural networks: gradient-based optimization </h3>
+	<ol>
+	<li>What’s a derivative?</li>
+	<li>Derivative of a tensor operation: the gradient</li>
+	<li>Stochastic gradient descent</li>
+	<li>Chaining derivatives: the Backpropagation algorithm</li>
+</ol>  
+</section>
+
+<section>
+ <h3>- Questions? -</h3>
+ <br>
+ m.amintoosi @ gmail.com
+ <br>
+ <p>webpage : <a href="http://mamintoosi.ir/">http://mamintoosi.ir</a></p>
+ <p>webpage in github : <a href="https://mamintoosi.github.io/">http://mamintoosi.github.io</a></p>
+ <p>github : <a href="https://github.com/mamintoosi">mamintoosi</a></p>
+ <hr>
+<!-- <small>
+ <p> مطالب و سبک اسلاید برگرفته از 
+	<a href="https://github.com/mdda/deep-learning-workshop"> Martin Andrews </a>
+	و
+	<a href="https://hameds.github.io/slides/"> سعیدی‌فرد </a>
+ </p>
+ </small>
+--> 
+</section>	
+
+
+</div>
+
+</div>
+
+<script src="../../js/reveal.js"></script>
+
+<script>
+
+// More info https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+	controls: true,
+	progress: true,
+	center: true,
+	hash: true,
+	slideNumber: true,
+
+	transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+	// More info https://github.com/hakimel/reveal.js#dependencies
+	dependencies: [
+		{ src: '../../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		{ src: '../../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		{ src: '../../plugin/highlight/highlight.js', async: true },
+		{ src: '../../plugin/search/search.js', async: true },
+		{ src: '../../plugin/zoom-js/zoom.js', async: true },
+		{ src: '../../plugin/notes/notes.js', async: true }
+	]
+});
+
+</script>
+
+</body>
+</html>
