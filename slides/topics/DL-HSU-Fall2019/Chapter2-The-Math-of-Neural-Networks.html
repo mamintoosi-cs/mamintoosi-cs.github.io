@@ -122,10 +122,10 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 		from keras import layers
 
 		network = models.Sequential()
-		network.add(layers.Dense(512, activation='relu', input_shape=(28 * 28,)))
-		network.add(layers.Dense(10, activation='softmax'))
+		network.add(layers.Dense(512, activation='sigmiod', input_shape=(28 * 28,)))
+		network.add(layers.Dense(10, activation='sigmiod'))
 		
-		network.compile(optimizer='rmsprop',
+		network.compile(optimizer='sgd',
 					loss='mean_squared_error',
 					metrics=['accuracy'])
 		train_images = train_images.reshape((60000, 28 * 28))
@@ -142,8 +142,20 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 	 </pre>
 	</section>
 	<section>
-	<h3>Online Documentation</h3>
+	<h3>Compilation step</h3>
+	<ul>
+		<li> A loss function—How the network will be able to measure its performance on
+		the training data, and thus how it will be able to steer itself in the right direction.
+		</li>
+		<li class="fragment"> An optimizer—The mechanism through which the network will update itself
+		based on the data it sees and its loss function.
+		</li>
+		<li class="fragment"> Metrics to monitor during training and testing—Here, we’ll only care about accuracy (the fraction of the images that were correctly classified)
+		</li>
+	</ul>
+	<span class="fragment" align-"left">Online Documentation: 
 	<a href="https://keras.io/losses/"> Keras </a>
+	</span>
 	</section>
 </section>
 
@@ -176,8 +188,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
    </span>
   </section>
   <section>
-   <h4>2.2.8 Real-world examples of data tensors</h4>
-   
+   <h4>2.2.8 Real-world examples of data tensors</h4> 
 	<ol>
 		<li>Vector data—2D tensors of shape </li>
 		<code class="fragment"> (samples, features)</code>
@@ -189,13 +200,26 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 		<small>
 		<code class="fragment"> (samples, frames, height, width, channels) or  <br>(samples, frames, channels, height, width)</code>
 		</small>
-	</ol>
-   	
+	</ol>   	
+  </section>
+  <section>
+	<h3> The gears of neural networks: tensor operations </h3>
+		<ol>
+		<li>Element-wise operations</li>
+		<li>Broadcasting</li>
+		<li>Tensor dot</li>
+		<li>Tensor reshaping</li>
+	</ol>  
+  </section>
+
+  <section>
+	<h3>A geometric interpretation of deep learning</h3>
+	<img src="images/Figure 2.9 Uncrumpling.jpg">
   </section>
 </section>
 
 <section>
- <h3>- Question? -</h3>
+ <h3>- Questions? -</h3>
  <br>
  m.amintoosi @ gmail.com
  <br>
