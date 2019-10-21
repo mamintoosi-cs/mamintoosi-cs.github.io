@@ -82,12 +82,12 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 </section>
 
 <section>
-   <h2>Appendix-C TensorFlow-GPU</h2>
-   <h3>Installation</h3>
+   <h2>Appendix-C </h2>
+   <h3>TensorFlow-GPU</h3>
 </section>
 
 <section>
-   <h2>Appendix-C TensorFlow-GPU</h2>
+   <h2>TensorFlow-GPU</h2>
    <h3>Installation</h3>
    <ul class="fix-spacing">
 	  <li><a href="https://towardsdatascience.com/tensorflow-gpu-installation-made-easy-use-conda-instead-of-pip-52e5249374bc">Tensorflow GPU Installation Made Easy: Use conda instead of pip</a></li>
@@ -96,7 +96,8 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 </section>
 
 <section>
-   <h2>Appendix-C TensorFlow-GPU</h2>
+  <section>
+   <h2>TensorFlow-GPU</h2>
    <h3>Installation Check</h3>
    <ul class="fix-spacing">
 	  <li><a href=""></a>NVIDIA Control Panle</li>
@@ -106,8 +107,78 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 	  <li><a href=""></a>conda list cudnn</li>
 	  <li><a href=""></a>numba -s</li>
    </ul>
-</section>
+  </section>
 
+  <section>   
+	<code>Installation Check: Python, Method 1</code>
+	 <pre>
+	 <code class="hljs" data-trim>
+		import tensorflow as tf
+		with tf.Session() as sess:
+			devices = sess.list_devices()
+			print(devices)
+	</code>
+	</pre>
+	<span class="fragment" >Output in my device:
+	<br>
+	<small>
+	[_DeviceAttributes(/job:localhost/replica:0/task:0/device:CPU:0, CPU, 268435456), 
+	_DeviceAttributes(/job:localhost/replica:0/task:0/device:GPU:0, GPU, 3163186790)]
+	</small>
+	</span>
+  </section>
+  <section>   
+	<code>Installation Check: Python, Method 2</code>
+	 <pre>
+	 <code class="hljs" data-trim>
+		import tensorflow as tf
+		if tf.test.gpu_device_name():
+			print('Default GPU Device: {}'.format(tf.test.gpu_device_name()))
+		else:
+			print("Please install GPU version of TF")
+	</code>
+	</pre>
+	<span class="fragment" >Output in my device:
+	<br>
+	<small>
+	Default GPU Device: /device:GPU:0
+	</small>
+	</span>	
+  </section>
+  <section>   
+	<code>Installation Check: Python, Method 3</code>
+	 <pre>
+	 <code class="hljs" data-trim>
+		from tensorflow.python.client import device_lib
+		print(device_lib.list_local_devices())
+	</code>
+	</pre>
+	<span class="fragment" >Output in my device:
+	<br>
+	<small>
+	[name: "/device:CPU:0"
+device_type: "CPU"
+memory_limit: 268435456
+locality {
+}
+incarnation: 17246399029107811532
+<br>
+, name: "/device:GPU:0"
+device_type: "GPU"
+memory_limit: 3163186790
+locality {
+  bus_id: 1
+  links {
+  }
+}
+incarnation: 4513353947107249193
+physical_device_desc: "device: 0, name: GeForce GTX 1050, pci bus id: 0000:01:00.0, compute capability: 6.1"
+]
+	</small>
+	</span>		
+  </section>
+</section>
+	 
 <section>
  <h3>- Questions? -</h3>
  <br>
