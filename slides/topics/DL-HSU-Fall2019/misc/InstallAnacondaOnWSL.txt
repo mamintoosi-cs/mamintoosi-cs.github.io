@@ -1,0 +1,76 @@
+Install Anaconda on ubuntu
+https://www.digitalocean.com/community/tutorials/how-to-install-anaconda-on-ubuntu-18-04-quickstart
+
+cd /tmp
+curl -O https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh
+sha256sum Anaconda3-2019.10-Linux-x86_64.sh
+bash Anaconda3-2019.10-Linux-x86_64.sh
+
+source ~/.bashrc
+conda list
+
+conda create -n tfgpu python=3.6 anaconda
+activate tfgpu
+conda install tensorflow-gpu
+
+pip install jupyter
+
+import tensorflow as tf
+if tf.test.gpu_device_name():
+    print('Default GPU Device: {}'.format(tf.test.gpu_device_name()))
+else:
+    print("Please install GPU version of TF")
+OOh!! 	Please install GPU version of TF
+
+از سایت زیر آخرین نسخه درایور کارت گرافیک برای لینوکس را پیا کنیم:
+https://www.nvidia.com/Download/driverResults.aspx/151568/en-us
+sudo apt install nvidia-driver-390
+بالایی رو هنوز نزده‌ام
+پایینی جواب نداد
+sudo apt install nvidia-driver-430.50
+
+تست موارد زیر برای نصب درایور
+http://ubuntuhandbook.org/index.php/2019/04/nvidia-430-09-gtx-1650-support/
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt update
+sudo apt install nvidia-driver-430 nvidia-settings
+دانلود حدود ۸۰۰ گیگ
+
+کارت کرافیک شناخته نمیشد
+برنامه مقایسه جی پی یو جواب نمی داد
+
+حذف درایور
+https://www.mvps.net/docs/install-nvidia-drivers-ubuntu-18-04-lts-bionic-beaver-linux/
+
+sudo apt install nvidia-driver-390
+
+ظاهرا امکانش نیست
+https://github.com/Microsoft/WSL/issues/3847
+
+https://github.com/hsekia/learning-keras/wiki/How-to-install-Keras-to-Ubuntu-18.04
+sudo apt-get install python3-pip python3-dev
+sudo apt-get install build-essential cmake git unzip pkg-config libopenblas-dev liblapack-dev
+
+conda remove tensorflow-gpu
+
+
+sudo apt install ubuntu-wsl
+
+
+
+pip install --upgrade tensorflow==2.0.0
+
+Jupyter notebook --generate-config
+created in: user/.jupyter
+In jupyter_notebook_config.py:
+c.NotebookApp.token = ''
+
+tf2.sh:
+cd /mnt/d
+source ~/anaconda3/etc/profile.d/conda.sh
+conda activate tf2
+/mnt/c/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe http://localhost:8888
+jupyter notebook
+
+chmod +x tf2.sh
+wslview tf2.sh

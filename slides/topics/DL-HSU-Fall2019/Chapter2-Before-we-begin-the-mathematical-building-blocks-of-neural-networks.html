@@ -38,7 +38,6 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 <body>
 
 <div class="reveal">
-
 <!-- Any section element inside of this container is displayed as a slide -->
 <div class="slides">
 <!--
@@ -67,7 +66,16 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/solarized.css'); return false;">Solarized</a>
 	</p>
 </section> -->
+
 <section>
+<div id="HSU-Logo" style="background: images/HSU-Logo1.jpg;
+                        position: absolute;
+                        bottom: 100px;
+                        right: 100px;
+                        width: 100px;
+                        height: 100px;">
+</div>
+
  <h1>یادگیری عمیق</h1>
  <h3>دانشگاه حکیم سبزواری</h3>
  <h4>محمود امین‌طوسی</h4>
@@ -100,18 +108,52 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 </section>
 
 <section>
-   <h2>Chapter 2</h2>
-   <h3>Before we begin: the mathematical building blocks of neural networks</h3>
-   <p>This chapter covers:</p>
-   <ul class="fix-spacing">
+	<section>
+	<h2>Chapter 2</h2>
+	<h3>Before we begin: the mathematical building blocks of neural networks</h3>
+	<p>This chapter covers:</p>
+	<ul class="fix-spacing">
 	  <li>A first example of a neural network</li>
 	  <li>Tensors and tensor operations</li>
 	  <li>How neural networks learn via backpropagation and gradient descent</li>
-   </ul>
+	</ul>
+	</section>
+	<section data-background="images/PDSH-cover.png" data-background-opacity=.2 >
+	<h3>We will use Python in examples</h3>
+	<table>
+	<tr>
+	<td>
+	Python Data Science Handbook.  Essential Tools for Working with Data
+	
+	by: Jake VanderPlas
+	</td>
+	<td>
+	<img src="images/PDSH-cover.png">
+	</td>
+	</tr>
+	</table>
+	
+	<ul>
+		<li>Read the book in its entirety online at https://jakevdp.github.io/PythonDataScienceHandbook/
+		</li>
+		<li> The book's Jupyter notebooks:
+		https://github.com/jakevdp/PythonDataScienceHandbook
+		</li>
+	</ul>
+	</section>
 </section>
 <section>
 	<section>
 	 <h3>A first look at a neural network</h3>
+	 IRIS Classification
+	 <br>
+	 <img src="images/iris_full_network.png">
+	 <br>
+	 <small>
+	 <a href="https://www.tensorflow.org/tutorials/customization/custom_training_walkthrough"> Source: Tensorflow.org </a>
+	 </small>
+	</section>
+	<section>
 	 <code> 2.0-a-first-look-at-a-neural-network</code>
 	 <br>
 	 IRIS Classification
@@ -119,6 +161,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 	 <code class="hljs" data-trim>
 		import pandas as pd
 		import numpy as np
+
 		from sklearn.model_selection import train_test_split
 		from sklearn.datasets import load_iris
 		iris=load_iris()
@@ -139,8 +182,9 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 	 </pre>
 	</section>
 	<section>
-	 <h3>A first look at a neural network</h3>
 	 <code> 2.1-a-first-look-at-a-neural-network</code>
+	 <br>
+	 Digits Classification
 	 <pre>
 	 <code class="hljs" data-trim>
 		import keras
@@ -172,11 +216,11 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 	<section>
 	<h3>Compilation step</h3>
 	<ul>
-		<li> A loss function—How the network will be able to measure its performance on
-		the training data, and thus how it will be able to steer itself in the right direction.
-		</li>
-		<li class="fragment"> An optimizer—The mechanism through which the network will update itself
+		<li>An optimizer—The mechanism through which the network will update itself
 		based on the data it sees and its loss function.
+		</li>
+		<li class="fragment">A loss function—How the network will be able to measure its performance on
+		the training data, and thus how it will be able to steer itself in the right direction.
 		</li>
 		<li class="fragment"> Metrics to monitor during training and testing—Here, we’ll only care about accuracy (the fraction of the images that were correctly classified)
 		</li>
