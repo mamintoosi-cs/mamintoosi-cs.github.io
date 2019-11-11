@@ -160,26 +160,26 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 	 <br>
 	 IRIS Classification
 	 <pre>
-	 <code class="hljs" data-trim>
-		import pandas as pd
-		import numpy as np
+	 <code>
+import pandas as pd
+import numpy as np
 
-		from sklearn.model_selection import train_test_split
-		from sklearn.datasets import load_iris
-		iris=load_iris()
-		x,y=iris.data,iris.target
-		x_train,x_test,y_train,y_test=train_test_split(x,y,train_size=0.8,test_size=0.2,random_state=123)
-		from keras.utils import to_categorical
-		y_train = to_categorical(y_train)
-		y_test = to_categorical(y_test)
-		network = models.Sequential()
-		network.add(layers.Dense(60, activation='sigmoid', input_shape=(4,)))
-		network.add(layers.Dense(3, activation='sigmoid'))
-		network.compile(optimizer='sgd',loss='mean_squared_error',metrics=['accuracy'])
-		network.fit(x_train, y_train, epochs=10, batch_size=10, verbose=0)
-		train_loss, train_acc = network.evaluate(x_train, y_train)
-		test_loss, test_acc = network.evaluate(x_test, y_test)
-		print(train_acc, test_acc)		
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_iris
+iris=load_iris()
+x,y=iris.data,iris.target
+x_train,x_test,y_train,y_test=train_test_split(x,y,train_size=0.8,test_size=0.2,random_state=123)
+from keras.utils import to_categorical
+y_train = to_categorical(y_train)
+y_test = to_categorical(y_test)
+network = models.Sequential()
+network.add(layers.Dense(60, activation='sigmoid', input_shape=(4,)))
+network.add(layers.Dense(3, activation='sigmoid'))
+network.compile(optimizer='sgd',loss='mean_squared_error',metrics=['accuracy'])
+network.fit(x_train, y_train, epochs=10, batch_size=10, verbose=0)
+train_loss, train_acc = network.evaluate(x_train, y_train)
+test_loss, test_acc = network.evaluate(x_test, y_test)
+print(train_acc, test_acc)		
 	 </code>
 	 </pre>
 	</section>

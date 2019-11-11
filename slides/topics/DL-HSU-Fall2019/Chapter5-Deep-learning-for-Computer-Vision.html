@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 
-<title>Deep Learning Course, Chapter 8</title>
+<title>Deep Learning Course, Chapter 5</title>
 
 <meta name="description" content="Deep Learning Course, Hakim Sabzevari University, Department of Computer Science">
 <meta name="author" content="Mahmood Amintoosi">
@@ -70,7 +70,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 <section>
  <h2>یادگیری عمیق</h2>
  <h3>Deep Learning</h3>
- <h4>Chapter 8: Generative deep learning</h4>
+ <h4>Chapter 5: Deep learning for Computer Vision</h4>
  <h5>Mahmood Amintoosi</h5>
  <p>
   <small><a href="http://https://mamintoosi.github.io/">m.amintoosi</a> @ <a href="http://hsu.ac.ir/">hsu.ac.ir</a></small>
@@ -99,37 +99,144 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 </section>
 
 <section>
-   <h2>Chapter 8</h2>
-   <h3>Generative deep learning</h3>
+   <h2>Chapter 5</h2>
+   <h3>Deep learning for Computer Vision</h3>
    <p>This chapter covers:</p>
    <ul class="fix-spacing">
-	  <li>Text generation with LSTM
-</li><li> Implementing DeepDream
-</li><li> Performing neural style transfer
-</li><li> Variational autoencoders
-</li><li> Understanding generative adversarial networks</li>
+	  <li>Understanding convolutional neural networks
+</li><li> Using data augmentation to mitigate overfitting
+</li><li> Using a pretrained convnet to do feature
+extraction
+</li><li> Fine-tuning a pretrained convnet
+</li><li> Visualizing what convnets learn and how they
+make classification decisions</li>
    </ul>
 </section>
 
 <section>
 	<section>
-	<h3> Neural style transfer</h3>
+	<h3>Understanding convolutional neural networks</h3>
 		<ol>
-		<li>My Pages at: mamintoosi.ir: 
-		<a href="http://mamintoosi.ir/wp/neural-style-transfer/">Neural Style Transfer</a>,
-		<a href="http://mamintoosi.ir/wp/fast-style-transfer/">Fast Style Transfer</a>
+		<li><a href="http://deeplearning.net/software/theano_versions/0.9.X/tutorial/conv_arithmetic.html">Convolution arithmetic tutorial</a>
 		</li>
-		<li>Additional outputs on my Github: <a href="https://github.com/mamintoosi/MMM-Artistic-photoes">Foxes</a></li>
-		<li><a href="https://www.tensorflow.org/tutorials/generative/style_transfer">TensorFlow documentation</a></li>
+		<li><a href="https://mlblr.com/includes/mlai/index.html#ml-amp-ai"> Machine Learning and AI - Bangalore Chapter</a></li>
 		</ol> 
 	</section>
-	<section data-background-iframe="http://mamintoosi.ir/wp/fast-style-transfer/" data-background-interactive>
-	<!--
-	<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0.9, 0.9, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
-		<h2>Keras Documentation</h2>
-		<p>Since reveal.js runs on the web, you can easily embed other web content. Try interacting with the page in the background.</p>
-	</div>-->
+	<section data-background-iframe="http://deeplearning.net/software/theano_versions/0.9.X/tutorial/conv_arithmetic.html#" data-background-interactive>
 	</section>	
+	
+	<section data-background-iframe="https://mlblr.com/includes/mlai/index.html#ml-amp-ai" data-background-interactive>
+	</section>	
+</section>
+
+<section>
+	<section>
+		<h3>Classification with CNNs</h3>
+		<ol>
+			<li>English Digit Classification</li>
+			<li>Persian Digit Classification</li>
+			<li>Classifying Cats vs Dogs</li>
+		</ol> 	
+	</section>
+	<section>
+		 <code>5.1 - Introduction to convnets</code>
+		 <br>
+		 MNIST Classification (Included with Keras)
+		 <br> Overall Model:
+		 <br>
+		 <img src="images/digitCNN.jpeg">
+	</section>	
+	<section>
+		 <code>5.1 - Introduction to convnets</code>
+		 <br>
+		 MNIST Classification, TensorFlow Code
+		 <pre>
+		 <code class="hljs" data-trim>
+import keras
+from keras import layers
+from keras import models
+
+model = models.Sequential()
+model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+model.add(layers.Flatten())
+model.add(layers.Dense(64, activation='relu'))
+model.add(layers.Dense(10, activation='softmax'))
+		 </code>
+		 </pre>	
+	</section>	
+</section>
+<section>	
+	<section>
+		 <code> -- </code>
+		 <br>
+		 Persian Digits Classification (Not included with Keras)
+		 <pre>
+		 <code class="hljs" data-trim>
+import keras
+from keras import layers
+from keras import models
+
+model = models.Sequential()
+model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+model.add(layers.Flatten())
+model.add(layers.Dense(64, activation='relu'))
+model.add(layers.Dense(10, activation='softmax'))	
+		 </code>
+		 </pre>	
+	</section>	
+</section>	
+<section>
+	<section>
+		<code>5.2 - Using convnets with small datasets</code>
+		<br>
+		Classify Dogs vs Cats (Not included with Keras)
+		<br>
+		<img src="images/Fig5.8-DogsCats.jpg">
+		<img src="images/image-classification-cat-1.jpg" class="fragment">
+	</section>	
+	<section>
+		 <code>5.2 - Using convnets with small datasets</code>
+		 <br>
+		 Classify Dogs vs Cats (Building from scrach)
+		 <ul>
+			<li>Download Images from <a href="www.kaggle.com/c/dogs-vs-cats/data"> Kaggle </a>
+			</li>
+			<li>
+				Download Images from <a href="https://www.floydhub.com/api/v1/resources/MmV389WwjuivQhKXoA9GaR?content=true&download=true&rename=fastai-datasets-cats-vs-dogs-2">
+				fastai </a> 845MB, (need some manipulation)
+			</li>
+		</ul>	
+	</section>		
+	<section>
+		 <code>5.2 - Using convnets with small datasets</code>
+		 <br>
+		 Classify Dogs vs Cats (Building from scrach)
+		 <pre>
+		 <code class="hljs" data-trim>
+model = models.Sequential()
+model.add(layers.Conv2D(32, (3, 3), activation='relu',
+                        input_shape=(150, 150, 3)))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Conv2D(128, (3, 3), activation='relu'))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Conv2D(128, (3, 3), activation='relu'))
+model.add(layers.MaxPooling2D((2, 2)))
+model.add(layers.Flatten())
+model.add(layers.Dense(512, activation='relu'))
+model.add(layers.Dense(1, activation='sigmoid'))			
+		 </code>
+		 </pre>	
+	</section>		
 </section>
 
 <section>
