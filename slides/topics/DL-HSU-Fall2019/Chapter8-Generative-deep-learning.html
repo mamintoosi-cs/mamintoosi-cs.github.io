@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+
+<title>Deep Learning Course, Chapter 8</title>
+
+<meta name="description" content="Deep Learning Course, Hakim Sabzevari University, Department of Computer Science">
+<meta name="author" content="Mahmood Amintoosi">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="../../css/reset.css">
+<link rel="stylesheet" href="../../css/reveal.css">
+<link rel="stylesheet" href="../../css/theme/serif.css" id="theme">
+
+<!-- Theme used for syntax highlighting of code -->
+<link rel="stylesheet" href="../../lib/css/monokai.css">
+
+<!-- Printing and PDF exports -->
+<script>
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? '../../css/print/pdf.css' : '../../css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+
+<!--[if lt IE 9]>
+<script src="../../lib/js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+<!--
+<section>
+	<h1>Reveal.js</h1>
+	<h3>The HTML Presentation Framework</h3>
+	<p>
+		<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> and <a href="https://github.com/hakimel/reveal.js/graphs/contributors">contributors</a></small>
+	</p>
+</section>
+<section id="themes">
+	<h2>Themes</h2>
+	<p>
+		reveal.js comes with a few themes built in: <br>
+		<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. 
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/black.css'); return false;">Black (default)</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/white.css'); return false;">White</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/league.css'); return false;">League</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/sky.css'); return false;">Sky</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/beige.css'); return false;">Beige</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/simple.css'); return false;">Simple</a> <br>
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/serif.css'); return false;">Serif</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/blood.css'); return false;">Blood</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/night.css'); return false;">Night</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/moon.css'); return false;">Moon</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/solarized.css'); return false;">Solarized</a>
+	</p>
+</section> -->
+<section>
+ <h1>یادگیری عمیق</h1>
+ <h3>Deep Learning</h3>
+ <h4>Chapter 8: Generative deep learning</h4>
+ <h5>Mahmood Amintoosi</h5>
+ <p>
+  <small><a href="http://https://mamintoosi.github.io/">m.amintoosi</a> @ <a href="http://hsu.ac.ir/">hsu.ac.ir</a></small>
+ </p>
+ <p>
+  <small>پاییز ۹۸</small>
+ </p>
+</section>
+
+<section>
+ <h2>Source book</h2>
+	Deep Learning with Python, 
+	<br>
+	<small>
+	by: FRANÇOIS CHOLLET
+	</small>
+	<br>
+	<img height="300" src="./images/DeepLearningWithPython-book-cover.jpg" alt="Deep Learning with Python" xstyle="border:none;box-shadow:none">
+	<br>
+	<small>
+	<a href="https://www.manning.com/books/deep-learning-with-python">https://www.manning.com/books/deep-learning-with-python </a>
+	<br>
+	<a href="https://livebook.manning.com/book/deep-learning-with-python/"> LiveBook</a><br>
+	<a href="https://github.com/fchollet/deep-learning-with-python-notebooks"> Github: Jupyter Notebooks </a>
+	</small>
+</section>
+
+<section>
+   <h2>Chapter 8</h2>
+   <h3>Generative deep learning</h3>
+   <p>This chapter covers:</p>
+   <ul class="fix-spacing">
+	  <li>Text generation with LSTM
+</li><li> Implementing DeepDream
+</li><li> Performing neural style transfer
+</li><li> Variational autoencoders
+</li><li> Understanding generative adversarial networks</li>
+   </ul>
+</section>
+
+<section>
+	<section>
+	<h3> Neural style transfer</h3>
+		<ol>
+		<li>My Pages at: mamintoosi.ir: 
+		<a href="http://mamintoosi.ir/wp/neural-style-transfer/">Neural Style Transfer</a>,
+		<a href="http://mamintoosi.ir/wp/fast-style-transfer/">Fast Style Transfer</a>
+		</li>
+		<li>Additional outputs on my Github: <a href="https://github.com/mamintoosi/MMM-Artistic-photoes">Foxes</a></li>
+		<li><a href="https://www.tensorflow.org/tutorials/generative/style_transfer">TensorFlow documentation</a></li>
+		</ol> 
+	</section>
+	<section data-background-iframe="http://mamintoosi.ir/wp/fast-style-transfer/" data-background-interactive>
+	<!--
+	<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0.9, 0.9, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
+		<h2>Keras Documentation</h2>
+		<p>Since reveal.js runs on the web, you can easily embed other web content. Try interacting with the page in the background.</p>
+	</div>-->
+	</section>	
+</section>
+
+<section>
+ <h3>- Questions? -</h3>
+ <br>
+ m.amintoosi @ gmail.com
+ <br>
+ <p>webpage : <a href="http://mamintoosi.ir/">http://mamintoosi.ir</a></p>
+ <p>webpage in github : <a href="https://mamintoosi.github.io/">http://mamintoosi.github.io</a></p>
+ <p>github : <a href="https://github.com/mamintoosi">mamintoosi</a></p>
+ <hr>
+<!-- <small>
+ <p> مطالب و سبک اسلاید برگرفته از 
+	<a href="https://github.com/mdda/deep-learning-workshop"> Martin Andrews </a>
+	و
+	<a href="https://hameds.github.io/slides/"> سعیدی‌فرد </a>
+ </p>
+ </small>
+--> 
+</section>	
+
+
+</div>
+
+</div>
+
+<script src="../../js/reveal.js"></script>
+
+<script>
+
+// More info https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+	controls: true,
+	progress: true,
+	center: true,
+	hash: true,
+	slideNumber: true,
+
+	transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+	// More info https://github.com/hakimel/reveal.js#dependencies
+	dependencies: [
+		{ src: '../../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		{ src: '../../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+		{ src: '../../plugin/highlight/highlight.js', async: true },
+		{ src: '../../plugin/search/search.js', async: true },
+		{ src: '../../plugin/zoom-js/zoom.js', async: true },
+		{ src: '../../plugin/notes/notes.js', async: true }
+	]
+});
+
+</script>
+
+</body>
+</html>

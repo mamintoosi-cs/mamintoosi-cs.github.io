@@ -337,6 +337,44 @@ print(z)
 		<li><a href="https://towardsdatascience.com/adam-latest-trends-in-deep-learning-optimization-6be9a291375c">Adam — latest trends in deep learning optimization</a></li>
 	</ol>  
 	</section>
+	<section>
+	<h3>Various Gradient Descent Algorithms</h3>
+		<h4> Stochastic Gradient Descent </h4>
+		<table>
+		<tr>
+		<td>
+		<img src="images/saddle_point_evaluation_optimizers.gif">
+		</td>
+		<td>
+		<img src="images/sgd.png" border="none">		
+		</td>
+		</tr>
+		</table>
+	</section>
+	  <section>
+	 <h3>TensorFlow Operations</h3>
+	 <code>Auto Gradient in TF2</code>
+	 <pre>
+	 <code class="hljs" data-trim>
+		import tensorflow as tf
+		x = tf.constant(3.0)
+		with tf.GradientTape(persistent=True) as g:
+		  g.watch(x)
+		  y = x * x
+		  z = y * y
+		dy_dx = g.gradient(y, x)  # 6.0
+		dz_dx = g.gradient(z, x)  # 108.0 (4*x^3 at x = 3)
+		dz_dy = g.gradient(z, y)  # 18.0 (2*y at y = 9)
+		del g  # Drop the reference to the tape
+		print(dy_dx)
+		print(dz_dx)
+		print(dz_dy)
+	 </code>
+tf.Tensor(6.0, shape=(), dtype=float32)
+tf.Tensor(108.0, shape=(), dtype=float32)
+tf.Tensor(18.0, shape=(), dtype=float32)
+	 </pre>
+	</section>
 </section>
 
 <section>
