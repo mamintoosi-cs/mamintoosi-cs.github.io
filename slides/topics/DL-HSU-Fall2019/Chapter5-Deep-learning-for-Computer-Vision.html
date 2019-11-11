@@ -120,6 +120,7 @@ make classification decisions</li>
 		<li><a href="http://deeplearning.net/software/theano_versions/0.9.X/tutorial/conv_arithmetic.html">Convolution arithmetic tutorial</a>
 		</li>
 		<li><a href="https://mlblr.com/includes/mlai/index.html#ml-amp-ai"> Machine Learning and AI - Bangalore Chapter</a></li>
+		<li><a href="https://towardsdatascience.com/counting-no-of-parameters-in-deep-learning-models-by-hand-8f1716241889"> Counting No. of Parameters in Deep Learning Models by Hand</a></li>
 		</ol> 
 	</section>
 	<section data-background-iframe="http://deeplearning.net/software/theano_versions/0.9.X/tutorial/conv_arithmetic.html#" data-background-interactive>
@@ -168,8 +169,57 @@ model.add(layers.Dense(10, activation='softmax'))
 		 </code>
 		 </pre>	
 	</section>	
+	<section>
+		 <code>5.1 - Introduction to convnets</code>
+		 <br>
+		 Number of Parameters
+		 <pre>
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_1 (Conv2D)            (None, 26, 26, 32)        320       
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 13, 13, 32)        0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 11, 11, 64)        18496     
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 5, 5, 64)          0         
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 3, 3, 64)          36928     
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 576)               0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 64)                36928     
+_________________________________________________________________
+dense_2 (Dense)              (None, 10)                650       
+=================================================================
+Total params: 93,322
+		 </pre>	
+	</section>	
 </section>
 <section>	
+	<section>
+		<xsmall>
+		<a href="https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53"> 
+		Overall Architecture</a></xsmall><br>
+		<img src="images/cnn_overall.jpeg">
+	</section>	
+	<section>
+		<small><a href="https://towardsdatascience.com/counting-no-of-parameters-in-deep-learning-models-by-hand-8f1716241889"> 
+		Counting No. of Parameters in Deep Learning Models by Hand</a></small><br>
+		<img src="images/cnn_1_3.png" width="700">
+	</section>	
+	<section>
+		<small><a href="https://towardsdatascience.com/counting-no-of-parameters-in-deep-learning-models-by-hand-8f1716241889"> 
+		Counting No. of Parameters in Deep Learning Models by Hand</a></small><br>
+		<img src="images/cnn_3_1.png" width="700">
+	</section>	
+	<section>
+		<small><a href="https://towardsdatascience.com/counting-no-of-parameters-in-deep-learning-models-by-hand-8f1716241889"> 
+		Counting No. of Parameters in Deep Learning Models by Hand</a></small><br>
+		<img src="images/cnn_2_3.png" width="500">
+	</section>	
+	
 	<section>
 		 <code> -- </code>
 		 <br>
@@ -237,6 +287,43 @@ model.add(layers.Dense(1, activation='sigmoid'))
 		 </code>
 		 </pre>	
 	</section>		
+</section>
+
+<section>	
+	<section>
+There are various architectures of CNNs available<br>
+LeNet, AlexNet, VGGNet, GoogLeNet, ResNet, ZFNet <br>
+<img src="images/acc_vs_net_vs_ops.svg">
+	</section>	
+	<section>
+		<a href="https://neurohive.io/en/popular-networks/vgg16/"> 
+		VGG16 Architecture </a><br>
+		<img src="images/vgg16.png">
+	</section>	
+	<section data-background="images/nvidia-gtx-titan-black.jpg" data-background-opacity=.2>
+		VGG16 is a convolutional neural network model proposed by K. Simonyan and A. Zisserman from the University of Oxford in the paper “Very Deep Convolutional Networks for Large-Scale Image Recognition”. The model achieves 92.7% top-5 test accuracy in ImageNet, which is a dataset of over 14 million images belonging to 1000 classes. VGG16 was trained for weeks and was using NVIDIA Titan Black GPU’s.
+	</section>	
+</section>
+
+<section>	
+	<section>
+		ML vs Dl <br>
+		<img src="images/MLvsDL_ces2016.png">
+	</section>	
+	<section>
+		Some Outputs <br>
+		<img src="images/out_01.jpg">
+		<img src="images/yolo_pred.jpg">
+	</section>	
+	<section>
+		Our Outputs <br>
+		<img src="images/1_2 (9).jpg">
+		<img src="images/1_5 (12).jpg">
+	</section>	
+	<section>
+		Our Outputs <br>
+		<img src="images/1_4 (28).jpg">
+	</section>	
 </section>
 
 <section>
