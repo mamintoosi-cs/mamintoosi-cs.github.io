@@ -2,46 +2,46 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8">
+	<meta charset="utf-8">
 
-<title>Deep Learning Workshop, TSCO</title>
+	<title>Deep Learning Workshop, ESLA</title>
 
-<meta name="description" content="Deep Learning Course, Hakim Sabzevari University, Department of Computer Science">
-<meta name="author" content="Mahmood Amintoosi">
+	<meta name="description" content="Deep Learning Course, Hakim Sabzevari University, Department of Computer Science">
+	<meta name="author" content="Mahmood Amintoosi">
 
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="../../css/reset.css">
-<link rel="stylesheet" href="../../css/reveal.css">
-<link rel="stylesheet" href="../../css/theme/serif.css" id="theme">
+	<link rel="stylesheet" href="../../css/reset.css">
+	<link rel="stylesheet" href="../../css/reveal.css">
+	<link rel="stylesheet" href="../../css/theme/serif.css" id="theme">
 
-<!-- Theme used for syntax highlighting of code -->
-<link rel="stylesheet" href="../../lib/css/monokai.css">
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../../lib/css/monokai.css">
 
-<!-- Printing and PDF exports -->
-<script>
-var link = document.createElement( 'link' );
-link.rel = 'stylesheet';
-link.type = 'text/css';
-link.href = window.location.search.match( /print-pdf/gi ) ? '../../css/print/pdf.css' : '../../css/print/paper.css';
-document.getElementsByTagName( 'head' )[0].appendChild( link );
-</script>
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? '../../css/print/pdf.css' : '../../css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
 
-<!--[if lt IE 9]>
+	<!--[if lt IE 9]>
 <script src="../../lib/js/html5shiv.js"></script>
 <![endif]-->
 </head>
 
 <body>
-				
-<div class="reveal">
 
-<!-- Any section element inside of this container is displayed as a slide -->
-<div class="slides">
-<!--
+	<div class="reveal">
+
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<!--
 <section>
 	<h1>Reveal.js</h1>
 	<h3>The HTML Presentation Framework</h3>
@@ -67,8 +67,8 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/solarized.css'); return false;">Solarized</a>
 	</p>
 </section> -->
-<section data-background="images/DL_02.jpg" data-state="dimbg" data-background-opacity=.3 >
-<!--
+			<section data-background="images/DL_02.jpg" data-state="dimbg" data-background-opacity=.3>
+				<!--
 <style>
 #myCustom > h1, #myCustom > h2 {
  color: #FF0000;
@@ -79,102 +79,164 @@ h1 {
   color: #00FF00 !important;
 }
 </style> -->
-<small>
-بسم الله الرحمن الرحیم
-</small><br>
- <h2>Deep Learning</h2>
- <h3>Workshop</h3>
- <h4>Mahmood Amintoosi</h4>
- <p>
-  <small><a href="http://https://mamintoosi.github.io/">m.amintoosi</a> @ <a href="http://hsu.ac.ir/">hsu.ac.ir</a></small>
- </p>
- <p>
-  <small>زمستان ۱۴۰۰
-  <br>
-  اسلایدها در حال تکمیل هستند.
-  </small>
- </p>
-</section>
+				<small>
+					بسم الله الرحمن الرحیم
+				</small><br>
+				<h2>Deep Learning</h2>
+				<h3>Workshop</h3>
+				<h4>Mahmood Amintoosi</h4>
+				<p>
+					<small><a href="http://https://mamintoosi.github.io/">m.amintoosi</a> @ <a
+							href="http://hsu.ac.ir/">hsu.ac.ir</a></small>
+				</p>
+				<p>
+					<small>زمستان ۱۴۰۰
+						<br>
+						اسلایدها در حال تکمیل هستند.
+					</small>
+				</p>
+			</section>
 
-<section><h2>درباره‌ی کارگاه یادگیری عمیق</h2>
-<small>
-<p dir="rtl"  style="text-align: justify">
-حوزه‌ی یادگیری عمیق زیرمجموعه‌ای از روش‌های یادگیری ماشین است که توجه بسیاری را در چند سال اخیر به خود معطوف نموده است. تفاوت اصلی یادگیری عمیق با روش‌های مرسوم حوزه‌ی یادگیر ماشین، توانایی آن در یادگیری خودکار ویژگی‌ها است. 
-در این کارگاه به معرفی مبانی نظری این حوزه و برخی کاربردهای آن پرداخته شده و شیوه‌ی شروع به کار عملی در این حوزه با انجام برنامه‌نویسی در زبان پایتون بیان خواهد شد.
-<br>
-منابع زیر می‌تواند برای شروع یادگیری و آشنایی با کاربردهای شبکه‌های عصبی پیچشی (به عنوان یکی از ابزارهای اصلی یادگیری عمیق)  مثمرثمر واقع گردند:<br>
-  
-<ul dir="rtl"  style="text-align: justify; PADDING-RIGHT: 22px">
-  <li>
-  امین‌طوسی, محمود (۱۳۹۹)، 
-  <a href="https://math-sci.ui.ac.ir/article_25351.html">
-  کاربرد بسط تیلور در کاهش حجم شبکه‌های عصبی پیچشی برای طبقه‌بندی نقاشی‌های سبک امپرسیونیسم و مینیاتور. 
-  </a> نشریه ریاضی و جامعه،‌ ۵ (۱)،‌ ۱-۱۶.
-  </li>
-  <li>
-    امین‌طوسی, محمود (۱۴۰۰)،
-  <a href="https://github.com/mamintoosi/ST-for-DA-in-FD">
-  انتقال سبک برای افزایش داده‌های آموزشی شبکه‌های کانولوشنی در شناسایی شعله‌ی آتش.
-  </a> هوش محاسباتی در مهندسی برق، ‌آماده‌ی انتشار.
-  </li>
-  <li>
-  امین‌طوسی, محمود (۱۴۰۰)،
-  <a href="https://github.com/mamintoosi/Reg-OBD-for-VGG-Pruning">
- ترکیب روش منظم‌سازی تُنُک و آسیب مغزی بهینه‌ در کوچک‌سازی یک مدل یادگیری عمیق.
-  </a> ماشین بینایی و پردازش تصویر ایران،‌ آماده‌ی انتشار.
-  </li>
-</ul>
-</p>
-</small>
-</section>
+			<section>
+				<h2>درباره‌ی کارگاه یادگیری عمیق</h2>
+				<small>
+					<p dir="rtl" style="text-align: justify">
+						حوزه‌ی یادگیری عمیق زیرمجموعه‌ای از روش‌های یادگیری ماشین است که توجه بسیاری را در چند سال اخیر
+						به خود معطوف نموده است. تفاوت اصلی یادگیری عمیق با روش‌های مرسوم حوزه‌ی یادگیر ماشین، توانایی آن
+						در یادگیری خودکار ویژگی‌ها است.
+						در این کارگاه به معرفی مبانی نظری این حوزه و برخی کاربردهای آن پرداخته شده و شیوه‌ی شروع به کار
+						عملی در این حوزه با انجام برنامه‌نویسی در زبان پایتون بیان خواهد شد.
+						<br>
+						منابع زیر می‌تواند برای شروع یادگیری و آشنایی با کاربردهای شبکه‌های عصبی پیچشی (به عنوان یکی از
+						ابزارهای اصلی یادگیری عمیق) مثمرثمر واقع گردند:<br>
 
-<section> <h2>Source book</h2>
-	Deep Learning with Python, 
-	<br>
-	<small>
-	by: FRANÇOIS CHOLLET
-	</small>
-	<br>
-	<img height="300" src="./images/DeepLearningWithPython-book-cover.jpg" alt="Deep Learning with Python" xstyle="border:none;box-shadow:none">
-	<br>
-	<small>
-	<a href="https://www.manning.com/books/deep-learning-with-python">https://www.manning.com/books/deep-learning-with-python </a>
-	<br>
-	<a href="https://livebook.manning.com/book/deep-learning-with-python/"> LiveBook</a><br>
-	<a href="https://github.com/fchollet/deep-learning-with-python-notebooks"> Github: Jupyter Notebooks </a>
-	</small>
-</section>
+					<ul dir="rtl" style="text-align: justify; PADDING-RIGHT: 22px">
+						<li>
+							امین‌طوسی، محمود (۱۳۹۹)،
+							<a href="https://math-sci.ui.ac.ir/article_25351.html">
+								کاربرد بسط تیلور در کاهش حجم شبکه‌های عصبی پیچشی برای طبقه‌بندی نقاشی‌های سبک
+								امپرسیونیسم و مینیاتور.
+							</a> نشریه ریاضی و جامعه،‌ ۵ (۱)،‌ ۱-۱۶.
+						</li>
+						<li>
+							امین‌طوسی، محمود (۱۴۰۰)،
+							<a href="https://github.com/mamintoosi/ST-for-DA-in-FD">
+								انتقال سبک برای افزایش داده‌های آموزشی شبکه‌های کانولوشنی در شناسایی شعله‌ی آتش.
+							</a> هوش محاسباتی در مهندسی برق، ‌آماده‌ی انتشار.
+						</li>
+						<li>
+							امین‌طوسی، محمود (۱۴۰۰)،
+							<a href="https://github.com/mamintoosi/Reg-OBD-for-VGG-Pruning">
+								ترکیب روش منظم‌سازی تُنُک و آسیب مغزی بهینه‌ در کوچک‌سازی یک مدل یادگیری عمیق.
+							</a> ماشین بینایی و پردازش تصویر ایران،‌ آماده‌ی انتشار.
+						</li>
+					</ul>
+					</p>
+				</small>
+			</section>
 
-<section>
-  <section data-background="#dddddd">
-   
-   <h3>What is deep learning?</h3>
-	<img height="400" src="./images/AI-ML-DL-Fig1.1.png" alt="Deep Learning" xstyle="border:none;box-shadow:none">
-  </section>
+			<section>
+				<section>
+					<h2>Source books</h2>
+					Deep Learning with PyTorch,
+					<br>
+					<small>
+						by: Eli Stevens, Luca Antiga, and Thomas Viehmann
+					</small>
+					<br>
+					<img height="300" src="./images/Deep_Learning_with_PyTorch_2019.jpg"
+						alt="Deep Learning with PyTorch" xstyle="border:none;box-shadow:none">
+					<br>
+					<small>
+						<a
+							href="https://www.manning.com/books/deep-learning-with-pytorch">https://www.manning.com/books/deep-learning-with-pytorch</a>
+					</small>
+				</section>
+				<section>
+					<h2>Source books</h2>
+					Deep Learning with Python,
+					<br>
+					<small>
+						by: FRANÇOIS CHOLLET
+					</small>
+					<br>
+					<img height="300" src="./images/DeepLearningWithPython-book-cover.jpg"
+						alt="Deep Learning with Python" xstyle="border:none;box-shadow:none">
+					<br>
+					<small>
+						<a href="https://www.manning.com/books/deep-learning-with-python">https://www.manning.com/books/deep-learning-with-python
+						</a>
+						<br>
+						<a href="https://livebook.manning.com/book/deep-learning-with-python/"> LiveBook</a><br>
+						<a href="https://github.com/fchollet/deep-learning-with-python-notebooks"> Github: Jupyter
+							Notebooks </a>
+					</small>
+				</section>
+			</section>
 
-  <section>
-   <h2>Applications</h2>
-   <p>Google Street-View (and ReCaptchas)</p>
-   <img width="500" height="300" src="./images/house-numbers_598x400.png" alt="House Numbers" xstyle="border:none;box-shadow:none">
-   <p><i>
-     <a href="http://arxiv.org/abs/1312.6082" target="_blank">Better</a> 
-      than
-     <a href="http://www.geek.com/news/googles-neutral-networks-are-now-better-than-humans-at-reading-addresses-1581653/" target="_blank">Human </a>
-   </i></p>
-  </section>
+			<section>
+				<section data-background="#dddddd">
 
-  <section class="future" hidden="" style="top: -20px; display: none;">
-   <h2>Image Classification</h2>
-   <img width="500" height="400" src="./images/ImageNet-Results_574x469.png" alt="ImageNet Results" style="border:none;box-shadow:none">
-   <p><i>(now better than human level)</i></p>
-  </section>
+					<h3>What is deep learning?</h3>
+					<img height="400" src="./images/AI-ML-DL-Fig1.1.png" alt="Deep Learning"
+						xstyle="border:none;box-shadow:none">
+				</section>
 
-  <section class="future" hidden="" style="top: -20px; display: none;">
-   <h2>Captioning Images</h2>
-   <img width="667" height="419" src="./images/image-labelling-results_667x419.png" alt="Labelling Results" style="border:none;box-shadow:none">
-   <p><i>Some good, some not-so-good</i></p>
-  </section>
-<!-- 
+				<section>
+					<h2>Applications</h2>
+					<p>Google Street-View (and ReCaptchas)</p>
+					<img width="500" height="300" src="./images/house-numbers_598x400.png" alt="House Numbers"
+						xstyle="border:none;box-shadow:none">
+					<p><i>
+							<a href="http://arxiv.org/abs/1312.6082" target="_blank">Better</a>
+							than
+							<a href="http://www.geek.com/news/googles-neutral-networks-are-now-better-than-humans-at-reading-addresses-1581653/"
+								target="_blank">Human </a>
+						</i></p>
+				</section>
+
+				<section class="future" hidden="" style="top: -20px; display: none;">
+					<h2>Image Classification</h2>
+					<img width="500" height="400" src="./images/ImageNet-Results_574x469.png" alt="ImageNet Results"
+						style="border:none;box-shadow:none">
+					<p><i>(now better than human level)</i></p>
+				</section>
+
+				<section class="future" hidden="" style="top: -20px; display: none;">
+					<h2>Captioning Images</h2>
+					<img width="667" height="419" src="./images/image-labelling-results_667x419.png"
+						alt="Labelling Results" style="border:none;box-shadow:none">
+					<p><i>Some good, some not-so-good</i></p>
+				</section>
+
+				<section class="future" hidden="" style="top: -20px; display: none;">
+					<h2>DALL·E: Creating Images from Text</h2>
+					<p>DALL·E is a 12-billion parameter version of GPT-3 trained to generate images from text
+						descriptions, using a dataset of text–image pairs</p>
+					<p> Artist Salvador Dalí and Pixar’s WALL·E.</p>
+					<img height="150" src="./images/salvador-dali.jpg" alt="salvador-dali"
+						style="border:none;box-shadow:none">
+					<img height="150" src="./images/MoneyHeist_Mask.jpg" alt="MoneyHeist_Mask"
+						style="border:none;box-shadow:none">
+					<img height="150" src="./images/MoneyHeist.jpg" alt="MoneyHeist"
+						style="border:none;box-shadow:none">
+					<img height="150" src="./images/Wall-e.jpg" alt="Wall-e" style="border:none;box-shadow:none">
+				</section>
+
+				<section class="future" hidden="" style="top: -20px; display: none;">
+					<h4>DALL·E: Creating Images from Text</h4>
+					<small>
+						<a href="https://openai.com/blog/dall-e/">openai.com/blog/dall-e/</a>
+						<p>DALL·E is a 12-billion parameter version of GPT-3 trained to generate images from text
+							descriptions, using a dataset of text–image pairs</p>
+					</small>
+					<img height="100" src="./images/avocado.jpg" alt="avocado" style="border:none;box-shadow:none">
+					<img height="100" src="./images/pentagon_green_clock.jpg" alt="pentagon_green_clock"
+						style="border:none;box-shadow:none">
+					<br>
+					<img height="130" src="./images/penguen.jpg" alt="penguen" style="border:none;box-shadow:none">
+				</section>
+				<!-- 
   <section class="future" hidden="" style="top: -350px; display: block;">
    <h2>Speech Recognition</h2>
    <p>Android feature since <a href="http://www.phonearena.com/news/The-secret-of-Googles-amazing-voice-recognition-revealed-it-works-like-a-brain_id39938" target="_blank">Jellybean (v4.3, 2012)</a> </p>
@@ -203,190 +265,193 @@ h1 {
   </section>
 
 
-  <section class="future" hidden="" style="top: -20px; display: none;">
-   <h2>Reinforcement Learning</h2>
-   <p>Google DeepMind's AlphaGo</p>
-   <p>Learn to play Go from (mostly) self-play</p>
-   <img width="902" height="337" src="./images/AlphaGo-match5_902x337.png" alt="DeepMind AlphaGo Match 5" style="border:none;box-shadow:none">
-  </section>
 !-->
-</section>
+			</section>
 
 
-<section >
-	<section class="" style="top: -277px; display: block;">
-		<h3>Machine learning vs. Classical programming</h3>
-		<h4>Machine learning: a new programming paradigm</h4>
-		<img height="400" src="./images/Prog-ML-Fig1.2.png" alt="Machine learning: a new programming paradigm" xstyle="border:none;box-shadow:none">
-	</section>
+			<section>
+				<section class="" style="top: -277px; display: block;">
+					<h3>Machine learning vs. Classical programming</h3>
+					<h4>Machine learning: a new programming paradigm</h4>
+					<img height="400" src="./images/Prog-ML-Fig1.2.png"
+						alt="Machine learning: a new programming paradigm" xstyle="border:none;box-shadow:none">
+				</section>
 
-	<section>
-	<h2> Why Computer Vision is difficult?  </h2>
-	<img src="images/cat01gray.png" width="300">
-	
-	<p class="fragment"> How Computer see the above picture? </p>
-	</section>
-	<section>
-	<img src="images/cat01nums.png" >
-	</section>
-	<section data-background-iframe="images/cat01_with_space.txt">
-	</section>
+				<section>
+					<h2> Why Computer Vision is difficult? </h2>
+					<img src="images/cat01gray.png" width="300">
 
-</section>
+					<p class="fragment"> How Computer see the above picture? </p>
+				</section>
+				<section>
+					<img src="images/cat01nums.png">
+				</section>
+				<section data-background-iframe="images/cat01_with_space.txt">
+				</section>
 
-<section>
-  <section data-transition="convex" >
-   <h2>Deep Learning</h2>
-   <ul class="fix-spacing">
-    <li>Neural Networks</li>
-    <li>Multiple layers</li>
-    <li>Fed with lots of Data</li>
-   </ul>
-  </section>
-  <section data-transition="convex" data-background="./images/GeoffHinton.jpeg">
-   <h2>History</h2>
-   <ul class="fix-spacing">
-    <li>1980+ : Lots of enthusiasm for NNs</li>
-    <li>1995+ : Disillusionment = A.I. Winter (v2+)</li>
-    <li>2005+ : Stepwise improvement : Depth</li>
-    <li>2010+ : GPU revolution : Data</li>
-   </ul>
-  </section>
+			</section>
 
-  <section data-transition="convex">
-   <h3>Who is involved</h3>
-	<table>
-		<tbody>
-			<tr>
-				<td>Google </td>
-				<td>Hinton (Toronto)</td>
-				<td><img src="images/GeoffHinton.jpeg" width="80"></td>
-			</tr>
-			<tr>
-				<td>Facebook</td>
-				<td>LeCun (NYC)</td>
-				<td><img src="images/YannLeCun.jpeg" width="80"></td>
-			</tr>
-			<tr>
-				<td>Universities</td>
-				<td>Bengio (Montreal)</td>
-				<td><img src="images/YoshuaBengio.jpeg" width="80"></td>
-			</tr>
-			<tr>
-				<td>Baidu</td>
-				<td>Ng (Stanford)</td>
-				<td><img src="images/AndrewNg.jpeg" width="80"></td>
-			</tr>
-		</tbody>
-	</table>
-  </section>
-  <section data-background="./images/AndrewNg.jpeg">
-   <h2>Andrew Ng:</h2>
-   <blockquote cite="https://www.gsb.stanford.edu/insights/andrew-ng-why-ai-new-electricity">
+			<section>
+				<section data-transition="convex">
+					<h2>Deep Learning</h2>
+					<ul class="fix-spacing">
+						<li>Neural Networks</li>
+						<li>Multiple layers</li>
+						<li>Fed with lots of Data</li>
+					</ul>
+				</section>
+				<section data-transition="convex" data-background="./images/GeoffHinton.jpeg">
+					<h2>History</h2>
+					<ul class="fix-spacing">
+						<li>1980+ : Lots of enthusiasm for NNs</li>
+						<li>1995+ : Disillusionment = A.I. Winter (v2+)</li>
+						<li>2005+ : Stepwise improvement : Depth</li>
+						<li>2010+ : GPU revolution : Data</li>
+					</ul>
+				</section>
+
+				<section data-transition="convex">
+					<h3>Who is involved</h3>
+					<table>
+						<tbody>
+							<tr>
+								<td>Google </td>
+								<td>Hinton (Toronto)</td>
+								<td><img src="images/GeoffHinton.jpeg" width="80"></td>
+							</tr>
+							<tr>
+								<td>Facebook</td>
+								<td>LeCun (NYC)</td>
+								<td><img src="images/YannLeCun.jpeg" width="80"></td>
+							</tr>
+							<tr>
+								<td>Universities</td>
+								<td>Bengio (Montreal)</td>
+								<td><img src="images/YoshuaBengio.jpeg" width="80"></td>
+							</tr>
+							<tr>
+								<td>Baidu</td>
+								<td>Ng (Stanford)</td>
+								<td><img src="images/AndrewNg.jpeg" width="80"></td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section data-background="./images/AndrewNg.jpeg">
+					<h2>Andrew Ng:</h2>
+					<blockquote cite="https://www.gsb.stanford.edu/insights/andrew-ng-why-ai-new-electricity">
 						&ldquo;AI is the new electricity.&rdquo;
-	</blockquote>
-  </section>
-  
-</section>
+					</blockquote>
+				</section>
 
-<section>
-  <section data-transition="convex">
-   <h3>2011, Image Classification</h3>
-   <img width="750" height="314" src="./images/ilsvrc1_850x314.png" alt="ImageNet Karpathy" style="border:none;box-shadow:none">
-   <small>
-   ImageNet challenge was difficult at the time, consisting of classifying highresolution color images into 1,000 different categories after training on 1.4 million images
-   </small>
-  </section>
-  <section data-transition="convex">
-   <h4>Deep Learning started to beat other approaches...</h4>
-   <small>
-   <ul class="fix-spacing">
-    <li>In 2011, Dan Ciresan from IDSIA began to win academic image-classification competitions with GPU-trained deep neural networks</li>
-    <li>In 2011, the top-five accuracy of the winning model, based on classical approaches to computer vision, was only 74.3%.</li>
-    <li>In 2012, a team led by Alex Krizhevsky and advised by Geoffrey Hinton was able to achieve a top-five accuracy of 83.6%—a significant breakthrough</li>
-	<li>By 2015, the winner reached an accuracy of 96.4%, and the classification task on ImageNet was considered to be a completely solved problem  </li>
-   </ul>
-   </small>
-  </section>
-  <section data-transition="convex">
-   <h3>What makes deep learning different?</h3>
-	It completely automates what used to be the most crucial step in a machine-learning workflow:
-	<br>	<em> feature engineering </em>
-  </section>
-  <section data-transition="convex">
-   <h3>Why deep learning? Why now?</h3>   
-	<p>In general, three technical forces are driving advances:</p>
-	<xsmall>
-	<ol>
-     <li >Hardware</li>
-	 NVIDIA GPUs, Google TPUs
-	 <span class="fragment">
-     <li>Datasets and benchmarks</li>
-	 Flickr, YouTube videos and Wikipedia
-	 </span>
-	 <span class="fragment">
-     <li> Algorithmic advances</li>
-	   <ul>
-		<li>Better activation functions </li>
-		<li>Better weight-initialization schemes</li>
-		<li>Better optimization schemes</li>
-	   </ul>
-	 </span>  
-    </ol>
-	</xsmall>
-  </section>
-</section>
+			</section>
+
+			<section>
+				<section data-transition="convex">
+					<h3>2011, Image Classification</h3>
+					<img width="750" height="314" src="./images/ilsvrc1_850x314.png" alt="ImageNet Karpathy"
+						style="border:none;box-shadow:none">
+					<small>
+						ImageNet challenge was difficult at the time, consisting of classifying highresolution color
+						images into 1,000 different categories after training on 1.4 million images
+					</small>
+				</section>
+				<section data-transition="convex">
+					<h4>Deep Learning started to beat other approaches...</h4>
+					<small>
+						<ul class="fix-spacing">
+							<li>In 2011, Dan Ciresan from IDSIA began to win academic image-classification competitions
+								with GPU-trained deep neural networks</li>
+							<li>In 2011, the top-five accuracy of the winning model, based on classical approaches to
+								computer vision, was only 74.3%.</li>
+							<li>In 2012, a team led by Alex Krizhevsky and advised by Geoffrey Hinton was able to
+								achieve a top-five accuracy of 83.6%—a significant breakthrough</li>
+							<li>By 2015, the winner reached an accuracy of 96.4%, and the classification task on
+								ImageNet was considered to be a completely solved problem </li>
+						</ul>
+					</small>
+				</section>
+				<section data-transition="convex">
+					<h3>What makes deep learning different?</h3>
+					It completely automates what used to be the most crucial step in a machine-learning workflow:
+					<br> <em> feature engineering </em>
+				</section>
+				<section data-transition="convex">
+					<h3>Why deep learning? Why now?</h3>
+					<p>In general, three technical forces are driving advances:</p>
+					<xsmall>
+						<ol>
+							<li>Hardware</li>
+							NVIDIA GPUs, Google TPUs
+							<span class="fragment">
+								<li>Datasets and benchmarks</li>
+								Flickr, YouTube videos and Wikipedia
+							</span>
+							<span class="fragment">
+								<li> Algorithmic advances</li>
+								<ul>
+									<li>Better activation functions </li>
+									<li>Better weight-initialization schemes</li>
+									<li>Better optimization schemes</li>
+								</ul>
+							</span>
+						</ol>
+					</xsmall>
+				</section>
+			</section>
 
 
-<section>
-	<section>
-	<h3>Before we begin: the mathematical building blocks of neural networks</h3>
-	<p>We will discuss:</p>
-	<ul class="fix-spacing">
-	  <li>A first example of a neural network</li>
-	  <li>Tensors and tensor operations</li>
-	  <li>How neural networks learn via backpropagation and gradient descent</li>
-	</ul>
-	</section>
-	<section data-background="images/PDSH-cover.png" data-background-opacity=.2 >
-	<h3>We will use Python in examples</h3>
-	<table align="center">
-	<tbody>
-	<tr>
-	<td>
-	Python Data Science Handbook.  Essential Tools for Working with Data	
-	by: Jake VanderPlas
-	</td>
-	<td>
-	<img src="images/PDSH-cover.png">
-	</td>
-	</tr>
-	</tbody>
-	</table>
-	
-	<ul>
-		<li>Read the book in its entirety online at
-		<a href="https://jakevdp.github.io/PythonDataScienceHandbook/"> https://jakevdp.github.io/PythonDataScienceHandbook/</a>
-		</li>
-		<li> The book's Jupyter notebooks:
-		<a href="https://github.com/jakevdp/PythonDataScienceHandbook"> https://github.com/jakevdp/PythonDataScienceHandbook</a>
-		</li>
-	</ul>
-	</section>
-</section>
-<section>
-	<section>
-	 <h3>A first look at a neural network</h3>
-	 Digit Classification
-	 <br>
-	 <img src="images/MLP_anim_1.gif" width="700">
-	  
-	</section>
-	<section>
-	 <code> 2.1-a-first-look-at-a-neural-network</code>
-	 <br>
-	 Digits Classification
-	 <pre>
+			<section>
+				<section>
+					<h3>Before we begin: the mathematical building blocks of neural networks</h3>
+					<p>We will discuss:</p>
+					<ul class="fix-spacing">
+						<li>A first example of a neural network</li>
+						<li>Tensors and tensor operations</li>
+						<li>How neural networks learn via backpropagation and gradient descent</li>
+					</ul>
+				</section>
+				<section data-background="images/PDSH-cover.png" data-background-opacity=.2>
+					<h3>We will use Python in examples</h3>
+					<table align="center">
+						<tbody>
+							<tr>
+								<td>
+									Python Data Science Handbook. Essential Tools for Working with Data
+									by: Jake VanderPlas
+								</td>
+								<td>
+									<img src="images/PDSH-cover.png">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<ul>
+						<li>Read the book in its entirety online at
+							<a href="https://jakevdp.github.io/PythonDataScienceHandbook/">
+								https://jakevdp.github.io/PythonDataScienceHandbook/</a>
+						</li>
+						<li> The book's Jupyter notebooks:
+							<a href="https://github.com/jakevdp/PythonDataScienceHandbook">
+								https://github.com/jakevdp/PythonDataScienceHandbook</a>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>A first look at a neural network</h3>
+					Digit Classification
+					<br>
+					<img src="images/MLP_anim_1.gif" width="700">
+
+				</section>
+				<section>
+					<code> 2.1-a-first-look-at-a-neural-network</code>
+					<br>
+					Digits Classification
+					<pre>
 	 <code class="hljs" data-trim>
 		import keras
 		from keras.datasets import mnist
@@ -413,88 +478,92 @@ h1 {
 		network.fit(train_images, train_labels, epochs=5, batch_size=128)
 	 </code>
 	 </pre>
-	</section>
-	<section>
-	<h3>Compilation step</h3>
-	<ul>
-		<li>An optimizer—The mechanism through which the network will update itself
-		based on the data it sees and its loss function.
-		</li>
-		<li class="fragment">A loss function—How the network will be able to measure its performance on
-		the training data, and thus how it will be able to steer itself in the right direction.
-		</li>
-		<li class="fragment"> Metrics to monitor during training and testing—Here, we’ll only care about accuracy (the fraction of the images that were correctly classified)
-		</li>
-	</ul>
-	<span class="fragment" align="left">Online Documentation: 
-	<a href="https://keras.io/losses/"> Keras </a>
-	</span>
-	</section>
-	<section data-background-iframe="https://keras.io/losses/" data-background-interactive>
-	<!--
+				</section>
+				<section>
+					<h3>Compilation step</h3>
+					<ul>
+						<li>An optimizer—The mechanism through which the network will update itself
+							based on the data it sees and its loss function.
+						</li>
+						<li class="fragment">A loss function—How the network will be able to measure its performance on
+							the training data, and thus how it will be able to steer itself in the right direction.
+						</li>
+						<li class="fragment"> Metrics to monitor during training and testing—Here, we’ll only care about
+							accuracy (the fraction of the images that were correctly classified)
+						</li>
+					</ul>
+					<span class="fragment" align="left">Online Documentation:
+						<a href="https://keras.io/losses/"> Keras </a>
+					</span>
+				</section>
+				<section data-background-iframe="https://keras.io/losses/" data-background-interactive>
+					<!--
 	<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0.9, 0.9, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
 		<h2>Keras Documentation</h2>
 		<p>Since reveal.js runs on the web, you can easily embed other web content. Try interacting with the page in the background.</p>
 	</div>-->
-	</section>
-</section>
+				</section>
+			</section>
 
-<section>
-  <section>
-   <h3>Data representations for neural networks</h3>
-   <h4>Tensors</h4>
-   <img src="images/tensors.png" width="600">
-  </section>
-  <section>
-  <p align="left">
-	  Don’t confuse a 5D
-	vector with a 5D tensor! A 5D vector has only one axis and has five dimensions along its
-	axis, whereas a 5D tensor has five axes (and may have any number of dimensions
-	along each axis).
-  </p>
-  <p class="fragment" align="left">Dimensionality can denote either the number of entries along a specific axis (as in the case of our 5D vector) or the number of axes in a tensor (such as a
-	5D tensor), which can be confusing at times. In the latter case, it’s technically more
-	correct to talk about a tensor of rank 5 (the rank of a tensor being the number of axes),
-	but the ambiguous notation 5D tensor is common regardless.
-  </p>
-  </section>
-  <section>
-   <h4>2.2.6 Manipulating tensors in Numpy</h4>
-   <code> my_slice = train_images[:, 14:, 14:] </code>
-   <br><br><br>
-   <span class="fragment">
-   <h4 >2.2.7 The notion of data batches</h4>
-   <code> batch = train_images[128 * n:128 * (n + 1)] </code>   
-   </span>
-  </section>
-  <section>
-   <h4>2.2.8 Real-world examples of data tensors</h4> 
-	<ol>
-		<li>Vector data—2D tensors of shape </li>
-		<code class="fragment"> (samples, features)</code>
-		<li>Timeseries data or sequence data—3D tensors of shape</li>
-		<code class="fragment"> (samples, timesteps, features)</code>
-		<li> Images—4D tensors of shape</li>
-		<code class="fragment"> (samples, height, width, channels)  or  <br>(samples, channels, height, width)</code>
-		<li> Video—5D tensors of shape </li>
-		<small>
-		<code class="fragment"> (samples, frames, height, width, channels) or  <br>(samples, frames, channels, height, width)</code>
-		</small>
-	</ol>   	
-  </section>
-  <section>
-	<h3> The gears of neural networks: tensor operations </h3>
-		<ol>
-		<li>Element-wise operations</li>
-		<li>Broadcasting</li>
-		<li>Tensor dot</li>
-		<li>Tensor reshaping</li>
-	</ol>  
-  </section>
-  <section>
-	 <h3>Tensor Operations</h3>
-	 <code>2.3-Tensor-Operations</code>
-	 <pre>
+			<section>
+				<section>
+					<h3>Data representations for neural networks</h3>
+					<h4>Tensors</h4>
+					<img src="images/tensors.png" width="600">
+				</section>
+				<section>
+					<p align="left">
+						Don’t confuse a 5D
+						vector with a 5D tensor! A 5D vector has only one axis and has five dimensions along its
+						axis, whereas a 5D tensor has five axes (and may have any number of dimensions
+						along each axis).
+					</p>
+					<p class="fragment" align="left">Dimensionality can denote either the number of entries along a
+						specific axis (as in the case of our 5D vector) or the number of axes in a tensor (such as a
+						5D tensor), which can be confusing at times. In the latter case, it’s technically more
+						correct to talk about a tensor of rank 5 (the rank of a tensor being the number of axes),
+						but the ambiguous notation 5D tensor is common regardless.
+					</p>
+				</section>
+				<section>
+					<h4>2.2.6 Manipulating tensors in Numpy</h4>
+					<code> my_slice = train_images[:, 14:, 14:] </code>
+					<br><br><br>
+					<span class="fragment">
+						<h4>2.2.7 The notion of data batches</h4>
+						<code> batch = train_images[128 * n:128 * (n + 1)] </code>
+					</span>
+				</section>
+				<section>
+					<h4>2.2.8 Real-world examples of data tensors</h4>
+					<ol>
+						<li>Vector data—2D tensors of shape </li>
+						<code class="fragment"> (samples, features)</code>
+						<li>Timeseries data or sequence data—3D tensors of shape</li>
+						<code class="fragment"> (samples, timesteps, features)</code>
+						<li> Images—4D tensors of shape</li>
+						<code
+							class="fragment"> (samples, height, width, channels)  or  <br>(samples, channels, height, width)</code>
+						<li> Video—5D tensors of shape </li>
+						<small>
+							<code
+								class="fragment"> (samples, frames, height, width, channels) or  <br>(samples, frames, channels, height, width)</code>
+						</small>
+					</ol>
+				</section>
+				<section>
+					<h3> The gears of neural networks: tensor operations </h3>
+					<ol>
+						<li>Element-wise operations</li>
+						<li>Broadcasting</li>
+						<li>Tensor dot</li>
+						<li>Tensor reshaping</li>
+					</ol>
+				</section>
+				<section>
+					<h3>Tensor Operations</h3>
+					<code>2.3-Tensor-Operations</code>
+					<pre>
 	 <code class="hljs" data-trim>
 import numpy as np
 x = np.random.random((3, 2))
@@ -510,47 +579,53 @@ z = x*y
 print(z)
 	 </code>
 	 </pre>
-	</section>
-  <section>
-	<h3>A geometric interpretation of deep learning</h3>
-	<img src="images/Figure 2.9 Uncrumpling.jpg">
-  </section>
-</section>
+				</section>
+				<section>
+					<h3>A geometric interpretation of deep learning</h3>
+					<img src="images/Figure 2.9 Uncrumpling.jpg">
+				</section>
+			</section>
 
-<section>
-	<section>
-	<h3> The engine of neural networks: gradient-based optimization </h3>
-		<ol>
-		<li>What’s a derivative?</li>
-		<li>Derivative of a tensor operation: the gradient</li>
-		<li>Stochastic gradient descent</li>
-		<li>Chaining derivatives: the Backpropagation algorithm</li>
-	</ol>  
-	</section>
-		<section>
-	<h3> Intro to optimization in deep learning </h3>
-		<ol>
-		<li><a href="https://blog.paperspace.com/intro-to-optimization-in-deep-learning-gradient-descent/">Intro to optimization in deep learning: Gradient Descent</a></li>
-		<li><a href="https://blog.paperspace.com/intro-to-optimization-momentum-rmsprop-adam/">Intro to optimization in deep learning: Momentum, RMSProp and Adam</a></li>
-		<li><a href="https://blog.paperspace.com/busting-the-myths-about-batch-normalization/">Intro to optimization in deep learning: Busting the myth about batch normalization</a></li>
-		<li><a href="https://towardsdatascience.com/adam-latest-trends-in-deep-learning-optimization-6be9a291375c">Adam — latest trends in deep learning optimization</a></li>
-	</ol>  
-	</section>
-	<section>
-	<h3>Various Gradient Descent Algorithms</h3>
-		<h4> Stochastic Gradient Descent </h4>
-		<table>
-		<tr>
-		<td>
-		<img src="images/saddle_point_evaluation_optimizers.gif">
-		</td>
-		<td>
-		<img src="images/sgd.png" border="none">		
-		</td>
-		</tr>
-		</table>
-	</section>
-	  <section>
+			<section>
+				<section>
+					<h3> The engine of neural networks: gradient-based optimization </h3>
+					<ol>
+						<li>What’s a derivative?</li>
+						<li>Derivative of a tensor operation: the gradient</li>
+						<li>Stochastic gradient descent</li>
+						<li>Chaining derivatives: the Backpropagation algorithm</li>
+					</ol>
+				</section>
+				<section>
+					<h3> Intro to optimization in deep learning </h3>
+					<ol>
+						<li><a
+								href="https://blog.paperspace.com/intro-to-optimization-in-deep-learning-gradient-descent/">Intro
+								to optimization in deep learning: Gradient Descent</a></li>
+						<li><a href="https://blog.paperspace.com/intro-to-optimization-momentum-rmsprop-adam/">Intro to
+								optimization in deep learning: Momentum, RMSProp and Adam</a></li>
+						<li><a href="https://blog.paperspace.com/busting-the-myths-about-batch-normalization/">Intro to
+								optimization in deep learning: Busting the myth about batch normalization</a></li>
+						<li><a
+								href="https://towardsdatascience.com/adam-latest-trends-in-deep-learning-optimization-6be9a291375c">Adam
+								— latest trends in deep learning optimization</a></li>
+					</ol>
+				</section>
+				<section>
+					<h3>Various Gradient Descent Algorithms</h3>
+					<h4> Stochastic Gradient Descent </h4>
+					<table>
+						<tr>
+							<td>
+								<img src="images/saddle_point_evaluation_optimizers.gif">
+							</td>
+							<td>
+								<img src="images/sgd.png" border="none">
+							</td>
+						</tr>
+					</table>
+				</section>
+				<!-- <section>
 	 <h3>TensorFlow Operations</h3>
 	 <code>Auto Gradient in TF2</code>
 	 <pre>
@@ -573,48 +648,87 @@ tf.Tensor(6.0, shape=(), dtype=float32)
 tf.Tensor(108.0, shape=(), dtype=float32)
 tf.Tensor(18.0, shape=(), dtype=float32)
 	 </pre>
-	</section>
-</section>
+	</section> -->
+			</section>
 
+			<section>
+				<section>
+					<h3>Auto Gradient</h3>
+					<a href="https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html">
+						A Gentle Introduction to torch.autograd - PyTorch
+					</a>
+					<a
+						href="https://blog.paperspace.com/pytorch-101-understanding-graphs-and-automatic-differentiation/"></a>
+					<a href="https://www.kaggle.com/residentmario/pytorch-autograd-explained"></a>
+				</section>
+				<!-- <section>
+				</section> -->
+				<section>
+					<h3>Some confusing items</h3>
+					<ul>
+						<li>Assignment operator = </li>
+						<ul>
+							<li>Copy tensors</li>
+							<li>y = 2 * torch.dot(x, x)</li>
+						</ul>
+						<li> Rerun commands</li>
+						<ul>
+							<li>y.backward()</li>
+							<li>The whole program</li>
+						</ul>
+					</ul>
+				</section>
+			</section>
 
-<section>
-	<section>
-	<h3>Understanding convolutional neural networks</h3>
-		<ol>
-		<li><a href="http://deeplearning.net/software/theano_versions/0.9.X/tutorial/conv_arithmetic.html">Convolution arithmetic tutorial</a>
-		</li>
-		<li><a href="https://mlblr.com/includes/mlai/index.html#ml-amp-ai"> Machine Learning and AI - Bangalore Chapter</a></li>
-		<li><a href="https://towardsdatascience.com/counting-no-of-parameters-in-deep-learning-models-by-hand-8f1716241889"> Counting No. of Parameters in Deep Learning Models by Hand</a></li>
-		</ol> 
-		<img src="images/cnn_anim_2_digits.gif">
-	</section>
-	<section data-background-iframe="https://tensorspace.org/html/playground/trainingLeNet.html" data-background-interactive>
-	</section>	
+			<!-- <section> -->
+			<section>
+				<section>
+					<h3>Understanding convolutional neural networks</h3>
+					<ol>
+						<li><a
+								href="http://deeplearning.net/software/theano_versions/0.9.X/tutorial/conv_arithmetic.html">Convolution
+								arithmetic tutorial</a>
+						</li>
+						<li><a href="https://mlblr.com/includes/mlai/index.html#ml-amp-ai"> Machine Learning and AI
+								- Bangalore Chapter</a></li>
+						<li><a
+								href="https://towardsdatascience.com/counting-no-of-parameters-in-deep-learning-models-by-hand-8f1716241889">
+								Counting No. of Parameters in Deep Learning Models by Hand</a></li>
+					</ol>
+					<img src="images/cnn_anim_2_digits.gif">
+				</section>
+				<section data-background-iframe="https://tensorspace.org/html/playground/trainingLeNet.html"
+					data-background-interactive>
+				</section>
 
-	<section data-background-iframe="http://deeplearning.net/software/theano_versions/0.9.X/tutorial/conv_arithmetic.html#" data-background-interactive>
-	</section>	
-	
-	<section data-background-iframe="https://mlblr.com/includes/mlai/index.html#ml-amp-ai" data-background-interactive>
-	</section>	
-</section>
+				<section
+					data-background-iframe="http://deeplearning.net/software/theano_versions/0.9.X/tutorial/conv_arithmetic.html#"
+					data-background-interactive>
+				</section>
 
-<section>
-	<section>
-		 <code>5.1 - Introduction to convnets</code>
-		 <br>
-		 MNIST Classification (Included with Keras)
-		 <br> Overall Model:
-		 <br>
-		 <img src="images/digitCNN.jpeg">
-	</section>	
-	<section>
-			 <img src="images/cnn_layers.png" with="400">
-	</section>	
-	<section>
-		 <code>5.1 - Introduction to convnets</code>
-		 <br>
-		 MNIST Classification, TensorFlow Code
-		 <pre>
+				<section data-background-iframe="https://mlblr.com/includes/mlai/index.html#ml-amp-ai"
+					data-background-interactive>
+				</section>
+			</section>
+			<!-- </section>
+			<section> -->
+			<section>
+				<section>
+					<code>5.1 - Introduction to convnets</code>
+					<br>
+					MNIST Classification (Included with Keras)
+					<br> Overall Model:
+					<br>
+					<img src="images/digitCNN.jpeg">
+				</section>
+				<section>
+					<img src="images/cnn_layers.png" with="400">
+				</section>
+				<section>
+					<code>5.1 - Introduction to convnets</code>
+					<br>
+					MNIST Classification, TensorFlow Code
+					<pre>
 		 <code class="hljs" data-trim>
 import keras
 from keras import layers
@@ -630,13 +744,14 @@ model.add(layers.Flatten())
 model.add(layers.Dense(64, activation='relu'))
 model.add(layers.Dense(10, activation='softmax'))
 		 </code>
-		 </pre>	
-	</section>	
-	<section>
-		 <code>5.1 - Introduction to convnets</code>
-		 <br>
-		 Number of Parameters
-		 <pre>
+		 </pre>
+				</section>
+				<section>
+					<!-- <section> -->
+					<code>5.1 - Introduction to convnets</code>
+					<br>
+					Number of Parameters
+					<pre>
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
@@ -657,50 +772,59 @@ _________________________________________________________________
 dense_2 (Dense)              (None, 10)                650       
 =================================================================
 Total params: 93,322
-		 </pre>	
-	</section>	
-</section>
-<section>	
-	<section>
-		<xsmall>
-		<a href="https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53"> 
-		Overall Architecture of a sample CNN</a></xsmall><br>
-		<img src="images/cnn_overall.jpeg">
-		<small>
-		More about architecture and number of parameters:
-		<ul>
-			<li><a href="https://towardsdatascience.com/counting-no-of-parameters-in-deep-learning-models-by-hand-8f1716241889"> Counting No. of Parameters in Deep Learning Models by Hand </a>			</li>
-			<li> 
-			<a href="https://medium.com/@iamvarman/how-to-calculate-the-number-of-parameters-in-the-cnn-5bd55364d7ca"> 
-			How to calculate the number of parameters in the CNN? </a> </li>
-			<!--
+		 </pre>
+				</section>
+			</section>
+			<section>
+				<section>
+					<xsmall>
+						<a
+							href="https://towardsdatascience.com/a-comprehensive-guide-to-convolutional-neural-networks-the-eli5-way-3bd2b1164a53">
+							Overall Architecture of a sample CNN</a>
+					</xsmall><br>
+					<img src="images/cnn_overall.jpeg">
+					<small>
+						More about architecture and number of parameters:
+						<ul>
+							<li><a
+									href="https://towardsdatascience.com/counting-no-of-parameters-in-deep-learning-models-by-hand-8f1716241889">
+									Counting No. of Parameters in Deep Learning Models by Hand </a> </li>
+							<li>
+								<a
+									href="https://medium.com/@iamvarman/how-to-calculate-the-number-of-parameters-in-the-cnn-5bd55364d7ca">
+									How to calculate the number of parameters in the CNN? </a>
+							</li>
+							<!--
 Convolutional Layer : Consider a convolutional layer which takes “l” feature maps as the input and has “k” feature maps as output. The filter size is “n*m”.
 Here the input has l=32 feature maps as inputs, k=64 feature maps as outputs and filter size is n=3 and m=3. It is important to understand, that we don’t simply have a 3*3 filter, but actually, we have 3*3*32 filter, as our input has 32 dimensions. And as an output from first conv layer, we learn 64 different 3*3*32 filters which total weights is “n*m*k*l”. Then there is a term called bias for each feature map. So, the total number of parameters are “(n*m*l+1)*k”.			
 			-->
-		</ul>
-		</small>
-	</section>	
-	<section>
-		<img src="images/cnn_1_3.png" width="700">
-		<small>Source:<a href="https://towardsdatascience.com/counting-no-of-parameters-in-deep-learning-models-by-hand-8f1716241889"> 
-		Counting No. of Parameters in Deep Learning Models by Hand</a></small>
-	</section>	
-	<section>
-		<img src="images/cnn_3_1.png" width="700">
-		<small>Source:<a href="https://towardsdatascience.com/counting-no-of-parameters-in-deep-learning-models-by-hand-8f1716241889"> 
-		Counting No. of Parameters in Deep Learning Models by Hand</a></small>
-	</section>	
-	<section>
-		<img src="images/cnn_2_3.png" width="500">
-		<small>Source:<a href="https://towardsdatascience.com/counting-no-of-parameters-in-deep-learning-models-by-hand-8f1716241889"> 
-		Counting No. of Parameters in Deep Learning Models by Hand</a></small>
-	</section>	
-	
-	<section>
-		 <code> -- </code>
-		 <br>
-		 Persian Digits Classification (Not included with Keras)
-		 <pre>
+						</ul>
+					</small>
+				</section>
+				<section>
+					<img src="images/cnn_1_3.png" width="700">
+					<small>Source:<a
+							href="https://towardsdatascience.com/counting-no-of-parameters-in-deep-learning-models-by-hand-8f1716241889">
+							Counting No. of Parameters in Deep Learning Models by Hand</a></small>
+				</section>
+				<section>
+					<img src="images/cnn_3_1.png" width="700">
+					<small>Source:<a
+							href="https://towardsdatascience.com/counting-no-of-parameters-in-deep-learning-models-by-hand-8f1716241889">
+							Counting No. of Parameters in Deep Learning Models by Hand</a></small>
+				</section>
+				<section>
+					<img src="images/cnn_2_3.png" width="500">
+					<small>Source:<a
+							href="https://towardsdatascience.com/counting-no-of-parameters-in-deep-learning-models-by-hand-8f1716241889">
+							Counting No. of Parameters in Deep Learning Models by Hand</a></small>
+				</section>
+
+				<section>
+					<code> -- </code>
+					<br>
+					Persian Digits Classification (Not included with Keras)
+					<pre>
 		 <code class="hljs" data-trim>
 import keras
 from keras import layers
@@ -716,36 +840,37 @@ model.add(layers.Flatten())
 model.add(layers.Dense(64, activation='relu'))
 model.add(layers.Dense(10, activation='softmax'))	
 		 </code>
-		 </pre>	
-	</section>	
-</section>	
-<section>
-	<section>
-		<code>5.2 - Using convnets with small datasets</code>
-		<br>
-		Classify Dogs vs Cats (Not included with Keras)
-		<br>
-		<img src="images/Fig5.8-DogsCats.jpg">
-	</section>	
-	<section>
-		 <code>5.2 - Using convnets with small datasets</code>
-		 <br>
-		 Classify Dogs vs Cats (Building from scrach)
-		 <ul>
-			<li>Download Images from <a href="www.kaggle.com/c/dogs-vs-cats/data"> Kaggle </a>
-			</li>
-			<li>
-				Download Images from <a href="https://www.floydhub.com/api/v1/resources/MmV389WwjuivQhKXoA9GaR?content=true&download=true&rename=fastai-datasets-cats-vs-dogs-2">
-				fastai </a> 845MB, (need some manipulation)
-			</li>
-		</ul>	
-		<img src="images/cnn_anim_1.gif">
-	</section>		
-	<section>
-		 <code>5.2 - Using convnets with small datasets</code>
-		 <br>
-		 Classify Dogs vs Cats (Building from scrach)
-		 <pre>
+		 </pre>
+				</section>
+			</section>
+			<section>
+				<section>
+					<code>5.2 - Using convnets with small datasets</code>
+					<br>
+					Classify Dogs vs Cats (Not included with Keras)
+					<br>
+					<img src="images/Fig5.8-DogsCats.jpg">
+				</section>
+				<section>
+					<code>5.2 - Using convnets with small datasets</code>
+					<br>
+					Classify Dogs vs Cats (Building from scrach)
+					<ul>
+						<li>Download Images from <a href="www.kaggle.com/c/dogs-vs-cats/data"> Kaggle </a>
+						</li>
+						<li>
+							Download Images from <a
+								href="https://www.floydhub.com/api/v1/resources/MmV389WwjuivQhKXoA9GaR?content=true&download=true&rename=fastai-datasets-cats-vs-dogs-2">
+								fastai </a> 845MB, (need some manipulation)
+						</li>
+					</ul>
+					<img src="images/cnn_anim_1.gif">
+				</section>
+				<section>
+					<code>5.2 - Using convnets with small datasets</code>
+					<br>
+					Classify Dogs vs Cats (Building from scrach)
+					<pre>
 		 <code class="hljs" data-trim>
 model = models.Sequential()
 model.add(layers.Conv2D(32, (3, 3), activation='relu',
@@ -761,154 +886,162 @@ model.add(layers.Flatten())
 model.add(layers.Dense(512, activation='relu'))
 model.add(layers.Dense(1, activation='sigmoid'))			
 		 </code>
-		 </pre>	
-	</section>		
-	<section>
-	</section>		
-</section>
+		 </pre>
+				</section>
+			</section>
 
-<section>	
-	<section>
-There are various architectures of CNNs available<br>
-LeNet, AlexNet, VGGNet, GoogLeNet, ResNet, ZFNet <br>
-<img src="images/acc_vs_net_vs_ops.svg">
-	</section>	
-	<section>
-		<a href="https://neurohive.io/en/popular-networks/vgg16/"> 
-		VGG16 Architecture </a><br>
-		<img src="images/vgg16.png">
-	</section>	
-	<section data-background="images/nvidia-gtx-titan-black.jpg" data-background-opacity=.2>
-		VGG16 is a convolutional neural network model proposed by K. Simonyan and A. Zisserman from the University of Oxford in the paper “Very Deep Convolutional Networks for Large-Scale Image Recognition”. The model achieves 92.7% top-5 test accuracy in ImageNet, which is a dataset of over 14 million images belonging to 1000 classes. VGG16 was trained for weeks and was using NVIDIA Titan Black GPU’s.
-	</section>	
-</section>
+			<section>
+				<section>
+					There are various architectures of CNNs available<br>
+					LeNet, AlexNet, VGGNet, GoogLeNet, ResNet, ZFNet <br>
+					<img src="images/acc_vs_net_vs_ops.svg">
+				</section>
+				<section>
+					<a href="https://neurohive.io/en/popular-networks/vgg16/">
+						VGG16 Architecture </a><br>
+					<img src="images/vgg16.png">
+				</section>
+				<section data-background="images/nvidia-gtx-titan-black.jpg" data-background-opacity=.2>
+					VGG16 is a convolutional neural network model proposed by K. Simonyan and A. Zisserman from the
+					University of Oxford in the paper “Very Deep Convolutional Networks for Large-Scale Image
+					Recognition”. The model achieves 92.7% top-5 test accuracy in ImageNet, which is a dataset of
+					over 14 million images belonging to 1000 classes. VGG16 was trained for weeks and was using
+					NVIDIA Titan Black GPU’s.
+				</section>
+			</section>
 
-<section>	
-	<section>
-		ML vs DL <br>
-		<img src="images/MLvsDL_ces2016.png">
-	</section>	
-	<section>
-		Some Outputs <br>
-		<img src="images/out_01.jpg">
-		<img src="images/yolo_pred.jpg">
-	</section>	
-	<section>
-		Our Outputs <br>
-		<img src="images/1_2 (9).jpg">
-		<img src="images/1_5 (12).jpg">
-	</section>	
-	<section>
-		Our Outputs <br>
-		<img src="images/1_4 (28).jpg">
-	</section>	
-</section>
+			<section>
+				<section>
+					ML vs DL <br>
+					<img src="images/MLvsDL_ces2016.png">
+				</section>
+				<section>
+					Some Outputs <br>
+					<img src="images/out_01.jpg">
+					<img src="images/yolo_pred.jpg">
+				</section>
+				<section>
+					Our Outputs <br>
+					<img src="images/1_2 (9).jpg">
+					<img src="images/1_5 (12).jpg">
+				</section>
+				<section>
+					Our Outputs <br>
+					<img src="images/1_4 (28).jpg">
+				</section>
+			</section>
 
 
-<section>
-	<section>
-	<h3> Neural style transfer</h3>
-		<ol>
-		<li>My Pages at: mamintoosi.ir: 
-		<a href="http://mamintoosi.ir/wp/neural-style-transfer/">Neural Style Transfer</a>,
-		<a href="http://mamintoosi.ir/wp/fast-style-transfer/">Fast Style Transfer</a>
-		</li>
-		<li>Additional outputs on my Github: <a href="https://github.com/mamintoosi/MMM-Artistic-photoes">Foxes</a></li>
-		<li><a href="https://www.tensorflow.org/tutorials/generative/style_transfer">TensorFlow documentation</a></li>
-		</ol> 
-	</section>
-	<section data-background-iframe="http://mamintoosi.ir/wp/fast-style-transfer/" data-background-interactive>
-	<!--
+			<section>
+				<section>
+					<h3> Neural style transfer</h3>
+					<ol>
+						<li>My Pages at: mamintoosi.ir:
+							<a href="http://mamintoosi.ir/wp/neural-style-transfer/">Neural Style Transfer</a>,
+							<a href="http://mamintoosi.ir/wp/fast-style-transfer/">Fast Style Transfer</a>
+						</li>
+						<li>Additional outputs on my Github: <a
+								href="https://github.com/mamintoosi/MMM-Artistic-photoes">Foxes</a></li>
+						<li><a href="https://www.tensorflow.org/tutorials/generative/style_transfer">TensorFlow
+								documentation</a></li>
+					</ol>
+				</section>
+				<section data-background-iframe="http://mamintoosi.ir/wp/fast-style-transfer/"
+					data-background-interactive>
+					<!--
 	<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0.9, 0.9, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
 		<h2>Keras Documentation</h2>
 		<p>Since reveal.js runs on the web, you can easily embed other web content. Try interacting with the page in the background.</p>
 	</div>-->
-	</section>	
-</section>
+				</section>
+			</section>
 
 
-<section>   
-	<section>
-		<h3>Generative Adversarial Networks</h3>
-		<img src="images/GAN-generated_image.jfif" width="500">	
-		<br>
-		<a href="https://thispersondoesnotexist.com" class="fragment">thispersondoesnotexist.com </a>
-	</section>
-	<section>   
-		<img src="images/face-off.jpg" width="400">
-	</section>
-	<section>   
-		<img src="images/Trump-Cage.jpg">
-	</section>
-	
-	<section>   
-		<img src="images/generative-adversarial-network.png">
-	</section>
-</section>
+			<section>
+				<section>
+					<h3>Generative Adversarial Networks</h3>
+					<img src="images/GAN-generated_image.jfif" width="500">
+					<br>
+					<a href="https://thispersondoesnotexist.com" class="fragment">thispersondoesnotexist.com </a>
+				</section>
+				<section>
+					<img src="images/face-off.jpg" width="400">
+				</section>
+				<section>
+					<img src="images/Trump-Cage.jpg">
+				</section>
 
-<section>	
-	<section>
-	Adversarial T-Shirts: Researchers Designed T-Shirts That Can Fool Object Detectors:
-		 <a href="https://neurohive.io/en/news/adversarial-t-shirts-researchers-designed-t-shirts-that-can-fool-object-detectors/"> source </a>
-		<img src="images/T-Shirts.png">
-	</section>	
-	<section>
-		Deepfake Detection Challenge <br>
-		<a href="https://deepfakedetectionchallenge.ai/"> https://deepfakedetectionchallenge.ai/ </a>
-		<img src="images/DFDC.png" width="500">
-	</section>	
-</section>
+				<section>
+					<img src="images/generative-adversarial-network.png">
+				</section>
+			</section>
 
+			<section>
+				<section>
+					Adversarial T-Shirts: Researchers Designed T-Shirts That Can Fool Object Detectors:
+					<a
+						href="https://neurohive.io/en/news/adversarial-t-shirts-researchers-designed-t-shirts-that-can-fool-object-detectors/">
+						source </a>
+					<img src="images/T-Shirts.png">
+				</section>
+				<section>
+					Deepfake Detection Challenge <br>
+					<a href="https://deepfakedetectionchallenge.ai/"> https://deepfakedetectionchallenge.ai/ </a>
+					<img src="images/DFDC.png" width="500">
+				</section>
+			</section>
+			</section>
 
-<section hidden="" class="future" style="top: -270.5px; display: none;">
- <h3>- Questions? -</h3>
- <br>
- m.amintoosi @ gmail.com
- <br>
- <p>webpage : <a href="http://mamintoosi.ir/">http://mamintoosi.ir</a></p>
- <p>webpage in github : <a href="https://mamintoosi.github.io/">http://mamintoosi.github.io</a></p>
- <p>github : <a href="https://github.com/mamintoosi">mamintoosi</a></p>
- <hr>
-<!-- <small>
+			<section hidden="" class="future" style="top: -270.5px; display: none;">
+				<h3>- Questions? -</h3>
+				<br>
+				m.amintoosi @ gmail.com
+				<br>
+				<p>webpage : <a href="http://mamintoosi.ir/">http://mamintoosi.ir</a></p>
+				<p>webpage in github : <a href="https://mamintoosi.github.io/">http://mamintoosi.github.io</a></p>
+				<p>github : <a href="https://github.com/mamintoosi">mamintoosi</a></p>
+				<hr>
+				<!-- <small>
  <p> مطالب و سبک اسلاید برگرفته از 
 	<a href="https://github.com/mdda/deep-learning-workshop"> Martin Andrews </a>
 	و
 	<a href="https://hameds.github.io/slides/"> سعیدی‌فرد </a>
  </p>
  </small>
---> 
-</section>	
+-->
+			</section>
 
-</div>
+		</div>
 
-</div>
+	</div>
 
-<script src="../../js/reveal.js"></script>
+	<script src="../../js/reveal.js"></script>
 
-<script>
+	<script>
 
-// More info https://github.com/hakimel/reveal.js#configuration
-Reveal.initialize({
-	controls: true,
-	progress: true,
-	center: true,
-	hash: true,
-	slideNumber: true,
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			center: true,
+			hash: true,
+			slideNumber: true,
 
-	transition: 'slide', // none/fade/slide/convex/concave/zoom
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-	// More info https://github.com/hakimel/reveal.js#dependencies
-	dependencies: [
-		{ src: '../../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-		{ src: '../../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-		{ src: '../../plugin/highlight/highlight.js', async: true },
-		{ src: '../../plugin/search/search.js', async: true },
-		{ src: '../../plugin/zoom-js/zoom.js', async: true },
-		{ src: '../../plugin/notes/notes.js', async: true }
-	]
-});
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [
+				{ src: '../../plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: '../../plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: '../../plugin/highlight/highlight.js', async: true },
+				{ src: '../../plugin/search/search.js', async: true },
+				{ src: '../../plugin/zoom-js/zoom.js', async: true },
+				{ src: '../../plugin/notes/notes.js', async: true }
+			]
+		});
 
-</script>
+	</script>
 
 </body>
+
 </html>
