@@ -88,6 +88,8 @@ h1 {
 				<p>
 					<small><a href="http://https://mamintoosi.github.io/">m.amintoosi</a> @ <a
 							href="http://hsu.ac.ir/">hsu.ac.ir</a></small>
+							<br>
+					<a href="https://github.com/mamintoosi-cs/pytorch-workshop">Github page</a>
 				</p>
 				<p>
 					<small>زمستان ۱۴۰۰
@@ -458,30 +460,19 @@ h1 {
 					Digits Classification
 					<pre>
 	 <code class="hljs" data-trim>
-		import keras
-		from keras.datasets import mnist
-		(train_images, train_labels), (test_images, test_labels) = mnist.load_data()
-		from keras import models
-		from keras import layers
-
-		network = models.Sequential()
-		network.add(layers.Dense(512, activation='sigmiod', input_shape=(28 * 28,)))
-		network.add(layers.Dense(10, activation='sigmiod'))
+		# The overall framework
+		criterion = nn.CrossEntropyLoss()  
+		optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)  
 		
-		network.compile(optimizer='sgd',
-					loss='mean_squared_error',
-					metrics=['accuracy'])
-		train_images = train_images.reshape((60000, 28 * 28))
-		train_images = train_images.astype('float32') / 255
-
-		test_images = test_images.reshape((10000, 28 * 28))
-		test_images = test_images.astype('float32') / 255
-		from keras.utils import to_categorical
-
-		train_labels = to_categorical(train_labels)
-		test_labels = to_categorical(test_labels)
-		network.fit(train_images, train_labels, epochs=5, batch_size=128)
-	 </code>
+		for epoch in range(num_epochs):
+		  for (inputs, labels) in data_loader:
+			# Do Forward -> Loss Computation -> Backward -> Optimization
+			optimizer.zero_grad()
+			outputs = model(inputs)
+			loss = criterion(outputs, labels)
+			loss.backward()
+			optimizer.step()
+	</code>
 	 </pre>
 				</section>
 				<section>
@@ -498,10 +489,10 @@ h1 {
 						</li>
 					</ul>
 					<span class="fragment" align="left">Online Documentation:
-						<a href="https://keras.io/losses/"> Keras </a>
+						<a href="https://pytorch.org/"> PyTorch </a>
 					</span>
 				</section>
-				<section data-background-iframe="https://keras.io/losses/" data-background-interactive>
+				<section data-background-iframe="https://pytorch.org/" data-background-interactive>
 					<!--
 	<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0.9, 0.9, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
 		<h2>Keras Documentation</h2>
@@ -567,7 +558,7 @@ h1 {
 				</section>
 				<section>
 					<h3>Tensor Operations</h3>
-					<code>2.3-Tensor-Operations</code>
+					<code>2.3-Numpy-Operations</code>
 					<pre>
 	 <code class="hljs" data-trim>
 import numpy as np
@@ -659,12 +650,16 @@ tf.Tensor(18.0, shape=(), dtype=float32)
 			<section>
 				<section>
 					<h3>Auto Gradient</h3>
+					<ul>
+						<li>
 					<a href="https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html">
 						A Gentle Introduction to torch.autograd - PyTorch
-					</a>
-					<a
-						href="https://blog.paperspace.com/pytorch-101-understanding-graphs-and-automatic-differentiation/"></a>
-					<a href="https://www.kaggle.com/residentmario/pytorch-autograd-explained"></a>
+					</a></li>
+					<li><a href="https://blog.paperspace.com/pytorch-101-understanding-graphs-and-automatic-differentiation/">pytorch-101-understanding-graphs-and-automatic-differentiation</a>
+					</li>
+					<li><a href="https://www.kaggle.com/residentmario/pytorch-autograd-explained">pytorch-autograd-explained</a>
+					</li>
+					</ul>
 				</section>
 				<!-- <section>
 				</section> -->
@@ -971,9 +966,6 @@ model.add(layers.Dense(1, activation='sigmoid'))
 				</section>
 				<section>
 					<img src="images/face-off.jpg" width="400">
-				</section>
-				<section>
-					<img src="images/Trump-Cage.jpg">
 				</section>
 
 				<section>
