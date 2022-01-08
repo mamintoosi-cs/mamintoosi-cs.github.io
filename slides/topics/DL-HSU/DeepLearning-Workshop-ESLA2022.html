@@ -125,13 +125,13 @@ h1 {
 								امپرسیونیسم و مینیاتور.
 							</a> نشریه ریاضی و جامعه،‌ ۵ (۱)،‌ ۱-۱۶.
 						</li>
-<!-- 						<li>
+ 						<li>
 							امین‌طوسی، محمود (۱۴۰۰)،
 							<a href="https://github.com/mamintoosi/ST-for-DA-in-FD">
 								انتقال سبک برای افزایش داده‌های آموزشی شبکه‌های کانولوشنی در شناسایی شعله‌ی آتش.
 							</a> هوش محاسباتی در مهندسی برق، ‌آماده‌ی انتشار.
 						</li>
-						<li>
+<!--						<li>
 							امین‌طوسی، محمود (۱۴۰۱)،
 							<a href="https://github.com/mamintoosi/Reg-OBD-for-VGG-Pruning">
 								ترکیب روش منظم‌سازی تُنُک و آسیب مغزی بهینه‌ در کوچک‌سازی یک مدل یادگیری عمیق.
@@ -179,7 +179,24 @@ h1 {
 							Notebooks </a>
 					</small>
 				</section>
-			</section>
+				<section>
+					<h4>کاربرد بسط تیلور در کاهش حجم شبکه‌های عصبی پیچشی برای طبقه‌بندی نقاشی‌های سبک امپرسیونیسم و مینیاتور</h4>
+					<br>
+					<img height="300" src="./images/a-5.png" xstyle="border:none;box-shadow:none">
+					<img height="300" src="./images/a-1.png" xstyle="border:none;box-shadow:none">
+					<img height="300" src="./images/a-0.png" xstyle="border:none;box-shadow:none">
+					<br>
+					<img height="150" src="./images/Soleymani.jpg" xstyle="border:none;box-shadow:none">
+				</section>
+				<section>
+					<h4>انتقال سبک برای افزایش داده‌های آموزشی شبکه‌های کانولوشنی در شناسایی شعله‌ی آتش</h4>
+					<br>
+					<img width="600" src="./images/img (67).jpg" xstyle="border:none;box-shadow:none">
+					<br>
+					<img width="200" src="./images/pic (30).jpg" xstyle="border:none;box-shadow:none">
+					<br>
+					<img width="150" src="./images/Soleymani-Baqdad.jpg" xstyle="border:none;box-shadow:none">
+				</section>			</section>
 
 			<section>
 				<section data-background="#dddddd">
@@ -189,7 +206,7 @@ h1 {
 						xstyle="border:none;box-shadow:none">
 				</section>
 
-				<section>
+				<!-- <section>
 					<h2>Applications</h2>
 					<p>Google Street-View (and ReCaptchas)</p>
 					<img width="500" height="300" src="./images/house-numbers_598x400.png" alt="House Numbers"
@@ -200,7 +217,7 @@ h1 {
 							<a href="http://www.geek.com/news/googles-neutral-networks-are-now-better-than-humans-at-reading-addresses-1581653/"
 								target="_blank">Human </a>
 						</i></p>
-				</section>
+				</section> -->
 
 				<section class="future" hidden="" style="top: -20px; display: none;">
 					<h2>Image Classification</h2>
@@ -455,13 +472,12 @@ h1 {
 
 				</section>
 				<section>
-					<code> 2.1-a-first-look-at-a-neural-network</code>
+					<code> A first look at a neural network</code>
 					<br>
-					Digits Classification
+					The overall framework in PyTorch
 					<pre>
 	 <code class="hljs" data-trim>
-		# The overall framework
-		criterion = nn.CrossEntropyLoss()  
+		# model is a regression or classification
 		optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)  
 		
 		for epoch in range(num_epochs):
@@ -469,7 +485,7 @@ h1 {
 			# Do Forward -> Loss Computation -> Backward -> Optimization
 			optimizer.zero_grad()
 			outputs = model(inputs)
-			loss = criterion(outputs, labels)
+			# loss is prediction error, for example: Sum(outputs, labels)^2
 			loss.backward()
 			optimizer.step()
 	</code>
@@ -522,16 +538,18 @@ h1 {
 					</p>
 				</section>
 				<section>
-					<h4>2.2.6 Manipulating tensors in Numpy</h4>
+					<h4>Manipulating tensors in Numpy</h4>
+					<code> See 1-Basics.ipynb </code>in <a href="https://github.com/mamintoosi-cs/pytorch-workshop"> github </a>
+					<br>
 					<code> my_slice = train_images[:, 14:, 14:] </code>
 					<br><br><br>
 					<span class="fragment">
-						<h4>2.2.7 The notion of data batches</h4>
+						<h4>The notion of data batches</h4>
 						<code> batch = train_images[128 * n:128 * (n + 1)] </code>
 					</span>
 				</section>
 				<section>
-					<h4>2.2.8 Real-world examples of data tensors</h4>
+					<h4>Real-world examples of data tensors</h4>
 					<ol>
 						<li>Vector data—2D tensors of shape </li>
 						<code class="fragment"> (samples, features)</code>
@@ -556,9 +574,9 @@ h1 {
 						<li>Tensor reshaping</li>
 					</ol>
 				</section>
-				<section>
+				<!-- <section>
 					<h3>Tensor Operations</h3>
-					<code>2.3-Numpy-Operations</code>
+					<code>Numpy-Operations</code>
 					<pre>
 	 <code class="hljs" data-trim>
 import numpy as np
@@ -579,7 +597,7 @@ print(z)
 				<section>
 					<h3>A geometric interpretation of deep learning</h3>
 					<img src="images/Figure 2.9 Uncrumpling.jpg">
-				</section>
+				</section> -->
 			</section>
 
 			<section>
@@ -621,30 +639,7 @@ print(z)
 						</tr>
 					</table>
 				</section>
-				<!-- <section>
-	 <h3>TensorFlow Operations</h3>
-	 <code>Auto Gradient in TF2</code>
-	 <pre>
-	 <code class="hljs" data-trim>
-		import tensorflow as tf
-		x = tf.constant(3.0)
-		with tf.GradientTape(persistent=True) as g:
-		  g.watch(x)
-		  y = x * x
-		  z = y * y
-		dy_dx = g.gradient(y, x)  # 6.0
-		dz_dx = g.gradient(z, x)  # 108.0 (4*x^3 at x = 3)
-		dz_dy = g.gradient(z, y)  # 18.0 (2*y at y = 9)
-		del g  # Drop the reference to the tape
-		print(dy_dx)
-		print(dz_dx)
-		print(dz_dy)
-	 </code>
-tf.Tensor(6.0, shape=(), dtype=float32)
-tf.Tensor(108.0, shape=(), dtype=float32)
-tf.Tensor(18.0, shape=(), dtype=float32)
-	 </pre>
-	</section> -->
+
 			</section>
 
 			<section>
@@ -661,9 +656,31 @@ tf.Tensor(18.0, shape=(), dtype=float32)
 					</li>
 					</ul>
 				</section>
-				<!-- <section>
-				</section> -->
 				<section>
+				<h3>Auto Gradient in PyTorch</h3>
+				<code>See 2-Autograd.ipynb </code>in <a href="https://github.com/mamintoosi-cs/pytorch-workshop"> github </a>
+				<br>
+					<pre>
+					<code class="hljs" data-trim>
+						from torch import autograd
+						x = torch.Tensor([4])
+						x.requires_grad_()
+						y = torch.Tensor([0])
+						y.requires_grad_()
+
+						f = 5 * x**2 + 3*torch.sin(y)
+
+						df_dx = autograd.grad(f, x)[0]
+						print("∂f/∂x| x=4 :", df_dx.item())
+
+						df_dy = autograd.grad(f, y)[0]
+						print("∂f/∂y| y=0 :", df_dy.item())
+					</code>
+	∂f/∂x| x=4 : 40.0
+	∂f/∂y| y=0 : 3.0
+					</pre>
+				</section>
+				<!-- <section>
 					<h3>Some confusing items</h3>
 					<ul>
 						<li>Assignment operator = </li>
@@ -677,7 +694,7 @@ tf.Tensor(18.0, shape=(), dtype=float32)
 							<li>The whole program</li>
 						</ul>
 					</ul>
-				</section>
+				</section> -->
 			</section>
 
 			<!-- <section> -->
@@ -697,7 +714,7 @@ tf.Tensor(18.0, shape=(), dtype=float32)
 					</ol>
 					<img src="images/cnn_anim_2_digits.gif">
 				</section>
-				<section data-background-iframe="https://tensorspace.org/html/playground/trainingLeNet.html"
+				<!-- <section data-background-iframe="https://tensorspace.org/html/playground/trainingLeNet.html"
 					data-background-interactive>
 				</section>
 
@@ -708,15 +725,13 @@ tf.Tensor(18.0, shape=(), dtype=float32)
 
 				<section data-background-iframe="https://mlblr.com/includes/mlai/index.html#ml-amp-ai"
 					data-background-interactive>
-				</section>
-			</section>
+				</section> -->
 			<!-- </section>
 			<section> -->
-			<section>
 				<section>
-					<code>5.1 - Introduction to convnets</code>
+					<code>Introduction to convnets</code>
 					<br>
-					MNIST Classification (Included with Keras)
+					MNIST Classification 
 					<br> Overall Model:
 					<br>
 					<img src="images/digitCNN.jpeg">
@@ -725,53 +740,57 @@ tf.Tensor(18.0, shape=(), dtype=float32)
 					<img src="images/cnn_layers.png" with="400">
 				</section>
 				<section>
-					<code>5.1 - Introduction to convnets</code>
+					<code>See 5-CNN-CIFAR.ipynb </code>in <a href="https://github.com/mamintoosi-cs/pytorch-workshop"> github </a>
 					<br>
-					MNIST Classification, TensorFlow Code
+					Image Classification
 					<pre>
+		<small>
 		 <code class="hljs" data-trim>
-import keras
-from keras import layers
-from keras import models
-
-model = models.Sequential()
-model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
-model.add(layers.MaxPooling2D((2, 2)))
-model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-model.add(layers.MaxPooling2D((2, 2)))
-model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-model.add(layers.Flatten())
-model.add(layers.Dense(64, activation='relu'))
-model.add(layers.Dense(10, activation='softmax'))
+			import torch.nn as nn
+			import torch.nn.functional as F
+			class Net(nn.Module):
+				def __init__(self):
+					super().__init__()
+					self.conv1 = nn.Conv2d(3, 6, 5)
+					self.pool = nn.MaxPool2d(2, 2)
+					self.conv2 = nn.Conv2d(6, 16, 5)
+					self.fc1 = nn.Linear(16 * 5 * 5, 120)
+					self.fc2 = nn.Linear(120, 84)
+					self.fc3 = nn.Linear(84, 10)
+			
+				def forward(self, x):
+					x = self.pool(F.relu(self.conv1(x)))
+					x = self.pool(F.relu(self.conv2(x)))
+					x = torch.flatten(x, 1) # flatten all dimensions except batch
+					x = F.relu(self.fc1(x))
+					x = F.relu(self.fc2(x))
+					x = self.fc3(x)
+					return x
+			
+			model = Net()
 		 </code>
+		</small>
 		 </pre>
 				</section>
 				<section>
 					<!-- <section> -->
-					<code>5.1 - Introduction to convnets</code>
+					<code>Introduction to convnets</code>
 					<br>
 					Number of Parameters
 					<pre>
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-conv2d_1 (Conv2D)            (None, 26, 26, 32)        320       
-_________________________________________________________________
-max_pooling2d_1 (MaxPooling2 (None, 13, 13, 32)        0         
-_________________________________________________________________
-conv2d_2 (Conv2D)            (None, 11, 11, 64)        18496     
-_________________________________________________________________
-max_pooling2d_2 (MaxPooling2 (None, 5, 5, 64)          0         
-_________________________________________________________________
-conv2d_3 (Conv2D)            (None, 3, 3, 64)          36928     
-_________________________________________________________________
-flatten_1 (Flatten)          (None, 576)               0         
-_________________________________________________________________
-dense_1 (Dense)              (None, 64)                36928     
-_________________________________________________________________
-dense_2 (Dense)              (None, 10)                650       
-=================================================================
-Total params: 93,322
+----------------------------------------------------------------
+	Layer (type)           Output Shape         Param #
+================================================================
+	Conv2d-1            [-1, 6, 28, 28]             456
+	MaxPool2d-2         [-1, 6, 14, 14]               0
+	Conv2d-3           [-1, 16, 10, 10]           2,416
+	MaxPool2d-4          [-1, 16, 5, 5]               0
+	Linear-5                  [-1, 120]          48,120
+	Linear-6                   [-1, 84]          10,164
+	Linear-7                   [-1, 10]             850
+================================================================
+Total params: 62,006
+Trainable params: 62,006
 		 </pre>
 				</section>
 			</section>
@@ -820,34 +839,12 @@ Here the input has l=32 feature maps as inputs, k=64 feature maps as outputs and
 							Counting No. of Parameters in Deep Learning Models by Hand</a></small>
 				</section>
 
-				<section>
-					<code> -- </code>
-					<br>
-					Persian Digits Classification (Not included with Keras)
-					<pre>
-		 <code class="hljs" data-trim>
-import keras
-from keras import layers
-from keras import models
-
-model = models.Sequential()
-model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
-model.add(layers.MaxPooling2D((2, 2)))
-model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-model.add(layers.MaxPooling2D((2, 2)))
-model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-model.add(layers.Flatten())
-model.add(layers.Dense(64, activation='relu'))
-model.add(layers.Dense(10, activation='softmax'))	
-		 </code>
-		 </pre>
-				</section>
 			</section>
-			<section>
+			<!-- <section>
 				<section>
-					<code>5.2 - Using convnets with small datasets</code>
+					<code>Using convnets with small datasets</code>
 					<br>
-					Classify Dogs vs Cats (Not included with Keras)
+					Classify Dogs vs Cats 
 					<br>
 					<img src="images/Fig5.8-DogsCats.jpg">
 				</section>
@@ -888,7 +885,7 @@ model.add(layers.Dense(1, activation='sigmoid'))
 		 </code>
 		 </pre>
 				</section>
-			</section>
+			</section> -->
 
 			<section>
 				<section>
@@ -931,6 +928,24 @@ model.add(layers.Dense(1, activation='sigmoid'))
 				</section>
 			</section>
 
+			<section>
+				<section>
+					<h3>Generative Adversarial Networks</h3>
+					<img src="images/GAN-generated_image.jfif" width="500">
+					<br>
+					<a href="https://thispersondoesnotexist.com" class="fragment">thispersondoesnotexist.com </a>
+				</section>
+				<section>
+					<img src="images/face-off.jpg" width="400">
+				</section>
+
+				<section>
+					<img src="images/generative-adversarial-network.png">
+				</section>
+				<section>
+					<img src="images/Accenture-Generative-Adversarial-Network-Model-Architecture.jpg">
+				</section>
+			</section>
 
 			<section>
 				<section>
@@ -954,26 +969,13 @@ model.add(layers.Dense(1, activation='sigmoid'))
 		<p>Since reveal.js runs on the web, you can easily embed other web content. Try interacting with the page in the background.</p>
 	</div>-->
 				</section>
-			</section>
-
-
-			<section>
-				<section>
-					<h3>Generative Adversarial Networks</h3>
-					<img src="images/GAN-generated_image.jfif" width="500">
-					<br>
-					<a href="https://thispersondoesnotexist.com" class="fragment">thispersondoesnotexist.com </a>
-				</section>
-				<section>
-					<img src="images/face-off.jpg" width="400">
-				</section>
-
-				<section>
-					<img src="images/generative-adversarial-network.png">
+				<section data-background-iframe="https://raw.githack.com/mamintoosi/ST-for-DA-in-FD/main/images/day2night.html"
+				data-background-interactive>
 				</section>
 			</section>
 
-			<section>
+
+			<!-- <section>
 				<section>
 					Adversarial T-Shirts: Researchers Designed T-Shirts That Can Fool Object Detectors:
 					<a
@@ -986,21 +988,19 @@ model.add(layers.Dense(1, activation='sigmoid'))
 					<a href="https://deepfakedetectionchallenge.ai/"> https://deepfakedetectionchallenge.ai/ </a>
 					<img src="images/DFDC.png" width="500">
 				</section>
-			</section>
+			</section> -->
 
 
 			<section>
-			<div dir="rtl">
-				<h3>موانع ریاضی‌دانان در کار عملی</h3>
-				<h3>تفاوت عملی و نظری</h3>
+			<div dir="rtl" align="right">
+				<h3>موانع ریاضی‌دانان، تفاوت عمل و نظر</h3>
 				<small>
 				<ol>
 				<li> پارک = پنچری </li>
 				<li> عدم قطعیت، مجموع عناصر یک آرایه حتی در یک زبان و در یک سیستم ممکن است با دو روش متفاوت باشد! </li>
-				<li> آماده‌سازی داده‌ها ۸۰ درصد کار است، فقط ۲۰ درصد مدلسازی، که عموما راه حلش موجود است</li>
 				<li> ۱۰ تا یک دهم، ممکن است یک نشود</li>
 				<li>انتساب یک متغیر در دیگری، کپی اولی ممکن است نشود </li>
-				<li> عملیات ماتریسی آن چیزی که انتظارش را دارید نشود</li>
+				<li> عملیات ماتریسی آن چیزی که انتظارش را دارید ممکن است نشود</li>
 				<li> Broadcasting </li>
 				<li> دوبار اجرا یک نتیجه را ممکن است ندهد</li>
 				<li> مشکلات مربوط به مسیر فایلها و داده‌ها </li>
@@ -1008,14 +1008,20 @@ model.add(layers.Dense(1, activation='sigmoid'))
 				<li> ممکن است همه چیز درست باشد، فقط ری‌استارت سیستم لازم باشد</li>
 				<li> ممکن است همه مراحل یک کار را بروید، اما احتمال پاسخ گرفتن یک درصد باشد</li>
 				<li>تفاوت ترتیب و جهت محورهای مختصات ریاضی و ماتریسی</li>
-				<li> ماهیت تصادفی الگوریتم گرادیان کاهشی </li>
+				<li> چندین بخش تصادفی در روال کار </li>
 				<li> دستورات خلاصه و عدم استفاده از حلقه </li>
 				<li> یکسان نبودن نام  مستعار و نام اصلی Pytorch, torch </li>
 				<li> تغییرات همیشگی - farsitex, bibdi-texmaker </li>
 				<li> Windows, Linux </li>
 				</ol>
 				</small>
-			</div>	
+			</div>
+			</section>
+
+			<section>	
+				<h4> آماده‌سازی داده‌ها ۸۰ درصد کار است، فقط ۲۰ درصد مدلسازی، که عموما راه حلش موجود است</h4>
+				<img width="500" src="">
+
 			</section>
 
 			<section hidden="" class="future" style="top: -270.5px; display: none;">
