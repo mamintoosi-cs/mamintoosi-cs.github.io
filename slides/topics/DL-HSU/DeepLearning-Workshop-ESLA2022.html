@@ -240,14 +240,16 @@ h1 {
 					<img height="300" src="./images/AI-ML-DL-Fig1.1.png" alt="Deep Learning"
 						xstyle="border:none;box-shadow:none" class="fragment"> 
 					<div class="fragment">
+					<small>
+						N. Dikkala, G. Kaplun, R. Panigrahy, "For Manifold Learning, Deep Neural Networks can be Locality Sensitive Hash Functions", 
+					2021, <a href="https://arxiv.org/abs/2103.06875">[arxiv]:</a>
+					<br>
+					</small>
 						<blockquote cite="https://arxiv.org/abs/2103.06875">
 							It is well established that training deep neural networks gives useful representations that capture
 							essential features of the inputs.
 						</blockquote>
-						<small>
-							N Dikkala, G Kaplun, R Panigrahy, "For Manifold Learning, Deep Neural Networks can be Locality Sensitive Hash Functions", 
-					2021, <a href="https://arxiv.org/abs/2103.06875">[arxiv]</a>
-					<br>
+					<small>
 					Every two points on the same manifold, map to (approximately) the same representation (i.e., 
 					the penultimate layer feature map), 
 					while every two points from different manifolds go to far away representations.
@@ -256,7 +258,7 @@ h1 {
 				</section>
 
 				<section data-background="#dddddd">				
-				<h3>Some related concepts:</h3>
+				<h4>Some related concepts:</h4>
 				<small>
 				<ul>
 					<li>Regression</li>
@@ -276,11 +278,12 @@ h1 {
 						<li>Broyden–Fletcher–Goldfarb–Shanno (BFGS)</li>
 					</ul>
 					<li>Basis of a vector space</li>
-					<li>Many Mathematical Transforms:</li>
 					<ul style="color:blue;font-size:15px;line-height:1.4;">
-						<li>Fourier</li>
-						<li>Wavelet</li>
-						<li>DCT</li>
+						<li>Inner product  spaces</li>
+						<li>Vector space of functions: The inner product of two vectors in this vector space is defined <br> as the integral of 
+							the product of the two functions.</li>
+						<li>Fourier, Wavelet, DCT</li>
+						<li>Convolution</li>
 					</ul>
 					<li>Integer and Fractional Derivative</li>
 					<ul style="color:blue;font-size:15px;line-height:1.4;">
@@ -298,7 +301,7 @@ h1 {
 					<h3>Types of deep learning</h3>
 					<ol>	
 					<li>Convolutional Neural Networks, VGG, AlexNet, ResNet,...</li>
-					<li>RNNs, LSTM, ELMO, GPT, ...</li>
+					<li>RNNs, ELMO, LSTM, BERT, GPT, ...</li>
 					<li>Graph Convolutional Networks (GNNs),  GraphSAGE, Cluster-GCN, Heterogeneous GCNs </li>
 					<ul style="color:blue;font-size:15px;line-height:1.4;">
 						<li>Laplacian matrix </li>
@@ -803,10 +806,6 @@ print(z)
 						</ul>
 					</ul>
 				</section> -->
-			</section>
-
-			<!-- <section> -->
-			<section>
 				<section>
 					<h3>Understanding convolutional neural networks</h3>
 					<ol>
@@ -822,6 +821,10 @@ print(z)
 					</ol>
 					<img src="images/cnn_anim_2_digits.gif">
 				</section>
+			</section>
+
+			<!-- <section> -->
+			<section>
 				<!-- <section data-background-iframe="https://tensorspace.org/html/playground/trainingLeNet.html"
 					data-background-interactive>
 				</section>
@@ -845,7 +848,61 @@ print(z)
 					<img src="images/digitCNN.jpeg">
 				</section>
 				<section>
-					<img src="images/cnn_layers.png" with="400">
+					<h3>Mathematical definition of Convolution</h3>
+					<img src="images/conv.png" width="750"><br>
+					Source: <a href="https://en.wikipedia.org/wiki/Convolution">Wikipedia</a>
+					<small class="fragment">
+						In the following for the sake of simplicity we ignore the accurate definition of convolution<br>
+						Please see other resources such as :
+						<a href="http://www.inf.ed.ac.uk/teaching/courses/cfcs1/lectures/cfcs_l15.pdf">
+							Convolutions and Kernels
+						</a>
+					</small>
+				</section>
+				<section>
+					<h3>Convolution is simple:</h3>
+					<small>Convolution in nothing, but a weighted averaging<br>
+					<img src="images/derivative.png" width="500">
+					<br>
+					<div class="fragment">
+						Edge extraction is a simple derivative:<br>
+						One of the edge detection operators is Prewitt filter:
+						<br>
+						<table style="border: 1px solid black"> 
+						<tr>
+							<td>-1</td><td>0</td><td>+1</td>
+						</tr>
+						<tr>
+							<td>-1</td><td>0</td><td>+1</td>
+						</tr>
+						<tr>
+							<td>-1</td><td>0</td><td>+1</td>
+						</tr>
+						</table>
+					</div>
+					</small>
+				</section>
+				<section>
+					<small> Online
+					<a href="https://fiveko.com/online-tools/edge-detection-gradient-operators-demo/">
+						Edge Detection: Gradient operators Demo
+					</a>
+					</small>
+					<table> 
+					<tr>
+						<td></td><td><img src="images/Soleymani_mellat.jpg" width="500"></td><td></td>
+					</tr>
+					<tr>
+						<td><img src="images/Soleymani_mellat_V.jpg" width="500"></td>
+						<td><img src="images/Soleymani_mellat_H.jpg" width="500"></td>
+						<td><img src="images/Soleymani_mellat_generic.jpg" width="500"></td>
+					</tr>
+					</table>
+				</section>
+			</section>
+			<section>
+				<section>
+					<img src="images/cnn_layers.png" width="700">
 				</section>
 				<section>
 					<code>See 5-CNN-CIFAR.ipynb </code>in <a href="https://github.com/mamintoosi-cs/pytorch-workshop">
