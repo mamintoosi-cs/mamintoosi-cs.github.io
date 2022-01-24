@@ -221,21 +221,36 @@ h1 {
 
 			<section>
 				<section data-background="#dddddd">
-
 					<h3>What is deep learning?</h3>
-					<img height="400" src="./images/AI-ML-DL-Fig1.1.png" alt="Deep Learning"
-						xstyle="border:none;box-shadow:none" class="fragment fade-out visible"> 
-					<div class="fragment">
+					<div>
 					<small>
 					Deep learning is a class of machine learning algorithms that  uses multiple layers to progressively extract higher-level features from the raw input. For example, in image processing, lower layers may identify edges, while higher layers may identify the concepts relevant to a human such as digits or letters or faces. 
 					<a href="https://en.wikipedia.org/wiki/Deep_learning">[Wikipedia]</a>
 					</small>
 					<img height="400" src="./images/Deep_Learning.jpg" alt="Deep Learning"
 						xstyle="border:none;box-shadow:none" > 
-					</div>
-					
+					</div>					
 				</section>
 
+				<section data-background="#dddddd">
+					<h3>What is deep learning?</h3>
+					<img height="300" src="./images/AI-ML-DL-Fig1.1.png" alt="Deep Learning"
+						xstyle="border:none;box-shadow:none" class="fragment"> 
+					<div class="fragment">
+						<blockquote cite="https://arxiv.org/abs/2103.06875">
+							It is well established that training deep neural networks gives useful representations that capture
+							essential features of the inputs.
+						</blockquote>
+						<small>
+							N Dikkala, G Kaplun, R Panigrahy, "For Manifold Learning, Deep Neural Networks can be Locality Sensitive Hash Functions", 
+					2021, <a href="https://arxiv.org/abs/2103.06875">[arxiv]</a>
+					<br>
+					Every two points on the same manifold, map to (approximately) the same representation (i.e., 
+					the penultimate layer feature map), 
+					while every two points from different manifolds go to far away representations.
+					</small>
+					</div>					
+				</section>
 
 				<section data-background="#dddddd">				
 				<h3>Some related concepts:</h3>
@@ -251,6 +266,8 @@ h1 {
 						<li>Quasi–Newton</li>
 						<li>Davidon–Fletcher–Powell</li>
 						<li>Broyden–Fletcher–Goldfarb–Shanno (BFGS)</li>
+						<li>Logistic Regression</li>
+						<li>LASSO</li>
 					</ul>
 					<li>Basis of a vector space</li>
 					<li>Many Mathematical Transforms:</li>
@@ -276,9 +293,15 @@ h1 {
 					<ol>	
 					<li>Convolutional Neural Networks, VGG, AlexNet, ResNet,...</li>
 					<li>RNNs, LSTM, ELMO, GPT, ...</li>
-					<li>GNN</li>
+					<li>Graph Convolutional Networks (GNNs),  GraphSAGE, Cluster-GCN, Heterogeneous GCNs </li>
+					<ul style="color:blue;font-size:15px;line-height:1.4;">
+						<li>Laplacian matrix </li>
+						<li>Spectral Clustering</li>
+					</ul>
 					</ol>
 				</section>
+			</section>
+			<section>
 				<!-- <section>
 					<h2>Applications</h2>
 					<p>Google Street-View (and ReCaptchas)</p>
@@ -293,14 +316,15 @@ h1 {
 				</section> -->
 
 				<section class="future" hidden="" style="top: -20px; display: none;">
-					<h2>Image Classification</h2>
-					<img width="500" height="400" src="./images/ImageNet-Results_574x469.png" alt="ImageNet Results"
+					<h3>Applications</h3>
+					<h4>Image Classification</h4>
+					<img width="450" height="400" src="./images/ImageNet-Results_574x469.png" alt="ImageNet Results"
 						style="border:none;box-shadow:none">
-					<p><i>(now better than human level)</i></p>
+					<p><i>now better than human level</i></p>
 				</section>
 
 				<section class="future" hidden="" style="top: -20px; display: none;">
-					<h2>Captioning Images</h2>
+					<h3>Captioning Images</h3>
 					<img width="667" height="419" src="./images/image-labelling-results_667x419.png"
 						alt="Labelling Results" style="border:none;box-shadow:none">
 					<p><i>Some good, some not-so-good</i></p>
@@ -397,7 +421,7 @@ h1 {
 						<li>Fed with lots of Data</li>
 					</ul>
 				</section>
-				<section data-transition="convex" data-background="./images/GeoffHinton.jpeg">
+				<section data-transition="convex" data-background="./images/GeoffHinton.jpeg" data-background-opacity="0.7">
 					<h2>History</h2>
 					<ul class="fix-spacing">
 						<li>1980+ : Lots of enthusiasm for NNs</li>
