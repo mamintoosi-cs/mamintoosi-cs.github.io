@@ -247,9 +247,13 @@ h1 {
 
 				<section data-background="#dddddd">
 					<h3>What is deep learning?</h3>
-					<img height="300" src="./images/AI-ML-DL-Fig1.1.png" alt="Deep Learning"
+					<img height="350" src="./images/AI-ML-DL-Fig1.1.png" alt="Deep Learning"
 						xstyle="border:none;box-shadow:none" class="fragment">
-					<div class="fragment">
+						<img height="350" src="./images/ML_vs_DL.jpg" alt="Deep Learning"
+						xstyle="border:none;box-shadow:none" class="fragment">
+				</section>
+				<section>
+					<div>
 						<small>
 							N. Dikkala, G. Kaplun, R. Panigrahy, "For Manifold Learning, Deep Neural Networks can be
 							Locality Sensitive Hash Functions",
@@ -268,26 +272,35 @@ h1 {
 						</small>
 					</div>
 				</section>
-
+		</section>
+			<section>
+				<section>
+					<h4>Almost all problems related to machine learning is a version of:</h4>
+					$$\min_{\textbf{x}}||A\textbf{x}-\mathbf{b}||$$
+				</section>
 				<section data-background="#dddddd">
 					<h4>Some related concepts:</h4>
 					<small>
 						<ul>
 							<li>Regression</li>
 							<ul style="color:blue;font-size:15px;line-height:1.4;">
+								<li>Linear Regression</li>
 								<li>Logistic Regression</li>
-								<li>LASSO</li>
+								<li>LASSO, Least Square, Normal Equations, ...</li>
 							</ul>
 							<li>Gradient Descent</li>
 							<ul style="color:blue;font-size:15px;line-height:1.4;">
-								<li>SGD</li>
-								<li>Adam</li>
+								<li>SGD, Adam, Conjugate gradient, Sparse Optimization, ...</li>
 							</ul>
 							<li>Regualrization</li>
 							<ul style="color:blue;font-size:15px;line-height:1.4;">
 								<li>Quasi–Newton</li>
 								<li>Davidon–Fletcher–Powell</li>
-								<li>Broyden–Fletcher–Goldfarb–Shanno (BFGS)</li>
+								<!-- <li>Broyden–Fletcher–Goldfarb–Shanno (BFGS)</li> -->
+							</ul>
+							<li>Matrix Factorization</li>
+							<ul style="color:blue;font-size:15px;line-height:1.4;">
+								<li>Gram-Schmit, QR-Decomposition, ...</li>
 							</ul>
 							<li>Basis of a vector space</li>
 							<ul style="color:blue;font-size:15px;line-height:1.4;">
@@ -302,7 +315,7 @@ h1 {
 							<ul style="color:blue;font-size:15px;line-height:1.4;">
 								<li>First and Second Order</li>
 								<li>Caputo</li>
-								<li>Riemann–Liouville</li>
+								<!-- <li>Riemann–Liouville</li> -->
 								<li>Grunwald–Letnikov</li>
 							</ul>
 							<li>Manifold Learning</li>
