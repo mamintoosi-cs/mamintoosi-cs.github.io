@@ -583,7 +583,7 @@ h1 {
 			# Do Forward -> Loss Computation -> Backward -> Optimization
 			optimizer.zero_grad()
 			outputs = model(inputs)
-			# loss is prediction error, for example: Sum(outputs, labels)^2
+			# loss is prediction error, such as: Sum(outputs-labels)^2
 			loss.backward()
 			optimizer.step()
 	</code>
@@ -657,11 +657,11 @@ h1 {
 						<li> Images—4D tensors of shape</li>
 						<code
 							class="fragment"> (samples, height, width, channels)  or  <br>(samples, channels, height, width)</code>
-						<li> Video—5D tensors of shape </li>
-						<small>
+						<li> Video—5D tensors of shape </li>						
 							<code
-								class="fragment"> (samples, frames, height, width, channels) or  <br>(samples, frames, channels, height, width)</code>
-						</small>
+								class="fragment"> (samples, frames, height, width, channels) or  <br>
+								(samples, frames, channels, height, width)
+							</code>
 					</ol>
 				</section>
 				<!-- <section>
@@ -826,23 +826,46 @@ print(z)
 						</ul>
 					</ul>
 				</section> -->
-				<section>
-					<h3>Understanding convolutional neural networks</h3>
-					<ol>
-						<li><a
-								href="http://deeplearning.net/software/theano_versions/0.9.X/tutorial/conv_arithmetic.html">Convolution
-								arithmetic tutorial</a>
-						</li>
-						<li><a href="https://mlblr.com/includes/mlai/index.html#ml-amp-ai"> Machine Learning and AI
-								- Bangalore Chapter</a></li>
-						<li><a
-								href="https://towardsdatascience.com/counting-no-of-parameters-in-deep-learning-models-by-hand-8f1716241889">
-								Counting No. of Parameters in Deep Learning Models by Hand</a></li>
-					</ol>
-					<img src="images/cnn_anim_2_digits.gif">
-				</section>
 			</section>
 
+			<section>
+				<section>
+					<h2>Digit Classification</h2>
+					<img src="images/cnn_anim_2_digits.gif" width="700">
+				</section>
+				<section>
+					<code>See 4-MLP-Digit-Recog.ipynb </code>in <a
+						href="https://github.com/mamintoosi-cs/pytorch-workshop">
+						github </a>
+					<br>
+					Digit Classification
+					<pre>
+						 <code class="hljs" data-trim>
+	for (inputs, labels) in data_loader:
+		inputs = inputs.to(device)
+		labels = labels.to(device)
+		
+		# original shape is [batch_size, 28, 28] because it's an image of size 28x28
+		inputs = inputs.view(-1, 28*28)
+
+		# Do Forward -> Loss Computation -> Backward -> Optimization
+		optimizer.zero_grad()
+		outputs = model(inputs)
+		loss = criterion(outputs, labels)
+		loss.backward()
+		optimizer.step()
+							</code>
+						 </pre>
+				</section>
+				<section>
+					<code>Introduction to convnets</code>
+					<br>
+					Image Classification
+					<br> Overall Model:
+					<br>
+					<img src="images/digitCNN.jpeg">
+				</section>
+			</section>
 			<!-- <section> -->
 			<section>
 				<!-- <section data-background-iframe="https://tensorspace.org/html/playground/trainingLeNet.html"
@@ -860,14 +883,6 @@ print(z)
 				<!-- </section>
 			<section> -->
 				<section>
-					<code>Introduction to convnets</code>
-					<br>
-					MNIST Classification
-					<br> Overall Model:
-					<br>
-					<img src="images/digitCNN.jpeg">
-				</section>
-				<section>
 					<h3>Mathematical definition of Convolution</h3>
 					<img src="images/conv.png" width="750"><br>
 					Source: <a href="https://en.wikipedia.org/wiki/Convolution">Wikipedia</a>
@@ -879,6 +894,7 @@ print(z)
 						</a>
 					</small>
 				</section>
+
 				<section>
 					<h3>Convolution is simple:</h3>
 					<small>Convolution in nothing, but a weighted averaging<br>
@@ -933,32 +949,18 @@ print(z)
 					<img src="images/cnn_layers.png" width="700">
 				</section>
 				<section>
-					<h2>Digit Classification</h2>
-					<img src="images/cnn_anim_2_digits.gif" width="700">
-				</section>
-				<section>
-					<code>See 4-MLP-Digit-Recog.ipynb </code>in <a
-						href="https://github.com/mamintoosi-cs/pytorch-workshop">
-						github </a>
-					<br>
-					Digit Classification
-					<pre>
-						 <code class="hljs" data-trim>
-	for (inputs, labels) in data_loader:
-		inputs = inputs.to(device)
-		labels = labels.to(device)
-		
-		# original shape is [batch_size, 28, 28] because it's an image of size 28x28
-		inputs = inputs.view(-1, 28*28)
-
-		# Do Forward -> Loss Computation -> Backward -> Optimization
-		optimizer.zero_grad()
-		outputs = model(inputs)
-		loss = criterion(outputs, labels)
-		loss.backward()
-		optimizer.step()
-							</code>
-						 </pre>
+					<h3>Understanding convolutional neural networks</h3>
+					<ol>
+						<li><a
+								href="http://deeplearning.net/software/theano_versions/0.9.X/tutorial/conv_arithmetic.html">Convolution
+								arithmetic tutorial</a>
+						</li>
+						<li><a href="https://mlblr.com/includes/mlai/index.html#ml-amp-ai"> Machine Learning and AI
+								- Bangalore Chapter</a></li>
+						<li><a
+								href="https://towardsdatascience.com/counting-no-of-parameters-in-deep-learning-models-by-hand-8f1716241889">
+								Counting No. of Parameters in Deep Learning Models by Hand</a></li>
+					</ol>
 				</section>
 
 				<section>
