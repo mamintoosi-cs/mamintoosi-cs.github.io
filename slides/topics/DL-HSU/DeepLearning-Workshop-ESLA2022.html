@@ -924,22 +924,31 @@ print(z)
 						</div>
 					</small>
 				</section>
+<!-- An n-D convolution is when two functions or tensors are convolved along [math]n[/math] axes.
+In an RGB image, the image is [math]a*b*3[/math] and the convolutional filters are [math]c[/math][math]*d*3[/math]. Since their third dimensions are equal, there is no need to convolve along that axis. 
+You only convolve along the first two axes, making it a 2D convolution.
+Convolutions were originally defined for functions and functions can have vector outputs.
+ In the case of an RGB image, the image is acting as the function, its input is the [math](x,y)[/math] coordinates and its output is a vector of length 3. The same is true for the filter. When you think of it that way, 
+you can see how it follows the definition of a 2D convolution more clearly. -->
 				<section>
 					<small> Online
 						<a href="https://fiveko.com/online-tools/edge-detection-gradient-operators-demo/">
 							Edge Detection: Gradient operators Demo
-						</a>
-					</small>
+						</a><br>
+						<code>See App-Image.ipynb </code>in <a href="https://github.com/mamintoosi-cs/pytorch-workshop">
+							github </a>
+						<br>
+						</small>
 					<table>
 						<tr>
 							<td></td>
-							<td><img src="images/Soleymani_mellat.jpg" width="500"></td>
+							<td><img src="images/Soleymani_mellat.jpg" width="450"></td>
 							<td></td>
 						</tr>
 						<tr>
-							<td><img src="images/Soleymani_mellat_V.jpg" width="500"></td>
-							<td><img src="images/Soleymani_mellat_H.jpg" width="500"></td>
-							<td><img src="images/Soleymani_mellat_generic.jpg" width="500"></td>
+							<td><img src="images/Soleymani_mellat_V.jpg" width="450"></td>
+							<td><img src="images/Soleymani_mellat_H.jpg" width="450"></td>
+							<td><img src="images/Soleymani_mellat_generic.jpg" width="450"></td>
 						</tr>
 					</table>
 				</section>
