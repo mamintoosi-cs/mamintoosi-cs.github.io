@@ -536,11 +536,11 @@ h1 {
 			</section>
 
 			<section>
-				<section data-transition="convex">
+				<!-- <section data-transition="convex">
 					<h3>What makes deep learning different?</h3>
 					It completely automates what used to be the most crucial step in a machine-learning workflow:
 					<br> <em> feature engineering </em>
-				</section>
+				</section> -->
 				<section data-transition="convex">
 					<h3>Why deep learning? Why now?</h3>
 					<p>In general, three technical forces are driving advances:</p>
@@ -560,9 +560,9 @@ h1 {
 					<h3>Before we begin: the mathematical building blocks of neural networks</h3>
 					<p>We will discuss:</p>
 					<ul class="fix-spacing">
-						<li>A first example of a neural network</li>
 						<li>Tensors and tensor operations</li>
 						<li>How neural networks learn via backpropagation and gradient descent</li>
+						<li>A first example of a neural network</li>
 					</ul>
 				</section>
 				<section data-background="images/PDSH-cover.png" data-background-opacity=.2>
@@ -593,60 +593,6 @@ h1 {
 					</ul>
 				</section>
 			</section>
-			<section>
-				<section>
-					<h3>A first look at a neural network</h3>
-					Digit Classification
-					<br>
-					<img src="images/MLP_anim_1.gif" width="700">
-
-				</section>
-				<section>
-					<code> A first look at a neural network</code>
-					<br>
-					The overall training framework in PyTorch
-					<pre>
-	 <code class="hljs" data-trim>
-		# model is a regression or classification
-		optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)  
-		
-		for epoch in range(num_epochs):
-		  for (inputs, labels) in data_loader:
-			# Do Forward -> Loss Computation -> Backward -> Optimization
-			optimizer.zero_grad()
-			outputs = model(inputs)
-			# loss is prediction error, such as: Sum(outputs-labels)^2
-			loss.backward()
-			optimizer.step()
-	</code>
-	 </pre>
-				</section>
-				<section>
-					<h3>Compilation step</h3>
-					<ul>
-						<li>An optimizer—The mechanism through which the network will update itself
-							based on the data it sees and its loss function.
-						</li>
-						<li class="fragment">A loss function—How the network will be able to measure its performance on
-							the training data, and thus how it will be able to steer itself in the right direction.
-						</li>
-						<li class="fragment"> Metrics to monitor during training and testing—Here, we’ll only care about
-							accuracy (the fraction of the images that were correctly classified)
-						</li>
-					</ul>
-					<span class="fragment" align="left">Online Documentation:
-						<a href="https://pytorch.org/"> PyTorch </a>
-					</span>
-				</section>
-				<section data-background-iframe="https://pytorch.org/" data-background-interactive>
-					<!--
-	<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0.9, 0.9, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
-		<h2>Keras Documentation</h2>
-		<p>Since reveal.js runs on the web, you can easily embed other web content. Try interacting with the page in the background.</p>
-	</div>-->
-				</section>
-			</section>
-
 			<section>
 				<section>
 					<h3>Data representations for neural networks</h3>
@@ -757,15 +703,17 @@ print(z)
 					</ol>
 				</section>
 				<section>
-					<h3>Various Gradient Descent Algorithms</h3>
-					<h4> Stochastic Gradient Descent </h4>
+					<!-- <h3>Various Gradient Descent Algorithms</h3> -->
+					<h4><a href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent"> 
+						Stochastic Gradient Descent </a></h4>
 					<table>
 						<tr>
 							<td>
-								<img src="images/saddle_point_evaluation_optimizers.gif">
+								<!-- $$w = w - \eta \nabla E(w)$$ -->
+								<img src="images/sgd.png" border="none">
 							</td>
 							<td>
-								<img src="images/sgd.png" border="none">
+								<img src="images/saddle_point_evaluation_optimizers.gif">
 							</td>
 						</tr>
 					</table>
@@ -862,6 +810,62 @@ print(z)
 
 			<section>
 				<section>
+					<h3>A first look at a neural network</h3>
+					Digit Classification
+					<br>
+					<img src="images/MLP_anim_1.gif" width="700">
+
+				</section>
+				<section>
+					<code> A first look at a neural network</code>
+					<br>
+					The overall training framework in PyTorch
+					<pre>
+	 <code class="hljs" data-trim>
+		# model is a regression or classification
+		optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)  
+		
+		for epoch in range(num_epochs):
+		  for (inputs, labels) in data_loader:
+			# Do Forward -> Loss Computation -> Backward -> Optimization
+			optimizer.zero_grad()
+			outputs = model(inputs)
+			# loss is prediction error, such as: Sum(outputs-labels)^2
+			loss.backward()
+			optimizer.step()
+	</code>
+	 </pre>
+				</section>
+				<section>
+					<h3>Compilation step</h3>
+					<ul>
+						<li>An optimizer—The mechanism through which the network will update itself
+							based on the data it sees and its loss function.
+						</li>
+						<li class="fragment">A loss function—How the network will be able to measure its performance on
+							the training data, and thus how it will be able to steer itself in the right direction.
+						</li>
+						<li class="fragment"> Metrics to monitor during training and testing—Here, we’ll only care about
+							accuracy (the fraction of the images that were correctly classified)
+						</li>
+					</ul>
+					<span class="fragment" align="left">Online Documentation:
+						<a href="https://pytorch.org/"> PyTorch </a>
+					</span>
+				</section>
+				<section data-background-iframe="https://pytorch.org/" data-background-interactive>
+					<!--
+	<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0.9, 0.9, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
+		<h2>Keras Documentation</h2>
+		<p>Since reveal.js runs on the web, you can easily embed other web content. Try interacting with the page in the background.</p>
+	</div>-->
+				</section>
+			</section>
+
+
+
+			<section>
+				<section>
 					<h2>Digit Classification</h2>
 					<img src="images/cnn_anim_2_digits.gif" width="700">
 				</section>
@@ -928,9 +932,10 @@ print(z)
 				</section>
 
 				<section>
-					<h3>Convolution is simple:</h3>
-					<small>Convolution in nothing, but a weighted averaging<br>
-						<img src="images/derivative.png" width="500">
+					<h4>Differentiation, Inner Product and Convolution</h4>
+					<small>
+						<!-- Convolution in nothing, but a weighted averaging<br> -->
+						<img src="images/derivative.png" width="500" class="fragment">
 						<br>
 						<div class="fragment">
 							Edge extraction is a simple derivative:<br>
@@ -1168,6 +1173,15 @@ Trainable params: 62,006
 				</section>
 
 				<section>
+					<h1>دنیای واقعی</h1>
+					<h2>آشنایی کامل با موضوع کاری</h2>
+					<h2>برنامه‌نویسی</h2>
+					<h3>برنامه‌نویسی</h3>
+					<h4>برنامه‌نویسی</h4>
+					<small>برای خبره شدن، باید ده هزار ساعت وقت بگذارید</small>
+				</section>
+
+				<section>
 					<h4> آماده‌سازی داده‌ها ۸۰ درصد کار است، فقط ۲۰ درصد مدلسازی است
 						<br>
 						که عموما راه حلش موجود است
@@ -1181,10 +1195,10 @@ Trainable params: 62,006
 						Data cleansing is 80% of my job.
 						<br>
 						Modeling is about 10% and it’s the easy part.
+						<!-- <br>
+						<img src=images/DataCleaning.png width="600" class="fragment fade-out visible"> -->
 						<br>
-						<img src=images/DataCleaning.png width="600" class="fragment fade-out visible">
-						<br>
-						<img src=images/DataPipeline.jpg width="800" class="fragment">
+						<img src=images/DataPipeline.jpg style="height: 70vh;max-width: 100%;object-fit: contain">
 					</small>
 				</section>
 
@@ -1269,7 +1283,8 @@ Trainable params: 62,006
 					</table>
 					<a href="https://www.packtpub.com/product/authoring-machine-learning-models-from-scratch-video/9781803238272">
 						Mike West</a>
-						 is the founder of LogikBot. He has worked with databases for over two decades. 
+						 is the founder of <a href="https://www.logikbot.com">
+						 LogikBot</a>. He has worked with databases for over two decades. 
 					He has worked for or consulted with over 50 different companies as a full-time employee or consultant. 
 					<!-- These were Fortune 500 as well as several small to mid-size companies. Some include Georgia Pacific, SunTrust, Reed Construction Data, Building Systems Design, NetCertainty, 
 					The Home Shopping Network, SwingVote, Atlanta Gas and Light, and Northrup Grumman. -->
