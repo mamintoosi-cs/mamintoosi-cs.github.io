@@ -441,6 +441,20 @@ h1 {
 						</ul>
 					</small>
 				</section>
+				<section data-transition="convex" data-background="./images/CrowdsFaceDetection.jpeg"
+					data-background-opacity="0.2">
+
+				<h3>ML vs DL for Face Recognition</h3>
+				<small>
+				The 2018 paper titled <a href="https://arxiv.org/abs/1804.06655">“Deep Face Recognition: A Survey,”</a> provides a helpful summary of the state of face recognition research over the last nearly 30 years, highlighting the broad trend from holistic learning methods (such as Eigenfaces), to local handcrafted feature detection, to shallow learning methods, to finally deep learning methods that are currently state of the art.
+						<blockquote cite="https://machinelearningmastery.com/introduction-to-deep-learning-for-face-recognition/">
+The holistic approaches dominated the face recognition community in the 1990s. In the early 2000s, handcrafted local descriptors became popular, and the local feature learning approach were introduced in the late 2000s. […] [shallow learning method] performance steadily improves from around 60% to above 90%, while deep learning boosts the performance to 99.80% in just three years.
+						</blockquote>
+					</small>
+					<a href="https://github.com/serengil/deepface"> Example DeepFace github page</a>
+					<small>Detection, Localization, Verification, Gender, Expression, Age, RealTime, Liveness, Masked, Noise, Partial, ...</small>
+				</section>
+				
 			</section>
 
 
@@ -491,6 +505,9 @@ h1 {
 							<li>Spectral Clustering</li>
 						</ul>
 					</ol>
+					<small>
+					Note: RNNs simple recursive node diagram is not perfect.
+					</small>
 				</section>
 		</section>
 
@@ -864,21 +881,19 @@ print(z)
 					Multi-layer Perceptron
 					<pre>
 	 <code class="hljs" data-trim>
-		class MyMultilayerPerceptron(nn.Module):
-		def __init__(self, input_size, h1_dim, h2_dim, num_classes):
+	class MyMultilayerPerceptron(nn.Module):
+		def __init__(self, input_size, h_dim, num_classes):
 			super(MyMultilayerPerceptron, self).__init__()
 			
 			self.input_size = input_size
 			self.num_classes = num_classes
 			
-			self.linear_1 = nn.Linear(input_size, 75)
-			self.linear_2 = nn.Linear(h1_dim, h2_dim)
-			self.linear_3 = nn.Linear(50, num_classes)
-					
+			self.linear_1 = nn.Linear(input_size, h_dim)
+			self.linear_2 = nn.Linear(h_dim, num_classes)
+		
 		def forward(self, x):
 			x = F.relu(self.linear_1(x))
 			x = F.relu(self.linear_2(x))
-			x = F.relu(self.linear_3(x))
 			return F.softmax(x)
 	</code>
 	 </pre>
