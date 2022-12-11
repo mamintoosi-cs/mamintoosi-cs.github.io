@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Graph Conv. Neural Networks </title>
+
+	<meta name="description" content="Graph Conv. Neural Networks, Ferdowsi University of Mashhad, Department of Computer Science">
+	<meta name="author" content="Mahmood Amintoosi">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../../css/reset.css">
+	<link rel="stylesheet" href="../../css/reveal.css">
+	<link rel="stylesheet" href="../../css/theme/serif.css" id="theme">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../../lib/css/monokai.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? '../../css/print/pdf.css' : '../../css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	</script>
+	<script type="text/javascript"
+		src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+		</script>
+
+	<!--[if lt IE 9]>
+<script src="../../lib/js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<!--
+<section>
+	<h1>Reveal.js</h1>
+	<h3>The HTML Presentation Framework</h3>
+	<p>
+		<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> and <a href="https://github.com/hakimel/reveal.js/graphs/contributors">contributors</a></small>
+	</p>
+</section>
+<section id="themes">
+	<h2>Themes</h2>
+	<p>
+		reveal.js comes with a few themes built in: <br>
+		<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. 
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/black.css'); return false;">Black (default)</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/white.css'); return false;">White</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/league.css'); return false;">League</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/sky.css'); return false;">Sky</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/beige.css'); return false;">Beige</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/simple.css'); return false;">Simple</a> <br>
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/serif.css'); return false;">Serif</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/blood.css'); return false;">Blood</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/night.css'); return false;">Night</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/moon.css'); return false;">Moon</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/solarized.css'); return false;">Solarized</a>
+	</p>
+</section> -->
+			<section data-state="dimbg" data-background-opacity=.3>
+				<!--
+<style>
+	
+#myCustom > h1, #myCustom > h2 {
+ color: #FF0000;
+}
+
+/* or if you want to change all h1: */
+h1 {
+  color: #00FF00 !important;
+}
+</style>
+این بخش زیر برای پنهان شدن کلی فرگمنت نوشته شده
+-->
+
+				<!-- <style>
+					.fragment.visible:not(.current-fragment) {
+						display: none;
+						height: 0px;
+						line-height: 0px;
+						font-size: 0px;
+					}
+				</style> -->
+
+				<small>
+					بسم الله الرحمن الرحیم
+				</small><br>
+				<h2>Graph Conv. Neural Networks</h2>
+				<h4>Mahmood Amintoosi</h4>
+				<p>
+					<small><a href="http://https://mamintoosi.github.io/">m.amintoosi</a> @ <a
+							href="http://hsu.ac.ir/">hsu.ac.ir</a>
+							<br>
+							پاییز ۱۴۰۱
+						</small>
+										
+				</p>
+					<table style='font-size:50%'>
+						<!-- <tr>
+							<td>
+								<h4>Mahmood Amintoosi</h4>
+								</td>
+								<td><a href="http://https://mamintoosi.github.io/">m.amintoosi</a> @ <a
+							href="http://hsu.ac.ir/">hsu.ac.ir</a>
+							</td>
+						</tr> -->
+						<tr>
+							<!-- <td><img src="images/HSU-logo.png" width="150" valign="middle" style="vertical-align:middle;" border="0"></td> -->
+							<td valign="middle" style="vertical-align:middle;">
+					These Slides are accessible from <a href="https://mamintoosi.github.io/slides/topics/DL-HSU/DeepLearning-Workshop-ESLA2022.html"> my github page
+					</a> 
+					<!-- or by scanning this QR Code:<br>
+					Program Codes:<a href="https://github.com/mamintoosi-cs/pytorch-workshop">
+						https://github.com/mamintoosi-cs/pytorch-workshop</a>
+				</td>
+						<td><img src="images/qrcode_mamintoosi.github.io.png" width=150 valign="middle" style="vertical-align:middle;"> </td> -->
+						</tr>
+						<!-- <tr>
+							<td></td>
+							<td>Program Codes:<a href="https://github.com/mamintoosi-cs/pytorch-workshop">
+							https://github.com/mamintoosi-cs/pytorch-workshop</a>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								زمستان ۱۴۰۰
+							</td>
+						</tr> -->
+					</table>
+				<!-- <p>
+					<small>زمستان ۱۴۰۰
+					</small>
+				</p> -->
+			</section>
+			<section>
+			<section>
+				<h2>شبکه‌های عصبی پیچشی گراف</h2>
+				<small>
+					<p dir="rtl" style="text-align: justify">
+						حوزه‌ی شبکه‌های عصبی پیچشی گراف از جمله موضوعاتی است که توجه بسیاری را در چند سال اخیر
+						به خود معطوف نموده است. آشنایی با شبکه‌های عصبی، شبکه‌های عصبی پیچشی و گراف‌ها، لازمه ورود به این حوزه است.
+						<br>
+						منابع زیر می‌تواند برای شروع یادگیری مثمرثمر واقع گردند:<br>
+
+					<ul style="text-align: justify; PADDING-RIGHT: 22px">
+						<li>
+							Stevens, E., Antiga, L.,Viehmann, T. (2020). Deep Learning with PyTorch.
+							<a href="https://www.manning.com/books/deep-learning-with-pytorch">(Book)</a>
+						</li>
+						<li>
+							Ma, Y. and Tang, J., (2020). Deep Learning on Graphs
+							<a href="https://cse.msu.edu/~mayao4/dlg_book/">(Book) </a>
+						</li>
+						<li>
+							Amintoosi, M. (2021). Overlapping Clusters in Cluster Convolutional Networks, Journal of Algorithms and Computation, 53 (2), 33-45
+							<a href=""> </a>
+						</li>
+					</ul>
+					<ul dir="rtl" style="text-align: justify; PADDING-RIGHT: 22px">
+						<li>
+							امین‌طوسی، محمود (۱۳۹۹)،
+							<a href="https://math-sci.ui.ac.ir/article_25351.html">
+								کاربرد بسط تیلور در کاهش حجم شبکه‌های عصبی پیچشی برای طبقه‌بندی نقاشی‌های سبک
+								امپرسیونیسم و مینیاتور.
+							</a> نشریه ریاضی و جامعه،‌ ۵ (۱)،‌ ۱-۱۶.
+						</li>
+						<li>
+							امین‌طوسی، محمود (۱۴۰۱)،
+							<a href="https://github.com/mamintoosi/ST-for-DA-in-FD">
+								انتقال سبک برای افزایش داده‌های آموزشی شبکه‌های کانولوشنی در شناسایی شعله‌ی آتش.
+							</a> هوش محاسباتی در مهندسی برق.
+						</li>
+						<li>
+							امین‌طوسی، محمود (۱۴۰۱)،
+							<a href="https://github.com/mamintoosi/Reg-OBD-for-VGG-Pruning">
+								ترکیب روش منظم‌سازی تُنُک و آسیب مغزی بهینه‌ در کوچک‌سازی یک مدل یادگیری عمیق.
+							</a> ماشین بینایی و پردازش تصویر ایران،‌  ۹ (۱)، ۳۱-۴۵.
+						</li>
+
+					</ul>
+					</p>
+				</small>
+			</section>
+			<section>
+				<h2>Topics</h2>
+				<ol>
+					<li>
+						Deep Learning
+						<ul style="color:blue;font-size:20px;line-height:1.4;">
+							<li><a href="https://mamintoosi.github.io/slides/topics/DL-HSU/DeepLearning-Workshop-ESLA2022.html">Machine Learning vs. Deep Learning</a></li>
+							<li>Convolutional Neural Networks</li>
+						</ul>
+					</li>
+					<li>
+						Graph Neural Networks
+						<ul style="color:blue;font-size:20px;line-height:1.4;">
+							<li><a href="https://distill.pub/2021/gnn-intro">A Gentle Introduction to Graph Neural Networks</a></li>
+							<li><a href="https://distill.pub/2021/understanding-gnns/">Understanding Convolutions on Graphs</a></li>
+						</ul>
+					</li>
+					<li>
+						Sample Code
+						<ul >
+							<li style="color:blue;font-size:20px;line-height:1.4;">More Applications</li>
+							<li style="color:red;font-size:20px;line-height:1.4;">Some Limitations on Real World Problems</li>
+						</ul>
+					</li>
+
+				</ol>
+			</section>
+		</section>
+		<section data-background-iframe="https://distill.pub/2021/gnn-intro" data-background-interactive>
+		</section>
+		<section data-background-iframe="https://distill.pub/2021/understanding-gnns/" data-background-interactive>
+		</section>
+		<section>
+			<section data-transition="convex">
+				<h3>Who is involved</h3>
+				<table>
+					<tbody>
+						<tr>
+							<td>Stanford </td>
+							<td>Leskovec</td>
+							<td><img src="images/GeoffHinton.jpeg" width="80"></td>
+						</tr>
+						<tr>
+							<td>Germany</td>
+							<td>Mathias Fey</td>
+							<td><img src="images/YannLeCun.jpeg" width="80"></td>
+						</tr>
+						<tr>
+							<td>Singapore</td>
+							<td>Xavier Brasson</td>
+							<td><img src="images/YoshuaBengio.jpeg" width="80"></td>
+						</tr>
+						<tr>
+							<td>Baidu</td>
+							<td>Ng (Stanford)</td>
+							<td><img src="images/AndrewNg.jpeg" width="80"></td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+			<section data-background="#dddddd">
+				<h4>موارد نظری مرتبط</h4>
+				<small>
+					<ul>
+						<li>Graphs</li>
+						<ul style="color:blue;font-size:15px;line-height:1.4;">
+							<li>Adjacency Matrix</li>
+							<li>Laplacian Matrix</li>
+							<li>Raily-Ritz Q.</li>
+							<li>Closeness, Eccentricity, ... </li>
+						</ul>
+						<li>Regression</li>
+						<ul style="color:blue;font-size:15px;line-height:1.4;">
+							<li>Linear Regression</li>
+							<li>Logistic Regression</li>
+							<li>LASSO, Least Square, Normal Equations, ...</li>
+						</ul>
+						<li>Gradient Descent</li>
+						<ul style="color:blue;font-size:15px;line-height:1.4;">
+							<li>SGD, Adam, Conjugate gradient, Sparse Optimization, ...</li>
+						</ul>
+						<li>Regualrization</li>
+						<ul style="color:blue;font-size:15px;line-height:1.4;">
+							<li>Quasi–Newton</li>
+							<li>Davidon–Fletcher–Powell</li>
+							<!-- <li>Broyden–Fletcher–Goldfarb–Shanno (BFGS)</li> -->
+						</ul>
+						<li>Matrix Factorization</li>
+						<ul style="color:blue;font-size:15px;line-height:1.4;">
+							<li>Gram-Schmit, QR-Decomposition, ...</li>
+						</ul>
+						<li>Basis of a vector space</li>
+						<ul style="color:blue;font-size:15px;line-height:1.4;">
+							<li>Inner product spaces</li>
+							<li>Vector space of functions: The inner product of two vectors in this vector space is
+								defined <br> as the integral of
+								the product of the two functions.</li>
+							<li>Fourier, Wavelet, DCT</li>
+							<li>Convolution</li>
+						</ul>
+					</ul>
+				</small>
+			</section>
+			<section data-background="#dddddd" dir="rtl">
+				<h4>موارد عملی مرتبط</h4>
+				<div dir="rtl" >
+				<small>
+					<ul >
+						<li>برنامه‌نویسی</li>
+						<li>متن‌کاوی و وب‌‌کاوی</li>
+						<li>پایتون</li>
+						<ul style="color:blue;font-size:15px;line-height:1.4;">
+							<li>NetworkX</li>
+							<li>SciPy</li>
+							<li>Scrapy, Spacy, Beautiful-soup ...</li>
+						</ul>
+						<li>لینوکس</li>
+						<li>گیت‌هاب</li>
+						<li>گوگل کولب</li>
+					</ul>
+				</small>
+				</div>
+			</section>
+		</section>
+		<section hidden="" class="future" style="top: -270.5px; display: none;">
+			<h3>- Questions? -</h3>
+			<br>
+			m.amintoosi @ gmail.com
+			<br>
+			<p>webpage : <a href="http://mamintoosi.ir/">http://mamintoosi.ir</a></p>
+			<p>webpage in github : <a href="https://mamintoosi.github.io/">http://mamintoosi.github.io</a></p>
+			<p>github : <a href="https://github.com/mamintoosi">mamintoosi</a></p>
+			<hr>
+			<!-- <small>
+<p> مطالب و سبک اسلاید برگرفته از 
+<a href="https://github.com/mdda/deep-learning-workshop"> Martin Andrews </a>
+و
+<a href="https://hameds.github.io/slides/"> سعیدی‌فرد </a>
+</p>
+</small>
+-->
+		</section>
+
+		</div>
+
+	</div>
+
+	<script src="../../js/reveal.js"></script>
+
+	<script>
+
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			center: true,
+			hash: true,
+			slideNumber: true,
+
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [
+				{ src: '../../plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: '../../plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: '../../plugin/highlight/highlight.js', async: true },
+				{ src: '../../plugin/search/search.js', async: true },
+				{ src: '../../plugin/zoom-js/zoom.js', async: true },
+				{ src: '../../plugin/notes/notes.js', async: true }
+			]
+		});
+
+	</script>
+
+</body>
+
+</html>
