@@ -1,0 +1,1551 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Graph Conv. Neural Networks </title>
+
+	<meta name="description" content="Graph Conv. Neural Networks, Ferdowsi University of Mashhad, Department of Computer Science">
+	<meta name="author" content="Mahmood Amintoosi">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../../css/reset.css">
+	<link rel="stylesheet" href="../../css/reveal.css">
+	<link rel="stylesheet" href="../../css/theme/serif.css" id="theme">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../../lib/css/monokai.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? '../../css/print/pdf.css' : '../../css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	</script>
+	<script type="text/javascript"
+		src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+		</script>
+
+	<!--[if lt IE 9]>
+<script src="../../lib/js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<!--
+<section>
+	<h1>Reveal.js</h1>
+	<h3>The HTML Presentation Framework</h3>
+	<p>
+		<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> and <a href="https://github.com/hakimel/reveal.js/graphs/contributors">contributors</a></small>
+	</p>
+</section>
+<section id="themes">
+	<h2>Themes</h2>
+	<p>
+		reveal.js comes with a few themes built in: <br>
+		<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. 
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/black.css'); return false;">Black (default)</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/white.css'); return false;">White</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/league.css'); return false;">League</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/sky.css'); return false;">Sky</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/beige.css'); return false;">Beige</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/simple.css'); return false;">Simple</a> <br>
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/serif.css'); return false;">Serif</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/blood.css'); return false;">Blood</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/night.css'); return false;">Night</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/moon.css'); return false;">Moon</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/solarized.css'); return false;">Solarized</a>
+	</p>
+</section> -->
+			<section data-background="images/DL_02.jpg" data-state="dimbg" data-background-opacity=.3>
+				<!--
+<style>
+	
+#myCustom > h1, #myCustom > h2 {
+ color: #FF0000;
+}
+
+/* or if you want to change all h1: */
+h1 {
+  color: #00FF00 !important;
+}
+</style>
+این بخش زیر برای پنهان شدن کلی فرگمنت نوشته شده
+-->
+
+				<!-- <style>
+					.fragment.visible:not(.current-fragment) {
+						display: none;
+						height: 0px;
+						line-height: 0px;
+						font-size: 0px;
+					}
+				</style> -->
+
+				<small>
+					بسم الله الرحمن الرحیم
+				</small><br>
+				<h2>Deep Learning</h2>
+				<h3>Workshop</h3>
+				<h4>Mahmood Amintoosi</h4>
+				<p>
+					<small><a href="http://https://mamintoosi.github.io/">m.amintoosi</a> @ <a
+							href="http://hsu.ac.ir/">hsu.ac.ir</a>
+							<br>
+							پاییز ۱۴۰۱
+						</small>
+										
+				</p>
+					<table style='font-size:50%'>
+						<!-- <tr>
+							<td>
+								<h4>Mahmood Amintoosi</h4>
+								</td>
+								<td><a href="http://https://mamintoosi.github.io/">m.amintoosi</a> @ <a
+							href="http://hsu.ac.ir/">hsu.ac.ir</a>
+							</td>
+						</tr> -->
+						<tr>
+							<!-- <td><img src="images/HSU-logo.png" width="150" valign="middle" style="vertical-align:middle;" border="0"></td> -->
+							<td valign="middle" style="vertical-align:middle;">
+					These Slides are accessible from <a href="https://mamintoosi.github.io/slides/topics/DL-HSU/DeepLearning-Workshop-ESLA2022.html"> my github page
+					</a> or by scanning this QR Code:<br>
+					Program Codes:<a href="https://github.com/mamintoosi-cs/pytorch-workshop">
+						https://github.com/mamintoosi-cs/pytorch-workshop</a>
+				</td>
+						<td><img src="images/qrcode_mamintoosi.github.io.png" width=150 valign="middle" style="vertical-align:middle;"> </td>
+						</tr>
+						<!-- <tr>
+							<td></td>
+							<td>Program Codes:<a href="https://github.com/mamintoosi-cs/pytorch-workshop">
+							https://github.com/mamintoosi-cs/pytorch-workshop</a>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								زمستان ۱۴۰۰
+							</td>
+						</tr> -->
+					</table>
+				<!-- <p>
+					<small>زمستان ۱۴۰۰
+					</small>
+				</p> -->
+			</section>
+			<section>
+				<figure class="fullscreen">
+					<div id="image-as-graph" style="padding-bottom: 10px; margin-bottom: 20px;"><div class="image" style="position: relative; height: 300.5px; width: 300.5px;"><svg width="300.5" height="300.5"><g transform="translate(0.5,0.5)"><text class="chart-label" transform="translate(150,320)" text-anchor="middle">Image Pixels</text><rect width="300" height="300" fill-opacity="1" fill="#aaa"></rect><rect height="59" width="59" transform="translate(0,0)" style="cursor: pointer; fill: rgb(255, 242, 202);"></rect><rect height="59" width="59" transform="translate(60,0)" style="cursor: pointer; fill: rgb(198, 151, 0);"></rect><rect height="59" width="59" transform="translate(120,0)" style="cursor: pointer; fill: rgb(255, 242, 202);"></rect><rect height="59" width="59" transform="translate(180,0)" style="cursor: pointer; fill: rgb(198, 151, 0);"></rect><rect height="59" width="59" transform="translate(240,0)" style="cursor: pointer; fill: rgb(198, 151, 0);"></rect><rect height="59" width="59" transform="translate(0,60)" style="cursor: pointer; fill: rgb(255, 242, 202);"></rect><rect height="59" width="59" transform="translate(60,60)" style="cursor: pointer; fill: rgb(255, 242, 202);"></rect><rect height="59" width="59" transform="translate(120,60)" style="cursor: pointer; fill: rgb(255, 242, 202);"></rect><rect height="59" width="59" transform="translate(180,60)" style="cursor: pointer; fill: rgb(255, 242, 202);"></rect><rect height="59" width="59" transform="translate(240,60)" style="cursor: pointer; fill: rgb(255, 242, 202);"></rect><rect height="59" width="59" transform="translate(0,120)" style="cursor: pointer; fill: rgb(255, 242, 202);"></rect><rect height="59" width="59" transform="translate(60,120)" style="cursor: pointer; fill: rgb(255, 242, 202);"></rect><rect height="59" width="59" transform="translate(120,120)" style="cursor: pointer; fill: rgb(198, 151, 0);"></rect><rect height="59" width="59" transform="translate(180,120)" style="cursor: pointer; fill: rgb(255, 242, 202);"></rect><rect height="59" width="59" transform="translate(240,120)" style="cursor: pointer; fill: rgb(255, 242, 202);"></rect><rect height="59" width="59" transform="translate(0,180)" style="cursor: pointer; fill: rgb(198, 151, 0);"></rect><rect height="59" width="59" transform="translate(60,180)" style="cursor: pointer; fill: rgb(255, 242, 202);"></rect><rect height="59" width="59" transform="translate(120,180)" style="cursor: pointer; fill: rgb(255, 242, 202);"></rect><rect height="59" width="59" transform="translate(180,180)" style="cursor: pointer; fill: rgb(255, 242, 202);"></rect><rect height="59" width="59" transform="translate(240,180)" style="cursor: pointer; fill: rgb(198, 151, 0);"></rect><rect height="59" width="59" transform="translate(0,240)" style="cursor: pointer; fill: rgb(255, 242, 202);"></rect><rect height="59" width="59" transform="translate(60,240)" style="cursor: pointer; fill: rgb(198, 151, 0);"></rect><rect height="59" width="59" transform="translate(120,240)" style="cursor: pointer; fill: rgb(198, 151, 0);"></rect><rect height="59" width="59" transform="translate(180,240)" style="cursor: pointer; fill: rgb(198, 151, 0);"></rect><rect height="59" width="59" transform="translate(240,240)" style="cursor: pointer; fill: rgb(255, 242, 202);"></rect><path stroke="rgb(34, 64, 88)" d="M 42,30 L 78,30" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 30,42 L 30,78" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 42,42 L 78,78" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 78,30 L 42,30" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 102,30 L 138,30" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 78,42 L 42,78" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 90,42 L 90,78" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 102,42 L 138,78" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 138,30 L 102,30" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 162,30 L 198,30" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 138,42 L 102,78" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 150,42 L 150,78" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 162,42 L 198,78" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 198,30 L 162,30" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 222,30 L 258,30" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 198,42 L 162,78" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 210,42 L 210,78" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 222,42 L 258,78" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 258,30 L 222,30" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 258,42 L 222,78" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 270,42 L 270,78" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 30,78 L 30,42" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 42,78 L 78,42" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 42,90 L 78,90" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 30,102 L 30,138" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 42,102 L 78,138" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 78,78 L 42,42" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 90,78 L 90,42" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 102,78 L 138,42" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 78,90 L 42,90" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 102,90 L 138,90" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 78,102 L 42,138" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 90,102 L 90,138" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 102,102 L 138,138" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 138,78 L 102,42" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 150,78 L 150,42" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 162,78 L 198,42" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 138,90 L 102,90" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 162,90 L 198,90" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 138,102 L 102,138" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 150,102 L 150,138" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 162,102 L 198,138" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 198,78 L 162,42" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 210,78 L 210,42" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 222,78 L 258,42" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 198,90 L 162,90" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 222,90 L 258,90" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 198,102 L 162,138" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 210,102 L 210,138" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 222,102 L 258,138" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 258,78 L 222,42" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 270,78 L 270,42" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 258,90 L 222,90" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 258,102 L 222,138" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 270,102 L 270,138" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 30,138 L 30,102" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 42,138 L 78,102" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 42,150 L 78,150" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 30,162 L 30,198" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 42,162 L 78,198" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 78,138 L 42,102" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 90,138 L 90,102" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 102,138 L 138,102" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 78,150 L 42,150" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 102,150 L 138,150" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 78,162 L 42,198" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 90,162 L 90,198" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 102,162 L 138,198" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 138,138 L 102,102" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 150,138 L 150,102" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 162,138 L 198,102" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 138,150 L 102,150" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 162,150 L 198,150" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 138,162 L 102,198" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 150,162 L 150,198" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 162,162 L 198,198" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 198,138 L 162,102" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 210,138 L 210,102" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 222,138 L 258,102" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 198,150 L 162,150" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 222,150 L 258,150" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 198,162 L 162,198" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 210,162 L 210,198" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 222,162 L 258,198" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 258,138 L 222,102" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 270,138 L 270,102" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 258,150 L 222,150" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 258,162 L 222,198" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 270,162 L 270,198" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 30,198 L 30,162" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 42,198 L 78,162" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 42,210 L 78,210" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 30,222 L 30,258" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 42,222 L 78,258" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 78,198 L 42,162" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 90,198 L 90,162" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 102,198 L 138,162" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 78,210 L 42,210" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 102,210 L 138,210" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 78,222 L 42,258" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 90,222 L 90,258" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 102,222 L 138,258" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 138,198 L 102,162" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 150,198 L 150,162" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 162,198 L 198,162" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 138,210 L 102,210" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 162,210 L 198,210" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 138,222 L 102,258" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 150,222 L 150,258" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 162,222 L 198,258" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 198,198 L 162,162" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 210,198 L 210,162" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 222,198 L 258,162" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 198,210 L 162,210" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 222,210 L 258,210" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 198,222 L 162,258" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 210,222 L 210,258" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 222,222 L 258,258" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 258,198 L 222,162" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 270,198 L 270,162" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 258,210 L 222,210" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 258,222 L 222,258" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 270,222 L 270,258" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 30,258 L 30,222" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 42,258 L 78,222" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 42,270 L 78,270" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 78,258 L 42,222" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 90,258 L 90,222" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 102,258 L 138,222" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 78,270 L 42,270" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 102,270 L 138,270" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 138,258 L 102,222" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 150,258 L 150,222" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 162,258 L 198,222" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 138,270 L 102,270" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 162,270 L 198,270" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 198,258 L 162,222" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 210,258 L 210,222" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 222,258 L 258,222" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 198,270 L 162,270" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 222,270 L 258,270" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 258,258 L 222,222" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 270,258 L 270,222" point-events="none" stroke-width="3" style="opacity: 0;"></path><path stroke="rgb(34, 64, 88)" d="M 258,270 L 222,270" point-events="none" stroke-width="3" style="opacity: 0;"></path><text transform="translate(120,0)" font-size="10" fill="#777" x="30" y="30" text-anchor="middle" dy=".33em" class="">2-0</text><text transform="translate(120,120)" font-size="10" fill="#fff" x="30" y="30" text-anchor="middle" dy=".33em" class="">2-2</text><text transform="translate(0,0)" font-size="10" fill="#777" x="30" y="30" text-anchor="middle" dy=".33em" class="">0-0</text><text transform="translate(60,0)" font-size="10" fill="#fff" x="30" y="30" text-anchor="middle" dy=".33em" class="">1-0</text><text transform="translate(0,60)" font-size="10" fill="#777" x="30" y="30" text-anchor="middle" dy=".33em" class="">0-1</text><text transform="translate(60,60)" font-size="10" fill="#777" x="30" y="30" text-anchor="middle" dy=".33em" class="">1-1</text><text transform="translate(120,60)" font-size="10" fill="#777" x="30" y="30" text-anchor="middle" dy=".33em" class="">2-1</text><text transform="translate(180,60)" font-size="10" fill="#777" x="30" y="30" text-anchor="middle" dy=".33em" class="">3-1</text><text transform="translate(240,60)" font-size="10" fill="#777" x="30" y="30" text-anchor="middle" dy=".33em" class="">4-1</text><text transform="translate(0,120)" font-size="10" fill="#777" x="30" y="30" text-anchor="middle" dy=".33em" class="">0-2</text><text transform="translate(60,120)" font-size="10" fill="#777" x="30" y="30" text-anchor="middle" dy=".33em" class="">1-2</text><text transform="translate(240,0)" font-size="10" fill="#fff" x="30" y="30" text-anchor="middle" dy=".33em" class="">4-0</text><text transform="translate(180,0)" font-size="10" fill="#fff" x="30" y="30" text-anchor="middle" dy=".33em" class="">3-0</text><text transform="translate(180,120)" font-size="10" fill="#777" x="30" y="30" text-anchor="middle" dy=".33em" class="">3-2</text><text transform="translate(240,120)" font-size="10" fill="#777" x="30" y="30" text-anchor="middle" dy=".33em" class="">4-2</text><text transform="translate(0,180)" font-size="10" fill="#fff" x="30" y="30" text-anchor="middle" dy=".33em" class="">0-3</text><text transform="translate(60,180)" font-size="10" fill="#777" x="30" y="30" text-anchor="middle" dy=".33em" class="">1-3</text><text transform="translate(120,180)" font-size="10" fill="#777" x="30" y="30" text-anchor="middle" dy=".33em" class="">2-3</text><text transform="translate(180,180)" font-size="10" fill="#777" x="30" y="30" text-anchor="middle" dy=".33em" class="">3-3</text><text transform="translate(240,180)" font-size="10" fill="#fff" x="30" y="30" text-anchor="middle" dy=".33em" class="">4-3</text><text transform="translate(0,240)" font-size="10" fill="#777" x="30" y="30" text-anchor="middle" dy=".33em" class="">0-4</text><text transform="translate(60,240)" font-size="10" fill="#fff" x="30" y="30" text-anchor="middle" dy=".33em" class="">1-4</text><text transform="translate(180,240)" font-size="10" fill="#fff" x="30" y="30" text-anchor="middle" dy=".33em" class="">3-4</text><text transform="translate(120,240)" font-size="10" fill="#000" x="30" y="30" text-anchor="middle" dy=".33em" class="active">2-4</text><text transform="translate(240,240)" font-size="10" fill="#000" x="30" y="30" text-anchor="middle" dy=".33em" class="active">4-4</text></g></svg></div><div class="graph" style="position: relative; height: 300.5px; width: 300.5px;"><svg width="300.5" height="300.5"><g transform="translate(0.5,0.5)"><text class="chart-label" transform="translate(150,320)" text-anchor="middle">Adjacency Matrix</text><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,0)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(0,12)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,24)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,36)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,48)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(0,60)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(0,72)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,84)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,96)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,108)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,120)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,132)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,144)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,156)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,168)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,180)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,192)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,204)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,216)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,228)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,240)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,252)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,264)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,276)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(0,288)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(12,0)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(12,12)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(12,24)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(12,36)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(12,48)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(12,60)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(12,72)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(12,84)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(12,96)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(12,108)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(12,120)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(12,132)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(12,144)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(12,156)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(12,168)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(12,180)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(12,192)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(12,204)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(12,216)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(12,228)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(12,240)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(12,252)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(12,264)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(12,276)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(12,288)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(24,0)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(24,12)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(24,24)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(24,36)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(24,48)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(24,60)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(24,72)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(24,84)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(24,96)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(24,108)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(24,120)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(24,132)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(24,144)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(24,156)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(24,168)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(24,180)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(24,192)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(24,204)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(24,216)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(24,228)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(24,240)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(24,252)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(24,264)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(24,276)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(24,288)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(36,0)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(36,12)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(36,24)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(36,36)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(36,48)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(36,60)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(36,72)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(36,84)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(36,96)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(36,108)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(36,120)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(36,132)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(36,144)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(36,156)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(36,168)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(36,180)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(36,192)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(36,204)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(36,216)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(36,228)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(36,240)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(36,252)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(36,264)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(36,276)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(36,288)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,0)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,12)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,24)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(48,36)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,48)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,60)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,72)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,84)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(48,96)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(48,108)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,120)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,132)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,144)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,156)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,168)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,180)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,192)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,204)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,216)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,228)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,240)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,252)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,264)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,276)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(48,288)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(60,0)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(60,12)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(60,24)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(60,36)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(60,48)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(60,60)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(60,72)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(60,84)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(60,96)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(60,108)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(60,120)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(60,132)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(60,144)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(60,156)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(60,168)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(60,180)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(60,192)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(60,204)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(60,216)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(60,228)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(60,240)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(60,252)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(60,264)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(60,276)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(60,288)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(72,0)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(72,12)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(72,24)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(72,36)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(72,48)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(72,60)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(72,72)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(72,84)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(72,96)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(72,108)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(72,120)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(72,132)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(72,144)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(72,156)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(72,168)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(72,180)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(72,192)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(72,204)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(72,216)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(72,228)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(72,240)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(72,252)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(72,264)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(72,276)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(72,288)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(84,0)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(84,12)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(84,24)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(84,36)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(84,48)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(84,60)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(84,72)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(84,84)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(84,96)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(84,108)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(84,120)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(84,132)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(84,144)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(84,156)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(84,168)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(84,180)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(84,192)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(84,204)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(84,216)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(84,228)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(84,240)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(84,252)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(84,264)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(84,276)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(84,288)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(96,0)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(96,12)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(96,24)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(96,36)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(96,48)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(96,60)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(96,72)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(96,84)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(96,96)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(96,108)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(96,120)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(96,132)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(96,144)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(96,156)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(96,168)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(96,180)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(96,192)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(96,204)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(96,216)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(96,228)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(96,240)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(96,252)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(96,264)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(96,276)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(96,288)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(108,0)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(108,12)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(108,24)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(108,36)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(108,48)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(108,60)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(108,72)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(108,84)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(108,96)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(108,108)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(108,120)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(108,132)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(108,144)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(108,156)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(108,168)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(108,180)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(108,192)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(108,204)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(108,216)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(108,228)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(108,240)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(108,252)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(108,264)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(108,276)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(108,288)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(120,0)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(120,12)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(120,24)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(120,36)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(120,48)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(120,60)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(120,72)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(120,84)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(120,96)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(120,108)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(120,120)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(120,132)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(120,144)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(120,156)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(120,168)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(120,180)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(120,192)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(120,204)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(120,216)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(120,228)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(120,240)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(120,252)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(120,264)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(120,276)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(120,288)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(132,0)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(132,12)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(132,24)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(132,36)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(132,48)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(132,60)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(132,72)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(132,84)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(132,96)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(132,108)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(132,120)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(132,132)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(132,144)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(132,156)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(132,168)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(132,180)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(132,192)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(132,204)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(132,216)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(132,228)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(132,240)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(132,252)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(132,264)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(132,276)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(132,288)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(144,0)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(144,12)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(144,24)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(144,36)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(144,48)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(144,60)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(144,72)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(144,84)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(144,96)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(144,108)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(144,120)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(144,132)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(144,144)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(144,156)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(144,168)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(144,180)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(144,192)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(144,204)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(144,216)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(144,228)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(144,240)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(144,252)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(144,264)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(144,276)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(144,288)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(156,0)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(156,12)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(156,24)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(156,36)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(156,48)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(156,60)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(156,72)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(156,84)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(156,96)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(156,108)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(156,120)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(156,132)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(156,144)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(156,156)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(156,168)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(156,180)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(156,192)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(156,204)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(156,216)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(156,228)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(156,240)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(156,252)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(156,264)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(156,276)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(156,288)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(168,0)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(168,12)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(168,24)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(168,36)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(168,48)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(168,60)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(168,72)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(168,84)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(168,96)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(168,108)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(168,120)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(168,132)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(168,144)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(168,156)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(168,168)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(168,180)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(168,192)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(168,204)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(168,216)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(168,228)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(168,240)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(168,252)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(168,264)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(168,276)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(168,288)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(180,0)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(180,12)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(180,24)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(180,36)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(180,48)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(180,60)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(180,72)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(180,84)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(180,96)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(180,108)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(180,120)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(180,132)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(180,144)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(180,156)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(180,168)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(180,180)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(180,192)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(180,204)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(180,216)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(180,228)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(180,240)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(180,252)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(180,264)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(180,276)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(180,288)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(192,0)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(192,12)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(192,24)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(192,36)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(192,48)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(192,60)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(192,72)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(192,84)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(192,96)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(192,108)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(192,120)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(192,132)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(192,144)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(192,156)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(192,168)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(192,180)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(192,192)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(192,204)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(192,216)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(192,228)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(192,240)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(192,252)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(192,264)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(192,276)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(192,288)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(204,0)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(204,12)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(204,24)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(204,36)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(204,48)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(204,60)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(204,72)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(204,84)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(204,96)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(204,108)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(204,120)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(204,132)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(204,144)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(204,156)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(204,168)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(204,180)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(204,192)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(204,204)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(204,216)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(204,228)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(204,240)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(204,252)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(204,264)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(204,276)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(204,288)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(216,0)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(216,12)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(216,24)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(216,36)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(216,48)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(216,60)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(216,72)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(216,84)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(216,96)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(216,108)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(216,120)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(216,132)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(216,144)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(216,156)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(216,168)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(216,180)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(216,192)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(216,204)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(216,216)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(216,228)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(216,240)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(216,252)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(216,264)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(216,276)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(216,288)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(228,0)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(228,12)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(228,24)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(228,36)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(228,48)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(228,60)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(228,72)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(228,84)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(228,96)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(228,108)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(228,120)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(228,132)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(228,144)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(228,156)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(228,168)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(228,180)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(228,192)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(228,204)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(228,216)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(228,228)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(228,240)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(228,252)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(228,264)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(228,276)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(228,288)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,0)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,12)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,24)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,36)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,48)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,60)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,72)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,84)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,96)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,108)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,120)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,132)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,144)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,156)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,168)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(240,180)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(240,192)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,204)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,216)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,228)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,240)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(240,252)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,264)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,276)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(240,288)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(252,0)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(252,12)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(252,24)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(252,36)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(252,48)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(252,60)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(252,72)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(252,84)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(252,96)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(252,108)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(252,120)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(252,132)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(252,144)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(252,156)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(252,168)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(252,180)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(252,192)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(252,204)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(252,216)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(252,228)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(252,240)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(252,252)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(252,264)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(252,276)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(252,288)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(264,0)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(264,12)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(264,24)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(264,36)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(264,48)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(264,60)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(264,72)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(264,84)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(264,96)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(264,108)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(264,120)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(264,132)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(264,144)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(264,156)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(264,168)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(264,180)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(264,192)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(264,204)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(264,216)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(264,228)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(264,240)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(264,252)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(264,264)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(264,276)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(264,288)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(276,0)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(276,12)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(276,24)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(276,36)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(276,48)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(276,60)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(276,72)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(276,84)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(276,96)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(276,108)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(276,120)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(276,132)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(276,144)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(276,156)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(276,168)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(276,180)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(276,192)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(276,204)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(276,216)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(276,228)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(276,240)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(276,252)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(276,264)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(276,276)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(276,288)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,0)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,12)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,24)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,36)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,48)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,60)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,72)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,84)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,96)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,108)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,120)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,132)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,144)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,156)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,168)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,180)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,192)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,204)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(288,216)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(288,228)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,240)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,252)"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,264)"></rect><rect height="11.8" width="11.8" fill="rgb(84, 155, 215)" transform="translate(288,276)" style="fill: rgb(84, 155, 215);"></rect><rect height="11.8" width="11.8" fill="#fff" transform="translate(288,288)"></rect><g transform="translate(6,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">0-0</text></g><g transform="translate(18,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">1-0</text></g><g transform="translate(30,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">2-0</text></g><g transform="translate(42,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">3-0</text></g><g transform="translate(54,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">4-0</text></g><g transform="translate(66,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">0-1</text></g><g transform="translate(78,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">1-1</text></g><g transform="translate(90,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">2-1</text></g><g transform="translate(102,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" class="" style="cursor: pointer;">3-1</text></g><g transform="translate(114,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">4-1</text></g><g transform="translate(126,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">0-2</text></g><g transform="translate(138,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">1-2</text></g><g transform="translate(150,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">2-2</text></g><g transform="translate(162,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">3-2</text></g><g transform="translate(174,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">4-2</text></g><g transform="translate(186,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">0-3</text></g><g transform="translate(198,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">1-3</text></g><g transform="translate(210,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">2-3</text></g><g transform="translate(222,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">3-3</text></g><g transform="translate(234,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">4-3</text></g><g transform="translate(246,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">0-4</text></g><g transform="translate(258,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">1-4</text></g><g transform="translate(270,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">2-4</text></g><g transform="translate(282,-10)"><text transform="rotate(-90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">3-4</text></g><g transform="translate(294,-10)"><text transform="rotate(-90)" font-size="6" fill="#000" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="active">4-4</text></g><text transform="translate(-10,186)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;">0-3</text><text transform="translate(-10,198)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;">1-3</text><text transform="translate(-10,210)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;">2-3</text><text transform="translate(-10,222)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;">3-3</text><text transform="translate(-10,234)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;">4-3</text><text transform="translate(-10,246)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;">0-4</text><text transform="translate(-10,258)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;">1-4</text><text transform="translate(-10,78)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">1-1</text><text transform="translate(-10,174)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">4-2</text><text transform="translate(-10,162)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">3-2</text><text transform="translate(-10,150)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">2-2</text><text transform="translate(-10,138)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">1-2</text><text transform="translate(-10,126)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">0-2</text><text transform="translate(-10,114)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">4-1</text><text transform="translate(-10,102)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">3-1</text><text transform="translate(-10,90)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">2-1</text><text transform="translate(-10,6)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">0-0</text><text transform="translate(-10,18)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">1-0</text><text transform="translate(-10,30)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" class="" style="cursor: pointer;">2-0</text><text transform="translate(-10,66)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">0-1</text><text transform="translate(-10,54)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">4-0</text><text transform="translate(-10,42)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">3-0</text><text transform="translate(-10,294)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">4-4</text><text transform="translate(-10,282)" font-size="6" fill="#999" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="">3-4</text><text transform="translate(-10,270)" font-size="6" fill="#000" text-anchor="middle" dy=".33em" style="cursor: pointer;" class="active">2-4</text></g></svg></div><div class="force" style="position: relative; height: 300.5px; width: 300.5px;"><svg width="300.5" height="300.5" style="background: rgb(255, 255, 255);"><g transform="translate(0.5,0.5)"><text class="chart-label" transform="translate(150,320)" text-anchor="middle">Graph</text><g><path class="link" stroke="rgb(84, 155, 215)" d="M 13.291370829685722 14.593999815570688 L 72.10766734242289 0.28410817696739477"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 13.291370829685722 14.593999815570688 L -0.3461988267191424 73.48325717122839"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 13.291370829685722 14.593999815570688 L 67.3166983109883 67.95551036671637"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 72.10766734242289 0.28410817696739477 L 149.5076916725639 0.2687372366340089"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 72.10766734242289 0.28410817696739477 L -0.3461988267191424 73.48325717122839"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 72.10766734242289 0.28410817696739477 L 67.3166983109883 67.95551036671637"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 72.10766734242289 0.28410817696739477 L 148.69560278876577 62.05871257542291"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 149.5076916725639 0.2687372366340089 L 226.84145636580146 0.13972504760080012"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 149.5076916725639 0.2687372366340089 L 67.3166983109883 67.95551036671637"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 149.5076916725639 0.2687372366340089 L 148.69560278876577 62.05871257542291"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 149.5076916725639 0.2687372366340089 L 231.73386683996262 67.51488897118782"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 226.84145636580146 0.13972504760080012 L 286.4115199041193 15.19067464277738"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 226.84145636580146 0.13972504760080012 L 148.69560278876577 62.05871257542291"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 226.84145636580146 0.13972504760080012 L 231.73386683996262 67.51488897118782"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 226.84145636580146 0.13972504760080012 L 296.94353200656894 74.7980512705613"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 286.4115199041193 15.19067464277738 L 231.73386683996262 67.51488897118782"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 286.4115199041193 15.19067464277738 L 296.94353200656894 74.7980512705613"></path><path class="link" stroke="rgb(84, 155, 215)" d="M -0.3461988267191424 73.48325717122839 L 67.3166983109883 67.95551036671637"></path><path class="link" stroke="rgb(84, 155, 215)" d="M -0.3461988267191424 73.48325717122839 L 0.4236732267451763 150.69722239643716"></path><path class="link" stroke="rgb(84, 155, 215)" d="M -0.3461988267191424 73.48325717122839 L 62.205354897995 149.33762711020557"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 67.3166983109883 67.95551036671637 L 148.69560278876577 62.05871257542291"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 67.3166983109883 67.95551036671637 L 0.4236732267451763 150.69722239643716"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 67.3166983109883 67.95551036671637 L 62.205354897995 149.33762711020557"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 67.3166983109883 67.95551036671637 L 147.89669327634158 147.72750192597468"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 148.69560278876577 62.05871257542291 L 231.73386683996262 67.51488897118782"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 148.69560278876577 62.05871257542291 L 62.205354897995 149.33762711020557"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 148.69560278876577 62.05871257542291 L 147.89669327634158 147.72750192597468"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 148.69560278876577 62.05871257542291 L 234.61301740465095 148.86688536356206"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 231.73386683996262 67.51488897118782 L 296.94353200656894 74.7980512705613"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 231.73386683996262 67.51488897118782 L 147.89669327634158 147.72750192597468"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 231.73386683996262 67.51488897118782 L 234.61301740465095 148.86688536356206"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 231.73386683996262 67.51488897118782 L 297.4549702618558 149.15962462872417"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 296.94353200656894 74.7980512705613 L 234.61301740465095 148.86688536356206"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 296.94353200656894 74.7980512705613 L 297.4549702618558 149.15962462872417"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 0.4236732267451763 150.69722239643716 L 62.205354897995 149.33762711020557"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 0.4236732267451763 150.69722239643716 L 0.9555514439520496 227.89275665291848"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 0.4236732267451763 150.69722239643716 L 68.37858362513093 232.21160786179678"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 62.205354897995 149.33762711020557 L 147.89669327634158 147.72750192597468"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 62.205354897995 149.33762711020557 L 0.9555514439520496 227.89275665291848"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 62.205354897995 149.33762711020557 L 68.37858362513093 232.21160786179678"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 62.205354897995 149.33762711020557 L 149.681862904137 234.4267966726279"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 147.89669327634158 147.72750192597468 L 234.61301740465095 148.86688536356206"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 147.89669327634158 147.72750192597468 L 68.37858362513093 232.21160786179678"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 147.89669327634158 147.72750192597468 L 149.681862904137 234.4267966726279"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 147.89669327634158 147.72750192597468 L 231.75826557355995 231.02008138838565"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 234.61301740465095 148.86688536356206 L 297.4549702618558 149.15962462872417"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 234.61301740465095 148.86688536356206 L 149.681862904137 234.4267966726279"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 234.61301740465095 148.86688536356206 L 231.75826557355995 231.02008138838565"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 234.61301740465095 148.86688536356206 L 296.85200746612605 224.10448497888706"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 297.4549702618558 149.15962462872417 L 231.75826557355995 231.02008138838565"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 297.4549702618558 149.15962462872417 L 296.85200746612605 224.10448497888706"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 0.9555514439520496 227.89275665291848 L 68.37858362513093 232.21160786179678"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 0.9555514439520496 227.89275665291848 L 16.623365167756717 287.2274772011584"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 0.9555514439520496 227.89275665291848 L 76.22685273298357 297.3309766579961"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 68.37858362513093 232.21160786179678 L 149.681862904137 234.4267966726279"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 68.37858362513093 232.21160786179678 L 16.623365167756717 287.2274772011584"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 68.37858362513093 232.21160786179678 L 76.22685273298357 297.3309766579961"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 68.37858362513093 232.21160786179678 L 150.44108516465627 297.2606748404949"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 149.681862904137 234.4267966726279 L 231.75826557355995 231.02008138838565"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 149.681862904137 234.4267966726279 L 76.22685273298357 297.3309766579961"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 149.681862904137 234.4267966726279 L 150.44108516465627 297.2606748404949"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 149.681862904137 234.4267966726279 L 225.20447943309492 296.18642369222897"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 231.75826557355995 231.02008138838565 L 296.85200746612605 224.10448497888706"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 231.75826557355995 231.02008138838565 L 150.44108516465627 297.2606748404949"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 231.75826557355995 231.02008138838565 L 225.20447943309492 296.18642369222897"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 231.75826557355995 231.02008138838565 L 284.9694425089428 284.0221075289045"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 296.85200746612605 224.10448497888706 L 225.20447943309492 296.18642369222897"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 296.85200746612605 224.10448497888706 L 284.9694425089428 284.0221075289045"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 16.623365167756717 287.2274772011584 L 76.22685273298357 297.3309766579961"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 76.22685273298357 297.3309766579961 L 150.44108516465627 297.2606748404949"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 150.44108516465627 297.2606748404949 L 225.20447943309492 296.18642369222897"></path><path class="link" stroke="rgb(84, 155, 215)" d="M 225.20447943309492 296.18642369222897 L 284.9694425089428 284.0221075289045"></path></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(255, 242, 202);" transform="translate(13.291370829685722,14.593999815570688)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#777" text-anchor="middle" dy=".33em" class="">0-0</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(198, 151, 0);" transform="translate(72.10766734242289,0.28410817696739477)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#fff" text-anchor="middle" dy=".33em" class="">1-0</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(255, 242, 202);" transform="translate(149.5076916725639,0.2687372366340089)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#777" text-anchor="middle" dy=".33em" class="">2-0</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(198, 151, 0);" transform="translate(226.84145636580146,0.13972504760080012)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#fff" text-anchor="middle" dy=".33em" class="">3-0</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(198, 151, 0);" transform="translate(286.4115199041193,15.19067464277738)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#fff" text-anchor="middle" dy=".33em" class="">4-0</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(255, 242, 202);" transform="translate(-0.3461988267191424,73.48325717122839)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#777" text-anchor="middle" dy=".33em" class="">0-1</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(255, 242, 202);" transform="translate(67.3166983109883,67.95551036671637)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#777" text-anchor="middle" dy=".33em" class="">1-1</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(255, 242, 202);" transform="translate(148.69560278876577,62.05871257542291)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#777" text-anchor="middle" dy=".33em" class="">2-1</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(255, 242, 202);" transform="translate(231.73386683996262,67.51488897118782)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#777" text-anchor="middle" dy=".33em" class="">3-1</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(255, 242, 202);" transform="translate(296.94353200656894,74.7980512705613)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#777" text-anchor="middle" dy=".33em" class="">4-1</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(255, 242, 202);" transform="translate(0.4236732267451763,150.69722239643716)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#777" text-anchor="middle" dy=".33em" class="">0-2</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(255, 242, 202);" transform="translate(62.205354897995,149.33762711020557)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#777" text-anchor="middle" dy=".33em" class="">1-2</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(198, 151, 0);" transform="translate(147.89669327634158,147.72750192597468)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#fff" text-anchor="middle" dy=".33em" class="">2-2</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(255, 242, 202);" transform="translate(234.61301740465095,148.86688536356206)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#777" text-anchor="middle" dy=".33em" class="">3-2</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(255, 242, 202);" transform="translate(297.4549702618558,149.15962462872417)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#777" text-anchor="middle" dy=".33em" class="">4-2</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(198, 151, 0);" transform="translate(0.9555514439520496,227.89275665291848)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#fff" text-anchor="middle" dy=".33em" class="">0-3</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(255, 242, 202);" transform="translate(68.37858362513093,232.21160786179678)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#777" text-anchor="middle" dy=".33em" class="">1-3</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(255, 242, 202);" transform="translate(149.681862904137,234.4267966726279)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#777" text-anchor="middle" dy=".33em" class="">2-3</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(255, 242, 202);" transform="translate(231.75826557355995,231.02008138838565)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#777" text-anchor="middle" dy=".33em" class="">3-3</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(198, 151, 0);" transform="translate(296.85200746612605,224.10448497888706)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#fff" text-anchor="middle" dy=".33em" class="">4-3</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(255, 242, 202);" transform="translate(16.623365167756717,287.2274772011584)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#777" text-anchor="middle" dy=".33em" class="">0-4</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(198, 151, 0);" transform="translate(76.22685273298357,297.3309766579961)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#fff" text-anchor="middle" dy=".33em" class="">1-4</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(198, 151, 0);" transform="translate(150.44108516465627,297.2606748404949)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#000" text-anchor="middle" dy=".33em" class="active">2-4</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(198, 151, 0);" transform="translate(225.20447943309492,296.18642369222897)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#fff" text-anchor="middle" dy=".33em" class="">3-4</text></g><g style="touch-action: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; fill: rgb(255, 242, 202);" transform="translate(284.9694425089428,284.0221075289045)"><circle stroke="#000" r="15"></circle><text font-size="10" fill="#000" text-anchor="middle" dy=".33em" class="active">4-4</text></g></g></svg></div></div>
+					<figcaption>
+					Click on an image pixel to toggle its value, and see how the graph representation changes.
+					</figcaption>
+					</figure>
+			</section>
+			<section>
+			<section>
+				<h2>درباره‌ی کارگاه یادگیری عمیق</h2>
+				<small>
+					<p dir="rtl" style="text-align: justify">
+						حوزه‌ی یادگیری عمیق زیرمجموعه‌ای از روش‌های یادگیری ماشین است که توجه بسیاری را در چند سال اخیر
+						به خود معطوف نموده است. تفاوت اصلی یادگیری عمیق با روش‌های مرسوم حوزه‌ی یادگیری ماشین، توانایی
+						آن در یادگیری خودکار ویژگی‌ها است. هسته‌ی اصلی یادگیری در این روش‌ها مبتنی بر الگوریتم گرادیان
+						کاهشی و بخش عملی آن متکی بر توانایی مشتق‌گیری خودکار ازتوابع هدف است. در این کارگاه به معرفی
+						مبانی نظری این حوزه و برخی کاربردهای آن پرداخته شده و شیوه‌ی شروع به کار عملی در این حوزه با
+						انجام برنامه‌نویسی در زبان پایتون بیان خواهد شد.
+						<br>
+						منابع زیر می‌تواند برای شروع یادگیری و آشنایی با یادگیری عمیق مثمرثمر واقع گردند:<br>
+
+					<ul style="text-align: justify; PADDING-RIGHT: 22px">
+						<li>
+							Stevens, E., Antiga, L.,Viehmann, T. (2020). Deep Learning with PyTorch.
+							<a href="https://www.manning.com/books/deep-learning-with-pytorch">(Book)</a>
+						</li>
+						<li>
+							Chollet, F. (2017). Deep learning with Python. Manning Publications.
+							<a href="https://www.manning.com/books/deep-learning-with-python">(Book) </a>
+						</li>
+					</ul>
+					<ul dir="rtl" style="text-align: justify; PADDING-RIGHT: 22px">
+						<li>
+							امین‌طوسی، محمود (۱۳۹۹)،
+							<a href="https://math-sci.ui.ac.ir/article_25351.html">
+								کاربرد بسط تیلور در کاهش حجم شبکه‌های عصبی پیچشی برای طبقه‌بندی نقاشی‌های سبک
+								امپرسیونیسم و مینیاتور.
+							</a> نشریه ریاضی و جامعه،‌ ۵ (۱)،‌ ۱-۱۶.
+						</li>
+						<li>
+							امین‌طوسی، محمود (۱۴۰۰)،
+							<a href="https://github.com/mamintoosi/ST-for-DA-in-FD">
+								انتقال سبک برای افزایش داده‌های آموزشی شبکه‌های کانولوشنی در شناسایی شعله‌ی آتش.
+							</a> هوش محاسباتی در مهندسی برق، ‌آماده‌ی انتشار.
+						</li>
+						<li>
+							امین‌طوسی، محمود (۱۴۰۱)،
+							<a href="https://github.com/mamintoosi/Reg-OBD-for-VGG-Pruning">
+								ترکیب روش منظم‌سازی تُنُک و آسیب مغزی بهینه‌ در کوچک‌سازی یک مدل یادگیری عمیق.
+							</a> ماشین بینایی و پردازش تصویر ایران،‌  ۹ (۱)، ۳۱-۴۵.
+						</li>
+
+					</ul>
+					</p>
+				</small>
+			</section>
+			<section>
+				<h2>Topics</h2>
+				<ol>
+					<li>
+						Introduction
+						<ul style="color:blue;font-size:20px;line-height:1.4;">
+							<li>Machine Learning, Deep Learning</li>
+							<li>History, Applications</li>
+						</ul>
+					</li>
+					<li>
+						Practice
+						<ul style="color:blue;font-size:20px;line-height:1.4;">
+							<li>Tensors</li>
+							<li>Auto Gradient</li>
+							<li>Regression</li>
+							<li>MLP for Digit Classification</li>
+							<li>CNN for Image Classification</li>
+						</ul>
+					</li>
+					<li>
+						Some Further Notes
+						<ul >
+							<li style="color:blue;font-size:20px;line-height:1.4;">More Applications</li>
+							<li style="color:red;font-size:20px;line-height:1.4;">Some Limitations on Real World Problems</li>
+						</ul>
+					</li>
+
+				</ol>
+			</section>
+		</section>
+
+			<section>
+				<section>
+					<h2>Source books</h2>
+					Deep Learning with PyTorch,
+					<br>
+					<small>
+						by: Eli Stevens, Luca Antiga, and Thomas Viehmann
+					</small>
+					<br>
+					<img height="300" src="./images/Deep_Learning_with_PyTorch_2019.jpg"
+						alt="Deep Learning with PyTorch" xstyle="border:none;box-shadow:none">
+					<br>
+					<small>
+						<a
+							href="https://www.manning.com/books/deep-learning-with-pytorch">https://www.manning.com/books/deep-learning-with-pytorch</a>
+					</small>
+				</section>
+				<section>
+					<h2>Source books</h2>
+					Deep Learning with Python,
+					<br>
+					<small>
+						by: FRANÇOIS CHOLLET
+					</small>
+					<br>
+					<img height="300" src="./images/DeepLearningWithPython-book-cover.jpg"
+						alt="Deep Learning with Python" xstyle="border:none;box-shadow:none">
+					<br>
+					<small>
+						<a href="https://www.manning.com/books/deep-learning-with-python">https://www.manning.com/books/deep-learning-with-python
+						</a>
+						<br>
+						<a href="https://livebook.manning.com/book/deep-learning-with-python/"> LiveBook</a><br>
+						<a href="https://github.com/fchollet/deep-learning-with-python-notebooks"> Github: Jupyter
+							Notebooks </a>
+					</small>
+				</section>
+				<section>
+					<h4>
+					<a href="https://math-sci.ui.ac.ir/article_25351.html">
+					کاربرد بسط تیلور در کاهش حجم شبکه‌های عصبی پیچشی برای طبقه‌بندی نقاشی‌های سبک امپرسیونیسم و
+						مینیاتور </a></h4>
+					<br>
+					<div>
+						<img height="200" src="./images/a-5.png" xstyle="border:none;box-shadow:none">
+						<img height="200" src="./images/a-1.png" xstyle="border:none;box-shadow:none">
+						<img height="200" src="./images/a-0.png" xstyle="border:none;box-shadow:none">
+					</div>
+					<img height="300" src="./images/Soleymani.jpg" xstyle="border:none;box-shadow:none"
+						class="fragment">
+				</section>
+				<section>
+					<h4>انتقال سبک برای افزایش داده‌های آموزشی شبکه‌های کانولوشنی در شناسایی شعله‌ی آتش</h4>
+					<br>
+					<img width="800" src="./images/img (67).jpg" xstyle="border:none;box-shadow:none">
+					<br>
+					<img width="300" src="./images/pic (30).jpg" xstyle="border:none;box-shadow:none">
+					<!-- <br>
+					<img width="150" src="./images/Soleymani-Baqdad.jpg" xstyle="border:none;box-shadow:none"> -->
+				</section>
+			</section>
+
+			<section>
+				<!-- <section>
+					<h2>Applications</h2>
+					<p>Google Street-View (and ReCaptchas)</p>
+					<img width="500" height="300" src="./images/house-numbers_598x400.png" alt="House Numbers"
+						xstyle="border:none;box-shadow:none">
+					<p><i>
+							<a href="http://arxiv.org/abs/1312.6082" target="_blank">Better</a>
+							than
+							<a href="http://www.geek.com/news/googles-neutral-networks-are-now-better-than-humans-at-reading-addresses-1581653/"
+								target="_blank">Human </a>
+						</i></p>
+				</section> -->
+
+				<!-- <section class="future" hidden="" style="top: -20px; display: none;">
+					<h3>Applications</h3>
+					<h4>Image Classification</h4>
+					<img width="450" height="400" src="./images/ImageNet-Results_574x469.png" alt="ImageNet Results"
+						style="border:none;box-shadow:none">
+					<p><i>now better than human level</i></p>
+				</section> -->
+
+				<section class="future" hidden="" style="top: -20px; display: none;">
+					<h4>Pipeline of an Image Classification Task</h4>
+					<!-- <h4>Image Classification</h4> -->
+					<img width="800" height="400" src="./images/pipeline.jpg" alt="Pipeline"
+						style="border:none;box-shadow:none">
+				</section>
+				<section class="future" hidden="" style="top: -20px; display: none;">
+					<h3>Captioning Images</h3>
+					<img width="667" height="419" src="./images/image-labelling-results_667x419.png"
+						alt="Labelling Results" style="border:none;box-shadow:none">
+					<p><i>Some good, some not-so-good</i></p>
+				</section>
+
+				<section class="future" hidden="" style="top: -20px; display: none;">
+					<h2>DALL·E: Creating Images from Text</h2>
+					<p>DALL·E is a 12-billion parameter version of GPT-3 trained to generate images from text
+						descriptions, using a dataset of text–image pairs</p>
+					<p> Artist Salvador Dalí and Pixar’s WALL·E.</p>
+					<img height="150" src="./images/salvador-dali.jpg" alt="salvador-dali"
+						style="border:none;box-shadow:none">
+					<img height="150" src="./images/MoneyHeist_Mask.jpg" alt="MoneyHeist_Mask"
+						style="border:none;box-shadow:none">
+					<img height="150" src="./images/MoneyHeist.jpg" alt="MoneyHeist"
+						style="border:none;box-shadow:none">
+					<img height="150" src="./images/Wall-e.jpg" alt="Wall-e" style="border:none;box-shadow:none">
+				</section>
+
+				<section class="future" hidden="" style="top: -20px; display: none;">
+					<h4>DALL·E: Creating Images from Text</h4>
+					<small>
+						<a href="https://openai.com/blog/dall-e/">openai.com/blog/dall-e/</a>
+						<p>DALL·E is a 12-billion parameter version of GPT-3 trained to generate images from text
+							descriptions, using a dataset of text–image pairs</p>
+					</small>
+					<img height="100" src="./images/avocado.jpg" alt="avocado" style="border:none;box-shadow:none">
+					<img height="100" src="./images/pentagon_green_clock.jpg" alt="pentagon_green_clock"
+						style="border:none;box-shadow:none">
+					<br>
+					<img height="130" src="./images/penguen.jpg" alt="penguen" style="border:none;box-shadow:none">
+				</section>
+				<!-- 
+  <section class="future" hidden="" style="top: -350px; display: block;">
+   <h2>Speech Recognition</h2>
+   <p>Android feature since <a href="http://www.phonearena.com/news/The-secret-of-Googles-amazing-voice-recognition-revealed-it-works-like-a-brain_id39938" target="_blank">Jellybean (v4.3, 2012)</a> </p>
+   <p>Trained in ~5 days on 800 machine cluster</p>
+   <img width="444" height="260" src="./images/speech_444x360.png" alt="Speech Recognition" xstyle="border:none;box-shadow:none">
+   <small>
+   <p>Embedded in phone since Android <a href="http://googleresearch.blogspot.sg/2015/08/the-neural-networks-behind-google-voice.html" target="_blank">Lollipop (v5.0, 2014)</a></p>
+   </small>
+  </section>
+
+  <section class="future" hidden="" style="top: -268px; display: block;">
+   <h2>Translation</h2>
+   <p>Google's <a href="http://googleresearch.blogspot.sg/2015/07/how-google-translate-squeezes-deep.html" target="_blank">Deep Models</a> are on the phone</p>
+   <img width="640" height="160" src="./images/google-translate_640x160.png" alt="Google Translate" xstyle="border:none;box-shadow:none">
+   <p><i>"Use your camera to translate text instantly in 26 languages"</i></p>
+   <p><i>Translations for typed text in 90 languages</i></p>
+  </section>
+
+ 
+  <section>
+   <h2>Reinforcement Learning</h2>
+   <p>Google's DeepMind purchase</p>
+   <p>Learn to play games from the pixels alone</p>
+   <img width="562" height="466" src="img/deep-mind_562x466.jpg" alt="DeepMind Atari" style="border:none;box-shadow:none">
+   <p><i>Better than humans 2 hours after switching on</i></p>
+  </section>
+
+
+!-->
+			</section>
+
+			<section>
+				<section data-background="#dddddd">
+					<h4>Machine Learning and Deep Learning</h4>
+					<img height="220" src="./images/AI-ML-DL-Fig1.1.png" alt="Deep Learning"
+						xstyle="border:none;box-shadow:none" >
+						<img height="250" src="./images/ML_vs_DL.jpg" alt="Deep Learning"
+						xstyle="border:none;box-shadow:none" class="fragment">
+				</section>
+				<section>
+					<h4>Almost all problems related to machine learning is a version of:</h4>
+					$$\min_{\textbf{x}}||A\textbf{x}-\mathbf{b}||$$
+				</section>
+				<section data-background="#dddddd">
+					<h4>Some related concepts:</h4>
+					<small>
+						<ul>
+							<li>Regression</li>
+							<ul style="color:blue;font-size:15px;line-height:1.4;">
+								<li>Linear Regression</li>
+								<li>Logistic Regression</li>
+								<li>LASSO, Least Square, Normal Equations, ...</li>
+							</ul>
+							<li>Gradient Descent</li>
+							<ul style="color:blue;font-size:15px;line-height:1.4;">
+								<li>SGD, Adam, Conjugate gradient, Sparse Optimization, ...</li>
+							</ul>
+							<li>Regualrization</li>
+							<ul style="color:blue;font-size:15px;line-height:1.4;">
+								<li>Quasi–Newton</li>
+								<li>Davidon–Fletcher–Powell</li>
+								<!-- <li>Broyden–Fletcher–Goldfarb–Shanno (BFGS)</li> -->
+							</ul>
+							<li>Matrix Factorization</li>
+							<ul style="color:blue;font-size:15px;line-height:1.4;">
+								<li>Gram-Schmit, QR-Decomposition, ...</li>
+							</ul>
+							<li>Basis of a vector space</li>
+							<ul style="color:blue;font-size:15px;line-height:1.4;">
+								<li>Inner product spaces</li>
+								<li>Vector space of functions: The inner product of two vectors in this vector space is
+									defined <br> as the integral of
+									the product of the two functions.</li>
+								<li>Fourier, Wavelet, DCT</li>
+								<li>Convolution</li>
+							</ul>
+							<li>Integer and Fractional Derivative</li>
+							<ul style="color:blue;font-size:15px;line-height:1.4;">
+								<li>First and Second Order</li>
+								<li>Caputo</li>
+								<!-- <li>Riemann–Liouville</li> -->
+								<li>Grunwald–Letnikov</li>
+							</ul>
+							<li>Manifold Learning</li>
+						</ul>
+					</small>
+				</section>
+				<section data-transition="convex" data-background="./images/CrowdsFaceDetection.jpeg"
+					data-background-opacity="0.2">
+
+				<h3>ML vs DL for Face Recognition</h3>
+				<small>
+				The 2018 paper titled <a href="https://arxiv.org/abs/1804.06655">“Deep Face Recognition: A Survey,”</a> provides a helpful summary of the state of face recognition research over the last nearly 30 years, highlighting the broad trend from holistic learning methods (such as Eigenfaces), to local handcrafted feature detection, to shallow learning methods, to finally deep learning methods that are currently state of the art.
+						<blockquote cite="https://machinelearningmastery.com/introduction-to-deep-learning-for-face-recognition/">
+The holistic approaches dominated the face recognition community in the 1990s. In the early 2000s, handcrafted local descriptors became popular, and the local feature learning approach were introduced in the late 2000s. […] [shallow learning method] performance steadily improves from around 60% to above 90%, while deep learning boosts the performance to 99.80% in just three years.
+						</blockquote>
+					</small>
+					<a href="https://github.com/serengil/deepface"> Example DeepFace github page</a>
+					<small>Detection, Localization, Verification, Gender, Expression, Age, RealTime, Liveness, Masked, Noise, Partial, ...</small>
+				</section>
+				
+			</section>
+
+
+			<section>
+				<section data-background="#dddddd">
+					<h3>What is deep learning?</h3>
+					<div>
+						<small>
+							Deep learning is a class of machine learning algorithms that  uses multiple layers to
+							progressively extract higher-level features from the raw input. For example, in image
+							processing, lower layers may identify edges, while higher layers may identify the concepts
+							relevant to a human such as digits or letters or faces.
+							<a href="https://en.wikipedia.org/wiki/Deep_learning">[Wikipedia]</a>
+						</small>
+						<img height="400" src="./images/Deep_Learning.jpg" alt="Deep Learning"
+							xstyle="border:none;box-shadow:none">
+					</div>
+				</section>
+
+				<section>
+					<div>
+						<small>
+							N. Dikkala, G. Kaplun, R. Panigrahy, "For Manifold Learning, Deep Neural Networks can be
+							Locality Sensitive Hash Functions",
+							2021, <a href="https://arxiv.org/abs/2103.06875">[arxiv]:</a>
+							<br>
+						</small>
+						<blockquote cite="https://arxiv.org/abs/2103.06875">
+							It is well established that training deep neural networks gives useful representations that
+							capture
+							essential features of the inputs.
+						</blockquote>
+						<small>
+							Every two points on the same manifold, map to (approximately) the same representation (i.e.,
+							the penultimate layer feature map),
+							while every two points from different manifolds go to far away representations.
+						</small>
+					</div>
+				</section>
+				<section data-background="#dddddd">
+					<h3>Types of deep learning</h3>
+					<ol>
+						<li>Convolutional Neural Networks, VGG, AlexNet, ResNet,...</li>
+						<li>RNNs, ELMO, LSTM, BERT, GPT, ...</li>
+						<li>Graph Convolutional Networks (GNNs), GraphSAGE, Cluster-GCN, Heterogeneous GCNs </li>
+						<ul style="color:blue;font-size:15px;line-height:1.4;">
+							<li>Laplacian matrix </li>
+							<li>Spectral Clustering</li>
+						</ul>
+					</ol>
+					<small>
+					Note: RNNs simple recursive node diagram is not perfect.
+					</small>
+				</section>
+		</section>
+
+			<section>
+				<!-- <section class="" style="top: -277px; display: block;">
+					<h3>Machine learning vs. Classical programming</h3>
+					<h4>Machine learning: a new programming paradigm</h4>
+					<img height="400" src="./images/Prog-ML-Fig1.2.png"
+						alt="Machine learning: a new programming paradigm" xstyle="border:none;box-shadow:none">
+				</section>
+ -->
+				<section>
+					<h2> Why Computer Vision is difficult? </h2>
+					<img src="images/cat01gray.png" width="300">
+
+					<p class="fragment"> How Computer see the above picture? </p>
+				</section>
+				<section>
+					<img src="images/cat01nums.png">
+				</section>
+				<section data-background-iframe="images/cat01_with_space.txt">
+				</section>
+
+			</section>
+
+			<section>
+				<!-- <section data-transition="convex">
+					<h2>Deep Learning</h2>
+					<ul class="fix-spacing">
+						<li>Neural Networks</li>
+						<li>Multiple layers</li>
+						<li>Fed with lots of Data</li>
+					</ul>
+				</section> -->
+				<section data-transition="convex" data-background="./images/GeoffHinton.jpeg"
+					data-background-opacity="0.7">
+					<h2>History of Deep Learning</h2>
+					<ul class="fix-spacing">
+						<li>1980+ : Lots of enthusiasm for NNs</li>
+						<li>1995+ : Disillusionment = A.I. Winter (v2+)</li>
+						<li>2005+ : Stepwise improvement : Depth</li>
+						<li>2010+ : GPU revolution : Data</li>
+					</ul>
+				</section>
+
+				<section data-transition="convex">
+					<h3>Who is involved</h3>
+					<table>
+						<tbody>
+							<tr>
+								<td>Google </td>
+								<td>Hinton (Toronto)</td>
+								<td><img src="images/GeoffHinton.jpeg" width="80"></td>
+							</tr>
+							<tr>
+								<td>Facebook</td>
+								<td>LeCun (NYC)</td>
+								<td><img src="images/YannLeCun.jpeg" width="80"></td>
+							</tr>
+							<tr>
+								<td>Universities</td>
+								<td>Bengio (Montreal)</td>
+								<td><img src="images/YoshuaBengio.jpeg" width="80"></td>
+							</tr>
+							<tr>
+								<td>Baidu</td>
+								<td>Ng (Stanford)</td>
+								<td><img src="images/AndrewNg.jpeg" width="80"></td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section data-background="./images/AndrewNg.jpeg" data-background-opacity="0.7">
+					<h2>Andrew Ng:</h2>
+					<blockquote cite="https://www.gsb.stanford.edu/insights/andrew-ng-why-ai-new-electricity">
+						&ldquo;AI is the new electricity.&rdquo;
+						<br>
+					</blockquote>
+				</section>
+			</section>
+
+			<section>
+				<!-- <section data-transition="convex">
+					<h3>What makes deep learning different?</h3>
+					It completely automates what used to be the most crucial step in a machine-learning workflow:
+					<br> <em> feature engineering </em>
+				</section> -->
+				<section data-transition="convex">
+					<h3>Why deep learning? Why now?</h3>
+					<p>In general, three technical forces are driving advances:</p>
+						<ol>
+							<li>Hardware<br>
+							NVIDIA GPUs, Google TPUs, AMD Radeon
+							</li>
+							<li> Algorithmic advances<br>
+								Better activation functions <br>
+								Better weight-initialization schemes<br>
+								Better optimization schemes</li>
+							<li class="fragment">Datasets and benchmarks<br>
+							Flickr, YouTube videos and Wikipedia</li>
+						</ol>
+				</section>
+				<section>
+					<h3>Before we begin: the mathematical building blocks of neural networks</h3>
+					<p>We will discuss:</p>
+					<ul class="fix-spacing">
+						<li>Tensors and tensor operations</li>
+						<li>How neural networks learn via backpropagation and gradient descent</li>
+						<li>A first example of a neural network</li>
+						<li>And then CNNs</li>
+					</ul>
+				</section>
+				<section data-background="images/PDSH-cover.png" data-background-opacity=.2>
+					<h3>We will use Python in examples</h3>
+					<table align="center">
+						<tbody>
+							<tr>
+								<td>
+									Python Data Science Handbook. Essential Tools for Working with Data
+									by: Jake VanderPlas
+								</td>
+								<td>
+									<img src="images/PDSH-cover.png">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<ul>
+						<li>Read the book in its entirety online at
+							<a href="https://jakevdp.github.io/PythonDataScienceHandbook/">
+								https://jakevdp.github.io/PythonDataScienceHandbook/</a>
+						</li>
+						<li> The book's Jupyter notebooks:
+							<a href="https://github.com/jakevdp/PythonDataScienceHandbook">
+								https://github.com/jakevdp/PythonDataScienceHandbook</a>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>Data representations for neural networks</h3>
+					<h4>Tensors</h4>
+					<img src="images/tensors.png" width="600">
+				</section>
+				<section>
+					<p align="left">
+						Don’t confuse a 5D
+						vector with a 5D tensor! A 5D vector has only one axis and has five dimensions along its
+						axis, whereas a 5D tensor has five axes (and may have any number of dimensions
+						along each axis).
+					</p>
+					<p class="fragment" align="left">Dimensionality can denote either the number of entries along a
+						specific axis (as in the case of our 5D vector) or the number of axes in a tensor (such as a
+						5D tensor), which can be confusing at times. In the latter case, it’s technically more
+						correct to talk about a tensor of rank 5 (the rank of a tensor being the number of axes),
+						but the ambiguous notation 5D tensor is common regardless.
+					</p>
+				</section>
+				<section>
+					<h4>Manipulating tensors in Numpy</h4>
+					<code> See 1_Basics.ipynb </code>in <a href="https://github.com/mamintoosi-cs/pytorch-workshop">
+						github </a>
+					<br>
+					<code> my_slice = train_images[:, 14:, 14:] </code>
+					<br><br><br>
+					<span class="fragment">
+						<h4>The notion of data batches</h4>
+						<code> batch = train_images[128 * n:128 * (n + 1)] </code>
+					</span>
+				</section>
+				<section>
+					<h4>Real-world examples of data tensors</h4>
+					<ol>
+						<li>Vector data—2D tensors of shape </li>
+						<code class="fragment"> (samples, features)</code>
+						<li>Timeseries data or sequence data—3D tensors of shape</li>
+						<code class="fragment"> (samples, timesteps, features)</code>
+						<li> Images—4D tensors of shape</li>
+						<code
+							class="fragment"> (samples, height, width, channels)  or  <br>(samples, channels, height, width)</code>
+						<li> Video—5D tensors of shape </li>
+						<small>
+							<code
+								class="fragment"> (samples, frames, height, width, channels) or  <br>
+								(samples, frames, channels, height, width)
+							</code>
+						</small>
+					</ol>
+				</section>
+				<!-- <section>
+					<h3> The gears of neural networks: tensor operations </h3>
+					<ol>
+						<li>Element-wise operations</li>
+						<li>Broadcasting</li>
+						<li>Tensor dot</li>
+						<li>Tensor reshaping</li>
+					</ol>
+				</section>
+				<section>
+					<h3>Tensor Operations</h3>
+					<code>Numpy-Operations</code>
+					<pre>
+	 <code class="hljs" data-trim>
+import numpy as np
+x = np.random.random((3, 2))
+print(x)
+y = np.ones((2,))/2
+print(y)
+z = np.maximum(x, y)
+print(z.shape)
+print(z)
+z = x+y
+print(z)
+z = x*y
+print(z)
+	 </code>
+	 </pre>
+				</section>
+				<section>
+					<h3>A geometric interpretation of deep learning</h3>
+					<img src="images/Figure 2.9 Uncrumpling.jpg">
+				</section> -->
+			</section>
+
+			<section>
+				<section>
+					<h3> The engine of neural networks: gradient-based optimization </h3>
+					<ol>
+						<li>What’s a derivative?</li>
+						<li>Derivative of a tensor operation: the gradient</li>
+						<li>Stochastic gradient descent</li>
+						<li>Chaining derivatives: the Backpropagation algorithm</li>
+					</ol>
+				</section>
+				<section>
+					<h3> Intro to optimization in deep learning </h3>
+					<ol>
+						<li><a
+								href="https://blog.paperspace.com/intro-to-optimization-in-deep-learning-gradient-descent/">Intro
+								to optimization in deep learning: Gradient Descent</a></li>
+						<li><a href="https://blog.paperspace.com/intro-to-optimization-momentum-rmsprop-adam/">Intro to
+								optimization in deep learning: Momentum, RMSProp and Adam</a></li>
+						<li><a href="https://blog.paperspace.com/busting-the-myths-about-batch-normalization/">Intro to
+								optimization in deep learning: Busting the myth about batch normalization</a></li>
+						<li><a
+								href="https://towardsdatascience.com/adam-latest-trends-in-deep-learning-optimization-6be9a291375c">Adam
+								— latest trends in deep learning optimization</a></li>
+					</ol>
+				</section>
+				<section>
+					<!-- <h3>Various Gradient Descent Algorithms</h3> -->
+					<h4><a href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent"> 
+						Stochastic Gradient Descent </a></h4>
+					<table>
+						<tr>
+							<td>
+								<!-- $$w = w - \eta \nabla E(w)$$ -->
+								<img src="images/sgd.png" border="none">
+							</td>
+							<td>
+								<img src="images/saddle_point_evaluation_optimizers.gif">
+							</td>
+						</tr>
+					</table>
+				</section>
+
+			</section>
+
+			<section>
+				<section>
+					<h3>Auto Gradient</h3>
+					<ul>
+						<li>
+							<a href="https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html">
+								A Gentle Introduction to torch.autograd - PyTorch
+							</a>
+						</li>
+						<li><a
+								href="https://blog.paperspace.com/pytorch-101-understanding-graphs-and-automatic-differentiation/">pytorch-101-understanding-graphs-and-automatic-differentiation</a>
+						</li>
+						<li><a
+								href="https://www.kaggle.com/residentmario/pytorch-autograd-explained">pytorch-autograd-explained</a>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Auto Gradient in PyTorch</h3>
+					<code>See 2_Autograd.ipynb </code>in <a href="https://github.com/mamintoosi-cs/pytorch-workshop">
+						github </a>
+					<br>
+					<pre>
+					<code class="hljs" data-trim>
+						from torch import autograd
+						x = torch.Tensor([4])
+						x.requires_grad_()
+						y = torch.Tensor([0])
+						y.requires_grad_()
+
+						f = 5 * x**2 + 3*torch.sin(y)
+
+						df_dx = autograd.grad(f, x)[0]
+						print("∂f/∂x| x=4 :", df_dx.item())
+
+						df_dy = autograd.grad(f, y)[0]
+						print("∂f/∂y| y=0 :", df_dy.item())
+					</code>
+	∂f/∂x| x=4 : 40.0
+	∂f/∂y| y=0 : 3.0
+					</pre>
+				</section>
+				<section>
+					<h3>Auto Gradient for Regression</h3>
+					$y = b + w x + \epsilon$<br>
+					<img src="images/regression.png" width="500" class="fragment">
+					<div class="fragment">
+						<small>
+							<code>See 3_Regression_Gradient_Descent.ipynb </code>in <a
+								href="https://github.com/mamintoosi-cs/pytorch-workshop">
+								github </a>
+						</small>
+						<br>
+						<pre>
+									<code class="hljs" data-trim>
+									for epoch in range(num_epochs):
+										y_hat = b + w * xTrain
+										error = (y_hat - yTrain)
+										loss = (error ** 2).mean()
+										loss.backward()
+										with torch.no_grad():
+											b -= lr * b.grad
+											w -= lr * w.grad
+											b.grad = None
+											w.grad = None
+									</code>
+									</pre>
+					</div>
+				</section>
+
+				<!-- <section>
+					<h3>Some confusing items</h3>
+					<ul>
+						<li>Assignment operator = </li>
+						<ul>
+							<li>Copy tensors</li>
+							<li>y = 2 * torch.dot(x, x)</li>
+						</ul>
+						<li> Rerun commands</li>
+						<ul>
+							<li>y.backward()</li>
+							<li>The whole program</li>
+						</ul>
+					</ul>
+				</section> -->
+			</section>
+
+			<section>
+				<section>
+					<h3>A first look at a neural network</h3>
+					Digit Classification
+					<br>
+					<img src="images/MLP_anim_1.gif" width="700">
+
+				</section>
+				<section>
+					<code>See 4_MLP_Digit_Classification.ipynb </code>in <a
+						href="https://github.com/mamintoosi-cs/pytorch-workshop">
+						github </a>
+					<br>
+					Multi-layer Perceptron
+					<pre>
+	 <code class="hljs" data-trim>
+	class MyMultilayerPerceptron(nn.Module):
+		def __init__(self, input_size, h_dim, num_classes):
+			super(MyMultilayerPerceptron, self).__init__()
+			
+			self.input_size = input_size
+			self.num_classes = num_classes
+			
+			self.linear_1 = nn.Linear(input_size, h_dim)
+			self.linear_2 = nn.Linear(h_dim, num_classes)
+		
+		def forward(self, x):
+			x = F.relu(self.linear_1(x))
+			x = F.relu(self.linear_2(x))
+			return F.softmax(x)
+	</code>
+	 </pre>
+				</section>
+				<section>
+					<br>
+					The overall training framework in PyTorch
+					<pre>
+	 <code class="hljs" data-trim>
+		# model is a regression or classification
+		optimizer = torch.optim.SGD(model.parameters(), lr=1e-3)  
+		
+		for epoch in range(num_epochs):
+		  for (inputs, labels) in data_loader:
+			# Do Forward -> Loss Computation -> Backward -> Optimization
+			optimizer.zero_grad()
+			outputs = model(inputs)
+			# loss is prediction error, such as: Sum(outputs-labels)^2
+			loss.backward()
+			optimizer.step()
+	</code>
+	 </pre>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>Compilation step</h3>
+					<ul>
+						<li>An optimizer—The mechanism through which the network will update itself
+							based on the data it sees and its loss function.
+						</li>
+						<li class="fragment">A loss function—How the network will be able to measure its performance on
+							the training data, and thus how it will be able to steer itself in the right direction.
+						</li>
+						<li class="fragment"> Metrics to monitor during training and testing—Here, we’ll only care about
+							accuracy (the fraction of the images that were correctly classified)
+						</li>
+					</ul>
+					<span class="fragment" align="left">Online Documentation:
+						<a href="https://pytorch.org/"> PyTorch </a>
+					</span>
+				</section>
+				<section data-background-iframe="https://pytorch.org/" data-background-interactive>
+					<!--
+	<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0.9, 0.9, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
+		<h2>Keras Documentation</h2>
+		<p>Since reveal.js runs on the web, you can easily embed other web content. Try interacting with the page in the background.</p>
+	</div>-->
+				</section>
+				<section>
+					<h3>Image Classification with CNNs</h3>
+					<img src="images/cnn_anim_2_digits.gif" width="700">
+				</section>
+			</section>
+
+
+
+			<section>
+				<section>
+					<code>Introduction to convnets</code>
+					<br>
+					Image Classification
+					<br> Overall Model:
+					<br>
+					<img src="images/digitCNN.jpeg">
+				</section>
+				<section>
+					<img src="images/cnn_layers.png" width="700">
+				</section>
+				<section>
+					<h3>Understanding convolutional neural networks</h3>
+					<ol>
+						<li><a
+								href="http://deeplearning.net/software/theano_versions/0.9.X/tutorial/conv_arithmetic.html">Convolution
+								arithmetic tutorial</a>
+						</li>
+						<li><a href="https://mlblr.com/includes/mlai/index.html#ml-amp-ai"> Machine Learning and AI
+								- Bangalore Chapter</a></li>
+						<li><a
+								href="https://towardsdatascience.com/counting-no-of-parameters-in-deep-learning-models-by-hand-8f1716241889">
+								Counting No. of Parameters in Deep Learning Models by Hand</a></li>
+					</ol>
+				</section>
+
+			</section>
+			<!-- <section> -->
+			<section>
+				<!-- <section data-background-iframe="https://tensorspace.org/html/playground/trainingLeNet.html"
+					data-background-interactive>
+				</section>
+
+				<section
+					data-background-iframe="http://deeplearning.net/software/theano_versions/0.9.X/tutorial/conv_arithmetic.html#"
+					data-background-interactive>
+				</section>
+
+				<section data-background-iframe="https://mlblr.com/includes/mlai/index.html#ml-amp-ai"
+					data-background-interactive>
+				</section> -->
+				<!-- </section>
+			<section> -->
+				<section>
+					<h3>Mathematical definition of Convolution</h3>
+					<img src="images/conv.png" width="750"><br>
+					Source: <a href="https://en.wikipedia.org/wiki/Convolution">Wikipedia</a>
+					<small class="fragment">
+						In the following for the sake of simplicity we ignore the accurate definition of convolution<br>
+						Please see other resources such as :
+						<a href="http://www.inf.ed.ac.uk/teaching/courses/cfcs1/lectures/cfcs_l15.pdf">
+							Convolutions and Kernels
+						</a>
+					</small>
+				</section>
+
+				<section>
+					<h4>Differentiation, Inner Product and Convolution</h4>
+					<small>
+						<!-- Convolution in nothing, but a weighted averaging<br> -->
+						<img src="images/derivative.png" width="500" class="fragment">
+						<br>
+						<div class="fragment">
+							Edge extraction is a simple derivative:<br>
+							One of the edge detection operators is Prewitt filter:
+							<br>
+							<table style="border: 1px solid black">
+								<tr>
+									<td>-1</td>
+									<td>0</td>
+									<td>+1</td>
+								</tr>
+								<tr>
+									<td>-1</td>
+									<td>0</td>
+									<td>+1</td>
+								</tr>
+								<tr>
+									<td>-1</td>
+									<td>0</td>
+									<td>+1</td>
+								</tr>
+							</table>
+						</div>
+					</small>
+				</section>
+<!-- An n-D convolution is when two functions or tensors are convolved along [math]n[/math] axes.
+In an RGB image, the image is [math]a*b*3[/math] and the convolutional filters are [math]c[/math][math]*d*3[/math]. Since their third dimensions are equal, there is no need to convolve along that axis. 
+You only convolve along the first two axes, making it a 2D convolution.
+Convolutions were originally defined for functions and functions can have vector outputs.
+ In the case of an RGB image, the image is acting as the function, its input is the [math](x,y)[/math] coordinates and its output is a vector of length 3. The same is true for the filter. When you think of it that way, 
+you can see how it follows the definition of a 2D convolution more clearly. -->
+				<section>
+					<small> Online
+						<a href="https://fiveko.com/online-tools/edge-detection-gradient-operators-demo/">
+							Edge Detection: Gradient operators Demo
+						</a><br>
+						<code>See App_Image.ipynb </code>in <a href="https://github.com/mamintoosi-cs/pytorch-workshop">
+							github </a>
+						<br>
+						</small>
+					<table>
+						<tr>
+							<td></td>
+							<td><img src="images/Soleymani_mellat.jpg" width="450"></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><img src="images/Soleymani_mellat_V.jpg" width="450"></td>
+							<td><img src="images/Soleymani_mellat_H.jpg" width="450"></td>
+							<td><img src="images/Soleymani_mellat_generic.jpg" width="450"></td>
+						</tr>
+					</table>
+				</section>
+			</section>
+			<section>
+
+				<section>
+					<code>See 5_CNN_CIFAR.ipynb </code>in <a href="https://github.com/mamintoosi-cs/pytorch-workshop">
+						github </a>
+					<br>
+					Image Classification <br>
+					<small>
+						<pre>
+						 <code class="hljs" data-trim>
+							import torch.nn as nn
+							import torch.nn.functional as F
+							class Net(nn.Module):
+								def __init__(self):
+									super().__init__()
+									self.conv1 = nn.Conv2d(3, 6, 5)
+									self.pool = nn.MaxPool2d(2, 2)
+									self.conv2 = nn.Conv2d(6, 16, 5)
+									self.fc1 = nn.Linear(16 * 5 * 5, 120)
+									self.fc2 = nn.Linear(120, 84)
+									self.fc3 = nn.Linear(84, 10)
+							
+								def forward(self, x):
+									x = self.pool(F.relu(self.conv1(x)))
+									x = self.pool(F.relu(self.conv2(x)))
+									x = torch.flatten(x, 1) # flatten all dimensions except batch
+									x = F.relu(self.fc1(x))
+									x = F.relu(self.fc2(x))
+									x = self.fc3(x)
+									return x
+							
+							model = Net()
+						 </code>
+						 </pre>
+					</small>
+				</section>
+				<section>
+					<code>See 5_CNN_CIFAR.ipynb </code>in <a
+						href="https://github.com/mamintoosi-cs/pytorch-workshop">
+						github </a>
+					<br>
+					Digit Classification
+					<pre>
+						 <code class="hljs" data-trim>
+	for (inputs, labels) in data_loader:
+		inputs = inputs.to(device)
+		labels = labels.to(device)
+		
+		# original shape is [batch_size, 28, 28] because it's an image of size 28x28
+		inputs = inputs.view(-1, 28*28)
+
+		# Do Forward -> Loss Computation -> Backward -> Optimization
+		optimizer.zero_grad()
+		outputs = model(inputs)
+		loss = criterion(outputs, labels)
+		loss.backward()
+		optimizer.step()
+							</code>
+						 </pre>
+				</section>
+
+				<!-- <section>
+					<code>Introduction to convnets</code>
+					<br>
+					Number of Parameters
+					<pre>
+----------------------------------------------------------------
+	Layer (type)           Output Shape         Param #
+================================================================
+	Conv2d-1            [-1, 6, 28, 28]             456
+	MaxPool2d-2         [-1, 6, 14, 14]               0
+	Conv2d-3           [-1, 16, 10, 10]           2,416
+	MaxPool2d-4          [-1, 16, 5, 5]               0
+	Linear-5                  [-1, 120]          48,120
+	Linear-6                   [-1, 84]          10,164
+	Linear-7                   [-1, 10]             850
+================================================================
+Total params: 62,006
+Trainable params: 62,006
+		 </pre>
+				</section> -->
+			</section>
+
+			<section>
+				<section>
+					There are various architectures of CNNs available<br>
+					LeNet, AlexNet, VGGNet, GoogLeNet, ResNet, ZFNet <br>
+					<img src="images/acc_vs_net_vs_ops.svg">
+				</section>
+				<section>
+					<a href="https://neurohive.io/en/popular-networks/vgg16/">
+						VGG16 Architecture </a><br>
+					<small>VGG16 has more than 130M parameters</small><br>
+					<img src="images/vgg16_2class.png"><br>
+					Source: <a href="https://math-sci.ui.ac.ir/article_25351.html"> My Paper</a>
+				</section>
+				<section data-background="images/nvidia-gtx-titan-black.jpg" data-background-opacity=.2>
+					VGG16 is a convolutional neural network model proposed by K. Simonyan and A. Zisserman from the
+					University of Oxford in the paper “Very Deep Convolutional Networks for Large-Scale Image
+					Recognition”. The model achieves 92.7% top-5 test accuracy in ImageNet, which is a dataset of
+					over 14 million images belonging to 1000 classes. VGG16 was trained for weeks and was using
+					NVIDIA Titan Black GPU’s.
+				</section>
+				<section>
+					<h3>Language Models </h3><br>
+					<img width="700" src="images/number-of-model-parameters-from-Elmo-to-Turing-NLG-1536x917.png">
+					<br>
+					Source: <a href="https://research.aimultiple.com/gpt/">https://research.aimultiple.com/gpt/</a>
+				</section>
+			</section>
+
+			<section>
+				<!-- <section>
+					ML vs DL <br>
+					<img src="images/MLvsDL_ces2016.png">
+				</section> -->
+				<section>
+					Some Outputs using <a href="https://pjreddie.com/darknet/yolo/"> YOLO</a><br>
+					<small>You only look once (YOLO)</small><br>
+					<img src="images/out_01.jpg" height="250">
+					<img src="images/yolo_pred.jpg" height="250">
+				</section>
+				<section>
+					Our Outputs using Mask-RCNN 
+					(<a href="https://ieeexplore.ieee.org/document/8372616"> PAMI paper 2020</a>) <br>
+					<img src="images/1_2 (9).jpg" height="350">
+					<img src="images/1_5 (12).jpg" height="350">
+				</section>
+				<section>
+					Our Outputs (continue...) <br>
+					<img src="images/1_4 (28).jpg" width="500"><br>
+					Additional outputs on my Github: <a
+							href="https://github.com/mamintoosi/tree-detection">Tree Detection</a>
+				</section>
+				<section data-transition="convex" data-background="./images/fox2_feathers.jpg"
+				data-background-opacity="0.5">
+				<h3> Neural style transfer</h3>
+				<ol>
+					<li>My Pages at: mamintoosi.ir:
+						<a href="http://mamintoosi.ir/wp/neural-style-transfer/">Neural Style Transfer</a>,
+						<a href="http://mamintoosi.ir/wp/fast-style-transfer/">Fast Style Transfer</a>
+					</li>
+					<li>Additional outputs on my Github: <a
+							href="https://github.com/mamintoosi/MMM-Artistic-photoes">Foxes</a></li>
+					<li><a href="https://github.com/mamintoosi/ST-for-DA-in-FD">My paper about fire detection</a>
+					</li>
+				</ol>
+			</section>
+
+			</section>
+
+			<section>
+				<section>
+					<h3>Generative Adversarial Networks</h3>
+					<img src="images/GAN-generated_image.jfif" width="500">
+					<br>
+					<a href="https://thispersondoesnotexist.com" class="fragment">thispersondoesnotexist.com </a>
+				</section>
+				<!-- <section>
+					<img src="images/face-off.jpg" width="400">
+				</section> -->
+
+				<section>
+					<img src="images/generative-adversarial-network.png">
+				</section>
+				<section>
+					<img src="images/Accenture-Generative-Adversarial-Network-Model-Architecture.jpg">
+					برای آشنایی با شبکه‌های مولد رقابتی، ‌پایان‌نامه خانم سیده‌افسانه صالحی با عنوان
+					<a href="https://www.dropbox.com/s/avcilc9cguk75fx/1399-Salehi-GAN.pdf?dl=0">
+					شبکه مولد رقابتی وسراستین
+					</a>
+					را ملاحظه فرمایید					
+				</section>
+			</section>
+
+			<section>
+				<section data-background="./images/AndrewNg.jpeg" data-background-opacity="0.7">
+					<h2>Andrew Ng:</h2>
+					<blockquote
+						cite="https://www.quora.com/Is-it-better-for-a-beginner-to-first-get-used-to-mathematics-required-for-machine-learning-then-start-with-the-coding">
+						&ldquo;Data is food for AI&rdquo;
+					</blockquote>
+					<small>
+						He simply means that without data, the model is useless. You must have good quality, well
+						cleansed data in order to produce a high quality model.<br>
+						In the real-world data is dirty as hell.<br>
+						Ng observes that 80% of the AI developer’s time is spent on data preparation.<br>
+					</small>
+					<blockquote
+						cite="https://www.quora.com/Is-it-better-for-a-beginner-to-first-get-used-to-mathematics-required-for-machine-learning-then-start-with-the-coding">
+						&ldquo;The model and the code for many applications are basically a solved problem&rdquo;
+					</blockquote>
+					<!-- “Now that the models have advanced to a certain point, we got to make the data work as well.” -->
+				</section>
+
+				<section>
+					<h2>دنیای واقعی</h2>
+					<h3>آشنایی با موضوع کاری</h3>
+					<h3>،برنامه‌نویسی</h3>
+					<h3>زبان‌های مختلف، مخصوصاً پایتون </h3>
+					<h3>SQL</h3>
+					<h3>لینوکس و یک سری ابزار همچون گیت و داکر</h3>
+					<small>برای خبره شدن، باید ده هزار ساعت وقت بگذارید</small>
+				</section>
+
+				<section>
+					<h4> آماده‌سازی داده‌ها ۸۰ درصد کار است، فقط ۲۰ درصد مدلسازی است
+						<br>
+						که عموما راه حلش موجود است
+					</h4>
+					<small>
+						<a
+							href="https://www.quora.com/How-can-you-tell-if-someone-is-truly-an-expert-in-machine-learning">Mike
+							West:</a><br>
+						Machine learning engineers do NOT create models, they call them.
+						<br>
+						Data cleansing is 80% of my job.
+						<br>
+						Modeling is about 10% and it’s the easy part.
+						<!-- <br>
+						<img src=images/DataCleaning.png width="600" class="fragment fade-out visible"> -->
+						<br>
+						<img src=images/DataPipeline.jpg style="height: 70vh;max-width: 100%;object-fit: contain">
+					</small>
+				</section>
+
+				<section>
+				<h4>More data is better than of tweaking algorithms in practice</h4>
+				<small>
+ Ron Zacharski:
+ <blockquote
+						cite="http://guidetodatamining.com/">
+						This isn't to say that you shouldn't pick the best algorithm for the job. As we have already 
+						seen picking a good algorithm makes a significant difference. However, if you are trying to solve a practical problem (rather than publish a research paper) it might not be worth your 
+						while to spend a lot of time researching and tweaking algorithms. You will perhaps get more bang for your buck—or a better return on your time—if you concentrate on getting more data.
+					</blockquote>
+				 Source: 
+				<a href="http://guidetodatamining.com/">A Programmer's Guide to Data Mining</a>
+				</small>
+				</section>
+			</section>
+			
+
+			<section>
+				<section>
+					<div dir="rtl" align="right">
+						<h3>موانع ریاضی‌ورزان، تفاوت عمل و نظر</h3>
+						<small>
+							<ol>
+								<li> پارک = پنچری </li>
+								<span class="fragment">
+									<li> عدم قطعیت، مجموع عناصر یک آرایه حتی در یک زبان و در یک سیستم ممکن است با دو روش
+										متفاوت باشد! </li>
+									<li> ۱۰ تا یک دهم، ممکن است یک نشود</li>
+									<li>انتساب یک متغیر در دیگری، کپی اولی ممکن است نشود </li>
+									<li> عملیات ماتریسی آن چیزی که انتظارش را دارید ممکن است نشود</li>
+									<li> Broadcasting </li>
+									<li> دوبار اجرا یک نتیجه را ممکن است ندهد</li>
+									<li> مشکلات مربوط به مسیر فایلها و داده‌ها </li>
+									<li> عدم وجود راهنمای آفلاین کامل</li>
+									<li> ممکن است همه چیز درست باشد، فقط ری‌استارت سیستم لازم باشد</li>
+									<li> ممکن است همه مراحل یک کار را بروید، اما احتمال پاسخ گرفتن یک درصد باشد</li>
+									<li>تفاوت ترتیب و جهت محورهای مختصات ریاضی و ماتریسی</li>
+								</span>
+							</ol>
+						</small>
+					</div>
+				</section>
+
+				<section>
+					<div dir="rtl" align="right">
+						<h3>موانع ریاضی‌ورزان، تفاوت عمل و نظر</h3>
+						<small>
+							<ol start="13">
+								<li> چندین بخش تصادفی در روال کار </li>
+								<li> دستورات خلاصه و عدم استفاده از حلقه </li>
+								<li> یکسان نبودن نام مستعار و نام اصلی Pytorch, torch </li>
+								<li> تغییرات همیشگی - latex </li>
+								<li> Windows, Linux </li>
+								<li> برخلاف تصور معمول در مورد ماتریسها، در پایتون با یک اندیس میشه به سطرهای ماتریس‌ها
+									دسترسی داشت و گاهی این تصور باعث اشتباه محاسباتی می‌شود</li>
+								<li>برنامه را در فایل عوض می‌کنید اما برنامه قبلی اجرا می‌شود!</li>
+								<li> ایکس معلوم است نه مجهول </li>
+								<li> برخی فراخوانی‌ها توسط مقدار است، برخی توسط ارجاع </li>
+							</ol>
+						</small>
+					</div>
+				</section>
+				<section >
+					<small>
+					<table align="center">
+							<tr>
+								<td>
+									Mike has Bachelor of Science degrees in Business and Psychology. 
+									He started his career as a middle school psychologist prior to moving into the information technology space. 
+									His love of computers resulted in him spending many additional hours working on computers while studying for his master's degree in Statistics. 
+									His current areas of interests include Machine Learning, Data Engineering and SQL Server.
+								</td>
+								<td>
+									<img src="images/MikeWest.jpg" width="500"><br>
+									<a href="https://www.pluralsight.com/authors/mike-west">Mike West</a>
+								</td>
+							</tr>
+					</table>
+					<a href="https://www.packtpub.com/product/authoring-machine-learning-models-from-scratch-video/9781803238272">
+						Mike West</a>
+						 is the founder of <a href="https://www.logikbot.com">
+						 LogikBot</a>. He has worked with databases for over two decades. 
+					He has worked for or consulted with over 50 different companies as a full-time employee or consultant. 
+					<!-- These were Fortune 500 as well as several small to mid-size companies. Some include Georgia Pacific, SunTrust, Reed Construction Data, Building Systems Design, NetCertainty, 
+					The Home Shopping Network, SwingVote, Atlanta Gas and Light, and Northrup Grumman. -->
+				</small>
+				</section>
+
+			</section>
+			<section>
+				<section align="left">
+					<h4><a
+							href="https://www.quora.com/Should-a-machine-learning-beginner-go-straight-for-deep-learning">
+							Mike West answer to: Should a machine learning beginner go straight for deep learning?
+						</a>
+					</h4>
+					<small>
+						Nope. Why would go start with deep learning when you don’t know the first thing about machine
+						learning or Python?<br>
+
+						غوره نشدی مویز گشتی!<br>
+
+						What in the hell would you create? You’d just be a copy/paste kid. Honeslyt, this is what most
+						people do anyhow. It’s why there are over 400K open jobs in AI that aren't being filled and
+						won’t be filled any time soon.<br>
+
+						How to Learn Machine Learning?<br>
+
+						Understanding what you need to learn is easy. Doing what you need to do to learn it is brutally
+						difficult.<br>
+
+						There are no <em>shortcuts</em> and it’s not a short process. Companies aren’t handing out 250K
+						salaries for something that can be learned in a few months.<br>
+					</small>
+				</section>
+				<section align="left">
+					<small>
+						<b>What do you need to learn and why?</b><br>
+
+						<b>SQL.</b> Why? Because all machine learning models are fed data. The cleaner your data the
+						more
+						accurate your model. Most machine learning models right now are based on data from relational
+						data stores. All relational data stores speak SQL. You’ll need to write the Query to extract
+						that data for modeling. Real-world data is dirty and working with it sucks. If you don’t have
+						SQL skills you’re doomed.<br>
+						<b>Python.</b> Why? Python has become the gold standard for machine learning in the real-world.
+						It’s
+						the language you’ll use for just about everything once your data is amalgamated in a data store
+						or CSV file.<br>
+						<b>Libraries.</b> Why and what are they? A library is code that’s pre-bundled. You simply have
+						to
+						import the library to use all the functionality. Libraries are as important as Python. If you
+						don’t know the libraries you won’t get a job. There are libraries for just about every facet to
+						machine learning. You don’t have to know all the libraries, but there are a core group you’ll
+						use every day. These you must know. Pandas, Scikit-Learn, XGBoost, matplotlib… a few more.<br>
+						<b>Data Cleansing.</b> Why and what is it? Data cleansing are all the tasks you’ll need to learn
+						to
+						prepare your data for modeling. Remember when I said data was dirty? Extracting your data is the
+						first part when working with data. The fun part is data cleansing. It’s what you’ll spend more
+						of your time doing. I promise. Read this comment from the world’s top AI researcher Andrew
+						Ng:<br>
+						<em>Ng observes that 80% of the AI developer’s time is spent on data preparation.</em>
+					</small>
+				</section>
+				<section align="left">
+					<small>
+						<b>Applied Statistics.</b> Why? The process of working with a dataset and developing a
+						predictive model
+						is also a task in statistics. Although statistics is a large field with many esoteric theories
+						and findings, the nuts and bolts tools and notations taken from the field are required for
+						machine learning practitioners. You’ll use those libraries we talked about above, mostly
+						Scikit-Learn, to apply statistical techniques to your data. That part of data cleansing, knowing
+						what statistical techniques to apply when and why. Notice the word applied? Applied means just
+						that, applying the statistical techniques that are already written. You don’t do any statistical
+						calculation yourself. They are written inside of the libraries.<br>
+						<b>Modeling.</b> Why? A model is simply a computer algorithm or group of them that look for
+						patterns in
+						your data. When they find a pattern they return and output. We call them models. There are
+						different types of models for different types of problems. For example, the most common type of
+						task in the real-world is classification. A group of ensemble models excel at this task. They
+						are called gradient boosters. When you’re working with structured data and your problem is a
+						classification task, you’ll want to use a gradient boosters. There are two core types of models.
+						They are called traditional models and deep learning models and each has their own use case.
+						More from Ng:<br>
+						<em>“The model and the code for many applications are basically a solved problem,” says Ng. “Now
+							that the models have advanced to a certain point, we got to make the data work as well.”
+						</em>
+					</small>
+				</section>
+				<section align="left">
+					<small>
+						<b>Tuning.</b> What is it? Tuning a model means making tweaks to parameters called
+						hyperparameters. The
+						default model might not provide you with the best result. So, you’ll need to know what
+						hyperparameters to tune for a given model. Yes, different models will have different
+						hyperparameters. However, since you really won’t be using that many models in the real-world,
+						learning them isn’t that difficult and the default model is pretty well tuned.<br>
+						<b>Production.</b> Why? The only reason you’re going through all this work is so that you can
+						produce a
+						model that will make a prediction on fresh data. Fresh data is data the model has never seen.
+						This is the end goal of all models. Now, how a model is put in production will depend on the
+						type of model. If the model is real-time, a front end will need to be created so it can be
+						consumed. If the model is batch, then you’ll need to create that process to output the file to a
+						location where the results can be consumed.<br>
+						<!--<b>Niches.</b> Why? There are many different subfield you can move into after you have a foundation in
+						machine learning. For example, there are people who only study NLP or Natural Language Process.
+						There are others that only study computer vision. Yet others study reinforcement learning. I
+						focus solely on gradient boosters and ensemble models because they are the gold standard for
+						regression and classification, the most seen problems in the real-worlds.-->
+					</small>
+				</section>
+
+			</section>
+			<section hidden="" class="future" style="top: -270.5px; display: none;">
+				<h3>- Questions? -</h3>
+				<br>
+				m.amintoosi @ gmail.com
+				<br>
+				<p>webpage : <a href="http://mamintoosi.ir/">http://mamintoosi.ir</a></p>
+				<p>webpage in github : <a href="https://mamintoosi.github.io/">http://mamintoosi.github.io</a></p>
+				<p>github : <a href="https://github.com/mamintoosi">mamintoosi</a></p>
+				<hr>
+				<!-- <small>
+ <p> مطالب و سبک اسلاید برگرفته از 
+	<a href="https://github.com/mdda/deep-learning-workshop"> Martin Andrews </a>
+	و
+	<a href="https://hameds.github.io/slides/"> سعیدی‌فرد </a>
+ </p>
+ </small>
+-->
+			</section>
+
+		</div>
+
+	</div>
+
+	<script src="../../js/reveal.js"></script>
+
+	<script>
+
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			center: true,
+			hash: true,
+			slideNumber: true,
+
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [
+				{ src: '../../plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: '../../plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: '../../plugin/highlight/highlight.js', async: true },
+				{ src: '../../plugin/search/search.js', async: true },
+				{ src: '../../plugin/zoom-js/zoom.js', async: true },
+				{ src: '../../plugin/notes/notes.js', async: true }
+			]
+		});
+
+	</script>
+
+</body>
+
+</html>
