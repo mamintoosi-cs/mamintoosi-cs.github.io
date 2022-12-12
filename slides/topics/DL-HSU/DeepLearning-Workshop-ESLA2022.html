@@ -1047,6 +1047,16 @@ Convolutions were originally defined for functions and functions can have vector
  In the case of an RGB image, the image is acting as the function, its input is the [math](x,y)[/math] coordinates and its output is a vector of length 3. The same is true for the filter. When you think of it that way, 
 you can see how it follows the definition of a 2D convolution more clearly. -->
 				<section>
+					<h3>Sobel Filter</h3>
+					<small align="left">
+						If we define A as the source image, and Gx and Gy are two images which at each point contain the horizontal and vertical derivative approximations respectively, the computations for are as follows (<a href="https://en.wikipedia.org/wiki/Sobel_operator">source wiki</a>):
+					</small>
+					<img src="images/Sobel_01.png" width="500">
+					<p class="fragment">
+						<img src="images/convSobel.gif" width="400">
+					</p>
+				</section>
+				<section>
 					<small> Online
 						<a href="https://fiveko.com/online-tools/edge-detection-gradient-operators-demo/">
 							Edge Detection: Gradient operators Demo
@@ -1070,7 +1080,63 @@ you can see how it follows the definition of a 2D convolution more clearly. -->
 				</section>
 			</section>
 			<section>
-
+				<section>
+					<h3>Laplacian</h3>
+					<small align="left">
+					The Laplace operator is a second-order differential operator in the n-dimensional Euclidean space, defined as the divergence ($\nabla \cdot$) of the gradient ($\nabla f$). Thus if $f$ is a twice-differentiable real-valued function, then the Laplacian of $f$ is the real-valued function defined by:<br>
+$\Delta f=\nabla ^{2}f=\nabla \cdot \nabla f$<br>
+</small>
+<br>
+<img src="images/first_and_second_derivative.webp" width="550">
+</section>
+<section>
+	<h3>Laplacian</h3>
+	<small align="left">
+		As we saw [-1,0,1] demonstrate Prewitt filter weights, which is a first order derivative; The filter weights for Laplacian is [1,-2,1]
+		<br>
+		Convolving [-1,0,1] with your image basically computes the difference between the pixel values of the neighboring pixels:<br>
+	<center>
+		[1,-2,1]<br>
+	next pixel - previous pixel,
+	</center>
+	The Laplacian operator looks something like [1, -2, 1]. This computes the difference of differences. To see how, note that [1,-2,1] corresponds to:<br>
+<center>
+next - 2 x current + previous
+</center>
+<br>
+<center>
+next - current - current + previous
+<br>
+(next-current) - (current-previous)
+</center>
+<br>
+Now notice how this is a diference of differences. (next - current) is like a 1st derivative. (current - previous) is like 1st derivative. Their difference is like a 2nd derivative.
+					</small>
+				</section>
+				<section>
+					<img src="images/laplacian_01.png" width="450"><br>
+					Adding these two kernels:<br>
+					<img src="images/laplacian_02.png" width="450">
+					<p class="fragment">
+					<!-- In another words<br> -->
+					<img src="images/Laplacian_01.webp" width="500">
+					</p>
+				</section>
+				<section>
+					<h3>Laplacian</h3>
+					<small>
+						<code>See App_Image.ipynb </code>in <a href="https://github.com/mamintoosi-cs/pytorch-workshop">
+							github </a>
+						</small><br>
+					<table>
+						<tr>
+							<td><img src="images/Soleymani_mellat.jpg" width="450"></td>
+							<td><img src="images/Soleymani_mellat_LoG.png" width="450"></td>
+						</tr>
+					</table>
+				</section>
+			</section>
+			<section>
 				<section>
 					<code>See 5_CNN_CIFAR.ipynb </code>in <a href="https://github.com/mamintoosi-cs/pytorch-workshop">
 						github </a>
