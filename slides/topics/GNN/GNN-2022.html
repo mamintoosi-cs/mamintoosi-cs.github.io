@@ -232,8 +232,22 @@ h1 {
 		</section>
 		<section data-background-iframe="https://distill.pub/2021/gnn-intro" data-background-interactive>
 		</section>
+		<section>
 		<section data-background-iframe="https://mamintoosi.github.io/slides/topics/DL-HSU/DeepLearning-Workshop-ESLA2022.html" data-background-interactive>
 		</section>
+		<section>
+			<img src="../GNN/images/GNN-Conv.png">
+		</section>
+		<section>
+			<img src="images/image-vs-graph.jpg" width="800">
+			<!-- <img src="../GNN/images/2-Figure1-1.png">
+			<br>
+			<a href="https://www.semanticscholar.org/paper/A-Comprehensive-Survey-on-Graph-Neural-Networks-Wu-Pan/81a4fd3004df0eb05d6c1cef96ad33d5407820df">Source</a> -->
+		</section>
+		<section>
+			<img src="../DL-HSU/images/Laplacian_01.webp" width="800">
+		</section>
+	</section>
 		<section data-background-iframe="https://distill.pub/2021/understanding-gnns/" data-background-interactive>
 		</section>
 		<section>
@@ -275,6 +289,8 @@ h1 {
 				<h4>موارد نظری مرتبط</h4>
 				<small>
 					<ul>
+						<li>Machine Learning and Data Mining</li>
+						<li>Calculus, Statistics</li>
 						<li>Graphs</li>
 						<ul style="color:blue;font-size:15px;line-height:1.4;">
 							<li>Adjacency Matrix</li>
@@ -283,7 +299,7 @@ h1 {
 							<li>Spectral Clustering</li>
 							<li>Closeness, Eccentricity, ... </li>
 						</ul>
-						<li>Basis of a vector space</li>
+						<li>Vector spaces</li>
 						<ul style="color:blue;font-size:15px;line-height:1.4;">
 							<li>Inner product spaces</li>
 							<li>Vector space of functions: The inner product of two vectors in this vector space is
@@ -298,16 +314,16 @@ h1 {
 							<li>Logistic Regression</li>
 							<li>LASSO, Least Square, Normal Equations, ...</li>
 						</ul>
-						<li>Gradient Descent</li>
+						<li>Optimization</li>
 						<ul style="color:blue;font-size:15px;line-height:1.4;">
 							<li>SGD, Adam, Conjugate gradient, Sparse Optimization, ...</li>
 						</ul>
-						<li>Regualrization</li>
+						<!-- <li>Regualrization</li>
 						<ul style="color:blue;font-size:15px;line-height:1.4;">
 							<li>Quasi–Newton</li>
 							<li>Davidon–Fletcher–Powell</li>
-							<!-- <li>Broyden–Fletcher–Goldfarb–Shanno (BFGS)</li> -->
-						</ul>
+							<li>Broyden–Fletcher–Goldfarb–Shanno (BFGS)</li>
+						</ul> -->
 						<li>Matrix Factorization</li>
 						<ul style="color:blue;font-size:15px;line-height:1.4;">
 							<li>Gram-Schmit, QR-Decomposition, ...</li>
@@ -360,7 +376,7 @@ h1 {
 	</section>
 	<section>
 		<section data-background="images/CoraBalloons.png"
-		data-background-opacity=.6>
+		data-background-opacity=.4>
 			<h2>Cora Dataset</h2>
 			<small>
 			Source: <a href="https://graphsandnetworks.com/the-cora-dataset/">https://graphsandnetworks.com/the-cora-dataset/</a>
@@ -370,7 +386,7 @@ h1 {
 				https://github.com/tomonori-masui/graph-neural-networks
 			</a><br>
 			<blockquote cite="https://stellargraph.readthedocs.io/en/v1.0.0rc1/demos/node-classification/gcn/gcn-cora-node-classification-example.html">
-				The dataset consists of academic publications as the nodes and the citations between them as the links: if publication A cites publication B, then the graph has an edge from A to B. The nodes are classified into one of seven subjects, and our model will learn to predict this subject.
+				The dataset consists of academic publications as the nodes and the citations between them as the links: if publication A cites publication B, then the graph has an edge from A to B. The nodes are classified into one of seven subjects, and the model will learn to predict this subject.
 			</blockquote>
 			<br>
 			Run in <a href="https://colab.research.google.com/github/mamintoosi-cs/pytorch-workshop/blob/master/gnn_pyg_implementations.ipynb">
@@ -380,6 +396,8 @@ h1 {
 					!pip uninstall scipy<br>
 					!pip install scipy==1.8
 				</code> -->
+				<br><br>
+			<a href="https://keras.io/examples/graph/gnn_citations/"> Dataset description and code in TF	</a>
 			</small>
 		</section>
 		<!-- <section data-background-iframe="https://graphsandnetworks.com/the-cora-dataset/" data-background-interactive>
