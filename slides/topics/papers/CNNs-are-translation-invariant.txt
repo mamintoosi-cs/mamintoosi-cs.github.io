@@ -1,0 +1,9 @@
+Convolutional Neural Networks Are Not Invariant to Translation but They Can Learn to Be
+
+https://pyimagesearch.com/2021/05/14/are-cnns-invariant-to-translation-rotation-and-scaling/
+
+https://stats.stackexchange.com/questions/207195/translational-variance-in-convolutional-neural-networks
+Finally, if you know that position of some objects is crucial for the classification, consider splitting the problem in two parts. Firstly, train a network that can detect these relevant objects (for example a fully convolutional network with low output resolution), and secondly add an extra layer on top of this (locally connected for example) to do the classification. It has been demonstrated by (Gulcehre and Bengio, 2013) that such subproblem splitting can make the difference between easy and impossible: Knowledge Matters: Importance of Prior Information for Optimization.
+
+https://divsoni2012.medium.com/translation-invariance-in-convolutional-neural-networks-61d9b6fa03df
+ Weight sharing : Unlike the run-of-the-mill neural network which is characterized by dense layers , convolutional NN is made up of sequential arrangement of convolutional layers. A single convolutional layer in turn comprises of multiple filters.
