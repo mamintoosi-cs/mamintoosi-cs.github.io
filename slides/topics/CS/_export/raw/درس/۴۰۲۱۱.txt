@@ -1,0 +1,100 @@
+---- اطلاعات درس ----
+
+شماره: ۴۰۲۱۱
+عنوان: زبان تخصصی کامپیوتر
+عنوان انگلیسی: English for Computing
+مقطع: کارشناسی
+گرایش: نرم‌افزار
+واحد: ۲
+نوع: نظری
+دسته: اصلی
+پیش‌نیاز: زبان خارجی
+هم‌نیاز: --
+متولی: کمیته آموزش
+طراح:‌ رامان رامسین
+آخرین تصویب: ۱۳۹۷/۰۱/۰۱
+
+قالب: قالب درس
+----------------------------
+
+
+===== اهداف درس =====
+
+در این درس ضمن آشنا نمودن دانشجویان با مفاهیم و کلمات کلیدی عمومی مورد استفاده در حوزه‌ی علوم و مهندسی کامپیوتر، روش‌ها و مهارت‌های مورد نیاز برای مطالعه و نگارش متون علمی و تخصصی در این حوزه آموزش داده می‌شوند. تأکید اصلی بر تقویت مهارت دانشجویان در خواندن و درک متون تخصصی حوزه‌ی کامپیوتر است، اما روی بهبود مهارت‌های نگارش و درک سمعی دانشجویان نیز کار خواهد شد. ریز مواد درس به سه بخش مباحث اصلی، مباحث اختیاری و مباحث کمکی تقسیم شده است. در هر جلسه‌ی سه ساعته (شامل دو ساعت درس و یک ساعت تمرین)، دو یا سه مبحث از مباحث اصلی تدریس می‌شوند. مباحث اختیاری در صورت وجود زمان تدریس خواهند شد، ولی روال معمول این است که این مباحث به عنوان تمرین داده شوند. مباحث کمکی شامل مطالعه مطالب جدید حوزه کامپیوتر و فعالیت‌های جانبی کلاسی (از قبیل برگزاری ارائه‌های دانشجویی و استفاده از محتوای چند‌رسانه‌ای) است.
+
+===== ریز مواد =====
+
+  * **مباحث اصلی** (در هر جلسه سه‌ساعته، دو یا سه مبحث تدریس خواهند شد)
+<div :en>
+    * Living with computers  (Chapter 1)
+    * A typical PC (Chapter 2)
+    * Learning vocabulary (Chapter 0)
+    * Input devices: the eye of your PC (Chapter 5)
+    * Output devices: display screens (Chapter 7)
+    * Processing (Chapter 8)
+    * Disks and drives (Chapter 9)
+    * International Phonetic Alphabet (IPA)
+    * Health and safety (Chapter 10)
+    * Operating systems and the GUI (Chapter 11)
+    * Prefixes (Chapter 33)
+    * Suffixes (Chapter 34)
+    * Word processing (Chapter 12)
+    * Spreadsheets and databases (Chapter 13)
+    * Graphics and design (Chapter 14)
+    * Multimedia (Chapter 15)
+    * Collocations (Chapter 36)
+    * Programming (Chapter 17)
+    * Computers and work (Chapter 18)
+    * Networks (Chapter 20)
+    * Faces of the Internet (Chapter 21)
+    * The World Wide Web (Chapter 23)
+    * Web design (Chapter 24)
+    * Irregular plurals
+    * Internet security (Chapter 26)
+    * E-commerce (Chapter 27)
+    * Online banking (Chapter 28)
+    * Qualifying and comparing (Chapter 38)
+    * Mobile phones (Chapter 29)
+    * Robots, androids, AI (Chapter 30)
+    * Intelligent homes (Chapter 31)
+    * Future trends (Chapter 32)
+    * Troubleshooting (Chapter 40)	
+</div>
+  * **مباحث اختیاری** (معمولاً به عنوان تمرین داده می‌شوند)
+<div :en>
+    * Types of computer systems (Chapter 3)
+    * Input devices: type, click and talk! (Chapter 4)
+    * Output devices: printers (Chapter 6)
+    * Sound and music (Chapter 16)
+    * ICT systems (Chapter 19)
+    * Email (Chapter 22)
+    * Chatting and video conferencing (Chapter 25)
+    * Compounds (Chapter 35)
+    * Defining and classifying (Chapter 37)
+    * Describing technical processes (Chapter 39)
+    * Importance of pronunciation 
+    * Schwa
+    * Stressed syllables
+ </div>
+
+  * **مباحث کمکی**
+    * مطالعه‌ی مطالب جدید حوزه‌ی علوم و مهندسی کامپیوتر (مراجع کمکی) 
+    * فعالیت‌های جانبی کلاسی شامل برگزاری ارائه‌های دانشجویی، استفاده از محتوای چند‌رسانه‌ای، و برگزاری جلسات بحث پیرامون موضوعات علمی خاص در حوزه علوم و مهندسی کامپیوتر
+
+===== ارزیابی =====
+
+  * آزمون (آزمون‌‌های میان‌‌ترم، پایان‌‌ترم و آزمون‌های کلاسی): %۶۰ نمره
+  * فعالیت در کلاس: %۲۰ نمره
+  * تمرین‌ها (در طول نیم‌سال انجام و تحویل داده می‌شوند): %۲۰ نمره
+
+
+===== مراجع =====
+
+<div :en>
+  * S. R. Esteras and E. M. Fabré. //Professional English in Use-ICT//. Cambridge University Press, 2007. (Main Textbook)
+  * E. Glendinning and J. McEwan. //Oxford English for IT//. Oxford University Press, 2006. 
+</div>
+  * مقالات علمی-پژوهشی از مجلات معتبر (مانند Communications of the ACM)
+  * مقالات سایت‏‌های معتبر حوزه‌ی‏ علوم و مهندسی کامپیوتر (مانند zdnet.com)
+  * منابع کمکی تقویت پایه‏ی زبان انگلیسی (مانند English Grammar in Use و Elements of Style)
+

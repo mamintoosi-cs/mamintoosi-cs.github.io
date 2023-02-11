@@ -1,0 +1,70 @@
+---- اطلاعات درس ----
+
+شماره: ۴۰۶۸۶
+عنوان: الگوریتم‌های داده‌های حجیم
+عنوان انگلیسی: Massive Data Algorithms
+مقطع: کارشناسی ارشد
+گرایش: نرم‌افزار
+واحد: ۳
+نوع: نظری
+دسته: تخصصی
+پیش‌نیاز: --
+هم‌نیاز: --
+متولی: گروه نرم‌افزار
+طراح:‌ محمدعلی آبام
+آخرین تصویب: ۱۳۹۷/۰۱/۰۱
+
+قالب: قالب درس
+----------------------------
+
+
+===== اهداف درس =====
+با افزایش چشمگیر حجم داده‌های ارزشمند و محدودیت پردازشی و ظرفیتی حافظه‌های سریع، نیاز به طراحی داده‌ساختارها و الگوریتم‌های ویژه برای داده‌های حجیم روزبه‌روز محسوس‌تر می‌شود. در این درس، مدل‌های رایج برای داده‌های حجیم مطرح و برای برخی مسائل پایه‌ای، الگوریتم‌های بهینه ارائه می‌شود 
+===== ریز مواد =====
+
+  * **Cache-aware Models** (۱۰ جلسه)
+    * معرفی مدل‌
+    * الگوریتم‌های مرتب‌سازی و کران پایین آن
+    * داده‌ساختارهای جست‌وجو: Persistent B-tree،Weighted B-tree ،B-tree و Buffer tree
+    * داده‌ساختارهای هندسی:  Priority search tree ،Interval tree ،Range tree و KD-tree
+    * یک نمونه الگوریتم جاروب
+    * الگوریتم‌های گراف: DFS ،BFS ،Algorithms on trees ،List ranking و MST
+  * **Cache-oblivious Models** (۲ جلسه)
+    * معرفی مدل
+    * مرتب‌سازی
+    * داده‌ساختارهای جست‌وجو
+    * ضرب ماتریس‌ها	
+  * **Streaming Models** (۱۰ جلسه)
+    * معرفی مدل
+    * پیدا کردن اعداد با تکرار زیاد
+    * پیدا کردن تعداد اعداد متمایز
+    * معرفی تکنیک sketching
+    * بررسی مسائل پایه‌ای گراف 
+    * بررسی مسائل هندسی  و معرفی core-sets
+    * خوشه‌بندی
+    * نظریه ارتباطات و  حد پایین
+  * **Sublinear Algorithms** (۲ جلسه)
+    * معرفی مدل 
+    * محاسبه میانگین درجه‌ی گراف
+    * اشتراک دو گوژ محدب
+
+ 
+
+===== ارزیابی =====
+
+  * آزمون: آزمون‌های میان ترم و پایان ترم (۱۴  نمره)
+  * ارائه و گزارش پژوهشی  (۳  نمره).
+  * تمرین تئوری  (۳  نمره)
+
+
+===== مراجع =====
+
+<div :en>
+
+  - ‎L‎. ‎Arge. //External memory geometric data structures//. Lecture notes‎, ‎2005‎.
+  - A. Chakrabarti and D. College. //Data streams ‎algorithms//. Lecture notes‎, ‎2011‎.
+  - A. Czumaj and C. Sohler. //Sublinear-time algorithms//. Lecture notes.
+  - Erik Demaine. //Cache oblivious algorithms and data structures//. Lecture notes‎.
+  - ‎U‎. ‎Meyer‎, ‎P‎. ‎Sanders‎, ‎and J‎. ‎Sibeyn. //Algorithms for memory hierarchies//. Lecture notes‎, ‎‎2003‎.
+  - ‎Norbert Zeh. //I/O efficient graph algorithms‎//. ‎Lecture notes‎.
+</div>

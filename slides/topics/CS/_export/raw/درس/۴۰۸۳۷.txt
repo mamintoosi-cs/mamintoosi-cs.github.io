@@ -1,0 +1,80 @@
+
+---- اطلاعات درس ----
+
+شماره: ۴۰۸۳۷
+عنوان: بهینه‌سازی محدب
+عنوان انگلیسی: Convex Optimization
+مقطع: کارشناسی ارشد
+گرایش: هوش مصنوعی
+واحد: ۳
+نوع: نظری
+دسته: تخصصی
+پیش‌نیاز: --
+هم‌نیاز: --
+متولی: گروه هوش مصنوعی
+طراح:‌ مهدی جعفری سیاوشانی
+آخرین تصویب: ۱۳۹۸/۰۱/۰۱
+
+قالب: قالب درس
+----------------------------
+
+
+===== اهداف درس =====
+
+هدف از اين درس، آشنایی دانش‌جویان با مفاهیم بهینه‌سازی محدب، الگوریتم‌ها، و کاربردهای آن است.
+
+===== ریز مواد =====
+
+  - **مجموعه‌های محدب (Convex Set)** 
+    * مجموعه‌های محدب و آفین (Affine and Convex Sets)	
+    * عملیاتی که تحدب را حفظ می‌کند
+  - **توابع محدب** 
+    * خواص مقدماتی
+    * عمیاتی که تحدب را حفظ می‌کنند
+    * توابع مزدوج (Conjugate Functions)
+    * توابع شبه‌محدب (Quasiconvex Functions)
+  - **مسایل بهینه‌سازی محدب**
+    * مسایل بهینه‌سازی در حالت کلی
+    * بهینه‌سازی محدب
+    * مسایل بهینه‌سازی خطی
+    * مسایل بهینه‌سازی درجه دوم
+  - **دوگانگی (Duality)**
+    * تابع دوگان لاگرانژ
+    * مسئله دوگان لاگرانژ
+    * تعبیر هندسی و تعبیر نقطه زینی (Geometric and Saddle-point Interpretations)
+    * شرایط بهینگی (Optimality Conditions and KKT conditions)
+    * اختلال و تحلیل حساسیت (Perturbation and Sensitivity Analysis)
+  - **الگوریتم‌های بهینه‌سازی نامقید**
+    * مسایل بهینه‌سازی نامقید
+    * الگوریتم‌های کاهشی (Descent Algorithms)
+    * الگوریتم کاهشی گرادیان (Gradient Descent Algorithm)
+    * الگوریتم کاهش با تندترین شیب (Steepest Descent Algorithm)
+    * الگوریتم نیوتون (Newton’s Method)
+  - **الگوریتم‌های بهینه‌سازی با قیود تساوی**
+    * مسایل بهینه‌سازی با قیود تساوی
+    * روش نیوتون با قیود تساوی
+  - **الگوریتم‌های بهینه‌سازی با قیود نامساوی (روش‌های نقطه درونی، Interior-point Methods)**
+    * مسایل بهینه‌سازی با قیود نامساوی
+    * تابع سد لگاریتمی و مسیر مرکزی (Logarithmic Barrier Function and Central Path)
+    * روش سد (Barrier Method)
+    * امکان‌پذیری و روش‌های فاز یک (Feasibility and Phase I Methods)
+    * روش‌های نقطه درونی اولیه-دوگان (Primal-Dual Interior-point Methods)
+  - **کاربردها (Applications)**
+    * رگرسیون خطی، رگرسیون لجستیکی
+    * ماشین بردار پشتیبان
+    * مسایل بهینه‌سازی رنک-پایین ((low-rank optimization problems (e.g., Netflix, video security)
+    * اینترنت به عنوان یک مسئله بهینه‌سازی محدب
+  - **بهینه‌سازی تصادفی (Stochastic Optimization)**
+    * تعریف کلی یک مساله‌ی بهینه‌سازی تصادفی
+    * انواع قیود در بهینه‌سازی تصادفی
+    * مسایل بهینه‌سازی تصادفی نوع یک و دو (Type I & Type II Stochastic Optimization Problems)
+    * الگوریتم کاهشی گرادیان تصادفی (Stochastic Gradient Descent Algorithm)
+    * الگوریتم‌های بهینه‌سازی تصادفی موازی و توزیع‌شده (Parallel and Distributed Stochastic Optimization Algorithms)
+
+===== مراجع =====
+
+<div :en>
+  - Stephen Boyd and Lieven Vandenberghe, “Convex optimization,” Cambridge university press, 2004.
+  - Jorge Nocedal and Stephen Wright, "Numerical optimization,” Springer Series in Operations Research and Financial Engineering, 2nd edition, 2006.
+  - “Convex Optimization” taught by Ryan Tibshirani at CMU from 2013 to 2019.
+</div>

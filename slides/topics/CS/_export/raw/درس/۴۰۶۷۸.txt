@@ -1,0 +1,75 @@
+---- اطلاعات درس ----
+
+شماره: ۴۰۶۷۸
+عنوان: روش‌های صوری در امینت اطلاعات
+عنوان انگلیسی: Formal Methods for Information Security
+مقطع: کارشناسی ارشد
+گرایش: رایانش امن
+واحد: ۳
+نوع: نظری
+دسته: تخصصی
+پیش‌نیاز: امنیت داده و شبکه (۴۰۴۴۱)
+هم‌نیاز: --
+متولی: گروه فناوری اطلاعات
+طراح:‌ 
+آخرین تصویب: ۱۳۹۸/۰۱/۰۱
+
+قالب: قالب درس
+----------------------------
+
+
+===== اهداف درس =====
+
+با توجه به تنوع نیازمندی‌های امنیتی، مدل‌های امنیتی مختلفی وجود دارد که در واقع هر یک از این مدل‌ها انتزاعی از یک نوع خط‌مشی امنیتی محسوب می‌گردند. با توجه به اهمیت مقوله امنیت کامپیوتری، توصیف دقیق هر یک از این مدل‌ها با استفاده از روش‌های صوری (مانند استفاده از نظریه مجموعه‌ها و انواع منطق) و سپس وارسی سازگاری توصیف از اهمیت بسزایی برخوردار است. در این درس نحوه مدل‌سازی صوری انواع مدل‌های امنیتی و مدل‌های کنترل دسترسی (مجازشماری) با استفاده از روش‌های صوری مورد مرور و بررسی قرار می‌گیرد. در طی این درس دانشجویان می‌آموزند که چگونه از روش‌های صوری برای توصیف دقیق و صوری نیازمندی‌ها و مدل امنیتی موردنظر خود استفاده کنند و چگونه از روش‌های صوری برای اثبات، وارسی و یا درستی‌یابی خصوصیات موردنظر استفاده نمایند.
+
+
+===== ریز مواد =====
+  * **مقدمه**
+    * مفاهیم و اصطلاحات مرتبط با صوری‌سازی در امنیت اطلاعات
+    * ابزارهای مدل‌سازی: نظریه مجموعه‌ها، منطق گزاره‌ها و منطق مرتبه اول
+  * **توصیف صوری مدل‌های اختیاری (DAC)**
+    * مدل‌ ماتریس دسترسی لمپسون و توصیف قواعد دسترسی اختیاری
+    * مدل سیستم حفاظتی HRU 
+    * مساله ایمنی (Safety) در مدل‌های ماتریس-مبنا
+    * مدل‌های تصمیم‌پذیر از منظر مساله ایمنی
+  * **توصیف صوری مدل‌های اجباری (MAC)**
+    * مدل محرمانگی BellLapadula 
+    * مدل مبتنی بر مشبکه Denning
+    * مدل کنترل صحت Biba
+  * **توصیف صوری مدل‌های کنترل جریان اطلاعات (Information Flow Control)**
+    * توصیف عدم تداخل (Non-interference) در سیستم‌های قطعی
+    * توصیف عدم تداخل (Non-interference) در سیستم‌های غیرقطعی
+    * توصیف عدم استنتاج (Non-Deducibility)
+    * مدل محدودیت (Restrictiveness)
+  * **توصیف صوری مدل‌های نقش-مبنا (RBAC)**
+    * مدل نقش-مبنای پایه
+    * سلسله‌مراتب در مدل نقش-مبنا
+    * توصیف محدودیت‌ها در مدل نقش-مبنا
+  * **توصیف صوری مدل‌های مبتنی بر خصوصیت (ABAC)**
+  * رویکردهای نوین در مدل‌های کنترل دسترسی
+  * مدل خصوصیت-مبنای حافظ حریم خصوصی
+  * **مدل‌های مبتنی بر جبر و منطق**
+    * منطق کنترل دسترسی Abadi
+    * جبر ترکیب خط‌مشی دسترسی Jajodia
+
+===== ارزیابی =====
+
+  * تمرین‌های نظری: ۴ نمره
+  * آزمون‌ میان‌ترم: ۶ نمره
+  * آزمون پایان‌ترم: ۶ نمره
+  * پروژه تحقیقاتی: ۳ نمره
+
+===== مراجع =====
+
+<div :en>
+Related papers and technical reports including:
+   *  D. E. Bell and L. J. La Padula, Secure Computer System: Unified exposition and Multics interpretation, Technical Report ESD-TR-75- 306, Mitre Corporation, Bedford, MA, March 1976.
+  * M. Abadi, M. Burrows, B. Lampson, and G. Plotkin, A Calculus for Access Control in Distributed Systems, ACM Transactions on Programming Languages and Systems, Vol. 15, No. 4, pp. 706-734, 1993.
+  * D.F. Ferraiolo, R. Sandhu, S. Gavrila, D.R. Kuhn, R. Chandramouli, Proposed NIST Standard for Role-Based Access Control, ACM Transactions on Information and System Security (TISSEC), Vol. 4, No. 3, pp. 224-274, ACM Press, 2001.
+  * D. Wijesekera and S. Jajodia, A Propositional Policy Algebra for Access Control, ACM Transactions on Information and System Security, Vol. 6, No. 2, pp. 286-325, ACM Press, 2003.
+  * J.M. Rushby, Noninterference, Transitivity, and Channel Control Security Policies, Technical Report CSL-92-02, SRI International, 1992.
+  * K.J. Biba, Integrity Considerations for Secure Computing Systems, Technical Report TR-3153, Mitre Corporation, Bedford, MA, April 1977.
+  * D. E. Denning, A Lattice Model of Secure Information Flow, Communication of the ACM, Vol. 19, No. 5, pp. 236-243, 1976.
+  * M. Burrows, M. Abadi, and R. Needham, A Logic of Authentication, ACM Transactions on Computer Systems, Vol. 8, pp. 18-36, 1990.
+  * M. Amini and F. Osanloo, "Purpose-based Privacy Preserving Access Control for Secure Service Provision and Composition", IEEE Transactions on Services Computing,Vol. 12, no. 4, 2019.
+</div>

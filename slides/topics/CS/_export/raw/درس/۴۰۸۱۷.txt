@@ -1,0 +1,75 @@
+---- اطلاعات درس ----
+
+شماره: ۴۰۸۱۷
+عنوان: امنیت شبکه پیشرفته
+عنوان انگلیسی: Advanced Network Security
+مقطع: کارشناسی ارشد
+گرایش: رایانش امن
+واحد: ۳
+نوع: نظری
+دسته: تخصصی
+پیش‌نیاز: امنیت داده و شبکه (۴۰۴۴۱)
+هم‌نیاز: --
+متولی: گروه فناوری اطلاعات
+طراح:‌ 
+آخرین تصویب: ۱۳۹۸/۰۱/۰۱
+
+قالب: قالب درس
+----------------------------
+
+
+===== اهداف درس =====
+
+هدف از اين درس، آشنایی دانش‌جویان با مباحث پیشرفته و جدید در زمینه امنیت شبکه های کامپیوتری است.
+ 
+===== ریز مواد =====
+
+  * ** مقدمه ای بر امنیت شبکه** (یک جلسه)
+  * ** تهدیدها و حملات** (یک جلسه)
+  * ** دیواره آتش ( Firewalls )**
+  * ** سامانه های تشخیص نفوذ ( IDS )** (دو جلسه)
+  * ** حملات منع سرویس ( DoS )** (دو جلسه)
+  * ** کرم های شبکه ای ( Worms )** (دو جلسه)
+  * ** Botnets** (دو جلسه)
+  * ** ظرف های عسل ( Honey-Pots )** (دو جلسه)
+  * ** Spyware** (دو جلسه)
+  * ** حملات Phishing** (دو جلسه)
+  * ** تحلیل ترافیک** (دو جلسه)
+  * ** گمنامی** (دو جلسه)
+  * ** امنیت مسیریابی** (دو جلسه)
+  * ** Network Forensics** (دو جلسه)
+  * ** امنیت شبکه های بی سیم** (دو جلسه)
+  * ** امنیت شبکه VoIP** (دو جلسه)
+  	
+ 
+
+===== ارزیابی =====
+
+  * تمرین‌های نظری: ۳ نمره
+  * آزمون‌‌های میان‌ترم و پایانی: ۱۵ نمره
+  * آزمونک‌ها: ۲ نمره
+
+===== مراجع =====
+
+<div :en>
+  - Security Problems in the TCP/IP Protocol Suite,S.M. Bellovin, Computer Communication Review, Vol. 19, No. 2, pp. 32-48, April 1989.
+  -  An Introduction to Intrusion-Detection Systems, Hervé Debar, Proceedings of Connect’2000, Doha, Qatar, April 29th-May 1st, 2000.
+  -  Stalking the wily hacker, Cliff Stoll, Communications of the ACM 31:5, May 1988.
+  - Exploiting P2P Systems for DDoS Attacks, N. Naoumov, and K.W. Ross, International Workshop on Peer-to-Peer Information Management, Hong Kong, May 2006.
+  - Chord: A Scalable Peer-to-peer Lookup Service for Internet Applications, Ion Stoica, Robert Morris, David Liben-Nowell, David R. Karger, M. Frans Kaashoek, Frank Dabek, Hari Balakrishnan, Transactions on Networking, Vol 11, 2003.
+  - Low-Rate TCP-Targeted Denial of Service Attacks (The Shrew vs. the Mice and Elephants), A. Kuzmanovic and E. Knightly, in Proceedings of ACM SIGCOMM 2003, Karlsruhe, Germany, August 2003.
+  -  Low-Rate TCP-Targeted Denial of Service Attacks and Counter Strategies, A. Kuzmanovic and E. Knightly, IEEE/ACM Transactions on Networking, 14(4):739-752, August 2006.
+  - Automated Worm Fingerprinting, Sumeet Singh, Cristian Estan, George Varghese and Stefan Savage, Proceedings of the ACM/USENIX Symposium on Operating System Design and Implementation, San Francisco, CA, December 2004.
+  - Fingerprinting by Random Polynomials, Michael O. Rabin. Center for Research in Computing Technology, Harvard University. Tech Report TR-CSE-03-01
+  - Polygraph: Automatic Signature Generation for Polymorphic WormsJames Newsome, Brad Karp, Dawn Song. In IEEE Security and Privacy Symposium, May 2005.
+  - Anti-Honeypot Technology, Neal Krawetz of Hacker Factor Solutions, IEEE Security and Privacy, 2004.
+  - Honeycomb — Creating Intrusion Detection Signatures Using Honeypots, C. Kreibich and J. Crowcroft. 2nd Workshop on Hot Topics in Networks (HotNets-II), 2003, Boston, USA.
+  - Detecting Targeted Attacks Using Shadow Honeypots, K. G. Anagnostakis, S. Sidiroglou, P. Akritidis, K. Xinidis, E. Markatos, and A. D. Keromytis, 14th USENIX Security Symposium, 2005.
+  - CANTINA: A Content-Based Approach to Detecting Phishing Web Sites, Yue Zhang, Jason Hong, Lorrie Cranor, WWW 2007.
+  - An Inquiry into the Nature and Causes of the Wealth of Internet Miscreantsason Franklin, Vern
+  - Low-resource routing attacks against tor, Kevin Bauer, Damon McCoy, Dirk Grunwald, Tadayoshi Kohno, Douglas Sicker, Workshop on Privacy in the Electronic Society, 2007.
+  - Toward a Framework for Internet Forensic Analysis, V. Sekar, Y. Xie, D. Maltz, M. Reiter, H. Zhang, HotNets-III, 2004.
+  - Payload Attribution via Hierarchical Bloom Filters, Kulesh Shanmugasundaram, Hervé Brönnimann, and Nasir Memon. ACM Computer Communications and Security (CCS 04), Washington, DC, 2004.
+  - Passive Data Link Layer 802.11 Wireless Device Driver Fingerprinting, J. Franklin, D. McCoy, P. Tabriz, V. Neagoe, J. Randwyk, D. Sicker, Usenix Security 2006.
+  - A Survey of BGP Security, K. Butler, T. Farley, P. McDaniel, and J. Rexford, Technical Report TD- 5UGJ33, AT&T Labs - Research, Florham Park, NJ, Feb. 2004.
+</div>

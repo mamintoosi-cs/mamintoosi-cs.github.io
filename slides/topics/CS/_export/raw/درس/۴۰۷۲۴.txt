@@ -1,0 +1,54 @@
+---- اطلاعات درس ----
+
+شماره: ۴۰۷۲۴
+عنوان: متدولوژی‌های ایجاد نرم‌افزار 
+عنوان انگلیسی: Software Development Methodologies
+مقطع: کارشناسی ارشد
+گرایش: نرم‌افزار
+واحد: ۳
+نوع: نظری
+دسته: تخصصی
+پیش‌نیاز: --
+هم‌نیاز: --
+متولی: گروه نرم‌افزار
+طراح: رامان رامسین
+آخرین تصویب: ۱۳۹۸/۰۱/۰۱
+
+قالب: قالب درس
+----------------------------
+
+
+===== اهداف درس =====
+
+هدف این درس، آشنا کردن دانشجویان کارشناسی ارشد و دکترا با متدولوژی‌های ایجاد نرم‌افزار و مفاهیم و اصول مرتبط است. دانشجویان ضمن آشنایی با متدولوژی‌های مطرح، با روش‌های تحلیل و ارزیابی متدولوژی‌ها، الگوها/پادالگوها و متامدل‌های فرایند ایجاد نرم‌افزار، و روش‌های مهندسی متدولوژی آشنا می‌شوند. این درس از نظر ساختار و محتوا متناظر با درس متدها می‌باشد که از طرف انستیتو مهندسی نرم‌افزار (SEI) پیشنهاد شده و از دروس اصلی کارشناسی ارشد مهندسی نرم‌افزار (MSE) در دانشگاه Carnegie Mellon است. با توجه به اینکه در حال حاضر مشی شیءگرا در بین متدولوژی‌ها مبنای غالب است، ساختار و محتوای فعلی درس عمدتاً بر متدولوژی‌های شیءگرا تمرکز دارد.
+
+===== ریز مواد =====
+
+  - مقدمه - معرفی تاریخچه تکاملی متدولوژی‌های شیءگرا و معیارهای ارزیابی مربوطه  (۲ جلسه - مدت هر جلسه، نود دقیقه است)
+  - معرفی تحلیلی متدولوژی Fusion -  بررسی نمودهای بارز مشی شیءگرا  (۲ جلسه)
+  - معرفی اجمالی متدولوژی‌های شاخص نسلهای اول و دوم -  متدولوژی‌های RDD، Booch، OMT، و OOSE (۳ جلسه)
+  - معرفی تحلیلی متدولوژی‌های نسل سوم -  متدولوژی‌های OPM، RUP، USDP، EUP، FOOM، و TSP-PSP  (۷ جلسه)
+  - معرفی تحلیلی متدولوژی‌ها و چارچوب‌های چابک -  متدولوژی‌های XP، AUP، Crystal، FDD،  DSDM، Scrum، و DAD (۹ جلسه)
+  - الگوها و پاد الگوهای فرایند ایجاد نرم‌افزار  (۳ جلسه)
+  - متامدل‌های فرایند ایجاد نرم‌ا‌فزار  (۱ جلسه)
+  - روش‌های مهندسی متدولوژی  (۳ جلسه)
+
+===== ارزیابی =====
+
+  * آزمون: آزمون‌های میان ترم و پایان ترم (۶۰ درصد نمره)
+  * تمرین پژوهشی: سه تمرین که در طول نیمسال تحویل داده می‌شوند (۲۵ درصد نمره).
+  * تمرین عملی: یک تمرین مهندسی متدولوژی با ابزار EPFC (۱۵ درصد نمره)
+ 
+===== مراجع =====
+
+<div :en>
+  - S. W. Ambler, J. Nalbone, and M. J. Vizdos. //The Enterprise Unified Process: Extending the Rational Unified Process//. Prentice-Hall, 2005.
+  - A. Cockburn. //Agile Software Development: The Cooperative Game// 2nd edition, Addison-Wesley, 2006.
+  - P. Shoval. //Functional and Object Oriented Analysis and Design: An Integrated Methodology//. Idea Group Publishing, 2007.
+  - OMG. //Software and Systems Process Engineering Metamodel Specification (v2.0)//. OMG, 2008. 
+  - R. Ramsin and R. F. Paige. //Process-centered review of object-oriented software development methodologies// ACM Computing Surveys 40, 1, Article 3, pp. 1-89, 2008.
+  - K. S. Rubin. //Essential Scrum: A Practical Guide to the Most Popular Agile Process//. Addison-Wesley, 2012. 
+  - S. W. Ambler and M. Lines. //Disciplined Agile Delivery: A Practitioner's Guide to Agile Software Delivery in the Enterprise//. IBM Press, 2012.
+  - B. Henderson-Sellers, J. Ralyté, P. J. Agerfalk, and M. Rossi. //Situational Method Engineering//. Springer-Verlag, 2014.
+  - //Agile Business Consortium//. The DSDM Agile Project Framework Handbook. DSDM Consortium, 2014.
+ </div>
