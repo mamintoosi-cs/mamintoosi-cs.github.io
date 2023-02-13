@@ -1,0 +1,61 @@
+---- اطلاعات درس ----
+
+شماره: ۴۰۴۷۵
+عنوان: ایجاد چابک نرم‌افزار
+عنوان انگلیسی: Agile Software Development
+مقطع: کارشناسی
+گرایش: نرم‌افزار
+واحد: ۳
+نوع: نظری
+دسته: اختیاری
+پیش‌نیاز: تحلیل و طراحی سیستم‌ها
+هم‌نیاز: --
+متولی: گروه نرم‌افزار
+طراح:‌  رامان رامسین
+آخرین تصویب: ۱۳۹۷/۰۱/۰۱
+
+قالب: قالب درس
+----------------------------
+
+
+===== اهداف درس =====
+
+هدف این درس، آشنا کردن دانشجویان کارشناسی مهندسی کامپیوتر با مفاهیم، اصول و روش‌های پیشرفته‌ی ایجاد چابک سیستم‌های نرم‌افزاری است. دانشجویان پس از مروری بر اصول چابکی و متدولوژی XP، با متدولوژی‌های DSDM و DAD آشنا خواهند شد، و از آن‌ها در کنار الگوها و رویه‌های کاربردی چابک برای ایجاد یک سیستم نرم‌افزاری استفاده خواهند نمود.    
+
+===== ریز مواد =====
+
+  * **مقدمه: مروری بر مفاهیم اولیه و تاریخچه‌ی ایجاد چابک، منشور چابک و اصول چابکی** (۱ جلسه)
+  * **آشنایی با متدولوژی XP (Extreme Programming)** (۲ جلسه)
+  * **متدولوژی DSDM (Dynamic Systems Development Method)**
+    * چارچوب کلی و اصول و قواعد (۲ جلسه)
+    * فاز امکان‌پذیری (Feasibility)  (۱ جلسه)
+    * فاز مبانی (Foundations) (۲ جلسه)
+    * فاز ایجاد تکاملی (Evolutionary Development) (۲ جلسه)
+    * فاز مستقرسازی (Deployment) (۲ جلسه)
+    * نقش‌ها، محصولات و رویه‌های کاربردی (۳ جلسه)
+  * **متدولوژی DAD  (Disciplined Agile Delivery)** 
+    * چارچوب کلی (۱ جلسه)
+    * فاز آغاز (Inception)  (۱ جلسه)
+    * فاز تفصیل (Elaboration) (۲ جلسه)
+    * فاز ساخت (Construction) (۲ جلسه)
+    * فاز انتقال (Transition) (۱ جلسه)
+    * فعالیت‌های تکراری و رویه‌های کاربردی (۲ جلسه)
+  * **رویه‌های کاربردی چابک (Agile Practices): مدیریت تیم، طراحی و Kanban ** (۳ جلسه)
+  * **الگوها** (۳ جلسه)
+ 
+
+===== ارزیابی =====
+
+  * آزمون: آزمون‌های میان‌ترم و پایان‌ترم (۶۰ درصد نمره)
+  * تمرین و پروژه: تمرینات در قالب یک پروژه‌ی DSDM یا DAD تعریف شده و به‌تدریج در طول نیم‌سال انجام شده و تحویل داده می‌شوند (۴۰ درصد نمره).
+
+===== مراجع =====
+
+<div :en>
+  - 	D. Wells. //Extreme Programming: A Gentle Introduction//. Published online at: http://www.extremeprogramming.org, 2013 (visited: 20 September 2019).
+  - DSDM Consortium. //The DSDM Project Framework Handbook//. Agile Business Consortium, Published online at: https://www.agilebusiness.org/page/TheDSDMAgileProjectFramework, 2014 (visited: 20 September 2019). 
+  - S. W. Ambler and M. Lines. //Disciplined Agile Delivery: A Practitioner's Guide to Agile Software Delivery in the Enterprise//. IBM Press, 2012.
+  - Agile Alliance. //Agile 101: Subway Map to Agile Practices//. Published online at: https://www.agilealliance.org/agile101/subway-map-to-agile-practices/, 2015 (visited: 20 September 2019).
+  - E. Gamma, R. Helm, R. Johnson, and J. Vlissides. //Design Patterns: Elements of Reusable Object-Oriented Software//. Addison-Wesley, 1995.
+
+ </div>

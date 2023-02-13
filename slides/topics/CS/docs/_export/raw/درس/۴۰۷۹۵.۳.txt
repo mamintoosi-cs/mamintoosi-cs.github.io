@@ -1,0 +1,63 @@
+
+---- اطلاعات درس ----
+
+شماره: ۴۰۷۹۵.۳
+عنوان: نظریه محاسبات پیشرفته
+عنوان انگلیسی: Advanced Theory of Computation
+مقطع: کارشناسی ارشد
+گرایش: نرم‌افزار
+واحد: ۳
+نوع: نظری
+دسته: تخصصی
+پیش‌نیاز: --
+هم‌نیاز: --
+متولی: گروه نرم‌افزار
+طراح:‌ محمد ایزدی
+آخرین تصویب: ۱۳۹۷/۰۱/۰۱
+
+قالب: قالب درس
+----------------------------
+
+
+===== اهداف درس =====
+
+هدف از این درس ارائه‌ی دقیق انواع مدل‌های ریاضی ارایه‌شده در تعریف مفهوم محاسبه و محاسبه‌پذیری و نتایج حاصل از آن‌ها با فرض تسلط دانشجویان بر نظریه‌ی زبان‌ها و ماشین‌ها و نظریه‌ی محاسبات مقدماتی است.
+
+===== ریز مواد =====
+
+  - مروری بر نظریه‌ی ماشین‌های تورینگ، ماشین‌های تورینگ چندنواری و غیرقطعی، تز تورینگ-چرچ، مسایل و زبان‌های بازگشتی و به‌طور بازگشتی شمارا. مروری بر مسایل تصمیم ناپذیر، مساله‌ی توقف و انواع آن، قضیه‌ی رایس. مروری بر کلاس‌های پیچیدگی الگوریتم‌ها.
+  - ماشین‌های تورینگ تناوبی (Alternating TM) و ماشین‌های تورینگ پیشگو (Oracle TM) و قضایای مربوط به آن‌ها.
+  - نظریه‌ی توابع بازگشتی و تز چرچ. حساب لامبدا و قضایای تمامیت آن، توابع بازگشتی جزیی و عددگذاری گدلی.
+  - خودارجاعی (Self-Reference)، قضیه Knaster-Tarski و به‌کارگیری آن در نظریه‌ی خودکارها و منطق‌های نقطه‌ی ثابت، مفاهیم منطقی اثبات (Provability Logic).
+  - مقدمه‌ای بر نظری آتوماتای متناهی بر رشته‌های نامتناهی، منطق مرتبه‌ی دوم Monadic و نتایج بوخی و رابین در ارتباط آتوماتای بر رشته‌های نامتناهی با منطق‌های مرتبه‌ی دوم.
+  - قضیه‌ی تناظر Post و سیستم‌های Post.
+  - سیستم‌های محاسباتی منصف (Fair Systems) و قضیه Harel. انواع تعاریف انصاف و قضایای مرتبط.
+  - قضیه‌ی کلینی (Kleene Theorem) و نتایج آن، مروری بر انواع جبرهای کلینی (Kleene Algebras).
+  - مروری بر نظریه‌ی انواع چرچ (Church's Type Theory) و نظریه‌ی انواع ساختی مارتین-لاف (Lof's Constructive Type Theory).
+
+
+===== ارزیابی =====
+
+  * **تمرین**: شش سری تمرین مسئله مدار و پژوهش مدار (۲۰٪ کل نمره)
+  * **پروژه پژوهشی**: شامل گزارش پژوهشی و سمینار (۲۰٪ کل نمره)
+  * **آزمون**: آزمون‌های میان‌ترم و پایان‌ترم (۶۰٪ کل نمره)
+ 
+===== مراجع =====
+
+<div :en>
+  - D. Kozen, //Theory of Computation//, Springer, 2006.
+</div>
+
+ 
+===== مراجع کمکی =====
+
+<div :en>
+
+  - C. H. Papadimitriou. //Computational Complexity//. Addison-Wesley, 1994. 
+  - Lane A. Hemaspaandra and Mitsunori Ogihara. //The Complexity Theory Companion//. Springer, 1998. 
+  - M. R. Garey and D. S. Johnson. //Computers and Intractibility: A Guide to the Theory of NP-Completeness//. W. H. Freeman, 1979. 
+  - J. E. Hopcroft and J. D. Ullman. //Introduction to Automata Theory, Languages, and Computation//. Addison-Wesley, 1979. 
+  - H. Rogers, Jr. //Theory of Recursive Functions and Effective Computability//. McGraw-Hill, 1967. 
+  - Ingo Wegener. //Complexity Theory: Exploring the Limits of Efficient Algorithms//. Springer, 2005. 
+  - Steven Homer and Alan L. Selman. //Computability and Complexity Theory//. Springer, 2001. 
+</div>

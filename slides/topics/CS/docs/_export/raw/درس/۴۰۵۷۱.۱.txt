@@ -1,0 +1,54 @@
+
+---- اطلاعات درس ----
+
+شماره: ۴۰۵۷۱.۱
+عنوان: زیست‌شناسی تکاملی محاسباتی
+عنوان انگلیسی: Computational Evolutionary Biology
+مقطع: کارشناسی ارشد
+گرایش: بیوانفورماتیک
+واحد: ۳
+نوع: نظری
+دسته: تخصصی
+پیش‌نیاز: --
+هم‌نیاز: --
+متولی: گروه بیوانفورماتیک
+طراح:‌ 
+آخرین تصویب: ۱۳۹۸/۰۱/۰۱
+
+قالب: قالب درس
+----------------------------
+
+
+===== اهداف درس =====
+
+هدف از اين درس، مفاهیم مرتبط با بیولوژی تکاملی شامل ژنتیک جمعیتی و فیلوژنتیک می‌باشد. این مفاهیم از دیدگاه محاسباتی مورد بررسی قرار گرفته و روش‌های محاسباتی متداول برای برخی از مسائل عمده در این حوزه نیز معرفی و تمرین می‌شود.
+
+===== ریز مواد =====
+
+  - **مقدمه و مقدمات ریاضی** 
+  - **فواصل تکاملی و مدلهای جابجایی نوکلئوتید، آمینه اسید و کدون**
+  - **بازسازی درختهای فیلوژنی-روشهای مبتنی بر فاصله**
+  - **بازسازی درخت‌های فیلوژنی-روش‌های پارسیمونی**
+  - **بازسازی درخت‌های فیلوژنی-روش‌های ML**
+  - **معرفی آماری بیزی؛ بازسازی درخت‌های فیلوژنی-روش‌های بیزی **
+  - **معرفی ابزار BEAST2**
+  - **نظریه coalescence**
+  - **structured coalescence **
+  - **phylogeography**
+  - ** بررسی مدل‌های compartmental گسترش بیماری‌ها (deterministic و stochastic)** 
+  - **بررسی روش‌های phylodynamics **
+  - **ساعت مولکولی و تخمین زمان‌های واگرایی**
+  - **مقایسه phenotypic traits و روش Brownian motion**
+  - **بازسازی درخت‌های transmission**
+  - **فیلوژنی تومورها**
+  - **تکاملی غیردرختی**
+  - **مطالبی از evolutionary dynamics**
+
+===== مراجع =====
+
+<div :en>
+  - Ziheng Yang, Molecular Evolution: A Statistical Approach, Oxford University Press, 2014
+  - Ziheng Yang, Computational Molecular Evolution, Oxford University Press, 2006
+  - Husmeier, Dirk, Richard Dybowski, and Stephen Roberts, eds. Probabilistic modeling in bioinformatics and medical informatics. Springer Science & Business Media, 2006.
+  - Nowak, Martin A. Evolutionary dynamics: exploring the equations of life. Harvard university press, 2006.
+</div>

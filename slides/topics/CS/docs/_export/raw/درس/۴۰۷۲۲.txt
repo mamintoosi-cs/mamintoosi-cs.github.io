@@ -1,0 +1,78 @@
+
+---- اطلاعات درس ----
+
+شماره: ۴۰۷۲۲
+عنوان: ريزپردازنده پیشرفته
+عنوان انگلیسی: Advanced Microprocessor
+مقطع: کارشناسی ارشد
+گرایش: معماری کامپیوتر
+واحد: ۳
+نوع: نظری
+دسته: تخصصی
+پیش‌نیاز: --
+هم‌نیاز: --
+متولی: گروه معماری کامپیوتر
+طراح:‌ دکتر امیر حسین جهانگیر
+آخرین تصویب: ۱۳۹۸/۰۱/۰۱
+
+قالب: قالب درس
+----------------------------
+
+
+===== اهداف درس =====
+
+هدف از اين درس، آشنایی دانش‌جویان با ...
+
+===== ریز مواد =====
+
+  - **مروري براجزاي اصلي و ريزمعماري ريزپردازنده هاي پيشرفته و معماري مجموعه دستورالعمل (ISA) آنها** 	
+  - **پردازنده هاي ابر عددي (Superscalar) ** 
+    * اجراي خارج از ترتيب و زمانبندي و تخصيص پوياي منابع (Dynamic scheduling)
+    * بررسي مخاطرات (Hazard) و روش هاي رفع آن
+    * الگوريتم Scoreboarding و Tomasulo
+    * بررسي اجزاي مختلف ريزپردازنده هاي اير عددي
+  - **تكنيكهاي مختلف اجراي حدس و گماني** 
+    *انواع روش هاي پيش بيني انشعاب
+    *اجراي مسندي (Predicated)
+    *دسترسي گماني به حافظه
+    *حدس دستورات و داده هاي بعدي
+  - **تمهيدات پياده سازي همروندي** 
+    *هم پردازنده ها (Coprocessor)
+    *داوري در چندپردازنده ها
+    *تكنيك ها و قراردادهاي رعايت همساني (Consistency) در سلسله مراتب حافظه و حافظه هاي نهان محلي
+  - **اجراي چندريسماني (Multi threading)** 
+    *مرور انواع چندريسماني
+    *بررسي نمونه هاي واقعي چند ريسماني 
+  - **گذرگا ه هاي I/O در پردازنده هاي پيشرفته** 
+    *نيازهاي I/O در پردانده هاي پيشرفته
+    *بررسي انواع گذرگاه¬های سریع و قراردادها (پروتکل¬های)ي رتباطی I/O در ریزپردازنده¬ها و معماری¬های پر سرعت امروزی
+
+ 
+
+===== ارزیابی =====
+
+  * امتحان میان ترم (حدوداً %30 تا 35%)
+  * متحان آخر ترم (35%~)
+  * تمرین¬ها (5%)
+  * پروژه¬های کشف یا تحلیل ریزمعماری و یا اجرای هدفمند چندریسمانی (بين 25% تا 30%)
+
+===== مراجع =====
+
+<div :en>
+1- J. P. Shen, M. H. Lipasti, "Modern Processor Design, Fundamentals of Superscalar Processors ", Waveland Press, 2013.
+
+2- A. González, F. Latorre and G. Magklis, “Processor Microarchitecture, An Implementation Perspective,” Morgan Claypool Publishers, 2011.
+
+3- J. Silc, B. Robic, Th. Ungerer, "Processor Architecture: From Dataflow to Superscalar and Beyond", Springer, 1999.
+
+4- W. Stallings, “Computer Organization and Architecture, Designing for Performance,” 11th Edition, Pearson, 2019.
+
+5- T.  Shanley, "Pentium Pro Processor System Architecture", Addison-Wesley, 1996. 
+
+6- R. Budruk, D. Anderson, T.  Shanley, "PCI Express System Architecture", Addison-Wesley, 2003.
+
+7- B. B. Brey, “The Intel Microprocessors, Architecture, Programming, and Interfacing,” 8th Edition, Pearson Prentice Hall, 2009.
+
+8- Several papers from literature.
+
+</div>

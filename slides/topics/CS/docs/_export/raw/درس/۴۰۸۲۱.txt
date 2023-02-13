@@ -1,0 +1,66 @@
+
+---- اطلاعات درس ----
+
+شماره: ۴۰۸۲۱
+عنوان: کشف شواهد دیجیتال
+عنوان انگلیسی: Digital Forensics 
+مقطع: کارشناسی ارشد
+گرایش: رایانش امن
+واحد: ۳
+نوع: نظری
+دسته: تخصصی
+پیش‌نیاز: --
+هم‌نیاز: --
+متولی: گروه فناوری اطلاعات
+طراح:‌ 
+آخرین تصویب: ۱۳۹۸/۰۱/۰۱
+
+قالب: قالب درس
+----------------------------
+
+
+===== اهداف درس =====
+
+هدف از اين درس، آشنایی دانش‌جویان با فرایند کشف، تحلیل و ارایه شواهد دیجیتال (فکتاش) است و در طی آن دانشجویان با فرآیند تحلیل شواهد دیحیتال از صحنه جرم تا پی‌جویی و نوشتن گزارش پی‌جویانه، نحوه پی‌جویی از ایستگاه‌های کاری و عملکرد سيستم عامل برای جمع‌آوری شواهد، مسائل پيشرفته در کشف شواهد دیجیتال، جمع‌آوری و تحليل شواهد در سطح شبکه و استخراج داده و فراداده از فایلها و سيستم فایلها آشنا می‌شوند.
+
+===== ریز مواد =====
+
+  - **مقدمه‌ای بر فرآیند کشف، تحلیل و ارایه شواهد دیجیتال (فکتاش)**
+    * منابع و انواع شواهد
+    * مباحث حقوقی فکتاش
+  - **جمع‌آوری فکتاشی از رسانه‌های مختلف**
+    * جلوگيری از نوشتن و سلسله حفاظت
+    * مفاهيم فضای بيهوده، مهرزمانی و تحليل زمانی. حسابهای كاربری / انتساب عمليات
+  - **تحليل در سطح سيستم عامل**
+    * تحليل مصنوعات فکتاشی
+    * تحليل لاگ‌ها
+    * تحليل شواهد دیجيتال بر روی سيستم عامل 
+  - **تحليل فکتاشی بدافزارها**
+    * تحليل روت‌كيتها
+    * تحليل حافظه ناماندگار
+    * تحليل پویای بدافزار
+  - **تحليل شبکه**
+    * تحليل پشته شبکه IP/TCP
+    * تحليل فعاليت در وب و ایميل
+  - **مفاهيم پيشرفته در رایا فکتاش**
+    * پی‌جویی فکتاشی سيستم‌های P2P
+    * انتساب حملات سایبری
+
+===== ارزیابی =====
+
+  * آزمون میان‌ترم: ۵ نمره
+  * آزمون پایان‌ترم: ۷ نمره
+  * تمرین‌ها و پروژه پایانی: ۸ نمره
+
+===== مراجع =====
+
+<div :en>
+  * Eoghan Casey, Digital Evidence and Computer Crime: Forensic Science, Computers and the Internet, 3rd Edition, 2011.
+  *  Bill Nelson, Amelia Phillips, and Christopher Steuart, Guide To Computer Forensics and Investigations, , 6th Edition, 2018. 
+  *  Michael Hale Ligh, Andrew Case, Jamie Levy, and AAron Walters, The Art of Memory Forensics: Detecting Malware and Threats in Windows, Linux, and Mac Memory, 1st Edition, 2014.
+  * Brian Carrier - File System Forensic Analysis, 2005.
+  * J. Jiang et al, Malicious attack propagation and source identification, Advances in Information Security, Springer, 2019.
+  * M. Raggo, C. Hosmer, Data Hiding, Exposing concealed data in multimedia, Operating system, Mobile devices and network protocols, Syngress, 2013.
+  * P. Polstra, Linux forensics, PensterAcademy, 2015.
+  * Some Related Papers
+</div>

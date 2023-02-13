@@ -1,0 +1,60 @@
+
+---- اطلاعات درس ----
+
+شماره: ۴۰۵۵۲
+عنوان: ژنومیکس محاسباتتی
+عنوان انگلیسی: Computational Genomics
+مقطع: کارشناسی ارشد
+گرایش: بیوانفورماتیک
+واحد: ۳
+نوع: نظری
+دسته: تخصصی
+پیش‌نیاز: مقدمه‌ای بر بیوانفورماتیک
+هم‌نیاز: --
+متولی: گروه بیوانفورماتیک
+طراح:‌ علی شریفی زارچی، ابوالفضل مطهری
+آخرین تصویب: ۱۳۹۸/۰۱/۰۱
+
+قالب: قالب درس
+----------------------------
+
+
+===== اهداف درس =====
+
+هدف از این درس، آشنایی دانشجویان با محتوای ژنوم موجودات و نحوه عملکرد آنها می‌باشد. یادگیری مفاهیم ابتدایی تکامل و همچنین پیدا کردن اشتراکهای مهم بین موجودات از جمله مواردی می‌باشند که در این درس بدانها پرداخته می‌گردد. نحوه استخراج و تحلیل دادگان نیز به دانشجویان آموزش داده‌ می‌شود. یافتن عوامل تفاوت میان افراد یک گونه و ارتباط میان بیماریها و ژنوم مورد بررسی قرار می‌گیرد. 
+
+===== ریز مواد =====
+
+  - ** مدلهای تکاملی رشته‌های زیستی** 
+    * آشنایی با فرآیندهای مارکوف برگشت پذیر در زمان
+    * آشنایی با مدلهای تکاملی
+    * محاسبه بیشینه احتمال برای رشته‌های زیستی
+  - ** ساخت درخت فیلوژنی**
+    * روشهای مبتنی بر فاصله
+    * روشهای مبتنی بر رشته (روش Parsimony و روش بیشینه احتمال)
+    * ارزیابی درختهای فیلوژنی
+  - ** همردیفی‌های چندگانه**
+    * روشهای امتیاز دهی 
+    * روش center-star
+    * روش Lifted-tree
+    * روشهای پیشرونده
+  - ** ژنتیک جمعیت**
+    * مدل Wright-Fisher
+    * مدل Coalescent
+    * مدلهای جهش (بینهایت آلل، بینهایت مکان، مکان محدود)
+    * مدل Coalescent به همراه جهش
+    * تخمین پارامترها و درخت
+    * مدل درخت جمعیتی با فرآیند نوترکیب
+    * تحلیل Linkage Disequilibrium
+  - ** مقایسه ژنوم در سطح موجودات**
+  - ** مطالعه در گستره ژنوم  GWAS**
+  
+===== مراجع =====
+
+<div :en>
+  - Notes from previous thought courses
+  - Gusfield, Dan. Algorithms on strings, trees and sequences: computer science and computational biology. Cambridge University Press, 1997
+  - Durbin, Richard, ed. Biological sequence analysis: probabilistic models of proteins and nucleic acids. Cambridge university press, 1998
+  - Durrett, Richard. Probability models for DNA sequence evolution. Springer, 2008
+  - Hein, Jotun, Mikkel Schierup, and Carsten Wiuf. Gene genealogies, variation and evolution: a primer in coalescent theory. Oxford university press, 2004
+</div>
