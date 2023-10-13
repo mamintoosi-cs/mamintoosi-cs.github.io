@@ -219,7 +219,8 @@ h1 {
 						<br>
 						Donald E. Knuth, <a
 							href="https://codeload.github.com/manjunath5496/The-Art-of-Computer-Programming-Books/zip/refs/heads/master">
-							The Art of Computer Programming, Volume 4A, Combinatorial Algorithms, Part 1, Page 24/901</a>
+							The Art of Computer Programming, Volume 4A, Combinatorial Algorithms, Part 1, Page
+							24/901</a>
 					</small>
 				</section>
 				<section>
@@ -240,15 +241,14 @@ h1 {
 				<section data-background-iframe="https://garethrees.org/2007/06/10/zendoku-generation/"
 					data-background-interactive>
 				</section>
-				<section data-background-iframe="https://taylorjg.github.io/dlxlib-demos/"
-					data-background-interactive>
+				<section data-background-iframe="https://taylorjg.github.io/dlxlib-demos/" data-background-interactive>
 				</section>
 			</section>
 			<section>
 				<section>
-						<img src="images/donald_knuth.jpg" width="300">
-						<br>
-						<a
+					<img src="images/donald_knuth.jpg" width="300">
+					<br>
+					<a
 						href="https://www.inf.ufrgs.br/~mrpritt/lib/exe/fetch.php?media=inf5504:7.2.2.1-dancing_links.pdf">
 						The Art of Computer Programming, Volume 4, Dancing Links
 					</a>
@@ -263,28 +263,42 @@ h1 {
 			<section>
 				<section>
 					<h2>Codes:</h2>
-					<ul>
-						<li><a href="https://github.com/nstagman/exact_cover_sudoku">Exact Cover Sudoku Solver, C,C++,
-								Python</a></li>
-						<li>
-							<a href="https://github.com/jlaire/dlx-cpp/tree/master">Efficient C++ implementation of Algorithm DLX </a>
-							<br>
-							How to compile & run in VSCode:
-							<ul>
-								<li>
-									Install <a href="https://www.msys2.org/">MSYS2</a>
-								</li>
-								<li>Install <a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
-								<li>Follow the <a herf="https://code.visualstudio.com/docs/cpp/config-mingw#_prerequisites"> instructions in VSCode site</a> for using C++ Compiler</li>
-								<li>Add the MSYS installation folder to system path (for example: C:\msys64\usr\bin\) </li>
-								<li>Download or clone <a href="https://github.com/jlaire/dlx-cpp/tree/master">dlx-cpp</a> repository</li>
-								<li>Go to the local folder of dlx-cpp</li>
-								<li>
-									add the following options to makefile in dlx-cpp folder: "-static -static-libgcc -static-libstdc++"
-								</li>
-							</ul>
-						</li>
-					</ul>
+					<small>
+						<ul>
+							<li><a href="https://github.com/nstagman/exact_cover_sudoku">Exact Cover Sudoku Solver,
+									C,C++,
+									Python</a></li>
+							<li>
+								<a href="https://github.com/jlaire/dlx-cpp/tree/master">Efficient C++ implementation of
+									Algorithm DLX </a>
+								<br>
+								How to compile & run in VSCode:
+								<ul>
+									<li>
+										Get the latest version of MinGW-w64 via <a href="https://www.msys2.org/">MSYS2</a> for C++ compiler and tools
+									</li>
+									<li>Install <a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+									<li>Follow the <a
+											herf="https://code.visualstudio.com/docs/cpp/config-mingw#_prerequisites">
+											instructions in VSCode site</a> for using C++ Compiler</li>
+									<li>Add the MSYS installation folder to system path (for example:
+										C:\msys64\usr\bin\) </li>
+									<li>Download or clone <a
+											href="https://github.com/jlaire/dlx-cpp/tree/master">dlx-cpp</a> repository
+									</li>
+									<li>Go to the local folder of dlx-cpp</li>
+									<li>
+										add the following options to makefile in dlx-cpp folder: "-static -static-libgcc
+										-static-libstdc++"
+									</li>
+									<li>Follow the instructions in Readme of <a
+											href="https://github.com/jlaire/dlx-cpp/tree/master">dlx-cpp</a> </li>
+								</ul>
+								With the above steps, all of the examples except Sudoku are compiled, successfully. For compiling
+								Sudoku, you should to include stdexcept library to all Sudoku*.cpp files.
+							</li>
+						</ul>
+					</small>
 				</section>
 				<section>
 					<h2>Real Time Solver</h2>
