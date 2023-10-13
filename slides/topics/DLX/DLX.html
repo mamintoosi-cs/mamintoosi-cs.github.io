@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Algorithm X, Dancing Links</title>
+
+	<meta name="description"
+		content="Algorithm X, Dancing Links, Ferdowsi University of Mashhad, Department of Computer Science">
+	<meta name="author" content="Mahmood Amintoosi">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="../../css/reset.css">
+	<link rel="stylesheet" href="../../css/reveal.css">
+	<link rel="stylesheet" href="../../css/theme/serif.css" id="theme">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="../../lib/css/monokai.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? '../../css/print/pdf.css' : '../../css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	</script>
+	<script type="text/javascript"
+		src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+		</script>
+
+	<!--[if lt IE 9]>
+<script src="../../lib/js/html5shiv.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<!--
+<section>
+	<h1>Reveal.js</h1>
+	<h3>The HTML Presentation Framework</h3>
+	<p>
+		<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> and <a href="https://github.com/hakimel/reveal.js/graphs/contributors">contributors</a></small>
+	</p>
+</section>
+<section id="themes">
+	<h2>Themes</h2>
+	<p>
+		reveal.js comes with a few themes built in: <br>
+		<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. 
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/black.css'); return false;">Black (default)</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/white.css'); return false;">White</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/league.css'); return false;">League</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/sky.css'); return false;">Sky</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/beige.css'); return false;">Beige</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/simple.css'); return false;">Simple</a> <br>
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/serif.css'); return false;">Serif</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/blood.css'); return false;">Blood</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/night.css'); return false;">Night</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/moon.css'); return false;">Moon</a> -
+		<a href="#" onclick="document.getElementById('theme').setAttribute('href','../../css/theme/solarized.css'); return false;">Solarized</a>
+	</p>
+</section> -->
+			<section data-background="images/Sudoku-DG.png" data-state="dimbg" data-background-opacity=.1>
+				<!--
+<style>
+	
+#myCustom > h1, #myCustom > h2 {
+ color: #FF0000;
+}
+
+/* or if you want to change all h1: */
+h1 {
+  color: #00FF00 !important;
+}
+</style>
+این بخش زیر برای پنهان شدن کلی فرگمنت نوشته شده
+-->
+
+				<!-- <style>
+					.fragment.visible:not(.current-fragment) {
+						display: none;
+						height: 0px;
+						line-height: 0px;
+						font-size: 0px;
+					}
+				</style> -->
+
+				<small>
+					بسم الله الرحمن الرحیم
+				</small><br>
+				<h2>Algorithm X, Dancing Links</h2>
+				&
+				<h3>Combinatorial Optimization</h3>
+				<h4>Mahmood Amintoosi</h4>
+				<p>
+					<small><a href="https://mamintoosi.github.io/">m.amintoosi</a> @ <a
+							href="http://um.ac.ir/">um.ac.ir</a>
+						<br>
+						پاییز ۱۴۰۲
+					</small>
+
+				</p>
+				<table style='font-size:50%'>
+					<!-- <tr>
+							<td>
+								<h4>Mahmood Amintoosi</h4>
+								</td>
+								<td><a href="http://https://mamintoosi.github.io/">m.amintoosi</a> @ <a
+							href="http://hsu.ac.ir/">hsu.ac.ir</a>
+							</td>
+						</tr> -->
+					<tr>
+						<!-- <td><img src="images/HSU-logo.png" width="150" valign="middle" style="vertical-align:middle;" border="0"></td> -->
+						<td valign="middle" style="vertical-align:middle;">
+							These Slides are accessible from <a
+								href="https://mamintoosi.github.io/slides/topics/DLX/DLX.html"> my github page
+							</a>
+							<!-- or by scanning this QR Code:<br>
+					Program Codes:<a href="https://github.com/mamintoosi-cs/pytorch-workshop">
+						https://github.com/mamintoosi-cs/pytorch-workshop</a>
+				</td>
+						<td><img src="images/qrcode_mamintoosi.github.io.png" width=150 valign="middle" style="vertical-align:middle;"> </td> -->
+					</tr>
+					<!-- <tr>
+							<td></td>
+							<td>Program Codes:<a href="https://github.com/mamintoosi-cs/pytorch-workshop">
+							https://github.com/mamintoosi-cs/pytorch-workshop</a>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								زمستان ۱۴۰۰
+							</td>
+						</tr> -->
+				</table>
+				<!-- <p>
+					<small>زمستان ۱۴۰۰
+					</small>
+				</p> -->
+			</section>
+			<section>
+				<section data-background="images/tiling.png" data-background-opacity=.2>
+					<h2>Combinatorial Optimization</h2>
+					<small>
+						Combinatorial optimization is a subfield of mathematical optimization that consists of finding
+						an optimal object from a finite set of objects, where the set of feasible solutions is discrete
+						or can be reduced to a discrete set. <br>
+						Source: <a href="https://en.wikipedia.org/wiki/Combinatorial_optimization">Wiki</a>
+					</small>
+					For Some Publications, See our
+					<a href="https://fumcs.github.io/projects/comb-opt/">Computer Science Github Site</a>
+				</section>
+				<section data-background-iframe="https://fumcs.github.io/projects/comb-opt" data-background-interactive>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Boolean Satisfiability</h2>
+					Boolean Satisfiability (SAT) is the problem of deciding if there is an assignment to the variables
+					of a
+					Boolean formula such that the formula is satisfied?
+					<br><br>
+					<small>
+						Consider the formula (a ∨ b) ∧ (¬a ∨ ¬c)
+						<br>
+						The assignment b = True and c = False satisfies the formula!
+						<br><br>
+					</small>
+				</section>
+				<section>
+					<a href="https://en.wikipedia.org/wiki/Truth_table">Truth Table (Wiki)</a>
+					<br>
+					<img src="images/AND-Table.png">
+					<br>
+				</section>
+				<section>
+					On the board:
+					<ul>
+						<li>Truth table for 3 variables</li>
+						<li>Binary tree representation of search space</li>
+						<li>Clustering</li>
+						<li>Exact cover problem</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section data-background-iframe="https://en.wikipedia.org/wiki/Exact_cover" data-background-interactive>
+				</section>
+				<section>
+					<h2>Applications</h2>
+					<ul>
+						<li>Sudoku</li>
+						<li>Tiling Problem</li>
+						<li>N-Queen Problem</li>
+					</ul>
+				</section>
+				<section data-background-iframe="https://anhminhtran235.github.io/sudoku-solver-visualizer/"
+					data-background-interactive>
+				</section>
+				<section data-background-iframe="https://garethrees.org/2007/06/10/zendoku-generation/"
+					data-background-interactive>
+				</section>
+				<section data-background-iframe="https://github.com/nstagman/exact_cover_sudoku"
+					data-background-interactive>
+				</section>
+			</section>
+			<section>
+				<section data-background-iframe="https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X"
+					data-background-interactive>
+				</section>
+				<section data-background-iframe="https://11011110.github.io/blog/2008/01/10/analyzing-algorithm-x.html"
+					data-background-interactive>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Codes:</h2>
+					<ul>
+						<li><a href="https://github.com/nstagman/exact_cover_sudoku">Exact Cover Sudoku Solver, C,C++,
+								Python</a></li>
+					</ul>
+				</section>
+				<section>
+					<h2>Real Time Solver</h2>
+					<small>An application that connects to Computer Webcam and solve Sudoku in Real Time (Python, OpenCV
+						and Keras)</small>
+					<br>
+					<a href="https://github.com/anhminhtran235/real_time_sudoku_solver">Github Page</a>
+					<br>
+					<img src="images/real-time-solver.jpg" width="400">
+				</section>
+			</section>
+			<section hidden="" class="future" style="top: -270.5px; display: none;">
+				<h3>- Questions? -</h3>
+				<br>
+				m.amintoosi @ gmail.com
+				<br>
+				<p>webpage : <a href="http://mamintoosi.ir/">http://mamintoosi.ir</a></p>
+				<p>webpage in github : <a href="https://mamintoosi.github.io/">http://mamintoosi.github.io</a></p>
+				<p>github : <a href="https://github.com/mamintoosi">mamintoosi</a></p>
+				<hr>
+				<!-- <small>
+<p> مطالب و سبک اسلاید برگرفته از 
+<a href="https://github.com/mdda/deep-learning-workshop"> Martin Andrews </a>
+و
+<a href="https://hameds.github.io/slides/"> سعیدی‌فرد </a>
+</p>
+</small>
+-->
+			</section>
+
+		</div>
+
+	</div>
+
+	<script src="../../js/reveal.js"></script>
+
+	<script>
+
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			center: true,
+			hash: true,
+			slideNumber: true,
+
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [
+				{ src: '../../plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: '../../plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: '../../plugin/highlight/highlight.js', async: true },
+				{ src: '../../plugin/search/search.js', async: true },
+				{ src: '../../plugin/zoom-js/zoom.js', async: true },
+				{ src: '../../plugin/notes/notes.js', async: true }
+			]
+		});
+
+	</script>
+
+</body>
+
+</html>
