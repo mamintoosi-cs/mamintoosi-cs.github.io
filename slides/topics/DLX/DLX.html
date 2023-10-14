@@ -206,7 +206,7 @@ h1 {
 				<section data-background="./images/Don_Knuth.jpg" data-background-opacity="0.3">
 					<h2>Applications</h2>
 					Why?
-					<small>
+					<small class="fragment">
 						<blockquote
 							cite="https://codeload.github.com/manjunath5496/The-Art-of-Computer-Programming-Books/zip/refs/heads/master">
 							Well, the author of the textbook you are reading has absolutely no objections to useful work
@@ -275,7 +275,8 @@ h1 {
 								How to compile & run in VSCode:
 								<ul>
 									<li>
-										Get the latest version of MinGW-w64 via <a href="https://www.msys2.org/">MSYS2</a> for C++ compiler and tools
+										Get the latest version of MinGW-w64 via <a
+											href="https://www.msys2.org/">MSYS2</a> for C++ compiler and tools
 									</li>
 									<li>Install <a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
 									<li>Follow the <a
@@ -294,7 +295,8 @@ h1 {
 									<li>Follow the instructions in Readme of <a
 											href="https://github.com/jlaire/dlx-cpp/tree/master">dlx-cpp</a> </li>
 								</ul>
-								With the above steps, all of the examples except Sudoku are compiled, successfully. For compiling
+								With the above steps, all of the examples except Sudoku are compiled, successfully. For
+								compiling
 								Sudoku, you should to include stdexcept library to all Sudoku*.cpp files.
 							</li>
 						</ul>
@@ -342,8 +344,34 @@ h1 {
 					</table>
 				</section>
 				<section>
-					How to code?<br>
-					These two parts video tutorials (Part I & Part II) take about 10 hours!
+					<h2>How to code DLX in C++?</h2>
+					These two parts video tutorials (
+					<a href="https://www.youtube.com/watch?v=gxHE3uguDbg">Part I</a>
+					&
+					<a href="https://www.youtube.com/watch?v=IoXDNWhN0aw">Part II</a>)
+					by Edward Kmett,
+					take about 10 hours!
+				</section>
+				<section>
+					<small>
+						Having a sparse matrix made up of doubly linked lists makes it easy to remove nodes, by just
+						doing
+						this:<br>
+						<code>
+node->left->right = node->right;<br>
+node->right->left = node->left;<br>
+node->left = nullptr;<br>
+node->right = nullptr;<br>
+</code>
+						An observation about doubly linked lists is that you can remove a node from a list but leave the
+						node’s pointers in tact. You do the first 2 lines above but not the bottom 2 lines. If you do
+						that,
+						you can put this node back into the list by just doing this:<br>
+						<code>
+node->left->right = node;<br>
+node->right->left = node;<br>
+</code>
+					</small>
 				</section>
 			</section>
 
