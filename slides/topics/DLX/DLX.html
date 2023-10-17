@@ -186,18 +186,20 @@ h1 {
 					Boolean formula such that the formula is satisfied?
 					<br><br>
 					<small>
-						Consider the formula (a ∨ b) ∧ (¬a ∨ ¬c)
+						Consider the formula (A ∨ B) ∧ (~A ∨ ~C)
 						<br>
 						The assignment b = True and c = False satisfies the formula!
-						<br><br>
+						<br>
 					</small>
+					<br>
+					<a href="https://en.wikipedia.org/wiki/Truth_table">Truth Table (Wiki)</a>
 				</section>
-				<section>
+				<!-- <section>
 					<a href="https://en.wikipedia.org/wiki/Truth_table">Truth Table (Wiki)</a>
 					<br>
 					<img src="images/AND-Table.png">
 					<br>
-				</section>
+				</section> -->
 				<section>
 					On the board:
 					<ul>
@@ -208,6 +210,28 @@ h1 {
 						<li>Linked lists</li>
 					</ul>
 				</section>
+				<section>
+					<small>
+						Having a sparse matrix made up of doubly linked lists makes it easy to remove nodes, by just
+						doing
+						this:<br>
+						<code>
+node->left->right = node->right;<br>
+node->right->left = node->left;<br>
+node->left = nullptr;<br>
+node->right = nullptr;<br>
+</code>
+						An observation about doubly linked lists is that you can remove a node from a list but leave the
+						node’s pointers in tact. You do the first 2 lines above but not the bottom 2 lines. If you do
+						that,
+						you can put this node back into the list by just doing this:<br>
+						<code>
+node->left->right = node;<br>
+node->right->left = node;<br>
+</code>
+					</small>
+				</section>
+
 			</section>
 			<section>
 				<section data-background-iframe="https://en.wikipedia.org/wiki/Exact_cover" data-background-interactive>
@@ -268,6 +292,25 @@ h1 {
 				<section data-background-iframe="https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X"
 					data-background-interactive>
 				</section>
+				<section>
+					<h3>Sudoku and N-Queens Problems </h3>
+					How to transform these problems to an Exact Cover problem?
+					<ol>
+						<li>
+							<a
+								href="https://www.kth.se/social/files/58861771f276547fe1dbf8d1/HLaestanderMHarrysson_dkand14.pdf">
+								Solving Sudoku efficiently with Dancing Links
+							</a>
+						</li>
+						<li>
+							<a
+								href="https://www.nohuddleoffense.de/2019/01/20/dancing-links-algorithm-x-and-the-n-queens-puzzle/">
+								Dancing links, algorithm X and the n-queens puzzle
+							</a>
+						</li>
+					</ol>
+				</section>
+
 				<!-- <section data-background-iframe="https://11011110.github.io/blog/2008/01/10/analyzing-algorithm-x.html"
 					data-background-interactive>
 				</section> -->
@@ -386,25 +429,6 @@ h1 {
 					take about 10 hours!
 				</section>
 			</section>
-			<section>
-				<section>
-					<h3>Sudoku and N-Queens Problems </h3>
-					How to transform these problems to an Exact Cover problem?
-					<ol>
-						<li>
-							<a
-								href="https://www.kth.se/social/files/58861771f276547fe1dbf8d1/HLaestanderMHarrysson_dkand14.pdf">
-								Solving Sudoku efficiently with Dancing Links
-							</a>
-						</li>
-						<li>
-							<a
-								href="https://www.nohuddleoffense.de/2019/01/20/dancing-links-algorithm-x-and-the-n-queens-puzzle/">
-								Dancing links, algorithm X and the n-queens puzzle
-							</a>
-						</li>
-					</ol>
-				</section>
 				<!-- <section
 					data-background-iframe="https://www.kth.se/social/files/58861771f276547fe1dbf8d1/HLaestanderMHarrysson_dkand14.pdf"
 					data-background-interactive>
@@ -413,30 +437,6 @@ h1 {
 					data-background-iframe="https://www.nohuddleoffense.de/2019/01/20/dancing-links-algorithm-x-and-the-n-queens-puzzle/"
 					data-background-interactive>
 				</section> -->
-
-				<section>
-					<small>
-						Having a sparse matrix made up of doubly linked lists makes it easy to remove nodes, by just
-						doing
-						this:<br>
-						<code>
-node->left->right = node->right;<br>
-node->right->left = node->left;<br>
-node->left = nullptr;<br>
-node->right = nullptr;<br>
-</code>
-						An observation about doubly linked lists is that you can remove a node from a list but leave the
-						node’s pointers in tact. You do the first 2 lines above but not the bottom 2 lines. If you do
-						that,
-						you can put this node back into the list by just doing this:<br>
-						<code>
-node->left->right = node;<br>
-node->right->left = node;<br>
-</code>
-					</small>
-				</section>
-			</section>
-
 		</div>
 
 	</div>
