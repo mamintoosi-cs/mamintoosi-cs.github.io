@@ -6,6 +6,6 @@
 مطالب و سبک اسلاید برگرفته از 
 	<a href="https://github.com/mdda/deep-learning-workshop"> Martin Andrews </a>
 	و
-	<a href="https://mamintoosi.github.io/slides/"> سعیدی‌فرد </a>
+	<a href="https://github.com/hakimel/reveal.js"> The HTML Presentation Framework </a>
                            
 </div>
