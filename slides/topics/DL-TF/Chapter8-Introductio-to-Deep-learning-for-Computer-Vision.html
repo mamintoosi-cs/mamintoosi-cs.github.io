@@ -35,7 +35,7 @@
 <script src="../../lib/js/html5shiv.js"></script>
 <![endif]-->
 </head>
-				<!-- <style>
+<!-- <style>
 					.fragment.visible:not(.current-fragment) {
 						display: none;
 						height: 0px;
@@ -133,7 +133,7 @@
 								Counting No. of Parameters in Deep Learning Models by Hand</a></li>
 					</ol>
 				</section>
-				<section
+				<section>
 					data-background-iframe="http://deeplearning.net/software/theano_versions/0.9.X/tutorial/conv_arithmetic.html#"
 					data-background-interactive>
 				</section>
@@ -143,14 +143,6 @@
 				</section>
 			</section> -->
 			<section>
-				<section>
-					<h3>1D Convolution</h3>
-					The last plot in Chap. 4:<br>
-					<img src="images/truncated_mae_history.png" width = "400">
-					<img src="images/truncated_mae_history-conv-1d.png"  width = "400" class="fragment">
-					<br>
-					<a href="https://colab.research.google.com/github/fum-cs/dl/blob/main/code/conv_play.ipynb">Play with Convs & Filters</a>
-				</section>
 				<section>
 					<h3>Mathematical definition of Convolution</h3>
 					<img src="images/conv.png" width="750"><br>
@@ -162,6 +154,17 @@
 							Convolutions and Kernels
 						</a>
 					</small>
+				</section>
+				<section data-background-iframe="part15.pdf" data-background-interactive>
+				</section>
+				<section>
+					<h3>1D Convolution</h3>
+					The last plot in Chap. 4:<br>
+					<img src="images/truncated_mae_history.png" width="400">
+					<img src="images/truncated_mae_history-conv-1d.png" width="400" class="fragment">
+					<br>
+					<a href="https://colab.research.google.com/github/fum-cs/dl/blob/main/code/conv_play.ipynb">Play
+						with Convs & Filters</a>
 				</section>
 			</section>
 			<section>
@@ -195,7 +198,7 @@
 						</div>
 					</small>
 				</section>
-<!-- An n-D convolution is when two functions or tensors are convolved along [math]n[/math] axes.
+				<!-- An n-D convolution is when two functions or tensors are convolved along [math]n[/math] axes.
 In an RGB image, the image is [math]a*b*3[/math] and the convolutional filters are [math]c[/math][math]*d*3[/math]. Since their third dimensions are equal, there is no need to convolve along that axis. 
 You only convolve along the first two axes, making it a 2D convolution.
 Convolutions were originally defined for functions and functions can have vector outputs.
@@ -204,7 +207,9 @@ you can see how it follows the definition of a 2D convolution more clearly. -->
 				<section>
 					<h3>Sobel Filter</h3>
 					<small align="left">
-						If we define A as the source image, and Gx and Gy are two images which at each point contain the horizontal and vertical derivative approximations respectively, the computations are as follows (<a href="https://en.wikipedia.org/wiki/Sobel_operator">source wiki</a>):
+						If we define A as the source image, and Gx and Gy are two images which at each point contain the
+						horizontal and vertical derivative approximations respectively, the computations are as follows
+						(<a href="https://en.wikipedia.org/wiki/Sobel_operator">source wiki</a>):
 					</small>
 					<img src="images/Sobel_01.png" width="500">
 					<p class="fragment">
@@ -216,10 +221,13 @@ you can see how it follows the definition of a 2D convolution more clearly. -->
 						<a href="https://fiveko.com/online-tools/edge-detection-gradient-operators-demo/">
 							Edge Detection: Gradient operators Demo
 						</a><br>
-						See <a href="https://github.com/mamintoosi-cs/pytorch-workshop/App_Image.ipynb"> App_Image.ipynb </a>
-						or Run in <a href="https://colab.research.google.com/github/mamintoosi-cs/pytorch-workshop/blob/master/App_Image.ipynb"> Colab </a>
+						See <a href="https://github.com/mamintoosi-cs/pytorch-workshop/App_Image.ipynb"> App_Image.ipynb
+						</a>
+						or Run in <a
+							href="https://colab.research.google.com/github/mamintoosi-cs/pytorch-workshop/blob/master/App_Image.ipynb">
+							Colab </a>
 						<br>
-						</small>
+					</small>
 					<table>
 						<tr>
 							<td></td>
@@ -238,34 +246,41 @@ you can see how it follows the definition of a 2D convolution more clearly. -->
 				<section>
 					<h3>Laplacian</h3>
 					<small align="left">
-					The Laplace operator is a second-order differential operator in the n-dimensional Euclidean space, defined as the divergence ($\nabla \cdot$) of the gradient ($\nabla f$). Thus if $f$ is a twice-differentiable real-valued function, then the Laplacian of $f$ is the real-valued function defined by:<br>
-$\Delta f=\nabla ^{2}f=\nabla \cdot \nabla f$<br>
-</small>
-<br>
-<img src="images/first_and_second_derivative.webp" width="550">
-</section>
-<section>
-	<h3>Laplacian</h3>
-	<small align="left">
-		As we saw [-1,0,1] demonstrate Prewitt filter weights, which is a first order derivative; The filter weights for Laplacian is [1,-2,1]
-		<br>
-		Convolving [-1,0,1] with your image basically computes the difference between the pixel values of the neighboring pixels:<br>
-	<center>
-		[1,-2,1]<br>
-	next pixel - previous pixel,
-	</center>
-	The Laplacian operator looks something like [1, -2, 1]. This computes the difference of differences. To see how, note that [1,-2,1] corresponds to:<br>
-<center>
-next - 2 x current + previous
-</center>
-<br>
-<center>
-next - current - current + previous
-<br>
-(next-current) - (current-previous)
-</center>
-<br>
-Now notice how this is a diference of differences. (next - current) is like a 1st derivative. (current - previous) is like 1st derivative. Their difference is like a 2nd derivative.
+						The Laplace operator is a second-order differential operator in the n-dimensional Euclidean
+						space, defined as the divergence ($\nabla \cdot$) of the gradient ($\nabla f$). Thus if $f$ is a
+						twice-differentiable real-valued function, then the Laplacian of $f$ is the real-valued function
+						defined by:<br>
+						$\Delta f=\nabla ^{2}f=\nabla \cdot \nabla f$<br>
+					</small>
+					<br>
+					<img src="images/first_and_second_derivative.webp" width="550">
+				</section>
+				<section>
+					<h3>Laplacian</h3>
+					<small align="left">
+						As we saw [-1,0,1] demonstrate Prewitt filter weights, which is a first order derivative; The
+						filter weights for Laplacian is [1,-2,1]
+						<br>
+						Convolving [-1,0,1] with your image basically computes the difference between the pixel values
+						of the neighboring pixels:<br>
+						<center>
+							[1,-2,1]<br>
+							next pixel - previous pixel,
+						</center>
+						The Laplacian operator looks something like [1, -2, 1]. This computes the difference of
+						differences. To see how, note that [1,-2,1] corresponds to:<br>
+						<center>
+							next - 2 x current + previous
+						</center>
+						<br>
+						<center>
+							next - current - current + previous
+							<br>
+							(next-current) - (current-previous)
+						</center>
+						<br>
+						Now notice how this is a diference of differences. (next - current) is like a 1st derivative.
+						(current - previous) is like 1st derivative. Their difference is like a 2nd derivative.
 					</small>
 				</section>
 				<section>
@@ -276,8 +291,10 @@ Now notice how this is a diference of differences. (next - current) is like a 1s
 				<section>
 					<h3>Laplacian</h3>
 					<small>
-						See <a href="https://colab.research.google.com/github/mamintoosi-cs/pytorch-workshop/blob/master/App_Image.ipynb"> App_Image.ipynb </a>
-						</small><br>
+						See <a
+							href="https://colab.research.google.com/github/mamintoosi-cs/pytorch-workshop/blob/master/App_Image.ipynb">
+							App_Image.ipynb </a>
+					</small><br>
 					<table>
 						<tr>
 							<td><img src="images/Soleymani_mellat.jpg" width="450"></td>
