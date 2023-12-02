@@ -199,8 +199,22 @@
 						</a>
 					</small>
 				</section>
+			</section>
+				<section>
 				<section data-background-iframe="https://www.mathworks.com/help/optim/ug/deblur-problem-based.html"
 					data-background-interactive>
+				</section>
+				<section>
+					<h4>Finding x in min||Ax-b||</h4>
+					<a href="https://colab.research.google.com/github/fum-cs/dl/blob/main/code/Large-Scale-Constrained-Linear-Least-Squares.ipynb">Run Python code in Colab</a>
+					<table>
+						<tr>
+							<td><img src="images/optdeblur_01-output.jpg" width="850"></td>
+						</tr>
+					</table>
+					<small>
+						In DL, A, as filter weights, is un-known when x, b are in-hand
+					</small>
 				</section>
 			</section>
 			<section>
@@ -413,7 +427,7 @@ Total params: 93,322
 		 </pre>
 				</section>
 			</section>
-			<section>
+			<!-- <section>
 				<section>
 					<section
 						data-background-iframe="https://connectjaya.com/classical-convolutional-neural-networkscnn/"
@@ -436,10 +450,8 @@ Total params: 93,322
 									href="https://medium.com/@iamvarman/how-to-calculate-the-number-of-parameters-in-the-cnn-5bd55364d7ca">
 									How to calculate the number of parameters in the CNN? </a>
 							</li>
-							<!--
 Convolutional Layer : Consider a convolutional layer which takes “l” feature maps as the input and has “k” feature maps as output. The filter size is “n*m”.
 Here the input has l=32 feature maps as inputs, k=64 feature maps as outputs and filter size is n=3 and m=3. It is important to understand, that we don’t simply have a 3*3 filter, but actually, we have 3*3*32 filter, as our input has 32 dimensions. And as an output from first conv layer, we learn 64 different 3*3*32 filters which total weights is “n*m*k*l”. Then there is a term called bias for each feature map. So, the total number of parameters are “(n*m*l+1)*k”.			
-			-->
 						</ul>
 					</small>
 				</section>
@@ -461,7 +473,7 @@ Here the input has l=32 feature maps as inputs, k=64 feature maps as outputs and
 							href="https://towardsdatascience.com/counting-no-of-parameters-in-deep-learning-models-by-hand-8f1716241889">
 							Counting No. of Parameters in Deep Learning Models by Hand</a></small>
 				</section>
-			</section>
+			</section> -->
 			<section>
 				<section>
 					<code> -- </code>
