@@ -310,15 +310,13 @@ you can see how it follows the definition of a 2D convolution more clearly. -->
 				<section>
 					<h3>Laplacian</h3>
 					<small align="left">
-						As we saw [-1,0,1] demonstrate Prewitt filter weights, which is a first order derivative; The
-						filter weights for Laplacian is [1,-2,1]
-						<br>
+						As we saw [-1,0,1] demonstrate Prewitt filter weights, which is a first order derivative; 
 						Convolving [-1,0,1] with your image basically computes the difference between the pixel values
-						of the neighboring pixels:<br>
+						of the neighboring pixels. You apply 0 to the current pixel, 1 to the pixel on the right and -1 to the pixel on the left. This gives a first order difference:
 						<center>
-							[1,-2,1]<br>
-							next pixel - previous pixel,
+						next pixel - previous pixel
 						</center>
+						<br><br>
 						The Laplacian operator looks something like [1, -2, 1]. This computes the difference of
 						differences. To see how, note that [1,-2,1] corresponds to:<br>
 						<center>
