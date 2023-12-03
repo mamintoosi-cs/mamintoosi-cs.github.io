@@ -200,13 +200,15 @@
 					</small>
 				</section>
 			</section>
-				<section>
+			<section>
 				<section data-background-iframe="https://www.mathworks.com/help/optim/ug/deblur-problem-based.html"
 					data-background-interactive>
 				</section>
 				<section>
 					<h4>Finding x in min||Ax-b||</h4>
-					<a href="https://colab.research.google.com/github/fum-cs/dl/blob/main/code/Large-Scale-Constrained-Linear-Least-Squares.ipynb">Run Python code in Colab</a>
+					<a
+						href="https://colab.research.google.com/github/fum-cs/dl/blob/main/code/Large-Scale-Constrained-Linear-Least-Squares.ipynb">Run
+						Python code in Colab</a>
 					<table>
 						<tr>
 							<td><img src="images/optdeblur_01-output.jpg" width="850"></td>
@@ -380,52 +382,45 @@ you can see how it follows the definition of a 2D convolution more clearly. -->
 				<section>
 					<code>8.1 - Introduction to convnets</code>
 					<br>
-					MNIST Classification, TensorFlow Code
+					MNIST Classification, Sequential Model
 					<pre>
 		 <code class="hljs" data-trim>
-import keras
-from keras import layers
-from keras import models
+from tensorflow import keras
+from tensorflow.keras import layers
 
-model = models.Sequential()
-model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)))
+model = keras.Sequential()
+model.add(layers.Conv2D(32, (5, 5), activation='relu', input_shape=(28, 28, 1)))
 model.add(layers.MaxPooling2D((2, 2)))
-model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+model.add(layers.Conv2D(64, (5, 5), activation='relu'))
 model.add(layers.MaxPooling2D((2, 2)))
-model.add(layers.Conv2D(64, (3, 3), activation='relu'))
 model.add(layers.Flatten())
 model.add(layers.Dense(64, activation='relu'))
 model.add(layers.Dense(10, activation='softmax'))
-		 </code>
+				 </code>
 		 </pre>
 				</section>
 				<section>
-					<code>8.1 - Introduction to convnets</code>
-					<br>
-					Number of Parameters
+					<h3>Number of Parameters of Sequential Model</h3>
 					<pre>
 _________________________________________________________________
-Layer (type)                 Output Shape              Param #   
+Layer (type)                Output Shape              Param #   
 =================================================================
-conv2d_1 (Conv2D)            (None, 26, 26, 32)        320       
-_________________________________________________________________
-max_pooling2d_1 (MaxPooling2 (None, 13, 13, 32)        0         
-_________________________________________________________________
-conv2d_2 (Conv2D)            (None, 11, 11, 64)        18496     
-_________________________________________________________________
-max_pooling2d_2 (MaxPooling2 (None, 5, 5, 64)          0         
-_________________________________________________________________
-conv2d_3 (Conv2D)            (None, 3, 3, 64)          36928     
-_________________________________________________________________
-flatten_1 (Flatten)          (None, 576)               0         
-_________________________________________________________________
-dense_1 (Dense)              (None, 64)                36928     
-_________________________________________________________________
-dense_2 (Dense)              (None, 10)                650       
+conv2d_6 (Conv2D)           (None, 24, 24, 32)        832       																	
+max_pooling2d_2 (MaxPoolin  (None, 12, 12, 32)        0         
+g2D)                                                            																
+conv2d_7 (Conv2D)           (None, 8, 8, 64)          51264     																
+max_pooling2d_3 (MaxPoolin  (None, 4, 4, 64)          0         
+g2D)                                                            																
+flatten_2 (Flatten)         (None, 1024)              0         																
+dense_2 (Dense)             (None, 64)                65600     																
+dense_3 (Dense)             (None, 10)                650       																
 =================================================================
-Total params: 93,322
+Total params: 118346 (462.29 KB)
+Trainable params: 118346 (462.29 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
 		 </pre>
-				</section>
+				</section>				
 			</section>
 			<!-- <section>
 				<section>
@@ -475,6 +470,49 @@ Here the input has l=32 feature maps as inputs, k=64 feature maps as outputs and
 				</section>
 			</section> -->
 			<section>
+				<section>
+					<code>8.1 - Introduction to convnets</code>
+					<br>
+					MNIST Classification, API Model
+					<pre>
+		 <code class="hljs" data-trim>
+from tensorflow import keras
+from tensorflow.keras import layers
+inputs = keras.Input(shape=(28, 28, 1))
+x = layers.Conv2D(filters=32, kernel_size=5, activation="relu")(inputs)
+x = layers.MaxPooling2D(pool_size=2)(x)
+x = layers.Conv2D(filters=64, kernel_size=5, activation="relu")(x)
+x = layers.MaxPooling2D(pool_size=2)(x)
+x = layers.Flatten()(x)
+x = layers.Dense(64, activation="relu")(x)
+outputs = layers.Dense(10, activation="softmax")(x)
+model = keras.Model(inputs=inputs, outputs=outputs)
+				 </code>
+		 </pre>
+				</section>
+				<section>
+					<h3>Number of Parameters of API Model</h3>
+					<pre>
+_________________________________________________________________
+Layer (type)                Output Shape              Param #   
+=================================================================
+input_4 (InputLayer)        [(None, 28, 28, 1)]       0         														
+conv2d_10 (Conv2D)          (None, 24, 24, 32)        832       
+max_pooling2d_6 (MaxPoolin  (None, 12, 12, 32)        0         
+g2D)                                                            
+conv2d_11 (Conv2D)          (None, 8, 8, 64)          51264     
+max_pooling2d_7 (MaxPoolin  (None, 4, 4, 64)          0         
+g2D)                                                            
+flatten_4 (Flatten)         (None, 1024)              0         
+dense_6 (Dense)             (None, 64)                65600     
+dense_7 (Dense)             (None, 10)                650       
+=================================================================
+Total params: 118346 (462.29 KB)
+Trainable params: 118346 (462.29 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+</pre>
+</section>
 				<section>
 					<code> -- </code>
 					<br>
