@@ -221,12 +221,21 @@
 			</section>
 			<section>
 				<section>
-					<h4>Differentiation, Inner Product and Convolution</h4>
-					<small>
-						Convolution in nothing, but a weighted averaging<br>
-						<img src="images/derivative.png" width="400" class="fragment">
+					<h4>Differentiation, Inner Product and Convolution</h4>	
+						<!-- Convolution was a weighted averaging?<br> -->
+						First derivative: <br>
+						<img src="images/derivative.png" width="500">
 						<br>
-						<div class="fragment">
+						h = [1,-1]
+						<br>
+					<small class="fragment">
+					<br>
+					<a href="https://www.rapidtables.com/calc/math/convolution-calculator.html">
+						Check online convolution</a>:  g*h, when g = [5,8] or h*h
+					</small>
+				</section>
+				<section>
+					<small>
 							Edge extraction is a simple derivative:<br>
 							One of the edge detection operators is Prewitt filter:
 							<br>
@@ -247,8 +256,8 @@
 									<td>+1</td>
 								</tr>
 							</table>
-						</div>
 					</small>
+					<img src="images/derivative_Prewitt.png" width="500" class="fragment">
 				</section>
 				<!-- An n-D convolution is when two functions or tensors are convolved along [math]n[/math] axes.
 In an RGB image, the image is [math]a*b*3[/math] and the convolutional filters are [math]c[/math][math]*d*3[/math]. Since their third dimensions are equal, there is no need to convolve along that axis. 
@@ -310,11 +319,12 @@ you can see how it follows the definition of a 2D convolution more clearly. -->
 				<section>
 					<h3>Laplacian</h3>
 					<small align="left">
-						As we saw [-1,0,1] demonstrate Prewitt filter weights, which is a first order derivative; 
+						As we saw [-1,0,1] demonstrate Prewitt filter weights, which is a first order derivative;
 						Convolving [-1,0,1] with your image basically computes the difference between the pixel values
-						of the neighboring pixels. You apply 0 to the current pixel, 1 to the pixel on the right and -1 to the pixel on the left. This gives a first order difference:
+						of the neighboring pixels. You apply 0 to the current pixel, 1 to the pixel on the right and -1
+						to the pixel on the left. This gives a first order difference:
 						<center>
-						next pixel - previous pixel
+							next pixel - previous pixel
 						</center>
 						<br><br>
 						The Laplacian operator looks something like [1, -2, 1]. This computes the difference of
@@ -418,7 +428,7 @@ Trainable params: 118346 (462.29 KB)
 Non-trainable params: 0 (0.00 Byte)
 _________________________________________________________________
 		 </pre>
-				</section>				
+				</section>
 			</section>
 			<!-- <section>
 				<section>
@@ -510,7 +520,7 @@ Trainable params: 118346 (462.29 KB)
 Non-trainable params: 0 (0.00 Byte)
 _________________________________________________________________
 </pre>
-</section>
+				</section>
 				<section>
 					<code> -- </code>
 					<br>
