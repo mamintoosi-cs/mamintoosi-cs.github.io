@@ -60,7 +60,7 @@
 							href="http://um.ac.ir/">um.ac.ir</a></small>
 				</p>
 				<p>
-					<small>پاییز ۱۴۰۲</small>
+					<small>پاییز ۱۴۰۳</small>
 				</p>
 			</section>
 
@@ -159,10 +159,27 @@
 				<section>
 					<h3>Convolution as averaging</h3>
 					<img src="images/con1d-as-average.png" width="750"><br>
-						Source: <a href="https://math.stackexchange.com/questions/1423817/what-is-convolution/1423834#1423834">SE</a>
-					</section>
+					Source: <a
+						href="https://math.stackexchange.com/questions/1423817/what-is-convolution/1423834#1423834">SE</a>
+				</section>
+				<section>
+					<h3>Discrete</h3>
+					<img src="images/conv-equivalent-definition.png" width="750"><br>
+					<img src="images/conv-discrete.png" width="750"><br>
+					<a href="https://phiresky.github.io/convolution-demo/">Convolution demo</a>
+				</section>
 			</section>
 			<section>
+				<section>
+					<h3>Stat Moving Avergae</h3>
+					<a href="https://en.wikipedia.org/wiki/Moving_average">Moving Avergae</a><br>
+
+					<p>In financial applications a simple moving average (SMA) is the unweighted mean of the previous
+						k data-points.<br>
+						<img src="images/SMA.png" width="750"><br>
+						<img src="images/CMA.png" width="600"><br>
+					</p>
+				</section>
 				<section data-background-iframe="part15.pdf" data-background-interactive>
 				</section>
 				<section>
@@ -173,28 +190,18 @@
 							Framelet-based image inpainting and data recovery, Page 43</a>
 					</small>
 				</section>
-				<section>
-					<h3>1D Convolution</h3>
-					The last plot in Chap. 4:<br>
-					<img src="images/truncated_mae_history.png" width="400">
-					<img src="images/truncated_mae_history-conv-1d.png" width="400" class="fragment">
-					<br>
-					<a href="https://colab.research.google.com/github/fum-cs/dl/blob/main/code/conv_play.ipynb">Play
-						with Convs & Filters</a>
-				</section>
 			</section>
 			<section>
 				<section>
-					<img src="images/Fig-2-12-DeepLearning.png" width="800">
-					<small>
-						Deep Learning with Python, by François Chollet, Second Edition, 2021, Fig. 2.12
-					</small>
-				</section>
-				<section>
-					<img src="images/Fig-2-12-Relu-DeepLearning.png" width="800">
-					<small>
-						Deep Learning with Python, by François Chollet, Second Edition, 2021
-					</small>
+					<h3>1D Convolution</h3>
+					The last plot in Chap. 4:<br>
+					<img src="images/sin-wave-noisy.png" width="400">
+					<img src="images/sin-wave-noisy-conv-1d.png" width="400" class="fragment">
+					<br>
+					<a href="https://colab.research.google.com/github/fum-cs/dl/blob/main/code/conv_play.ipynb">Play
+						with Convs & Filters (PyTorch)</a><br>
+					<a href="https://colab.research.google.com/github/fum-cs/dl/blob/main/code/conv_play-TF.ipynb">Play
+						with Convs & Filters (TF)</a>	
 				</section>
 				<section>
 					<h2> Convolution as Matrix Production</h2>
@@ -206,11 +213,9 @@
 						</a>
 					</small>
 				</section>
-			</section>
-			<section>
-				<section data-background-iframe="https://www.mathworks.com/help/optim/ug/deblur-problem-based.html"
+				<!-- <section data-background-iframe="https://www.mathworks.com/help/optim/ug/deblur-problem-based.html"
 					data-background-interactive>
-				</section>
+				</section> -->
 				<section>
 					<h4>Finding x in min||Ax-b||</h4>
 					<a
@@ -228,42 +233,56 @@
 			</section>
 			<section>
 				<section>
-					<h4>Differentiation, Inner Product and Convolution</h4>	
-						<!-- Convolution was a weighted averaging?<br> -->
-						First derivative: <br>
-						<img src="images/derivative.png" width="500">
-						<br>
-						h = [1,-1]
-						<br>
-					<small class="fragment">
-					<br>
-					<a href="https://www.rapidtables.com/calc/math/convolution-calculator.html">
-						Check online convolution</a>:  g*h, when g = [5,8] or h*h
+					<img src="images/Fig-2-12-DeepLearning.png" width="800">
+					<small>
+						Deep Learning with Python, by François Chollet, Second Edition, 2021, Fig. 2.12
 					</small>
+				</section>
+				<section>
+					<img src="images/Fig-2-12-Relu-DeepLearning.png" width="800">
+					<small>
+						Deep Learning with Python, by François Chollet, Second Edition, 2021
+					</small>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h4>Differentiation, Inner Product and Convolution</h4>
+					<!-- Convolution was a weighted averaging?<br> -->
+					First derivative: <br>
+					<img src="images/derivative.png" width="500">
+					<br>
+					h = [1,-1]
+					<br>
+					<small class="fragment">
+						<br>
+						<a href="https://www.rapidtables.com/calc/math/convolution-calculator.html">
+							Check online convolution</a>: g*h, when g = [5,8] or h*h
+					</small><br>
 					<a href="https://phiresky.github.io/convolution-demo/">Convolution demo</a>
 				</section>
 				<section>
 					<small>
-							Edge extraction is a simple derivative:<br>
-							One of the edge detection operators is Prewitt filter:
-							<br>
-							<table style="border: 1px solid black">
-								<tr>
-									<td>-1</td>
-									<td>0</td>
-									<td>+1</td>
-								</tr>
-								<tr>
-									<td>-1</td>
-									<td>0</td>
-									<td>+1</td>
-								</tr>
-								<tr>
-									<td>-1</td>
-									<td>0</td>
-									<td>+1</td>
-								</tr>
-							</table>
+						Edge extraction is a simple derivative:<br>
+						One of the edge detection operators is Prewitt filter:
+						<br>
+						<table style="border: 1px solid black">
+							<tr>
+								<td>-1</td>
+								<td>0</td>
+								<td>+1</td>
+							</tr>
+							<tr>
+								<td>-1</td>
+								<td>0</td>
+								<td>+1</td>
+							</tr>
+							<tr>
+								<td>-1</td>
+								<td>0</td>
+								<td>+1</td>
+							</tr>
+						</table>
 					</small>
 					<img src="images/derivative_Prewitt.png" width="500" class="fragment">
 				</section>
