@@ -260,6 +260,8 @@
 							Check online convolution</a>: g*h, when g = [5,8] or h*h
 					</small><br>
 					<a href="https://phiresky.github.io/convolution-demo/">Convolution demo</a>
+					<br>
+					<a href="https://www.songho.ca/dsp/convolution/convolution2d_example.html">2D Convolution</a>
 				</section>
 				<section>
 					<small>
@@ -285,7 +287,11 @@
 						</table>
 					</small>
 					<img src="images/derivative_Prewitt.png" width="500" class="fragment">
+					<br>
+					<a href="https://en.wikipedia.org/wiki/Kernel_(image_processing)">Wiki: Kernel (image_processing) </a>
 				</section>
+			</section>
+			<section>
 				<!-- An n-D convolution is when two functions or tensors are convolved along [math]n[/math] axes.
 In an RGB image, the image is [math]a*b*3[/math] and the convolutional filters are [math]c[/math][math]*d*3[/math]. Since their third dimensions are equal, there is no need to convolve along that axis. 
 You only convolve along the first two axes, making it a 2D convolution.
@@ -294,14 +300,16 @@ Convolutions were originally defined for functions and functions can have vector
 you can see how it follows the definition of a 2D convolution more clearly. -->
 				<section>
 					<h3>Sobel Filter</h3>
-					<small align="left">
+					<small >
 						If we define A as the source image, and Gx and Gy are two images which at each point contain the
 						horizontal and vertical derivative approximations respectively, the computations are as follows
 						(<a href="https://en.wikipedia.org/wiki/Sobel_operator">source wiki</a>):
+					
+					<img src="images/Sobel_01.png" width="500"><br>
+					See: <a href="https://www.algorithm-archive.org/contents/convolutions/2d/2d.html">Convolutions on Images</a>
 					</small>
-					<img src="images/Sobel_01.png" width="500">
 					<p class="fragment">
-						<img src="images/convSobel.gif" width="350">
+						<img src="images/convSobel.gif" width="300">
 					</p>
 				</section>
 				<section>
@@ -333,13 +341,14 @@ you can see how it follows the definition of a 2D convolution more clearly. -->
 			<section>
 				<section>
 					<h3>Laplacian</h3>
-					<small align="left">
+					<!-- <small align="left">
 						The Laplace operator is a second-order differential operator in the n-dimensional Euclidean
 						space, defined as the divergence ($\nabla \cdot$) of the gradient ($\nabla f$). Thus if $f$ is a
 						twice-differentiable real-valued function, then the Laplacian of $f$ is the real-valued function
 						defined by:<br>
 						$\Delta f=\nabla ^{2}f=\nabla \cdot \nabla f$<br>
-					</small>
+					</small> -->
+					<img src="images/laplacian.png" width="700">
 					<br>
 					<img src="images/first_and_second_derivative.webp" width="550">
 				</section>
@@ -370,11 +379,14 @@ you can see how it follows the definition of a 2D convolution more clearly. -->
 						(current - previous) is like 1st derivative. Their difference is like a 2nd derivative.
 					</small>
 				</section>
+			</section>
+			<section>
 				<section>
 					<img src="images/laplacian_01.png" width="500"><br>
 					Adding these two kernels:<br>
 					<img src="images/laplacian_02.png" width="500">
 				</section>
+				
 				<section>
 					<h3>Laplacian</h3>
 					<small>
@@ -389,12 +401,9 @@ you can see how it follows the definition of a 2D convolution more clearly. -->
 						</tr>
 					</table>
 				</section>
-
-			</section>
-			<section>
-				<section data-background-iframe="https://connectjaya.com/classical-convolutional-neural-networkscnn/"
+				<!-- <section data-background-iframe="https://connectjaya.com/classical-convolutional-neural-networkscnn/"
 					data-background-interactive>
-				</section>
+				</section> -->
 
 			</section>
 			<section>
