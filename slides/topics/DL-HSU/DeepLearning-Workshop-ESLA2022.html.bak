@@ -106,7 +106,7 @@ h1 {
 				<h3>Workshop</h3>
 				<h4>Mahmood Amintoosi</h4>
 				<p>
-					<small><a href="http://https://mamintoosi.github.io/">m.amintoosi</a> @ <a
+					<small><a href="http://https://mamintoosi-cs.github.io/">m.amintoosi</a> @ <a
 							href="http://hsu.ac.ir/">hsu.ac.ir</a>
 							<br>
 							زمستان ۱۴۰۰
@@ -118,19 +118,19 @@ h1 {
 							<td>
 								<h4>Mahmood Amintoosi</h4>
 								</td>
-								<td><a href="http://https://mamintoosi.github.io/">m.amintoosi</a> @ <a
+								<td><a href="http://https://mamintoosi-cs.github.io/">m.amintoosi</a> @ <a
 							href="http://hsu.ac.ir/">hsu.ac.ir</a>
 							</td>
 						</tr> -->
 						<tr>
 							<!-- <td><img src="images/HSU-logo.png" width="150" valign="middle" style="vertical-align:middle;" border="0"></td> -->
 							<td valign="middle" style="vertical-align:middle;">
-					These Slides are accessible from <a href="https://mamintoosi.github.io/slides/topics/DL-HSU/DeepLearning-Workshop-ESLA2022.html"> my github page
+					These Slides are accessible from <a href="https://mamintoosi-cs.github.io/slides/topics/DL-HSU/DeepLearning-Workshop-ESLA2022.html"> my github page
 					</a> or by scanning this QR Code:<br>
 					Program Codes:<a href="https://github.com/mamintoosi-cs/pytorch-workshop">
 						https://github.com/mamintoosi-cs/pytorch-workshop</a>
 				</td>
-						<td><img src="images/qrcode_mamintoosi.github.io.png" width=150 valign="middle" style="vertical-align:middle;"> </td>
+						<td><img src="images/qrcode_mamintoosi-cs.github.io.png" width=150 valign="middle" style="vertical-align:middle;"> </td>
 						</tr>
 						<!-- <tr>
 							<td></td>
@@ -1560,7 +1560,7 @@ Trainable params: 62,006
 				m.amintoosi @ gmail.com
 				<br>
 				<p>webpage : <a href="http://mamintoosi.ir/">http://mamintoosi.ir</a></p>
-				<p>webpage in github : <a href="https://mamintoosi.github.io/">http://mamintoosi.github.io</a></p>
+				<p>webpage in github : <a href="https://mamintoosi-cs.github.io/">http://mamintoosi-cs.github.io</a></p>
 				<p>github : <a href="https://github.com/mamintoosi">mamintoosi</a></p>
 				<hr>
 				<!-- <small>
