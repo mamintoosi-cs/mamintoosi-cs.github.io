@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ارائه: معرفی علوم کامپیوتر</title>
+
+  <!-- Reveal.js core & theme via CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/white.css" id="theme">
+
+  <style>
+    /* Persian-friendly typography */
+    @font-face {
+      font-family: 'Vazirmatn';
+      font-style: normal;
+      font-weight: 100 900;
+      src: url('https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/fonts/webfonts/Vazirmatn-VariableFont_wght.woff2') format('woff2');
+      font-display: swap;
+    }
+
+    :root {
+      --r-main-font: 'Vazirmatn', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      --r-heading-font: 'Vazirmatn', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    .reveal.rtl .slides {
+      text-align: right;
+    }
+
+    .reveal section p,
+    .reveal section li {
+      font-size: 0.95em;
+      line-height: 1.7;
+    }
+
+    .reveal table {
+      font-size: 0.9em;
+    }
+
+    .muted {
+      opacity: .75
+    }
+
+    .small {
+      font-size: .8em
+    }
+
+    .tight li {
+      margin: .25em 0;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: .25em .6em;
+      border-radius: .6em;
+      background: #eee;
+    }
+
+    .cols {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .col {
+      flex: 1;
+    }
+
+    .accent {
+      color: #0b7285;
+    }
+
+    .highlight {
+      background: #fff3bf;
+      padding: .15em .3em;
+      border-radius: .3em;
+    }
+
+    .credit {
+      font-size: .65em;
+      opacity: .8;
+      margin-top: 1rem;
+    }
+
+    /* Better RTL tables */
+    table {
+      direction: rtl;
+    }
+
+    th,
+    td {
+      padding: .4em .6em;
+    }
+
+    th {
+      background: #f5f5f5;
+    }
+
+    .bordered {
+      border-collapse: collapse;
+    }
+
+    .bordered th,
+    .bordered td {
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="reveal rtl">
+    <div class="slides">
+      <section>
+        <section
+          data-background="images/computer-science-text-blackboard-concept-background-computer-science-text-blackboard.webp"
+          data-background-opacity=.2>
+          <div align="center">
+            <small>
+              بسم الله الرحمان الرحیم
+            </small>
+            <h2>علوم کامپیوتر؛<br>
+              علم پشت فناوری‌های امروز</h2>
+            <!-- <p class="muted">تفاوت با مهندسی کامپیوتر و مسیرهای پیش‌رو</p> -->
+            <p><b>
+                <a href="https://mamintoosi.github.io/">
+                  محمود امین طوسی
+                </a></b><br> دانشیار علوم کامپیوتر<br><span class="small">دانشگاه فردوسی مشهد</span></p>
+            <!-- <p class="small muted">ارائه برای دانش‌آموزان متقاضی انتخاب رشته دانشگاهی</p> -->
+          </div>
+        </section>
+        <section data-background-iframe="https://mamintoosi.github.io/" data-background-interactive>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h3>علوم کامپیوتر چیست؟</h3>
+          <ul class="tight">
+            <li><span class="highlight">
+                به مجموعهٔ مطالعاتی گفته می‌شود که به زیربناهای نظری، روش‌های طراحی و ساخت و چگونگی استفاده از رایانه
+                [برای حل مسائل]
+                می‌پردازند.
+              </span>
+            <li class="muted small">منبع: <a
+                href="https://fa.wikipedia.org/wiki/%D8%B9%D9%84%D9%88%D9%85_%D8%B1%D8%A7%DB%8C%D8%A7%D9%86%D9%87">
+                ویکی‌پدیا
+              </a>
+            </li>
+          </ul>
+
+        </section>
+
+        <section>
+          <h3>علوم کامپیوتر در برابر مهندسی کامپیوتر</h3>
+          <table class="bordered">
+            <thead>
+              <tr>
+                <th>ویژگی</th>
+                <th>علوم کامپیوتر (CS)</th>
+                <th>مهندسی کامپیوتر (CE)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>تمرکز</td>
+                <td>الگوریتم‌ها، نظریه محاسبه، ریاضی، هوش مصنوعی</td>
+                <td>طراحی نرم‌افزار،‌ سخت‌افزار، برنامه‌نویسی، شبکه، هوش مصنوعی</td>
+              </tr>
+              <!-- <tr>
+              <td>عملی</td>
+              <td> و زبان‌ها</td>
+              <td>طراحی مدار، سیستم‌عامل، شبکه</td>
+            </tr>
+            <tr>
+              <td>نمونه دروس</td>
+              <td>ساختمان داده، نظریه محاسبات، یادگیری ماشین</td>
+              <td>مدار منطقی، معماری، سیستم‌های دیجیتال</td>
+            </tr> -->
+            </tbody>
+          </table>
+          لینک برنامه درسی علوم کامپیوتر فردوسی:
+          <p class="small muted" align="left">
+            <a
+              href="https://fum-cs.github.io/docs/category/%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87-%D8%AF%D8%B1%D8%B3%DB%8C">https://fum-cs.github.io/</a><br>
+            <a href="https://cs-um.gitbook.io/curr/tables">cs-um.gitbook.io/curr/tables</a>
+          </p>
+        </section>
+        <section
+          data-background-iframe="https://fum-cs.github.io/docs/category/%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87-%D8%AF%D8%B1%D8%B3%DB%8C"
+          data-background-interactive>
+        </section>
+      </section>
+      <section>
+        <section data-background="images/acm-amturing.jpg" data-background-opacity=.4>
+          <h2>افراد شاخص حوزه‌های علوم کامپیوتر و نرم‌افزار دنیا</h2>
+
+          چند فرد شاخص علوم کامپیوتر دنیا
+          (بیشتر این افراد برنده
+          <a href="https://en.wikipedia.org/wiki/Turing_Award">جایزه تورینگ</a>
+          هستند).
+          <br><br>
+          <p align="left">
+            <a href="https://amturing.acm.org/">ACM A.M. TURING AWARD</a>
+          </p>
+        </section>
+        <section
+          data-background-iframe="https://fa.wikipedia.org/wiki/%D8%A8%D8%A7%D8%B2%DB%8C_%D8%AA%D9%82%D9%84%DB%8C%D8%AF"
+          data-background-interactive>
+        </section>
+        <section>
+          <table class="bordered">
+            <thead>
+              <tr>
+                <th>تصویر</th>
+                <th>نام</th>
+                <th>شهرت</th>
+                <th>دسته‌بندی غالب</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td><img src="images/John-McCarthy.jpg" alt="John McCarthy" height="130"></td>
+                <td><a href="https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)">John McCarthy</a></td>
+                <td> هوش مصنوعی</td>
+                <td>Computer Scientist</td>
+              </tr>
+
+              <tr>
+                <td><img src="images/donald-knuth.jpg" alt="Donald Knuth" height="130"></td>
+                <td><a href="https://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a></td>
+                <td>کتاب «هنر برنامه‌نویسی رایانه»، الگوریتم‌ها</td>
+                <td>Computer Scientist</td>
+              </tr>
+              <tr>
+                <td><img src="images/leslie-lamport.jpg" alt="Leslie Lamport" height="130"></td>
+                <td><a href="https://en.wikipedia.org/wiki/Leslie_Lamport">Leslie Lamport</a></td>
+                <td>LaTeX، الگوریتم‌های توزیع‌شده</td>
+                <td>Computer Scientist</td>
+              </tr>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+      </section>
+
+      <section>
+        <section>
+          <table class="bordered">
+            <!-- <thead>
+            <tr>
+              <th>تصویر</th>
+              <th>نام</th>
+              <th>اثر مشهور</th>
+              <th>دسته‌بندی غالب</th>
+            </tr>
+          </thead> -->
+            <tbody>
+              <tr>
+                <td><img src="images/Marvin-Minsky.jpg" alt="Marvin Minsky" width="150"></td>
+                <td><a href="https://en.wikipedia.org/wiki/Marvin_Minsky">Marvin Minsky</a></td>
+                <td>نقش وی در هوش مصنوعی</td>
+                <td>Computer Scientist</td>
+              </tr>
+              <tr>
+                <td>
+                  <img src="images/BHL2.jpeg" alt="DeepLearning-Fathers" width="250">
+
+                </td>
+                <td>
+                  <a href="https://en.wikipedia.org/wiki/Yoshua_Bengio">Y. Bengio</a><br>
+                  <a href="https://en.wikipedia.org/wiki/Geoffrey_Hinton">G. Hinton</a><br>
+                  <a href="https://en.wikipedia.org/wiki/Yann_LeCun">Y. LeCun</a>
+                </td>
+                <td> یادگیری عمیق</td>
+                <td>Computer Scientist</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </section>
+        <section>
+          <div align="left">
+            <a href="https://en.wikipedia.org/wiki/List_of_computer_science_awards">List of computer science awards</a>
+            <br>
+            <a href="https://en.wikipedia.org/wiki/ACM_Software_System_Award">ACM Software System Award </a> -
+            <br>
+            <a href="https://en.wikipedia.org/wiki/Programming_Languages_Software_Award">Programming Languages Software
+              Award </a> -
+
+          </div>
+          <small>
+            <table>
+              <tbody>
+                <tr>
+                  <td><img src="images/Bjarne-Stroustrup.jpg" alt="Bjarne Stroustrup" hwidth="150"></td>
+                  <td><a href="https://en.wikipedia.org/wiki/Bjarne_Stroustrup">Bjarne Stroustrup</a></td>
+                  <td>خالق زبان ++C</td>
+                  <td>Computer Scientist / Software Engineer</td>
+                </tr>
+                <tr>
+                  <td><img src="images/Richard-Stallman.jpg" alt="Richard Stallman" width="150"></td>
+                  <td>
+                    <a href="https://en.wikipedia.org/wiki/Richard_Stallman">Richard Stallman</a>
+                  </td>
+                  <td>بنیان‌گذار جنبش
+                    <a
+                      href="https://fa.wikipedia.org/wiki/%D9%86%D8%B1%D9%85%E2%80%8C%D8%A7%D9%81%D8%B2%D8%A7%D8%B1_%D8%A2%D8%B2%D8%A7%D8%AF">
+                      نرم‌افزار آزاد</a>
+                    ، پروژه GNU، مجوز GPL
+                  </td>
+                  <td>Programmer / Free Software Activist</td>
+                </tr>
+              </tbody>
+            </table>
+          </small>
+        </section>
+
+        <section>
+          <small>
+            <table>
+              <tbody>
+                <tr>
+                  <td><img src="images/linus-torvalds.jfif" alt="Linus Torvalds" width="150"></td>
+                  <td><a href="https://en.wikipedia.org/wiki/Linus_Torvalds">Linus Torvalds</a></td>
+                  <td>سیستم‌عامل لینوکس، Git</td>
+                  <td>Software Engineer</td>
+                </tr>
+                <tr>
+                  <td><img src="images/james-gosling.jpg" alt="James Gosling" width="150"></td>
+                  <td><a href="https://en.wikipedia.org/wiki/James_Gosling">James Gosling</a></td>
+                  <td>خالق زبان Java</td>
+                  <td>Computer Scientist</td>
+                </tr>
+                <tr>
+                  <td><img src="images/guido-van-rossum.jpg" alt="Guido van Rossum" width="150">
+                    <img src="images/Professor_(Money_Heist).jpg" alt="James Gosling" width="150" class="fragment">
+                  </td>
+                  <td><a href="https://en.wikipedia.org/wiki/Guido_van_Rossum">Guido van Rossum</a>
+                  </td>
+                  <td>خالق زبان پایتون</td>
+                  <td>Computer programmer </td>
+                </tr>
+              </tbody>
+            </table>
+          </small>
+
+        </section>
+      </section>
+      <section>
+        <section>
+          <h3>چرا علوم کامپیوتر بخوانیم؟</h3>
+          <small>
+            <ul class="tight">
+              <li>یادگیری <b>تفکر الگوریتمی</b> و <b>حل مسئله</b></li>
+              <li style="color:gray">فرصت‌های شغلی متنوع در صنایع گوناگون.</li>
+              <li style="color:gray">درآمد خوب و بازار کار رو به رشد.</li>
+              <li style="color:gray">قابلیت انتقال مهارت‌ها به حوزه‌های دیگر (پزشکی، مالی، آموزش...).</li>
+            </ul>
+          </small>
+
+
+          <small class="fragment">
+            نقل قولی از
+            <a href="https://www-cs-faculty.stanford.edu/~knuth/">
+              پروفسور کنوث</a>:
+            <blockquote
+              cite="https://codeload.github.com/manjunath5496/The-Art-of-Computer-Programming-Books/zip/refs/heads/master">
+              خب، نویسنده‌ی کتابی که شما می‌خوانید مطلقاً هیچ مخالفتی با کار مفید و پیشرفت بشر ندارد. اما او قویاً معتقد
+              است که کتابی مانند این باید بر روش‌های حل مسئله، همراه با ایده‌ها و مدل‌های ریاضی که به حل بسیاری از مسائل
+              مختلف کمک می‌کنند، تأکید کند، نه اینکه بر دلایل مفید بودن این روش‌ها و مدل‌ها تمرکز کند. ما روش‌های زیبا و
+              قدرتمند بسیاری برای حل مسائل ترکیبی یاد خواهیم گرفت و ظرافت این روش‌ها انگیزه‌ی اصلی ما برای مطالعه‌ی آنها
+              خواهد بود.
+            </blockquote>
+            <br>
+            <div align="left">
+              Donald E. Knuth, <a
+                href="https://codeload.github.com/manjunath5496/The-Art-of-Computer-Programming-Books/zip/refs/heads/master">
+                The Art of Computer Programming, Volume 4A, Combinatorial Algorithms, Part 1, Page
+                24/901</a>
+            </div>
+          </small>
+
+        </section>
+
+        <section>
+          <h3>مسیرهای تحصیلی و شغلی</h3>
+          <ul class="tight">
+            <li>علوم کامپیوتر</li>
+            <li>مهندسی کامپیوتر</li>
+            <li>ریاضی و آمار (علوم داده)</li>
+          </ul>
+        </section>
+        <!-- class="small muted" -->
+        <section>
+          <h3>توصیه برای انتخاب رشته</h3>
+          <ul class="tight">
+            <li>علاقه به ریاضیات و حل مسئله ← CS.</li>
+            <li>علاقه به برنامه‌نویسی و سیستم نویسی ← CE/SE.</li>
+            <li>مرزها در عمل هم‌پوشان‌اند؛ <span class="badge">انتخاب بر اساس علاقه و توانمندی</span></li>
+          </ul>
+        </section>
+      </section>
+      <section>
+        <section data-background-iframe="https://fum-cs.github.io/cs-bsc-dm/staff/" data-background-interactive>
+        </section>
+        <section>
+          <h2>پرسش و پاسخ</h2>
+          <p class="muted">سوالی هست؟</p>
+          <p class="small">منابع بیشتر:
+          <ul>
+            <li><a href="https://fumcs.github.io/"> وب سایت علوم کامپیوتر فردوسی</a></li>
+            <li><a href="https://cs-um.gitbook.io/curr/tables">برنامه درسی</a></li>
+            <li><a href="https://blog.faab.ir/university/computer-science-field">معرفی رشته علوم کامپیوتر</a></li>
+          </ul>
+        </section>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      rtl: true,
+      transition: 'slide'
+    });
+  </script>
+</body>
+
+</html>
