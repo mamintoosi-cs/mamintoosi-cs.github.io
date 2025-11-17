@@ -1,0 +1,359 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>برنامه درسی هماهنگ چهار رشته - نسخه نهایی (به‌روزرسانی شده)</title>
+    <style>
+        body { font-family: 'Tahoma', sans-serif; margin: 20px; background: #f9f9fb; color: #333; }
+        h1, h2, h3 { color: #2c3e50; text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: center; font-size: 14px; }
+        th { background: #34495e; color: white; }
+        tr:nth-child(even) { background: #f2f2f2; }
+        .shared { background: #e8f5e9 !important; font-weight: bold; }
+        .separator { border-top: 3px solid #3498db; }
+        .legend { margin: 15px 0; padding: 10px; background: #ecf0f1; border-radius: 5px; }
+        .legend span { margin: 0 15px; display: inline-block; }
+        .badge { padding: 3px 8px; border-radius: 12px; font-size: 11px; color: white; }
+        .ds-badge { background: #e67e22; }
+        .cs-badge { background: #3498db; }
+        .math-badge { background: #27ae60; }
+        .stat-badge { background: #9b59b6; }
+        .code-ds { color: #e67e22; font-weight: bold; }
+        .code-cs { color: #3498db; font-weight: bold; }
+        .code-math { color: #27ae60; font-weight: bold; }
+        .code-stat { color: #9b59b6; font-weight: bold; }
+        caption { font-weight: bold; font-size: 1.2em; margin: 10px 0; color: #2c3e50; }
+    </style>
+</head>
+<body>
+
+<h1>برنامه درسی هماهنگ چهار رشته کارشناسی</h1>
+<p style="text-align:center;"><strong>دانشکده علوم ریاضی - دانشگاه فردوسی مشهد</strong></p>
+
+<div class="legend">
+    <span><span class="badge cs-badge">CS</span> علوم کامپیوتر</span>
+    <span><span class="badge math-badge">Math</span> ریاضی</span>
+    <span><span class="badge stat-badge">Stat</span> آمار</span>
+    <span><span class="badge ds-badge">DS</span> علم داده‌ها</span>
+</div>
+
+<h2>دروس پایه (مشترک بین چهار رشته - ۲۲ واحد)</h2>
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>کد درس</th>
+            <th>عنوان درس</th>
+            <th>واحد</th>
+            <th>نوع</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="shared">
+            <td>1</td>
+            <td><span class="code-math">Math 101</span></td>
+            <td>ریاضی عمومی ۱</td>
+            <td>4</td>
+            <td>نظری</td>
+        </tr>
+        <tr class="shared">
+            <td>2</td>
+            <td><span class="code-math">Math 102</span></td>
+            <td>ریاضی عمومی ۲</td>
+            <td>4</td>
+            <td>نظری</td>
+        </tr>
+        <tr class="shared">
+            <td>3</td>
+            <td><span class="code-math">Math 110</span></td>
+            <td>معادلات دیفرانسیل</td>
+            <td>3</td>
+            <td>نظری</td>
+        </tr>
+        <tr class="shared">
+            <td>4</td>
+            <td><span class="code-math">Math 120</span></td>
+            <td>مبانی علوم ریاضی</td>
+            <td>3</td>
+            <td>نظری</td>
+        </tr>
+        <tr class="shared">
+            <td>5</td>
+            <td><span class="code-cs">CS 101</span></td>
+            <td>مبانی کامپیوتر و برنامه‌سازی</td>
+            <td>3</td>
+            <td>نظری</td>
+        </tr>
+        <tr class="shared">
+            <td>6</td>
+            <td><span class="code-stat">Stat 101</span></td>
+            <td>آمار و احتمال مقدماتی</td>
+            <td>3</td>
+            <td>نظری</td>
+        </tr>
+        <tr class="shared">
+            <td>7</td>
+            <td><span class="code-ds">DS 130</span></td>
+            <td>تحلیل گرافیکی و اکتشافی داده‌ها</td>
+            <td>2</td>
+            <td>۱ نظری + ۱ عملی</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>دروس الزامی هر رشته (۷۸ واحد)</h2>
+
+<!-- علوم کامپیوتر -->
+<h3>علوم کامپیوتر</h3>
+<table>
+    <caption>دروس الزامی علوم کامپیوتر</caption>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>کد</th>
+            <th>عنوان</th>
+            <th>واحد</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="shared"><td>1</td><td><span class="code-cs">CS 102</span></td><td>برنامه‌سازی شیءگرا</td><td>3</td></tr>
+        <tr class="shared"><td>2</td><td><span class="code-math">Math 112</span></td><td>مبانی محاسبات علمی و جبر خطی</td><td>3</td></tr>
+        <tr class="shared"><td>3</td><td><span class="code-math">Math 113</span></td><td>مبانی آنالیز ریاضی</td><td>3</td></tr>
+        <tr class="shared"><td>4</td><td><span class="code-math">Math 130</span></td><td>تحقیق در عملیات</td><td>3</td></tr>
+        <tr class="shared"><td>5</td><td><span class="code-cs">CS 151</span></td><td>کارگاه کامپیوتر ۱</td><td>1</td></tr>
+        <tr class="shared"><td>6</td><td>GEN 103</td><td>زبان تخصصی</td><td>2</td></tr>
+        <tr class="shared"><td>7</td><td>GEN 104</td><td>کاربینی</td><td>1</td></tr>
+        <tr class="shared"><td>8</td><td>GEN 106</td><td>کارآموزی</td><td>2</td></tr>
+        <tr class="separator"><td colspan="4"></td></tr>
+        <tr><td>9</td><td><span class="code-cs">CS 104</span></td><td>ساختمان داده‌ها</td><td>3</td></tr>
+        <tr><td>10</td><td><span class="code-cs">CS 105</span></td><td>طراحی و تحلیل الگوریتم‌ها</td><td>3</td></tr>
+        <tr><td>11</td><td><span class="code-cs">CS 106</span></td><td>مبانی نظریه محاسبه</td><td>3</td></tr>
+        <tr><td>12</td><td><span class="code-cs">CS 107</span></td><td>هوش مصنوعی</td><td>3</td></tr>
+        <tr><td>13</td><td><span class="code-cs">CS 108</span></td><td>اصول سیستم‌های کامپیوتری</td><td>3</td></tr>
+        <tr><td>14</td><td><span class="code-cs">CS 110</span></td><td>پایگاه داده‌ها</td><td>3</td></tr>
+        <tr><td>15</td><td><span class="code-cs">CS 111</span></td><td>یادگیری ماشین مقدماتی</td><td>3</td></tr>
+        <tr><td>16</td><td><span class="code-ds">DS 114</span></td><td>سری‌های زمانی کاربردی</td><td>3</td></tr>
+        <tr><td>17</td><td><span class="code-cs">CS 115</span></td><td>آشنایی با یادگیری عمیق</td><td>3</td></tr>
+        <tr><td>18</td><td><span class="code-ds">DS 113</span></td><td>تحلیل آماری داده‌ها</td><td>3</td></tr>
+        <tr><td>19</td><td><span class="code-cs">CS 152</span></td><td>کارگاه کامپیوتر ۲</td><td>1</td></tr>
+        <tr><td>20</td><td><span class="code-cs">CS 120</span></td><td>توسعه برنامه‌های موبایل</td><td>3</td></tr>
+        <tr><td>21</td><td><span class="code-math">Math 111</span></td><td>مبانی آنالیز عددی</td><td>3</td></tr>
+        <tr><td>22</td><td><span class="code-math">Math 121</span></td><td>مبانی ترکیبیات</td><td>3</td></tr>
+        <tr><td>23</td><td><span class="code-math">Math 122</span></td><td>مبانی منطق</td><td>3</td></tr>
+        <tr><td>24</td><td><span class="code-math">Math 131</span></td><td>بهینه‌سازی غیرخطی</td><td>3</td></tr>
+        <tr><td>25</td><td><span class="code-math">Math 132</span></td><td>مدلسازی ریاضی</td><td>3</td></tr>
+        <tr><td>26</td><td><span class="code-math">Math 133</span></td><td>بهینه‌سازی گسسته</td><td>3</td></tr>
+        <tr><td>27</td><td>GEN 105</td><td>کارآفرینی</td><td>2</td></tr>
+        <tr><td>28</td><td><span class="code-stat">Stat 102</span></td><td>احتمال ۱</td><td>3</td></tr>
+    </tbody>
+</table>
+
+<!-- ریاضی -->
+<h3>ریاضی</h3>
+<table>
+    <caption>دروس الزامی ریاضی</caption>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>کد</th>
+            <th>عنوان</th>
+            <th>واحد</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="shared"><td>1</td><td><span class="code-cs">CS 102</span></td><td>برنامه‌سازی شیءگرا</td><td>3</td></tr>
+        <tr class="shared"><td>2</td><td><span class="code-math">Math 112</span></td><td>مبانی محاسبات علمی و جبر خطی</td><td>3</td></tr>
+        <tr class="shared"><td>3</td><td><span class="code-math">Math 113</span></td><td>مبانی آنالیز ریاضی</td><td>3</td></tr>
+        <tr class="shared"><td>4</td><td><span class="code-math">Math 130</span></td><td>تحقیق در عملیات</td><td>3</td></tr>
+        <tr class="shared"><td>5</td><td><span class="code-cs">CS 151</span></td><td>کارگاه کامپیوتر ۱</td><td>1</td></tr>
+        <tr class="shared"><td>6</td><td>GEN 103</td><td>زبان تخصصی</td><td>2</td></tr>
+        <tr class="shared"><td>7</td><td>GEN 104</td><td>کاربینی</td><td>1</td></tr>
+        <tr class="shared"><td>8</td><td>GEN 106</td><td>کارآموزی</td><td>2</td></tr>
+        <tr class="separator"><td colspan="4"></td></tr>
+        <tr><td>9</td><td><span class="code-math">Math 103</span></td><td>ریاضی عمومی ۳</td><td>3</td></tr>
+        <tr><td>10</td><td><span class="code-math">Math 111</span></td><td>مبانی آنالیز عددی</td><td>3</td></tr>
+        <tr><td>11</td><td><span class="code-math">Math 114</span></td><td>آنالیز ریاضی ۱</td><td>3</td></tr>
+        <tr><td>12</td><td><span class="code-math">Math 121</span></td><td>مبانی ترکیبیات</td><td>3</td></tr>
+        <tr><td>13</td><td><span class="code-math">Math 122</span></td><td>مبانی منطق</td><td>3</td></tr>
+        <tr><td>14</td><td><span class="code-math">Math 123</span></td><td>جبر ۱</td><td>3</td></tr>
+        <tr><td>15</td><td><span class="code-math">Math 124</span></td><td>جبر خطی</td><td>3</td></tr>
+        <tr><td>16</td><td><span class="code-math">Math 125</span></td><td>مبانی جبر</td><td>3</td></tr>
+        <tr><td>17</td><td><span class="code-math">Math 128</span></td><td>مدلسازی مقدماتی ریاضی</td><td>3</td></tr>
+        <tr><td>18</td><td><span class="code-math">Math 131</span></td><td>بهینه‌سازی غیرخطی</td><td>3</td></tr>
+        <tr><td>19</td><td><span class="code-math">Math 140</span></td><td>توپولوژی عمومی</td><td>3</td></tr>
+        <tr><td>20</td><td><span class="code-math">Math 141</span></td><td>هندسه دیفرانسیل ۱</td><td>3</td></tr>
+        <tr><td>21</td><td><span class="code-math">Math 143</span></td><td>کنترل و حساب تغییرات</td><td>3</td></tr>
+        <tr><td>22</td><td><span class="code-math">Math 144</span></td><td>نظریه مقدماتی اعداد</td><td>3</td></tr>
+        <tr><td>23</td><td><span class="code-math">Math 145</span></td><td>نظریه گراف</td><td>3</td></tr>
+        <tr><td>24</td><td><span class="code-math">Math 146</span></td><td>جبر خطی عددی</td><td>3</td></tr>
+        <tr><td>25</td><td><span class="code-math">Math 147</span></td><td>نظریه معادلات دیفرانسیل معمولی</td><td>3</td></tr>
+        <tr><td>26</td><td><span class="code-math">Math 148</span></td><td>توابع مختلط</td><td>3</td></tr>
+        <tr><td>27</td><td><span class="code-math">Math 149</span></td><td>مبانی سیستم‌های دینامیکی</td><td>3</td></tr>
+        <tr><td>28</td><td><span class="code-math">Math 150</span></td><td>معادلات با مشتقات جزئی</td><td>3</td></tr>
+        <tr><td>29</td><td><span class="code-stat">Stat 102</span></td><td>احتمال ۱</td><td>3</td></tr>
+    </tbody>
+</table>
+
+<!-- آمار -->
+<h3>آمار</h3>
+<table>
+    <caption>دروس الزامی آمار</caption>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>کد</th>
+            <th>عنوان</th>
+            <th>واحد</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="shared"><td>1</td><td><span class="code-cs">CS 102</span></td><td>برنامه‌سازی شیءگرا</td><td>3</td></tr>
+        <tr class="shared"><td>2</td><td><span class="code-math">Math 112</span></td><td>مبانی محاسبات علمی و جبر خطی</td><td>3</td></tr>
+        <tr class="shared"><td>3</td><td><span class="code-math">Math 113</span></td><td>مبانی آنالیز ریاضی</td><td>3</td></tr>
+        <tr class="shared"><td>4</td><td><span class="code-math">Math 130</span></td><td>تحقیق در عملیات</td><td>3</td></tr>
+        <tr class="shared"><td>5</td><td><span class="code-cs">CS 151</span></td><td>کارگاه کامپیوتر ۱</td><td>1</td></tr>
+        <tr class="shared"><td>6</td><td>GEN 103</td><td>زبان تخصصی</td><td>2</td></tr>
+        <tr class="shared"><td>7</td><td>GEN 104</td><td>کاربینی</td><td>1</td></tr>
+        <tr class="shared"><td>8</td><td>GEN 106</td><td>کارآموزی</td><td>2</td></tr>
+        <tr class="separator"><td colspan="4"></td></tr>
+        <tr><td>9</td><td><span class="code-stat">Stat 102</span></td><td>احتمال ۱</td><td>3</td></tr>
+        <tr><td>10</td><td><span class="code-stat">Stat 103</span></td><td>احتمال ۲</td><td>3</td></tr>
+        <tr><td>11</td><td><span class="code-stat">Stat 104</span></td><td>روش‌های آماری</td><td>3</td></tr>
+        <tr><td>12</td><td><span class="code-stat">Stat 105</span></td><td>نظریه آمار ۱</td><td>3</td></tr>
+        <tr><td>13</td><td><span class="code-stat">Stat 106</span></td><td>نظریه آمار ۲</td><td>3</td></tr>
+        <tr><td>14</td><td><span class="code-stat">Stat 107</span></td><td>فرآیندهای تصادفی</td><td>3</td></tr>
+        <tr><td>15</td><td><span class="code-stat">Stat 116</span></td><td>طرح و تحلیل آزمایش‌های ۱</td><td>3</td></tr>
+        <tr><td>16</td><td><span class="code-stat">Stat 117</span></td><td>رگرسیون ۱</td><td>3</td></tr>
+        <tr><td>17</td><td><span class="code-stat">Stat 118</span></td><td>روش‌های نمونه‌گیری</td><td>3</td></tr>
+        <tr><td>18</td><td><span class="code-stat">Stat 120</span></td><td>روش‌های آماری چندمتغیره ۱</td><td>3</td></tr>
+        <tr><td>19</td><td><span class="code-stat">Stat 121</span></td><td>مبانی آمار ناپارامتری</td><td>3</td></tr>
+        <tr><td>20</td><td><span class="code-stat">Stat 122</span></td><td>روش تحقیق و پروژه</td><td>3</td></tr>
+        <tr><td>21</td><td><span class="code-stat">Stat 124</span></td><td>استنباط آماری</td><td>3</td></tr>
+        <tr><td>22</td><td><span class="code-stat">Stat 125</span></td><td>آمار بیزی مقدماتی</td><td>3</td></tr>
+        <tr><td>23</td><td><span class="code-stat">Stat 203</span></td><td>روش‌های آماری چندمتغیره ۲</td><td>3</td></tr>
+        <tr><td>24</td><td><span class="code-cs">CS 110</span></td><td>پایگاه داده‌ها</td><td>3</td></tr>
+        <tr><td>25</td><td><span class="code-cs">CS 111</span></td><td>یادگیری ماشین مقدماتی</td><td>3</td></tr>
+        <tr><td>26</td><td><span class="code-ds">DS 112</span></td><td>داده‌کاوی مقدماتی</td><td>3</td></tr>
+    </tbody>
+</table>
+
+<!-- علم داده‌ها -->
+<h3>علم داده‌ها</h3>
+<table>
+    <caption>دروس الزامی علم داده‌ها</caption>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>کد</th>
+            <th>عنوان</th>
+            <th>واحد</th>
+            <th>مهارت‌های صنعتی</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="shared"><td>1</td><td><span class="code-cs">CS 102</span></td><td>برنامه‌سازی شیءگرا</td><td>3</td><td>پایه برنامه‌نویسی</td></tr>
+        <tr class="shared"><td>2</td><td><span class="code-math">Math 112</span></td><td>مبانی محاسبات علمی و جبر خطی</td><td>3</td><td>ML, جبر خطی</td></tr>
+        <tr class="shared"><td>3</td><td><span class="code-math">Math 113</span></td><td>مبانی آنالیز ریاضی</td><td>3</td><td>بهینه‌سازی</td></tr>
+        <tr class="shared"><td>4</td><td><span class="code-math">Math 130</span></td><td>تحقیق در عملیات</td><td>3</td><td>بهینه‌سازی</td></tr>
+        <tr class="shared"><td>5</td><td><span class="code-cs">CS 151</span></td><td>کارگاه کامپیوتر ۱</td><td>1</td><td>عملی</td></tr>
+        <tr class="shared"><td>6</td><td>GEN 103</td><td>زبان تخصصی</td><td>2</td><td>انگلیسی داده</td></tr>
+        <tr class="shared"><td>7</td><td>GEN 104</td><td>کاربینی</td><td>1</td><td>مشاهده صنعتی</td></tr>
+        <tr class="shared"><td>8</td><td>GEN 106</td><td>کارآموزی</td><td>2</td><td>۴۸ ساعت صنعت</td></tr>
+        <tr class="separator"><td colspan="5"></td></tr>
+        <tr><td>9</td><td><span class="code-ds">DS 113</span></td><td>تحلیل آماری داده‌ها</td><td>3</td><td>R/Python, EDA</td></tr>
+        <tr><td>10</td><td><span class="code-stat">Stat 102</span></td><td>احتمال ۱</td><td>3</td><td>مدل‌های تصادفی</td></tr>
+        <tr><td>11</td><td><span class="code-stat">Stat 103</span></td><td>احتمال ۲</td><td>3</td><td>پیشرفته</td></tr>
+        <tr><td>12</td><td><span class="code-cs">CS 110</span></td><td>پایگاه داده‌ها</td><td>3</td><td>مدیریت داده</td></tr>
+        <tr><td>13</td><td><span class="code-cs">CS 118</span></td><td>پایگاه داده‌های پیشرفته</td><td>3</td><td>NoSQL, داده بزرگ</td></tr>
+        <tr><td>14</td><td><span class="code-stat">Stat 117</span></td><td>رگرسیون ۱</td><td>3</td><td>پیش‌بینی</td></tr>
+        <tr><td>15</td><td><span class="code-ds">DS 112</span></td><td>داده‌کاوی مقدماتی</td><td>3</td><td>کشف الگو</td></tr>
+        <tr><td>16</td><td><span class="code-ds">DS 101</span></td><td>مقدمه‌ای بر علم داده‌ها</td><td>3</td><td>Data Wrangling, Dashboarding, Storytelling</td></tr>
+        <tr><td>17</td><td><span class="code-ds">DS 201</span></td><td>تحلیل داده‌های بزرگ</td><td>3</td><td>Data Engineering, Spark, ETL</td></tr>
+        <tr><td>18</td><td><span class="code-cs">CS 115</span></td><td>آشنایی با یادگیری عمیق</td><td>3</td><td>CNN, RNN</td></tr>
+        <tr><td>19</td><td><span class="code-ds">DS 114</span></td><td>سری‌های زمانی کاربردی</td><td>3</td><td>پیش‌بینی زمانی</td></tr>
+        <tr><td>20</td><td><span class="code-stat">Stat 120</span></td><td>روش‌های آماری چندمتغیره ۱</td><td>3</td><td>PCA, Clustering</td></tr>
+        <tr><td>21</td><td><span class="code-stat">Stat 203</span></td><td>روش‌های آماری چندمتغیره ۲</td><td>3</td><td>پیشرفته</td></tr>
+        <tr><td>22</td><td><span class="code-ds">DS 119</span></td><td>تحلیل داده‌های رسته‌ای</td><td>3</td><td>Logistic, Chi-Square</td></tr>
+        <tr><td>23</td><td><span class="code-ds">DS 301</span></td><td>مهندسی ویژگی و انتخاب مدل</td><td>3</td><td>Feature Engineering</td></tr>
+        <tr><td>24</td><td><span class="code-ds">DS 302</span></td><td>یادگیری تقویتی و تصمیم‌گیری</td><td>3</td><td>RL, A/B Testing</td></tr>
+        <tr><td>25</td><td><span class="code-ds">DS 303</span></td><td>علم داده در کسب‌وکار</td><td>3</td><td>Business Analytics</td></tr>
+        <tr><td>26</td><td><span class="code-ds">DS 305</span></td><td>گراف‌کاوی و تحلیل شبکه</td><td>3</td><td>Network Analysis, PageRank</td></tr>
+        <tr><td>27</td><td><span class="code-ds">DS 204</span></td><td>اخلاق، حریم خصوصی و امنیت داده</td><td>2</td><td>Bias, GDPR</td></tr>
+    </tbody>
+</table>
+
+<h2>دروس اختیاری (۱۵ واحد از ~۳۰ واحد)</h2>
+<table>
+    <caption>دروس اختیاری پیشنهادی برای علم داده‌ها</caption>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>کد</th>
+            <th>عنوان</th>
+            <th>واحد</th>
+            <th>رشته منبع</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>1</td><td><span class="code-cs">CS 103</span></td><td>زبان‌های برنامه‌سازی</td><td>3</td><td>علوم کامپیوتر</td></tr>
+        <tr><td>2</td><td><span class="code-cs">CS 109</span></td><td>سیستم‌های عامل</td><td>3</td><td>علوم کامپیوتر</td></tr>
+        <tr><td>3</td><td><span class="code-cs">CS 113</span></td><td>گرافیک کامپیوتری</td><td>3</td><td>علوم کامپیوتر</td></tr>
+        <tr><td>4</td><td><span class="code-cs">CS 119</span></td><td>محاسبات موازی</td><td>3</td><td>علوم کامپیوتر</td></tr>
+        <tr><td>5</td><td><span class="code-cs">CS 202</span></td><td>هوش مصنوعی پیشرفته</td><td>3</td><td>علوم کامپیوتر</td></tr>
+        <tr><td>6</td><td><span class="code-stat">Stat 204</span></td><td>روش‌های عددی و شبیه‌سازی</td><td>3</td><td>آمار</td></tr>
+        <tr><td>7</td><td><span class="code-stat">Stat 207</span></td><td>نظریه اطلاع مقدماتی</td><td>3</td><td>آمار</td></tr>
+        <tr><td>8</td><td><span class="code-stat">Stat 208</span></td><td>آمار محاسباتی</td><td>3</td><td>آمار</td></tr>
+        <tr><td>9</td><td><span class="code-stat">Stat 209</span></td><td>مدل‌های تصادفی</td><td>3</td><td>آمار</td></tr>
+        <tr><td>10</td><td><span class="code-stat">Stat 210</span></td><td>سری‌های زمانی پیشرفته</td><td>3</td><td>آمار</td></tr>
+        <tr><td>11</td><td>GEN 102</td><td>مبانی اقتصاد دیجیتال</td><td>2</td><td>مشترک</td></tr>
+    </tbody>
+</table>
+
+<p style="text-align:center; margin-top:30px; color:#7f8c8d;">
+    <strong>مجموع واحدهای هر رشته: ۲۲ (پایه) + ۷۸ (الزامی) + ۱۵ (اختیاری) = ۱۱۵ واحد</strong><br>
+    <em>به‌روزرسانی نهایی: ۱۷ نوامبر ۲۰۲۵</em>
+</p>
+
+</body>
+</html>
