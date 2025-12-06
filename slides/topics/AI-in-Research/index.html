@@ -1,0 +1,3190 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>&#x67e;&#x698;&#x648;&#x647;&#x634; &#x62f;&#x631; &#x639;&#x635;&#x631; &#x647;&#x648;&#x634; &#x645;&#x635;&#x646;&#x648;&#x639;&#x6cc;</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+/* From extension marp-team.marp-vscode */
+#__marp-vscode {
+  all: revert;
+}
+
+/* Override VS Code default CSS rules reverting to initial
+   https://github.com/microsoft/vscode/blob/master/src/vs/workbench/contrib/webview/browser/pre/main.js#L53 */
+html:has(body.marp-vscode) {
+  padding: 0;
+}
+
+body.marp-vscode {
+  padding: 0;
+}
+
+body.marp-vscode img {
+  max-width: unset;
+  max-height: unset;
+}
+
+body.marp-vscode a,
+body.marp-vscode a:hover,
+body.marp-vscode code {
+  color: unset;
+}
+
+body.marp-vscode blockquote {
+  background: unset;
+  border-color: unset;
+}
+
+@media screen {
+  body.marp-vscode {
+    overflow-y: scroll;
+
+    /* stylelint-disable-next-line selector-class-pattern */
+    &.showEditorSelection {
+      --marp-vscode-highlight-color: rgb(255 255 255 / 40%);
+
+      &.vscode-light {
+        --marp-vscode-highlight-color: rgb(0 0 0 / 15%);
+      }
+
+      &.vscode-high-contrast {
+        --marp-vscode-highlight-color: rgb(255 160 0 / 70%);
+      }
+    }
+  }
+
+  #__marp-vscode [data-marp-vscode-slide-wrapper] {
+    margin: 20px;
+    position: relative;
+
+    &.code-active-line,
+    &:has(.code-active-line) {
+      &::before {
+        position: absolute;
+        content: '';
+        inset: -7px;
+        border: 3px solid var(--marp-vscode-highlight-color, transparent);
+        pointer-events: none;
+      }
+    }
+  }
+
+  #__marp-vscode svg[data-marpit-svg] {
+    box-shadow: 0 5px 10px rgb(0 0 0 / 25%);
+    display: block;
+    margin: 0;
+  }
+
+  /* Based on https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+  #code-csp-warning {
+    background-color: #444;
+    box-shadow: 1px 1px 1px rgb(0 0 0 / 25%);
+    color: white;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-size: 12px;
+    line-height: 22px;
+    margin: 16px;
+    padding: 6px;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 0;
+    overflow-wrap: break-word;
+  }
+
+  #code-csp-warning:hover {
+    text-decoration: none;
+    background-color: #007acc;
+    box-shadow: 2px 2px 2px rgb(0 0 0 / 25%);
+  }
+}
+
+@media print {
+  body.marp-vscode #code-csp-warning {
+    display: none;
+  }
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <style id="__marp-vscode-style">div#__marp-vscode > div > svg > foreignObject > section {
+  width: 1280px;
+  height: 720px;
+
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+
+  scroll-snap-align: center center;
+
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}div#__marp-vscode > div > svg > foreignObject > section::after {
+  bottom: 0;
+  content: attr(data-marpit-pagination);
+  padding: inherit;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}div#__marp-vscode > div > svg > foreignObject > section:not([data-marpit-pagination])::after {
+  display: none;
+}/* Normalization */div#__marp-vscode > div > svg > foreignObject > section :is(h1, marp-h1) {
+  font-size: 2em;
+  margin-block: 0.67em;
+}div#__marp-vscode > div > svg > foreignObject > section video::-webkit-media-controls {
+  will-change: transform;
+}@page {
+  size: 1280px 720px;
+  margin: 0;
+}@media print {html, body {
+  background-color: #fff;
+  margin: 0;
+  page-break-inside: avoid;
+  break-inside: avoid-page;
+}
+  div#__marp-vscode > div > svg > foreignObject > section {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  div#__marp-vscode > div > svg > foreignObject > section, div#__marp-vscode > div > svg > foreignObject > section * {
+    -webkit-print-color-adjust: exact !important;
+    animation-delay: 0s !important;
+    animation-duration: 0s !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    transition: none !important;
+  }
+
+  div#__marp-vscode > div > svg[data-marpit-svg] {
+    display: block;
+    height: 100vh;
+    width: 100vw;
+  }
+}
+div#__marp-vscode > div > svg > foreignObject > :where(section) {
+  container-type: size;
+}
+div#__marp-vscode > div > svg > foreignObject > section img[data-marp-twemoji]{
+  background:transparent;
+  height:1em;
+  margin:0 .05em 0 .1em;
+  vertical-align:-.1em;
+  width:1em;
+}
+/*!
+ * Marp default theme.
+ *
+ * @theme default
+ * @author Yuki Hattori
+ *
+ * @auto-scaling true
+ * @size 16:9 1280px 720px
+ * @size 4:3 960px 720px
+ */
+div#__marp-vscode > div > svg > foreignObject > section{
+  --base-size-4:calc(var(--marpit-root-font-size, 1rem) * 0.25);
+  --base-size-8:calc(var(--marpit-root-font-size, 1rem) * 0.5);
+  --base-size-16:calc(var(--marpit-root-font-size, 1rem) * 1);
+  --base-size-24:calc(var(--marpit-root-font-size, 1rem) * 1.5);
+  --base-size-40:calc(var(--marpit-root-font-size, 1rem) * 2.5);
+  --base-text-weight-normal:400;
+  --base-text-weight-medium:500;
+  --base-text-weight-semibold:600;
+  --fontStack-monospace:ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  --fgColor-accent:Highlight;
+}
+div#__marp-vscode > div > svg > foreignObject > section [data-theme=light],div#__marp-vscode > div > svg > foreignObject > section{
+    color-scheme:light;
+    --focus-outlineColor:#0969da;
+    --fgColor-default:#1f2328;
+    --fgColor-muted:#59636e;
+    --fgColor-accent:#0969da;
+    --fgColor-success:#1a7f37;
+    --fgColor-attention:#9a6700;
+    --fgColor-danger:#d1242f;
+    --fgColor-done:#8250df;
+    --bgColor-default:#fff;
+    --bgColor-muted:#f6f8fa;
+    --bgColor-neutral-muted:#818b981f;
+    --bgColor-attention-muted:#fff8c5;
+    --borderColor-default:#d1d9e0;
+    --borderColor-muted:#d1d9e0b3;
+    --borderColor-neutral-muted:#d1d9e0b3;
+    --borderColor-accent-emphasis:#0969da;
+    --borderColor-success-emphasis:#1a7f37;
+    --borderColor-attention-emphasis:#9a6700;
+    --borderColor-danger-emphasis:#cf222e;
+    --borderColor-done-emphasis:#8250df;
+    --color-prettylights-syntax-comment:#59636e;
+    --color-prettylights-syntax-constant:#0550ae;
+    --color-prettylights-syntax-constant-other-reference-link:#0a3069;
+    --color-prettylights-syntax-entity:#6639ba;
+    --color-prettylights-syntax-storage-modifier-import:#1f2328;
+    --color-prettylights-syntax-entity-tag:#0550ae;
+    --color-prettylights-syntax-keyword:#cf222e;
+    --color-prettylights-syntax-string:#0a3069;
+    --color-prettylights-syntax-variable:#953800;
+    --color-prettylights-syntax-brackethighlighter-unmatched:#82071e;
+    --color-prettylights-syntax-brackethighlighter-angle:#59636e;
+    --color-prettylights-syntax-invalid-illegal-text:#f6f8fa;
+    --color-prettylights-syntax-invalid-illegal-bg:#82071e;
+    --color-prettylights-syntax-carriage-return-text:#f6f8fa;
+    --color-prettylights-syntax-carriage-return-bg:#cf222e;
+    --color-prettylights-syntax-string-regexp:#116329;
+    --color-prettylights-syntax-markup-list:#3b2300;
+    --color-prettylights-syntax-markup-heading:#0550ae;
+    --color-prettylights-syntax-markup-italic:#1f2328;
+    --color-prettylights-syntax-markup-bold:#1f2328;
+    --color-prettylights-syntax-markup-deleted-text:#82071e;
+    --color-prettylights-syntax-markup-deleted-bg:#ffebe9;
+    --color-prettylights-syntax-markup-inserted-text:#116329;
+    --color-prettylights-syntax-markup-inserted-bg:#dafbe1;
+    --color-prettylights-syntax-markup-changed-text:#953800;
+    --color-prettylights-syntax-markup-changed-bg:#ffd8b5;
+    --color-prettylights-syntax-markup-ignored-text:#d1d9e0;
+    --color-prettylights-syntax-markup-ignored-bg:#0550ae;
+    --color-prettylights-syntax-meta-diff-range:#8250df;
+    --color-prettylights-syntax-sublimelinter-gutter-mark:#818b98;
+  }
+div#__marp-vscode > div > svg > foreignObject > section [data-theme=dark],div#__marp-vscode > div > svg > foreignObject > section:where(.invert){
+    color-scheme:dark;
+    --focus-outlineColor:#1f6feb;
+    --fgColor-default:#f0f6fc;
+    --fgColor-muted:#9198a1;
+    --fgColor-accent:#4493f8;
+    --fgColor-success:#3fb950;
+    --fgColor-attention:#d29922;
+    --fgColor-danger:#f85149;
+    --fgColor-done:#ab7df8;
+    --bgColor-default:#0d1117;
+    --bgColor-muted:#151b23;
+    --bgColor-neutral-muted:#656c7633;
+    --bgColor-attention-muted:#bb800926;
+    --borderColor-default:#3d444d;
+    --borderColor-muted:#3d444db3;
+    --borderColor-neutral-muted:#3d444db3;
+    --borderColor-accent-emphasis:#1f6feb;
+    --borderColor-success-emphasis:#238636;
+    --borderColor-attention-emphasis:#9e6a03;
+    --borderColor-danger-emphasis:#da3633;
+    --borderColor-done-emphasis:#8957e5;
+    --color-prettylights-syntax-comment:#9198a1;
+    --color-prettylights-syntax-constant:#79c0ff;
+    --color-prettylights-syntax-constant-other-reference-link:#a5d6ff;
+    --color-prettylights-syntax-entity:#d2a8ff;
+    --color-prettylights-syntax-storage-modifier-import:#f0f6fc;
+    --color-prettylights-syntax-entity-tag:#7ee787;
+    --color-prettylights-syntax-keyword:#ff7b72;
+    --color-prettylights-syntax-string:#a5d6ff;
+    --color-prettylights-syntax-variable:#ffa657;
+    --color-prettylights-syntax-brackethighlighter-unmatched:#f85149;
+    --color-prettylights-syntax-brackethighlighter-angle:#9198a1;
+    --color-prettylights-syntax-invalid-illegal-text:#f0f6fc;
+    --color-prettylights-syntax-invalid-illegal-bg:#8e1519;
+    --color-prettylights-syntax-carriage-return-text:#f0f6fc;
+    --color-prettylights-syntax-carriage-return-bg:#b62324;
+    --color-prettylights-syntax-string-regexp:#7ee787;
+    --color-prettylights-syntax-markup-list:#f2cc60;
+    --color-prettylights-syntax-markup-heading:#1f6feb;
+    --color-prettylights-syntax-markup-italic:#f0f6fc;
+    --color-prettylights-syntax-markup-bold:#f0f6fc;
+    --color-prettylights-syntax-markup-deleted-text:#ffdcd7;
+    --color-prettylights-syntax-markup-deleted-bg:#67060c;
+    --color-prettylights-syntax-markup-inserted-text:#aff5b4;
+    --color-prettylights-syntax-markup-inserted-bg:#033a16;
+    --color-prettylights-syntax-markup-changed-text:#ffdfb6;
+    --color-prettylights-syntax-markup-changed-bg:#5a1e02;
+    --color-prettylights-syntax-markup-ignored-text:#f0f6fc;
+    --color-prettylights-syntax-markup-ignored-bg:#1158c7;
+    --color-prettylights-syntax-meta-diff-range:#d2a8ff;
+    --color-prettylights-syntax-sublimelinter-gutter-mark:#3d444d;
+  }
+div#__marp-vscode > div > svg > foreignObject > section{
+  -ms-text-size-adjust:100%;
+  -webkit-text-size-adjust:100%;
+  background-color:var(--bgColor-default);
+  color:var(--fgColor-default);
+  font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  font-size:16px;
+  line-height:1.5;
+  margin:0;
+  word-wrap:break-word;
+}
+div#__marp-vscode > div > svg > foreignObject > section {
+  --marpit-root-font-size:16px;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h1, marp-h1):hover .anchor .octicon-link:before,div#__marp-vscode > div > svg > foreignObject > section :is(h2, marp-h2):hover .anchor .octicon-link:before,div#__marp-vscode > div > svg > foreignObject > section :is(h3, marp-h3):hover .anchor .octicon-link:before,div#__marp-vscode > div > svg > foreignObject > section :is(h4, marp-h4):hover .anchor .octicon-link:before,div#__marp-vscode > div > svg > foreignObject > section :is(h5, marp-h5):hover .anchor .octicon-link:before,div#__marp-vscode > div > svg > foreignObject > section :is(h6, marp-h6):hover .anchor .octicon-link:before{
+  background-color:currentColor;
+  content:" ";
+  display:inline-block;
+  height:16px;
+  -webkit-mask-image:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 0 0 1.06 1.06l1.25-1.25a2 2 0 1 1 2.83 2.83l-2.5 2.5a2 2 0 0 1-2.83 0 .75.75 0 0 0-1.06 1.06 3.5 3.5 0 0 0 4.95 0l2.5-2.5a3.5 3.5 0 0 0-4.95-4.95zm-4.69 9.64a2 2 0 0 1 0-2.83l2.5-2.5a2 2 0 0 1 2.83 0 .75.75 0 0 0 1.06-1.06 3.5 3.5 0 0 0-4.95 0l-2.5 2.5a3.5 3.5 0 0 0 4.95 4.95l1.25-1.25a.75.75 0 0 0-1.06-1.06l-1.25 1.25a2 2 0 0 1-2.83 0"/></svg>');
+  mask-image:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 0 0 1.06 1.06l1.25-1.25a2 2 0 1 1 2.83 2.83l-2.5 2.5a2 2 0 0 1-2.83 0 .75.75 0 0 0-1.06 1.06 3.5 3.5 0 0 0 4.95 0l2.5-2.5a3.5 3.5 0 0 0-4.95-4.95zm-4.69 9.64a2 2 0 0 1 0-2.83l2.5-2.5a2 2 0 0 1 2.83 0 .75.75 0 0 0 1.06-1.06 3.5 3.5 0 0 0-4.95 0l-2.5 2.5a3.5 3.5 0 0 0 4.95 4.95l1.25-1.25a.75.75 0 0 0-1.06-1.06l-1.25 1.25a2 2 0 0 1-2.83 0"/></svg>');
+  width:16px;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section details,div#__marp-vscode > div > svg > foreignObject > section figcaption,div#__marp-vscode > div > svg > foreignObject > section figure{
+  display:block;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section summary{
+  display:list-item;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section [hidden]{
+  display:none !important;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section a{
+  background-color:transparent;
+  color:var(--fgColor-accent);
+  text-decoration:none;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section abbr[title]{
+  border-bottom:none;
+  -webkit-text-decoration:underline dotted;
+  text-decoration:underline dotted;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section b,div#__marp-vscode > div > svg > foreignObject > section strong{
+  font-weight:var(--base-text-weight-semibold, 600);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section dfn{
+  font-style:italic;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h1, marp-h1){
+  border-bottom:1px solid var(--borderColor-muted);
+  font-size:2em;
+  font-weight:var(--base-text-weight-semibold, 600);
+  margin:.67em 0;
+  padding-bottom:.3em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section mark{
+  background-color:var(--bgColor-attention-muted);
+  color:var(--fgColor-default);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section small{
+  font-size:90%;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section sub,div#__marp-vscode > div > svg > foreignObject > section sup{
+  font-size:75%;
+  line-height:0;
+  position:relative;
+  vertical-align:baseline;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section sub{
+  bottom:-.25em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section sup{
+  top:-.5em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section img{
+  border-style:none;
+  box-sizing:content-box;
+  max-width:100%;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section code,div#__marp-vscode > div > svg > foreignObject > section kbd,div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre),div#__marp-vscode > div > svg > foreignObject > section samp{
+  font-family:monospace;
+  font-size:1em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section figure{
+  margin:1em var(--base-size-40);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section hr{
+  background:transparent;
+  background-color:var(--borderColor-default);
+  border:0;
+  box-sizing:content-box;
+  height:.25em;
+  margin:var(--base-size-24) 0;
+  overflow:hidden;
+  padding:0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section input{
+  font:inherit;
+  font-family:inherit;
+  font-size:inherit;
+  line-height:inherit;
+  margin:0;
+  overflow:visible;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section [type=button],div#__marp-vscode > div > svg > foreignObject > section [type=reset],div#__marp-vscode > div > svg > foreignObject > section [type=submit]{
+  -webkit-appearance:button;
+  -moz-appearance:button;
+       appearance:button;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section [type=checkbox],div#__marp-vscode > div > svg > foreignObject > section [type=radio]{
+  box-sizing:border-box;
+  padding:0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section [type=number]::-webkit-inner-spin-button,div#__marp-vscode > div > svg > foreignObject > section [type=number]::-webkit-outer-spin-button{
+  height:auto;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section [type=search]::-webkit-search-cancel-button,div#__marp-vscode > div > svg > foreignObject > section [type=search]::-webkit-search-decoration{
+  -webkit-appearance:none;
+  appearance:none;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section ::-webkit-input-placeholder{
+  color:inherit;
+  opacity:.54;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section ::-webkit-file-upload-button{
+  -webkit-appearance:button;
+  appearance:button;
+  font:inherit;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section a:hover{
+  text-decoration:underline;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section ::-moz-placeholder{
+  color:var(--fgColor-muted);
+  opacity:1;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section ::placeholder{
+  color:var(--fgColor-muted);
+  opacity:1;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section hr:after,div#__marp-vscode > div > svg > foreignObject > section hr:before{
+  content:"";
+  display:table;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section hr:after{
+  clear:both;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section table{
+  border-collapse:collapse;
+  border-spacing:0;
+  display:block;
+  font-variant:tabular-nums;
+  max-width:100%;
+  overflow:auto;
+  width:-moz-max-content;
+  width:max-content;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section td,div#__marp-vscode > div > svg > foreignObject > section th{
+  padding:0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section details summary{
+  cursor:pointer;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section [role=button]:focus,div#__marp-vscode > div > svg > foreignObject > section a:focus,div#__marp-vscode > div > svg > foreignObject > section input[type=checkbox]:focus,div#__marp-vscode > div > svg > foreignObject > section input[type=radio]:focus{
+  box-shadow:none;
+  outline:2px solid var(--focus-outlineColor);
+  outline-offset:-2px;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section [role=button]:focus:not(:focus-visible),div#__marp-vscode > div > svg > foreignObject > section a:focus:not(:focus-visible),div#__marp-vscode > div > svg > foreignObject > section input[type=checkbox]:focus:not(:focus-visible),div#__marp-vscode > div > svg > foreignObject > section input[type=radio]:focus:not(:focus-visible){
+  outline:1px solid transparent;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section [role=button]:focus-visible,div#__marp-vscode > div > svg > foreignObject > section a:focus-visible,div#__marp-vscode > div > svg > foreignObject > section input[type=checkbox]:focus-visible,div#__marp-vscode > div > svg > foreignObject > section input[type=radio]:focus-visible{
+  box-shadow:none;
+  outline:2px solid var(--focus-outlineColor);
+  outline-offset:-2px;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section a:not([class]):focus,div#__marp-vscode > div > svg > foreignObject > section a:not([class]):focus-visible,div#__marp-vscode > div > svg > foreignObject > section input[type=checkbox]:focus,div#__marp-vscode > div > svg > foreignObject > section input[type=checkbox]:focus-visible,div#__marp-vscode > div > svg > foreignObject > section input[type=radio]:focus,div#__marp-vscode > div > svg > foreignObject > section input[type=radio]:focus-visible{
+  outline-offset:0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section kbd{
+  background-color:var(--bgColor-muted);
+  border-bottom-color:var(--borderColor-neutral-muted);
+  border:1px solid var(--borderColor-neutral-muted);
+  border-radius:6px;
+  box-shadow:inset 0 -1px 0 var(--borderColor-neutral-muted);
+  color:var(--fgColor-default);
+  display:inline-block;
+  font:11px var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);
+  line-height:10px;
+  padding:var(--base-size-4);
+  vertical-align:middle;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h1, marp-h1),div#__marp-vscode > div > svg > foreignObject > section :is(h2, marp-h2),div#__marp-vscode > div > svg > foreignObject > section :is(h3, marp-h3),div#__marp-vscode > div > svg > foreignObject > section :is(h4, marp-h4),div#__marp-vscode > div > svg > foreignObject > section :is(h5, marp-h5),div#__marp-vscode > div > svg > foreignObject > section :is(h6, marp-h6){
+  font-weight:var(--base-text-weight-semibold, 600);
+  line-height:1.25;
+  margin-bottom:var(--base-size-16);
+  margin-top:var(--base-size-24);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h2, marp-h2){
+  border-bottom:1px solid var(--borderColor-muted);
+  font-size:1.5em;
+  padding-bottom:.3em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h2, marp-h2),div#__marp-vscode > div > svg > foreignObject > section :is(h3, marp-h3){
+  font-weight:var(--base-text-weight-semibold, 600);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h3, marp-h3){
+  font-size:1.25em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h4, marp-h4){
+  font-size:1em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h4, marp-h4),div#__marp-vscode > div > svg > foreignObject > section :is(h5, marp-h5){
+  font-weight:var(--base-text-weight-semibold, 600);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h5, marp-h5){
+  font-size:.875em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h6, marp-h6){
+  color:var(--fgColor-muted);
+  font-size:.85em;
+  font-weight:var(--base-text-weight-semibold, 600);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section p{
+  margin-bottom:10px;
+  margin-top:0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section blockquote{
+  border-left:.25em solid var(--borderColor-default);
+  color:var(--fgColor-muted);
+  margin:0;
+  padding:0 1em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section ol,div#__marp-vscode > div > svg > foreignObject > section ul{
+  margin-bottom:0;
+  margin-top:0;
+  padding-left:2em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section ol ol,div#__marp-vscode > div > svg > foreignObject > section ul ol{
+  list-style-type:lower-roman;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section ol ol ol,div#__marp-vscode > div > svg > foreignObject > section ol ul ol,div#__marp-vscode > div > svg > foreignObject > section ul ol ol,div#__marp-vscode > div > svg > foreignObject > section ul ul ol{
+  list-style-type:lower-alpha;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section dd{
+  margin-left:0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section code,div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre),div#__marp-vscode > div > svg > foreignObject > section samp,div#__marp-vscode > div > svg > foreignObject > section tt{
+  font-family:var(--fontStack-monospace, ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace);
+  font-size:12px;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre){
+  margin-bottom:0;
+  margin-top:0;
+  word-wrap:normal;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .octicon{
+  display:inline-block;
+  overflow:visible !important;
+  vertical-align:text-bottom;
+  fill:currentColor;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section input::-webkit-inner-spin-button,div#__marp-vscode > div > svg > foreignObject > section input::-webkit-outer-spin-button{
+  -webkit-appearance:none;
+          appearance:none;
+  margin:0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .mr-2{
+  margin-right:var(--base-size-8, 8px) !important;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section:after,div#__marp-vscode > div > svg > foreignObject > section:before{
+  /* content:""; */
+  display:table;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section:after{
+  clear:both;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section>:first-child{
+  margin-top:0 !important;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section>:last-child{
+  margin-bottom:0 !important;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section a:not([href]){
+  color:inherit;
+  text-decoration:none;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .absent{
+  color:var(--fgColor-danger);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .anchor{
+  float:left;
+  line-height:1;
+  margin-left:-20px;
+  padding-right:var(--base-size-4);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .anchor:focus{
+  outline:none;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section blockquote,div#__marp-vscode > div > svg > foreignObject > section details,div#__marp-vscode > div > svg > foreignObject > section dl,div#__marp-vscode > div > svg > foreignObject > section ol,div#__marp-vscode > div > svg > foreignObject > section p,div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre),div#__marp-vscode > div > svg > foreignObject > section table,div#__marp-vscode > div > svg > foreignObject > section ul{
+  margin-bottom:var(--base-size-16);
+  margin-top:0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section blockquote>:first-child{
+  margin-top:0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section blockquote>:last-child{
+  margin-bottom:0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h1, marp-h1) .octicon-link,div#__marp-vscode > div > svg > foreignObject > section :is(h2, marp-h2) .octicon-link,div#__marp-vscode > div > svg > foreignObject > section :is(h3, marp-h3) .octicon-link,div#__marp-vscode > div > svg > foreignObject > section :is(h4, marp-h4) .octicon-link,div#__marp-vscode > div > svg > foreignObject > section :is(h5, marp-h5) .octicon-link,div#__marp-vscode > div > svg > foreignObject > section :is(h6, marp-h6) .octicon-link{
+  color:var(--fgColor-default);
+  vertical-align:middle;
+  visibility:hidden;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h1, marp-h1):hover .anchor,div#__marp-vscode > div > svg > foreignObject > section :is(h2, marp-h2):hover .anchor,div#__marp-vscode > div > svg > foreignObject > section :is(h3, marp-h3):hover .anchor,div#__marp-vscode > div > svg > foreignObject > section :is(h4, marp-h4):hover .anchor,div#__marp-vscode > div > svg > foreignObject > section :is(h5, marp-h5):hover .anchor,div#__marp-vscode > div > svg > foreignObject > section :is(h6, marp-h6):hover .anchor{
+  text-decoration:none;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h1, marp-h1):hover .anchor .octicon-link,div#__marp-vscode > div > svg > foreignObject > section :is(h2, marp-h2):hover .anchor .octicon-link,div#__marp-vscode > div > svg > foreignObject > section :is(h3, marp-h3):hover .anchor .octicon-link,div#__marp-vscode > div > svg > foreignObject > section :is(h4, marp-h4):hover .anchor .octicon-link,div#__marp-vscode > div > svg > foreignObject > section :is(h5, marp-h5):hover .anchor .octicon-link,div#__marp-vscode > div > svg > foreignObject > section :is(h6, marp-h6):hover .anchor .octicon-link{
+  visibility:visible;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h1, marp-h1) code,div#__marp-vscode > div > svg > foreignObject > section :is(h1, marp-h1) tt,div#__marp-vscode > div > svg > foreignObject > section :is(h2, marp-h2) code,div#__marp-vscode > div > svg > foreignObject > section :is(h2, marp-h2) tt,div#__marp-vscode > div > svg > foreignObject > section :is(h3, marp-h3) code,div#__marp-vscode > div > svg > foreignObject > section :is(h3, marp-h3) tt,div#__marp-vscode > div > svg > foreignObject > section :is(h4, marp-h4) code,div#__marp-vscode > div > svg > foreignObject > section :is(h4, marp-h4) tt,div#__marp-vscode > div > svg > foreignObject > section :is(h5, marp-h5) code,div#__marp-vscode > div > svg > foreignObject > section :is(h5, marp-h5) tt,div#__marp-vscode > div > svg > foreignObject > section :is(h6, marp-h6) code,div#__marp-vscode > div > svg > foreignObject > section :is(h6, marp-h6) tt{
+  font-size:inherit;
+  padding:0 .2em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section summary :is(h1, marp-h1),div#__marp-vscode > div > svg > foreignObject > section summary :is(h2, marp-h2),div#__marp-vscode > div > svg > foreignObject > section summary :is(h3, marp-h3),div#__marp-vscode > div > svg > foreignObject > section summary :is(h4, marp-h4),div#__marp-vscode > div > svg > foreignObject > section summary :is(h5, marp-h5),div#__marp-vscode > div > svg > foreignObject > section summary :is(h6, marp-h6){
+  display:inline-block;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section summary :is(h1, marp-h1) .anchor,div#__marp-vscode > div > svg > foreignObject > section summary :is(h2, marp-h2) .anchor,div#__marp-vscode > div > svg > foreignObject > section summary :is(h3, marp-h3) .anchor,div#__marp-vscode > div > svg > foreignObject > section summary :is(h4, marp-h4) .anchor,div#__marp-vscode > div > svg > foreignObject > section summary :is(h5, marp-h5) .anchor,div#__marp-vscode > div > svg > foreignObject > section summary :is(h6, marp-h6) .anchor{
+  margin-left:-40px;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section summary :is(h1, marp-h1),div#__marp-vscode > div > svg > foreignObject > section summary :is(h2, marp-h2){
+  border-bottom:0;
+  padding-bottom:0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section ol.no-list,div#__marp-vscode > div > svg > foreignObject > section ul.no-list{
+  list-style-type:none;
+  padding:0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section ol[type="a s"]{
+  list-style-type:lower-alpha;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section ol[type="A s"]{
+  list-style-type:upper-alpha;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section ol[type="i s"]{
+  list-style-type:lower-roman;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section ol[type="I s"]{
+  list-style-type:upper-roman;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section div>ol:not([type]),div#__marp-vscode > div > svg > foreignObject > section ol[type="1"]{
+  list-style-type:decimal;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section ol ol,div#__marp-vscode > div > svg > foreignObject > section ol ul,div#__marp-vscode > div > svg > foreignObject > section ul ol,div#__marp-vscode > div > svg > foreignObject > section ul ul{
+  margin-bottom:0;
+  margin-top:0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section li>p{
+  margin-top:var(--base-size-16);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section li+li{
+  margin-top:.25em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section dl{
+  padding:0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section dl dt{
+  font-size:1em;
+  font-style:italic;
+  font-weight:var(--base-text-weight-semibold, 600);
+  margin-top:var(--base-size-16);
+  padding:0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section dl dd{
+  margin-bottom:var(--base-size-16);
+  padding:0 var(--base-size-16);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section table th{
+  font-weight:var(--base-text-weight-semibold, 600);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section table td,div#__marp-vscode > div > svg > foreignObject > section table th{
+  border:1px solid var(--borderColor-default);
+  padding:6px 13px;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section table td>:last-child{
+  margin-bottom:0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section table tr{
+  background-color:var(--bgColor-default);
+  border-top:1px solid var(--borderColor-muted);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section table tr:nth-child(2n){
+  background-color:var(--bgColor-muted);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section table img{
+  background-color:transparent;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section img[align=right]{
+  padding-left:20px;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section img[align=left]{
+  padding-right:20px;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .emoji{
+  background-color:transparent;
+  max-width:none;
+  vertical-align:text-top;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(span, marp-span).frame,div#__marp-vscode > div > svg > foreignObject > section :is(span, marp-span).frame>:is(span, marp-span){
+  display:block;
+  overflow:hidden;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(span, marp-span).frame>:is(span, marp-span){
+  border:1px solid var(--borderColor-default);
+  float:left;
+  margin:13px 0 0;
+  padding:7px;
+  width:auto;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(span, marp-span).frame :is(span, marp-span) img{
+  display:block;
+  float:left;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(span, marp-span).frame :is(span, marp-span) :is(span, marp-span){
+  clear:both;
+  color:var(--fgColor-default);
+  display:block;
+  padding:5px 0 0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(span, marp-span).align-center{
+  clear:both;
+  display:block;
+  overflow:hidden;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(span, marp-span).align-center>:is(span, marp-span){
+  display:block;
+  margin:13px auto 0;
+  overflow:hidden;
+  text-align:center;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(span, marp-span).align-center :is(span, marp-span) img{
+  margin:0 auto;
+  text-align:center;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(span, marp-span).align-right{
+  clear:both;
+  display:block;
+  overflow:hidden;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(span, marp-span).align-right>:is(span, marp-span){
+  display:block;
+  margin:13px 0 0;
+  overflow:hidden;
+  text-align:right;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(span, marp-span).align-right :is(span, marp-span) img{
+  margin:0;
+  text-align:right;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(span, marp-span).float-left{
+  display:block;
+  float:left;
+  margin-right:13px;
+  overflow:hidden;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(span, marp-span).float-left :is(span, marp-span){
+  margin:13px 0 0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(span, marp-span).float-right{
+  display:block;
+  float:right;
+  margin-left:13px;
+  overflow:hidden;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(span, marp-span).float-right>:is(span, marp-span){
+  display:block;
+  margin:13px auto 0;
+  overflow:hidden;
+  text-align:right;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section code,div#__marp-vscode > div > svg > foreignObject > section tt{
+  background-color:var(--bgColor-neutral-muted);
+  border-radius:6px;
+  font-size:85%;
+  margin:0;
+  padding:.2em .4em;
+  white-space:break-spaces;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section code br,div#__marp-vscode > div > svg > foreignObject > section tt br{
+  display:none;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section del code{
+  text-decoration:inherit;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section samp{
+  font-size:85%;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) code{
+  font-size:100%;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre)>code{
+  background:transparent;
+  border:0;
+  margin:0;
+  padding:0;
+  white-space:pre;
+  word-break:normal;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .highlight{
+  margin-bottom:var(--base-size-16);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .highlight :is(pre, marp-pre){
+  margin-bottom:0;
+  word-break:normal;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre){
+  background-color:var(--bgColor-muted);
+  border-radius:6px;
+  color:var(--fgColor-default);
+  font-size:85%;
+  line-height:1.45;
+  overflow:auto;
+  padding:var(--base-size-16);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) code,div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) tt{
+  display:inline;
+  line-height:inherit;
+  margin:0;
+  max-width:auto;
+  overflow:visible;
+  padding:0;
+  word-wrap:normal;
+  background-color:transparent;
+  border:0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .csv-data td,div#__marp-vscode > div > svg > foreignObject > section .csv-data th{
+  font-size:12px;
+  line-height:1;
+  overflow:hidden;
+  padding:5px;
+  text-align:left;
+  white-space:nowrap;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .csv-data .blob-num{
+  background:var(--bgColor-default);
+  border:0;
+  padding:10px var(--base-size-8) 9px;
+  text-align:right;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .csv-data tr{
+  border-top:0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .csv-data th{
+  background:var(--bgColor-muted);
+  border-top:0;
+  font-weight:var(--base-text-weight-semibold, 600);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section [data-footnote-ref]:before{
+  content:"[";
+}
+
+div#__marp-vscode > div > svg > foreignObject > section [data-footnote-ref]:after{
+  content:"]";
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .footnotes{
+  border-top:1px solid var(--borderColor-default);
+  color:var(--fgColor-muted);
+  font-size:12px;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section div#__marp-vscode > div > svg > foreignObject > section section.footnotes {
+  --marpit-root-font-size:12px;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .footnotes ol,div#__marp-vscode > div > svg > foreignObject > section .footnotes ol ul{
+  padding-left:var(--base-size-16);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .footnotes ol ul{
+  display:inline-block;
+  margin-top:var(--base-size-16);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .footnotes li{
+  position:relative;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .footnotes li:target:before{
+  border:2px solid var(--borderColor-accent-emphasis);
+  border-radius:6px;
+  bottom:calc(var(--base-size-8)*-1);
+  content:"";
+  left:calc(var(--base-size-24)*-1);
+  pointer-events:none;
+  position:absolute;
+  right:calc(var(--base-size-8)*-1);
+  top:calc(var(--base-size-8)*-1);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .footnotes li:target{
+  color:var(--fgColor-default);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .footnotes .data-footnote-backref g-emoji{
+  font-family:monospace;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section body:has(:modal){
+  padding-right:var(--dialog-scrollgutter) !important;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-c{
+  color:var(--color-prettylights-syntax-comment);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-c1,div#__marp-vscode > div > svg > foreignObject > section .pl-s .pl-v{
+  color:var(--color-prettylights-syntax-constant);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-e,div#__marp-vscode > div > svg > foreignObject > section .pl-en{
+  color:var(--color-prettylights-syntax-entity);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-s .pl-s1,div#__marp-vscode > div > svg > foreignObject > section .pl-smi{
+  color:var(--color-prettylights-syntax-storage-modifier-import);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-ent{
+  color:var(--color-prettylights-syntax-entity-tag);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-k{
+  color:var(--color-prettylights-syntax-keyword);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-pds,div#__marp-vscode > div > svg > foreignObject > section .pl-s,div#__marp-vscode > div > svg > foreignObject > section .pl-s .pl-pse .pl-s1,div#__marp-vscode > div > svg > foreignObject > section .pl-sr,div#__marp-vscode > div > svg > foreignObject > section .pl-sr .pl-cce,div#__marp-vscode > div > svg > foreignObject > section .pl-sr .pl-sra,div#__marp-vscode > div > svg > foreignObject > section .pl-sr .pl-sre{
+  color:var(--color-prettylights-syntax-string);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-smw,div#__marp-vscode > div > svg > foreignObject > section .pl-v{
+  color:var(--color-prettylights-syntax-variable);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-bu{
+  color:var(--color-prettylights-syntax-brackethighlighter-unmatched);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-ii{
+  background-color:var(--color-prettylights-syntax-invalid-illegal-bg);
+  color:var(--color-prettylights-syntax-invalid-illegal-text);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-c2{
+  background-color:var(--color-prettylights-syntax-carriage-return-bg);
+  color:var(--color-prettylights-syntax-carriage-return-text);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-sr .pl-cce{
+  color:var(--color-prettylights-syntax-string-regexp);
+  font-weight:700;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-ml{
+  color:var(--color-prettylights-syntax-markup-list);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-mh,div#__marp-vscode > div > svg > foreignObject > section .pl-mh .pl-en,div#__marp-vscode > div > svg > foreignObject > section .pl-ms{
+  color:var(--color-prettylights-syntax-markup-heading);
+  font-weight:700;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-mi{
+  color:var(--color-prettylights-syntax-markup-italic);
+  font-style:italic;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-mb{
+  color:var(--color-prettylights-syntax-markup-bold);
+  font-weight:700;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-md{
+  background-color:var(--color-prettylights-syntax-markup-deleted-bg);
+  color:var(--color-prettylights-syntax-markup-deleted-text);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-mi1{
+  background-color:var(--color-prettylights-syntax-markup-inserted-bg);
+  color:var(--color-prettylights-syntax-markup-inserted-text);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-mc{
+  background-color:var(--color-prettylights-syntax-markup-changed-bg);
+  color:var(--color-prettylights-syntax-markup-changed-text);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-mi2{
+  background-color:var(--color-prettylights-syntax-markup-ignored-bg);
+  color:var(--color-prettylights-syntax-markup-ignored-text);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-mdr{
+  color:var(--color-prettylights-syntax-meta-diff-range);
+  font-weight:700;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-ba{
+  color:var(--color-prettylights-syntax-brackethighlighter-angle);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-sg{
+  color:var(--color-prettylights-syntax-sublimelinter-gutter-mark);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .pl-corl{
+  color:var(--color-prettylights-syntax-constant-other-reference-link);
+  text-decoration:underline;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section [role=button]:focus:not(:focus-visible),div#__marp-vscode > div > svg > foreignObject > section [role=tabpanel][tabindex="0"]:focus:not(:focus-visible),div#__marp-vscode > div > svg > foreignObject > section a:focus:not(:focus-visible),div#__marp-vscode > div > svg > foreignObject > section button:focus:not(:focus-visible),div#__marp-vscode > div > svg > foreignObject > section summary:focus:not(:focus-visible){
+  box-shadow:none;
+  outline:none;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section [tabindex="0"]:focus:not(:focus-visible),div#__marp-vscode > div > svg > foreignObject > section details-dialog:focus:not(:focus-visible){
+  outline:none;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section g-emoji{
+  display:inline-block;
+  font-family:Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+  font-size:1em;
+  font-style:normal !important;
+  font-weight:var(--base-text-weight-normal, 400);
+  line-height:1;
+  min-width:1ch;
+  vertical-align:-.075em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section g-emoji img{
+  height:1em;
+  width:1em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .task-list-item{
+  list-style-type:none;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .task-list-item label{
+  font-weight:var(--base-text-weight-normal, 400);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .task-list-item.enabled label{
+  cursor:pointer;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .task-list-item+.task-list-item{
+  margin-top:var(--base-size-4);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .task-list-item .handle{
+  display:none;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .task-list-item-checkbox{
+  margin:0 .2em .25em -1.4em;
+  vertical-align:middle;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section ul:dir(rtl) .task-list-item-checkbox{
+  margin:0 -1.6em .25em .2em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section ol:dir(rtl) .task-list-item-checkbox{
+  margin:0 -1.6em .25em .2em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .contains-task-list:focus-within .task-list-item-convert-container,div#__marp-vscode > div > svg > foreignObject > section .contains-task-list:hover .task-list-item-convert-container{
+  display:block;
+  height:24px;
+  overflow:visible;
+  width:auto;
+  clip:auto;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section ::-webkit-calendar-picker-indicator{
+  filter:invert(50%);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .markdown-alert{
+  border-left:.25em solid var(--borderColor-default);
+  color:inherit;
+  margin-bottom:var(--base-size-16);
+  padding:var(--base-size-8) var(--base-size-16);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .markdown-alert>:first-child{
+  margin-top:0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .markdown-alert>:last-child{
+  margin-bottom:0;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .markdown-alert .markdown-alert-title{
+  align-items:center;
+  display:flex;
+  font-weight:var(--base-text-weight-medium, 500);
+  line-height:1;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .markdown-alert.markdown-alert-note{
+  border-left-color:var(--borderColor-accent-emphasis);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .markdown-alert.markdown-alert-note .markdown-alert-title{
+  color:var(--fgColor-accent);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .markdown-alert.markdown-alert-important{
+  border-left-color:var(--borderColor-done-emphasis);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .markdown-alert.markdown-alert-important .markdown-alert-title{
+  color:var(--fgColor-done);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .markdown-alert.markdown-alert-warning{
+  border-left-color:var(--borderColor-attention-emphasis);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .markdown-alert.markdown-alert-warning .markdown-alert-title{
+  color:var(--fgColor-attention);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .markdown-alert.markdown-alert-tip{
+  border-left-color:var(--borderColor-success-emphasis);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .markdown-alert.markdown-alert-tip .markdown-alert-title{
+  color:var(--fgColor-success);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .markdown-alert.markdown-alert-caution{
+  border-left-color:var(--borderColor-danger-emphasis);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .markdown-alert.markdown-alert-caution .markdown-alert-title{
+  color:var(--fgColor-danger);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section>:first-child>.heading-element:first-child{
+  margin-top:0 !important;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section .highlight :is(pre, marp-pre):has(+.zeroclipboard-container){
+  min-height:52px;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h1, marp-h1){
+  color:var(--h1-color);
+  font-size:1.6em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h1, marp-h1),div#__marp-vscode > div > svg > foreignObject > section :is(h2, marp-h2){
+  border-bottom:none;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h2, marp-h2){
+  font-size:1.3em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h3, marp-h3){
+  font-size:1.1em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h4, marp-h4){
+  font-size:1.05em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h5, marp-h5){
+  font-size:1em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h6, marp-h6){
+  font-size:.9em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(h1, marp-h1) strong,div#__marp-vscode > div > svg > foreignObject > section :is(h2, marp-h2) strong,div#__marp-vscode > div > svg > foreignObject > section :is(h3, marp-h3) strong,div#__marp-vscode > div > svg > foreignObject > section :is(h4, marp-h4) strong,div#__marp-vscode > div > svg > foreignObject > section :is(h5, marp-h5) strong,div#__marp-vscode > div > svg > foreignObject > section :is(h6, marp-h6) strong{
+  color:var(--heading-strong-color);
+  font-weight:inherit;
+}
+div#__marp-vscode > div > svg > foreignObject > section :is(h1, marp-h1)::part(auto-scaling),div#__marp-vscode > div > svg > foreignObject > section :is(h2, marp-h2)::part(auto-scaling),div#__marp-vscode > div > svg > foreignObject > section :is(h3, marp-h3)::part(auto-scaling),div#__marp-vscode > div > svg > foreignObject > section :is(h4, marp-h4)::part(auto-scaling),div#__marp-vscode > div > svg > foreignObject > section :is(h5, marp-h5)::part(auto-scaling),div#__marp-vscode > div > svg > foreignObject > section :is(h6, marp-h6)::part(auto-scaling){
+  max-height:563px;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section hr{
+  height:0;
+  padding-top:.25em;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section img{
+  background-color:transparent;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre){
+  border:1px solid var(--borderColor-default);
+  line-height:1.15;
+  overflow:visible;
+}
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre)::part(auto-scaling){
+  max-height:529px;
+}
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs){
+  color:var(--color-prettylights-syntax-storage-modifier-import);
+}
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-doctag),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-keyword),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-meta .hljs-keyword),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-template-tag),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-template-variable),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-type),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-variable.language_){
+  color:var(--color-prettylights-syntax-keyword);
+}
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-title),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-title.class_),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-title.class_.inherited__),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-title.function_){
+  color:var(--color-prettylights-syntax-entity);
+}
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-attr),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-attribute),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-literal),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-meta),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-number),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-operator),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-selector-attr),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-selector-class),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-selector-id),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-variable){
+  color:var(--color-prettylights-syntax-constant);
+}
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-meta .hljs-string),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-regexp),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-string){
+  color:var(--color-prettylights-syntax-string);
+}
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-built_in),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-symbol){
+  color:var(--color-prettylights-syntax-variable);
+}
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-code),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-comment),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-formula){
+  color:var(--color-prettylights-syntax-comment);
+}
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-name),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-quote),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-selector-pseudo),div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-selector-tag){
+  color:var(--color-prettylights-syntax-entity-tag);
+}
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-subst){
+  color:var(--color-prettylights-syntax-storage-modifier-import);
+}
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-section){
+  color:var(--color-prettylights-syntax-markup-heading);
+  font-weight:700;
+}
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-bullet){
+  color:var(--color-prettylights-syntax-markup-list);
+}
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-emphasis){
+  color:var(--color-prettylights-syntax-markup-italic);
+  font-style:italic;
+}
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-strong){
+  color:var(--color-prettylights-syntax-markup-bold);
+  font-weight:700;
+}
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-addition){
+  background-color:var(--color-prettylights-syntax-markup-inserted-bg);
+  color:var(--color-prettylights-syntax-markup-inserted-text);
+}
+div#__marp-vscode > div > svg > foreignObject > section :is(pre, marp-pre) :where(.hljs-deletion){
+  background-color:var(--color-prettylights-syntax-markup-deleted-bg);
+  color:var(--color-prettylights-syntax-markup-deleted-text);
+}
+
+div#__marp-vscode > div > svg > foreignObject > section footer,div#__marp-vscode > div > svg > foreignObject > section header{
+  color:var(--header-footer-color);
+  font-size:18px;
+  left:30px;
+  margin:0;
+  position:absolute;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section header{
+  top:21px;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section footer{
+  bottom:21px;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section{
+  --h1-color:#246;
+  --header-footer-color:hsla(0,0%,40%,.75);
+  --heading-strong-color:#48c;
+  --paginate-color:#777;
+  --base-size-4:4px;
+  --base-size-8:8px;
+  --base-size-16:16px;
+  --base-size-24:24px;
+  --base-size-40:40px;
+  align-items:stretch;
+  display:block;
+  flex-flow:column nowrap;
+  font-size:29px;
+  height:720px;
+  padding:78.5px;
+  place-content:safe center center;
+  width:1280px;
+}
+
+div#__marp-vscode > div > svg > foreignObject > section {
+  --marpit-root-font-size:29px;
+}
+div#__marp-vscode > div > svg > foreignObject > section:where(.invert){
+  --h1-color:#cee7ff;
+  --header-footer-color:hsla(0,0%,60%,.75);
+  --heading-strong-color:#7bf;
+  --paginate-color:#999;
+}
+div#__marp-vscode > div > svg > foreignObject > section>:last-child,div#__marp-vscode > div > svg > foreignObject > section[data-footer]>:nth-last-child(2){
+  margin-bottom:0;
+}
+div#__marp-vscode > div > svg > foreignObject > section>:first-child,div#__marp-vscode > div > svg > foreignObject > section>header:first-child+*{
+  margin-top:0;
+}
+div#__marp-vscode > div > svg > foreignObject > section:after{
+  bottom:21px;
+  color:var(--paginate-color);
+  font-size:24px;
+  padding:0;
+  position:absolute;
+  right:30px;
+}
+div#__marp-vscode > div > svg > foreignObject > section:after {
+  --marpit-root-font-size:24px;
+}
+div#__marp-vscode > div > svg > foreignObject > section[data-color] :is(h1, marp-h1),div#__marp-vscode > div > svg > foreignObject > section[data-color] :is(h2, marp-h2),div#__marp-vscode > div > svg > foreignObject > section[data-color] :is(h3, marp-h3),div#__marp-vscode > div > svg > foreignObject > section[data-color] :is(h4, marp-h4),div#__marp-vscode > div > svg > foreignObject > section[data-color] :is(h5, marp-h5),div#__marp-vscode > div > svg > foreignObject > section[data-color] :is(h6, marp-h6){
+  color:currentcolor;
+}
+div#__marp-vscode > div > svg > foreignObject > section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+div#__marp-vscode > div > svg > foreignObject > section :is(h1, marp-h1), div#__marp-vscode > div > svg > foreignObject > section :is(h2, marp-h2), div#__marp-vscode > div > svg > foreignObject > section :is(h3, marp-h3) {
+  text-align: center;
+}
+div#__marp-vscode > div > svg > foreignObject > section code {
+  direction: ltr;
+  text-align: left;
+}
+div#__marp-vscode > div > svg > foreignObject > section[data-marpit-advanced-background="background"] {
+  columns: initial !important;
+  display: block !important;
+  padding: 0 !important;
+}
+div#__marp-vscode > div > svg > foreignObject > section[data-marpit-advanced-background="background"]::before,
+div#__marp-vscode > div > svg > foreignObject > section[data-marpit-advanced-background="background"]::after,
+div#__marp-vscode > div > svg > foreignObject > section[data-marpit-advanced-background="content"]::before,
+div#__marp-vscode > div > svg > foreignObject > section[data-marpit-advanced-background="content"]::after {
+  display: none !important;
+}
+div#__marp-vscode > div > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container] {
+  all: initial;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+div#__marp-vscode > div > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container][data-marpit-advanced-background-direction="vertical"] {
+  flex-direction: column;
+}
+div#__marp-vscode > div > svg > foreignObject > section[data-marpit-advanced-background="background"][data-marpit-advanced-background-split] > div[data-marpit-advanced-background-container] {
+  width: var(--marpit-advanced-background-split, 50%);
+}
+div#__marp-vscode > div > svg > foreignObject > section[data-marpit-advanced-background="background"][data-marpit-advanced-background-split="right"] > div[data-marpit-advanced-background-container] {
+  margin-left: calc(100% - var(--marpit-advanced-background-split, 50%));
+}
+div#__marp-vscode > div > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container] > figure {
+  all: initial;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex: auto;
+  margin: 0;
+}
+div#__marp-vscode > div > svg > foreignObject > section[data-marpit-advanced-background="background"] > div[data-marpit-advanced-background-container] > figure > figcaption {
+	position: absolute;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  white-space: nowrap;
+  width: 1px;
+}
+div#__marp-vscode > div > svg > foreignObject > section[data-marpit-advanced-background="content"],
+div#__marp-vscode > div > svg > foreignObject > section[data-marpit-advanced-background="pseudo"] {
+  background: transparent !important;
+}
+div#__marp-vscode > div > svg > foreignObject > section[data-marpit-advanced-background="pseudo"],
+div#__marp-vscode > div > svg[data-marpit-svg] > foreignObject[data-marpit-advanced-background="pseudo"] {
+  pointer-events: none !important;
+}
+div#__marp-vscode > div > svg > foreignObject > section[data-marpit-advanced-background-split] {
+  width: 100%;
+  height: 100%;
+}</style><div id="__marp-vscode"><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="0"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="1" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" class="lead" data-marpit-pagination="1" style="--paginate:true;--class:lead;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="0" data-marp-vscode-content-end-line="28">
+<h1 id="%D9%BE%DA%98%D9%88%D9%87%D8%B4-%D8%AF%D8%B1-%D8%B9%D8%B5%D8%B1-%D9%87%D9%88%D8%B4-%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C" class="code-line" data-line="21">پژوهش در عصر هوش مصنوعی</h1>
+<h2 id="%D9%81%D8%B1%D8%B5%D8%AA%E2%80%8C%D9%87%D8%A7-%D9%88-%DA%86%D8%A7%D9%84%D8%B4%E2%80%8C%D9%87%D8%A7" class="code-line" data-line="22">فرصت‌ها و چالش‌ها</h2>
+<p class="code-line" data-line="24"><strong>دکتر محمود امین‌طوسی</strong><br />
+دانشکده علوم ریاضی - دانشگاه فردوسی مشهد</p>
+<p class="code-line" data-line="27"><a href="https://mamintoosi.github.io/">mamintoosi.github.io</a></p>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="29"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="2" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="2" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="29" data-marp-vscode-content-end-line="39">
+<h2 id="%D8%B3%D8%B1%D9%81%D8%B5%D9%84%E2%80%8C%D9%87%D8%A7%DB%8C-%D8%A7%D8%B1%D8%A7%D8%A6%D9%87" class="code-line" data-line="31">سرفصل‌های ارائه</h2>
+<ol class="code-line" data-line="33">
+<li class="code-line" data-line="33">هوش مصنوعی مولد: انقلاب در پژوهش</li>
+<li class="code-line" data-line="34">ابزارهای هوش مصنوعی برای پژوهش</li>
+<li class="code-line" data-line="35">مهندسی پرامپت: کلید استفاده موثر</li>
+<li class="code-line" data-line="36">فرصت‌ها در علوم کامپیوتر</li>
+<li class="code-line" data-line="37">چالش‌ها و ملاحظات اخلاقی</li>
+<li class="code-line" data-line="38">بهترین شیوه‌ها</li>
+</ol>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="40"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="3" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" class="lead" data-marpit-pagination="3" style="--paginate:true;--class:lead;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="40" data-marp-vscode-content-end-line="45">
+<h1 id="%D8%A8%D8%AE%D8%B4-%D8%A7%D9%88%D9%84" class="code-line" data-line="43">بخش اول</h1>
+<h2 id="%D9%87%D9%88%D8%B4-%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C-%D9%85%D9%88%D9%84%D8%AF-%D8%A7%D9%86%D9%82%D9%84%D8%A7%D8%A8-%D8%AF%D8%B1-%D9%BE%DA%98%D9%88%D9%87%D8%B4" class="code-line" data-line="44">هوش مصنوعی مولد: انقلاب در پژوهش</h2>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="46"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="4" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;https://mamintoosi-cs.github.io/slides/topics/intro-to-cs/images/Richard-Stallman.jpg&quot;);filter:opacity(0.3);"></figure></div></section></foreignObject><foreignObject width="1280" height="720">
+<section id="4" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="4" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marpit-advanced-background="content" data-marp-vscode-content-start-line="46" data-marp-vscode-content-end-line="58">
+<h2 id="%D9%87%D9%88%D8%B4-%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C-%D9%85%D9%88%D9%84%D8%AF-%DA%86%DB%8C%D8%B3%D8%AA%D8%9F" class="code-line" data-line="48">هوش مصنوعی مولد چیست؟</h2>
+<ul class="code-line" data-line="50">
+<li class="code-line" data-line="50">
+<p class="code-line" data-line="50"><strong>تعریف:</strong> مدل‌هایی که یاد می‌گیرند محتوای جدید «خلق» کنند</p>
+<ul class="code-line" data-line="51">
+<li class="code-line" data-line="51">مانند یک نویسنده، نقاش، یا برنامه‌نویس</li>
+</ul>
+</li>
+<li class="code-line" data-line="53">
+<p class="code-line" data-line="53"><strong>مدل‌های محبوب:</strong></p>
+<ul class="code-line" data-line="54">
+<li class="code-line" data-line="54">ChatGPT (OpenAI)</li>
+<li class="code-line" data-line="55">Claude (Anthropic)</li>
+<li class="code-line" data-line="56">Gemini (Google)</li>
+<li class="code-line" data-line="57">DeepSeek (چین)</li>
+</ul>
+</li>
+</ul>
+</section>
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="4" style="" data-marpit-pagination-total="40" data-marpit-advanced-background="pseudo"></section></foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="59"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="5" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="5" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="59" data-marp-vscode-content-end-line="74">
+<h2 id="%D8%AA%D8%AD%D9%88%D9%84-%D8%AF%D8%B1-%D9%81%D8%B1%D8%A2%DB%8C%D9%86%D8%AF-%D9%BE%DA%98%D9%88%D9%87%D8%B4" class="code-line" data-line="61">تحول در فرآیند پژوهش</h2>
+<h3 id="%DA%AF%D8%B0%D8%B4%D8%AA%D9%87" class="code-line" data-line="63">گذشته:</h3>
+<ul class="code-line" data-line="64">
+<li class="code-line" data-line="64">جستجو در Google Scholar</li>
+<li class="code-line" data-line="65">مطالعه صدها مقاله</li>
+<li class="code-line" data-line="66">نگارش دستی</li>
+<li class="code-line" data-line="67">کدنویسی از صفر</li>
+</ul>
+<h3 id="%D8%A7%D9%85%D8%B1%D9%88%D8%B2" class="code-line" data-line="69">امروز:</h3>
+<ul class="code-line" data-line="70">
+<li class="code-line" data-line="70">دستیارهای هوشمند پژوهشی</li>
+<li class="code-line" data-line="71">خلاصه‌سازی خودکار</li>
+<li class="code-line" data-line="72">کمک در نگارش و ویرایش</li>
+<li class="code-line" data-line="73">تولید کد با AI</li>
+</ul>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="75"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="6" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" class="lead" data-marpit-pagination="6" style="--paginate:true;--class:lead;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="75" data-marp-vscode-content-end-line="80">
+<h1 id="%D8%A8%D8%AE%D8%B4-%D8%AF%D9%88%D9%85" class="code-line" data-line="78">بخش دوم</h1>
+<h2 id="%D8%A7%D8%A8%D8%B2%D8%A7%D8%B1%D9%87%D8%A7%DB%8C-%D9%87%D9%88%D8%B4-%D9%85%D8%B5%D9%86%D9%88%D8%B9%DB%8C-%D8%A8%D8%B1%D8%A7%DB%8C-%D9%BE%DA%98%D9%88%D9%87%D8%B4" class="code-line" data-line="79">ابزارهای هوش مصنوعی برای پژوهش</h2>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="81"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="7" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="7" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="81" data-marp-vscode-content-end-line="94">
+<h2 id="%D8%A7%D8%A8%D8%B2%D8%A7%D8%B1%D9%87%D8%A7%DB%8C-%D8%AC%D8%B3%D8%AA%D8%AC%D9%88-%D9%88-%D9%85%D8%B7%D8%A7%D9%84%D8%B9%D9%87" class="code-line" data-line="83">ابزارهای جستجو و مطالعه</h2>
+<h3 id="%F0%9F%94%8D-consensusapp" class="code-line" data-line="85"><img class="emoji" draggable="false" alt="🔍" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f50d.svg" data-marp-twemoji=""/> <strong>Consensus.app</strong></h3>
+<ul class="code-line" data-line="86">
+<li class="code-line" data-line="86">جستجوی مبتنی بر شواهد علمی</li>
+<li class="code-line" data-line="87">خلاصه‌سازی یافته‌های پژوهشی</li>
+<li class="code-line" data-line="88"><a href="https://consensus.app/">consensus.app</a></li>
+</ul>
+<h3 id="%F0%9F%93%9A-elicitcom" class="code-line" data-line="90"><img class="emoji" draggable="false" alt="📚" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f4da.svg" data-marp-twemoji=""/> <strong>Elicit.com</strong></h3>
+<ul class="code-line" data-line="91">
+<li class="code-line" data-line="91">دستیار پژوهش هوشمند</li>
+<li class="code-line" data-line="92">استخراج اطلاعات از مقالات</li>
+<li class="code-line" data-line="93"><a href="https://elicit.com/">elicit.com</a></li>
+</ul>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="95"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="8" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="8" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="95" data-marp-vscode-content-end-line="107">
+<h2 id="%D8%A7%D8%A8%D8%B2%D8%A7%D8%B1%D9%87%D8%A7%DB%8C-%D8%AC%D8%B3%D8%AA%D8%AC%D9%88-%D9%88-%D9%85%D8%B7%D8%A7%D9%84%D8%B9%D9%87-%D8%A7%D8%AF%D8%A7%D9%85%D9%87" class="code-line" data-line="97">ابزارهای جستجو و مطالعه (ادامه)</h2>
+<h3 id="%F0%9F%95%B8%EF%B8%8F-connected-papers" class="code-line" data-line="99"><img class="emoji" draggable="false" alt="🕸️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f578.svg" data-marp-twemoji=""/> <strong>Connected Papers</strong></h3>
+<ul class="code-line" data-line="100">
+<li class="code-line" data-line="100">شبکه‌سازی مقالات مرتبط</li>
+<li class="code-line" data-line="101">یافتن مقالات کلیدی</li>
+<li class="code-line" data-line="102"><a href="https://www.connectedpapers.com/">connectedpapers.com</a></li>
+</ul>
+<h3 id="%F0%9F%93%96-scinito" class="code-line" data-line="104"><img class="emoji" draggable="false" alt="📖" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f4d6.svg" data-marp-twemoji=""/> <strong>SciNiTO</strong></h3>
+<ul class="code-line" data-line="105">
+<li class="code-line" data-line="105">منابع آکادمیک متنوع</li>
+<li class="code-line" data-line="106">دسترسی به مقالات</li>
+</ul>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="108"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="9" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="9" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="108" data-marp-vscode-content-end-line="121">
+<h2 id="%D8%A7%D8%A8%D8%B2%D8%A7%D8%B1%D9%87%D8%A7%DB%8C-%D9%86%DA%AF%D8%A7%D8%B1%D8%B4-%D9%88-%D9%88%DB%8C%D8%B1%D8%A7%DB%8C%D8%B4" class="code-line" data-line="110">ابزارهای نگارش و ویرایش</h2>
+<h3 id="%E2%9C%8D%EF%B8%8F-editage" class="code-line" data-line="112"><img class="emoji" draggable="false" alt="✍️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/270d.svg" data-marp-twemoji=""/> <strong>Editage</strong></h3>
+<ul class="code-line" data-line="113">
+<li class="code-line" data-line="113">ویرایش و بهبود متن علمی</li>
+<li class="code-line" data-line="114">پیشنهادات دستوری و سبکی</li>
+<li class="code-line" data-line="115"><a href="https://app.editage.com/">app.editage.com</a></li>
+</ul>
+<h3 id="%F0%9F%92%BB-github-copilot" class="code-line" data-line="117"><img class="emoji" draggable="false" alt="💻" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f4bb.svg" data-marp-twemoji=""/> <strong>GitHub Copilot</strong></h3>
+<ul class="code-line" data-line="118">
+<li class="code-line" data-line="118">کمک به کدنویسی</li>
+<li class="code-line" data-line="119">رایگان برای دانشجویان و محققان</li>
+<li class="code-line" data-line="120"><a href="https://docs.github.com/en/copilot">docs.github.com/copilot</a></li>
+</ul>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="122"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="10" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="10" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="122" data-marp-vscode-content-end-line="129">
+<h2 id="%D8%AF%D9%85%D9%88%DB%8C-%D8%B2%D9%86%D8%AF%D9%87" class="code-line" data-line="124">دموی زنده</h2>
+<h3 id="%D8%A8%DB%8C%D8%A7%DB%8C%DB%8C%D8%AF-%D8%A8%D8%A7-%D9%87%D9%85-%D8%A7%D9%85%D8%AA%D8%AD%D8%A7%D9%86-%DA%A9%D9%86%DB%8C%D9%85" class="code-line" data-line="126">بیایید با هم امتحان کنیم:</h3>
+<ul class="code-line" data-line="127">
+<li class="code-line" data-line="127">جستجوی یک موضوع در <strong>Consensus</strong></li>
+<li class="code-line" data-line="128">استفاده از <strong>ChatGPT</strong> برای خلاصه‌سازی یک مقاله</li>
+</ul>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="130"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="11" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" class="lead" data-marpit-pagination="11" style="--paginate:true;--class:lead;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="130" data-marp-vscode-content-end-line="135">
+<h1 id="%D8%A8%D8%AE%D8%B4-%D8%B3%D9%88%D9%85" class="code-line" data-line="133">بخش سوم</h1>
+<h2 id="%D9%85%D9%87%D9%86%D8%AF%D8%B3%DB%8C-%D9%BE%D8%B1%D8%A7%D9%85%D9%BE%D8%AA-%DA%A9%D9%84%DB%8C%D8%AF-%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D9%85%D9%88%D8%AB%D8%B1" class="code-line" data-line="134">مهندسی پرامپت: کلید استفاده موثر</h2>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="136"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="12" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="12" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="136" data-marp-vscode-content-end-line="145">
+<h2 id="%DA%86%D8%B1%D8%A7-%D9%BE%D8%B1%D8%A7%D9%85%D9%BE%D8%AA%E2%80%8C%D9%86%D9%88%DB%8C%D8%B3%DB%8C-%D9%85%D9%87%D9%85-%D8%A7%D8%B3%D8%AA%D8%9F" class="code-line" data-line="138">چرا پرامپت‌نویسی مهم است؟</h2>
+<h3 id="%F0%9F%8E%AF-%D9%BE%D8%B1%D8%A7%D9%85%D9%BE%D8%AA--%D8%AF%D8%B3%D8%AA%D9%88%D8%B1%D8%A7%D9%84%D8%B9%D9%85%D9%84-%D8%B4%D9%85%D8%A7-%D8%A8%D8%B1%D8%A7%DB%8C-ai" class="code-line" data-line="140"><img class="emoji" draggable="false" alt="🎯" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f3af.svg" data-marp-twemoji=""/> پرامپت = دستورالعمل شما برای AI</h3>
+<ul class="code-line" data-line="142">
+<li class="code-line" data-line="142"><strong>دقت خروجی:</strong> پرامپت خوب = پاسخ دقیق و مفید</li>
+<li class="code-line" data-line="143"><strong>کنترل نتیجه:</strong> شما «مهندس» گفتگو هستید</li>
+<li class="code-line" data-line="144"><strong>بهینه‌سازی:</strong> پرامپت ضعیف = پاسخ بی‌ربط</li>
+</ul>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="146"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="13" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="13" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="146" data-marp-vscode-content-end-line="162">
+<h2 id="%D9%85%D9%82%D8%A7%DB%8C%D8%B3%D9%87-%D9%BE%D8%B1%D8%A7%D9%85%D9%BE%D8%AA-%D8%B6%D8%B9%DB%8C%D9%81-vs-%D9%82%D9%88%DB%8C" class="code-line" data-line="148">مقایسه: پرامپت ضعیف vs قوی</h2>
+<h3 id="%E2%9D%8C-%D9%BE%D8%B1%D8%A7%D9%85%D9%BE%D8%AA-%D8%B6%D8%B9%DB%8C%D9%81" class="code-line" data-line="150"><img class="emoji" draggable="false" alt="❌" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/274c.svg" data-marp-twemoji=""/> پرامپت ضعیف:</h3>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="code-line" data-line="151">یک شعر بنویس
+</code></pre>
+<h3 id="%E2%9C%85-%D9%BE%D8%B1%D8%A7%D9%85%D9%BE%D8%AA-%D9%82%D9%88%DB%8C" class="code-line" data-line="155"><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> پرامپت قوی:</h3>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="code-line" data-line="156">یک شعر چهار بیتی درباره پاییز بنویس.
+سبک: کلاسیک فارسی (شبیه حافظ)
+موضوع: زیبایی طبیعت و گذر زمان
+لحن: عاشقانه و حزن‌آلود
+</code></pre>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="163"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="14" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="14" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="163" data-marp-vscode-content-end-line="178">
+<h2 id="%DA%86%D8%A7%D8%B1%DA%86%D9%88%D8%A8-%D9%BE%D8%B1%D8%A7%D9%85%D9%BE%D8%AA-%D8%AD%D8%B1%D9%81%D9%87%E2%80%8C%D8%A7%DB%8C" class="code-line" data-line="165">چارچوب پرامپت حرفه‌ای</h2>
+<h3 id="persona-%D8%B4%D8%AE%D8%B5%DB%8C%D8%AA" class="code-line" data-line="167"><strong>P</strong>ersona (شخصیت)</h3>
+<p class="code-line" data-line="168">هوش مصنوعی چه نقشی دارد؟</p>
+<blockquote class="code-line" data-line="169">
+<p class="code-line" data-line="169">&quot;تو یک محقق متخصص در یادگیری ماشین هستی&quot;</p>
+</blockquote>
+<h3 id="context-%D8%B2%D9%85%DB%8C%D9%86%D9%87" class="code-line" data-line="171"><strong>C</strong>ontext (زمینه)</h3>
+<p class="code-line" data-line="172">اطلاعات پیش‌زمینه چیست؟</p>
+<blockquote class="code-line" data-line="173">
+<p class="code-line" data-line="173">&quot;در حال نگارش بخش Related Work مقاله‌ام درباره CNN&quot;</p>
+</blockquote>
+<h3 id="task-%D9%88%D8%B8%DB%8C%D9%81%D9%87" class="code-line" data-line="175"><strong>T</strong>ask (وظیفه)</h3>
+<p class="code-line" data-line="176">چه کاری باید انجام شود؟</p>
+<blockquote class="code-line" data-line="177">
+<p class="code-line" data-line="177">&quot;فهرستی از ۱۰ مقاله کلیدی در این حوزه ارائه بده&quot;</p>
+</blockquote>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="179"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="15" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="15" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="179" data-marp-vscode-content-end-line="194">
+<h2 id="%DA%86%D8%A7%D8%B1%DA%86%D9%88%D8%A8-%D9%BE%D8%B1%D8%A7%D9%85%D9%BE%D8%AA-%D8%A7%D8%AF%D8%A7%D9%85%D9%87" class="code-line" data-line="181">چارچوب پرامپت (ادامه)</h2>
+<h3 id="format-%D9%82%D8%A7%D9%84%D8%A8" class="code-line" data-line="183"><strong>F</strong>ormat (قالب)</h3>
+<p class="code-line" data-line="184">خروجی چگونه باشد؟</p>
+<blockquote class="code-line" data-line="185">
+<p class="code-line" data-line="185">&quot;نتیجه را به صورت جدول LaTeX ارائه بده&quot;</p>
+</blockquote>
+<h3 id="tone-%D9%84%D8%AD%D9%86" class="code-line" data-line="187"><strong>T</strong>one (لحن)</h3>
+<p class="code-line" data-line="188">لحن خروجی چگونه باشد؟</p>
+<blockquote class="code-line" data-line="189">
+<p class="code-line" data-line="189">&quot;با لحنی علمی، رسمی و دقیق&quot;</p>
+</blockquote>
+<h3 id="exemplar-%D9%86%D9%85%D9%88%D9%86%D9%87---%D8%A7%D8%AE%D8%AA%DB%8C%D8%A7%D8%B1%DB%8C" class="code-line" data-line="191"><strong>E</strong>xemplar (نمونه) - اختیاری</h3>
+<p class="code-line" data-line="192">مثالی برای تقلید وجود دارد؟</p>
+<blockquote class="code-line" data-line="193">
+<p class="code-line" data-line="193">چند نمونه ورودی/خروجی ارائه دهید (Few-shot learning)</p>
+</blockquote>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="195"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="16" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="16" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="195" data-marp-vscode-content-end-line="213">
+<h2 id="%D9%85%D8%AB%D8%A7%D9%84-%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF%DB%8C-%D9%86%DA%AF%D8%A7%D8%B1%D8%B4-%D9%85%D9%82%D8%A7%D9%84%D9%87" class="code-line" data-line="197">مثال کاربردی: نگارش مقاله</h2>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="code-line" data-line="199">[Persona] تو یک محقق باتجربه در علوم کامپیوتر هستی
+که در زمینه پردازش تصویر تخصص داری.
+
+[Context] من در حال نگارش بخش Introduction مقاله‌ام
+درباره &quot;تشخیص اشیا با CNN&quot; هستم.
+
+[Task] یک پاراگراف ۱۰۰ کلمه‌ای بنویس که اهمیت
+این موضوع را توضیح دهد.
+
+[Format] خروجی به صورت متن ساده، بدون فرمت‌بندی خاص
+
+[Tone] لحن علمی و رسمی، مناسب برای مجله معتبر
+</code></pre>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="214"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="17" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="17" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="214" data-marp-vscode-content-end-line="232">
+<h2 id="%D8%AA%DA%A9%D9%86%DB%8C%DA%A9%E2%80%8C%D9%87%D8%A7%DB%8C-%D9%BE%DB%8C%D8%B4%D8%B1%D9%81%D8%AA%D9%87" class="code-line" data-line="216">تکنیک‌های پیشرفته</h2>
+<h3 id="1%EF%B8%8F%E2%83%A3-chain-of-thought-%D8%B2%D9%86%D8%AC%DB%8C%D8%B1%D9%87-%D8%AA%D9%81%DA%A9%D8%B1" class="code-line" data-line="218"><img class="emoji" draggable="false" alt="1️⃣" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/31-20e3.svg" data-marp-twemoji=""/> <strong>Chain of Thought (زنجیره تفکر)</strong></h3>
+<p class="code-line" data-line="219">از AI بخواهید گام‌به‌گام فکر کند:</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="code-line" data-line="220">&quot;قبل از پاسخ نهایی، استدلال خود را مرحله‌به‌مرحله
+توضیح بده.&quot;
+</code></pre>
+<h3 id="2%EF%B8%8F%E2%83%A3-%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%D8%AC%D8%AF%D8%A7%DA%A9%D9%86%D9%86%D8%AF%D9%87%E2%80%8C%D9%87%D8%A7-delimiters" class="code-line" data-line="225"><img class="emoji" draggable="false" alt="2️⃣" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/32-20e3.svg" data-marp-twemoji=""/> <strong>استفاده از جداکننده‌ها (Delimiters)</strong></h3>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="code-line" data-line="226">متن زیر را خلاصه کن:
+&quot;&quot;&quot;
+[متن شما اینجا]
+&quot;&quot;&quot;
+</code></pre>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="233"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="18" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="18" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="233" data-marp-vscode-content-end-line="250">
+<h2 id="%D8%AA%DA%A9%D9%86%DB%8C%DA%A9%E2%80%8C%D9%87%D8%A7%DB%8C-%D9%BE%DB%8C%D8%B4%D8%B1%D9%81%D8%AA%D9%87-%D8%A7%D8%AF%D8%A7%D9%85%D9%87" class="code-line" data-line="235">تکنیک‌های پیشرفته (ادامه)</h2>
+<h3 id="3%EF%B8%8F%E2%83%A3-few-shot-learning" class="code-line" data-line="237"><img class="emoji" draggable="false" alt="3️⃣" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/33-20e3.svg" data-marp-twemoji=""/> <strong>Few-shot Learning</strong></h3>
+<p class="code-line" data-line="238">چند مثال ارائه دهید:</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="code-line" data-line="239">جمله: &quot;این فیلم عالی بود&quot; → احساس: مثبت
+جمله: &quot;خیلی خسته‌کننده بود&quot; → احساس: منفی
+جمله: &quot;قابل قبول بود&quot; → احساس: خنثی
+
+حالا این جمله را تحلیل کن:
+&quot;تحقیقات جالبی ارائه شده است&quot;
+</code></pre>
+<h3 id="4%EF%B8%8F%E2%83%A3-%D8%AA%D9%88%D8%B3%D8%B9%D9%87-%D8%AA%DA%A9%D8%B1%D8%A7%D8%B1%DB%8C" class="code-line" data-line="248"><img class="emoji" draggable="false" alt="4️⃣" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/34-20e3.svg" data-marp-twemoji=""/> <strong>توسعه تکراری</strong></h3>
+<p class="code-line" data-line="249">پرامپت را آزمایش کنید → بهبود دهید → دوباره امتحان کنید</p>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="251"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="19" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="19" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="251" data-marp-vscode-content-end-line="257">
+<h2 id="%D8%AF%D9%85%D9%88%DB%8C-%D8%B9%D9%85%D9%84%DB%8C-%D9%BE%D8%B1%D8%A7%D9%85%D9%BE%D8%AA-%D9%86%D9%88%DB%8C%D8%B3%DB%8C" class="code-line" data-line="253">دموی عملی: پرامپت نویسی</h2>
+<h3 id="%D8%A8%DB%8C%D8%A7%DB%8C%DB%8C%D8%AF-%D8%A8%D8%A7-%D9%87%D9%85-%DB%8C%DA%A9-%D9%BE%D8%B1%D8%A7%D9%85%D9%BE%D8%AA-%D8%A8%D9%86%D9%88%DB%8C%D8%B3%DB%8C%D9%85" class="code-line" data-line="255">بیایید با هم یک پرامپت بنویسیم:</h3>
+<p class="code-line" data-line="256"><strong>هدف:</strong> کمک به نگارش بخش Abstract یک مقاله</p>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="258"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="20" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" class="lead" data-marpit-pagination="20" style="--paginate:true;--class:lead;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="258" data-marp-vscode-content-end-line="263">
+<h1 id="%D8%A8%D8%AE%D8%B4-%DA%86%D9%87%D8%A7%D8%B1%D9%85" class="code-line" data-line="261">بخش چهارم</h1>
+<h2 id="%D9%81%D8%B1%D8%B5%D8%AA%E2%80%8C%D9%87%D8%A7%DB%8C-ai-%D8%AF%D8%B1-%D8%B9%D9%84%D9%88%D9%85-%DA%A9%D8%A7%D9%85%D9%BE%DB%8C%D9%88%D8%AA%D8%B1" class="code-line" data-line="262">فرصت‌های AI در علوم کامپیوتر</h2>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="264"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="21" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="21" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="264" data-marp-vscode-content-end-line="278">
+<h2 id="1-%D8%AA%D8%B3%D8%B1%DB%8C%D8%B9-%DA%A9%D8%AF%D9%86%D9%88%DB%8C%D8%B3%DB%8C-%D9%88-%D8%AF%DB%8C%D8%A8%D8%A7%DA%AF%DB%8C%D9%86%DA%AF" class="code-line" data-line="266">1. تسریع کدنویسی و دیباگینگ</h2>
+<h3 id="%D8%A7%D8%A8%D8%B2%D8%A7%D8%B1%D9%87%D8%A7" class="code-line" data-line="268">ابزارها:</h3>
+<ul class="code-line" data-line="269">
+<li class="code-line" data-line="269"><strong>GitHub Copilot</strong> - تکمیل خودکار کد</li>
+<li class="code-line" data-line="270"><strong>Cursor</strong> - ویرایشگر هوشمند</li>
+<li class="code-line" data-line="271"><strong>Codeium</strong> - جایگزین رایگان</li>
+</ul>
+<h3 id="%D9%85%D8%B2%D8%A7%DB%8C%D8%A7" class="code-line" data-line="273">مزایا:</h3>
+<p class="code-line" data-line="274"><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> نوشتن سریع‌تر کد<br />
+<img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> یافتن و رفع باگ‌ها<br />
+<img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> پیشنهاد الگوریتم‌های بهینه<br />
+<img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> تولید تست‌های واحد (Unit Tests)</p>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="279"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="22" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="22" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="279" data-marp-vscode-content-end-line="295">
+<h2 id="2-%D9%BE%DB%8C%D8%B4%E2%80%8C%D9%BE%D8%B1%D8%AF%D8%A7%D8%B2%D8%B4-%D9%88-%D8%AA%D8%AD%D9%84%DB%8C%D9%84-%D8%AF%D8%A7%D8%AF%D9%87" class="code-line" data-line="281">2. پیش‌پردازش و تحلیل داده</h2>
+<h3 id="%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF%D9%87%D8%A7" class="code-line" data-line="283">کاربردها:</h3>
+<ul class="code-line" data-line="284">
+<li class="code-line" data-line="284">تولید خودکار کد تحلیل داده</li>
+<li class="code-line" data-line="285">پیشنهاد روش‌های آماری مناسب</li>
+<li class="code-line" data-line="286">تفسیر نتایج و نمودارها</li>
+<li class="code-line" data-line="287">تولید کد Matplotlib/Seaborn</li>
+</ul>
+<h3 id="%D9%85%D8%AB%D8%A7%D9%84" class="code-line" data-line="289">مثال:</h3>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="code-line" data-line="290">&quot;کد Python بنویس که یک فایل CSV با ستون‌های
+age, income, education بخواند و همبستگی بین
+آنها را با heatmap نمایش دهد.&quot;
+</code></pre>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="296"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="23" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="23" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="296" data-marp-vscode-content-end-line="309">
+<h2 id="3-%D9%86%DA%AF%D8%A7%D8%B1%D8%B4-%D9%85%D9%82%D8%A7%D9%84%D8%A7%D8%AA-%D9%88-%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4%E2%80%8C%D9%87%D8%A7" class="code-line" data-line="298">3. نگارش مقالات و گزارش‌ها</h2>
+<h3 id="%DA%A9%D9%85%DA%A9-%D8%AF%D8%B1-%D8%A8%D8%AE%D8%B4%E2%80%8C%D9%87%D8%A7%DB%8C-%D9%85%D8%AE%D8%AA%D9%84%D9%81" class="code-line" data-line="300">کمک در بخش‌های مختلف:</h3>
+<ul class="code-line" data-line="301">
+<li class="code-line" data-line="301"><strong>Abstract:</strong> خلاصه‌سازی پژوهش</li>
+<li class="code-line" data-line="302"><strong>Introduction:</strong> بیان اهمیت موضوع</li>
+<li class="code-line" data-line="303"><strong>Related Work:</strong> مرور مقالات مرتبط</li>
+<li class="code-line" data-line="304"><strong>Methodology:</strong> توضیح روش‌ها</li>
+<li class="code-line" data-line="305"><strong>Results:</strong> تفسیر نتایج</li>
+</ul>
+<h3 id="%D8%AA%D9%88%D8%AC%D9%87" class="code-line" data-line="307">توجه:</h3>
+<p class="code-line" data-line="308"><img class="emoji" draggable="false" alt="⚠️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" data-marp-twemoji=""/> همیشه ویرایش و راستی‌آزمایی کنید!</p>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="310"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="24" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="24" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="310" data-marp-vscode-content-end-line="325">
+<h2 id="4-%D8%AA%D8%B1%D8%AC%D9%85%D9%87-%D9%88-%D9%88%DB%8C%D8%B1%D8%A7%DB%8C%D8%B4-%D9%85%D8%AA%D9%88%D9%86-%D8%B9%D9%84%D9%85%DB%8C" class="code-line" data-line="312">4. ترجمه و ویرایش متون علمی</h2>
+<h3 id="%D9%82%D8%A7%D8%A8%D9%84%DB%8C%D8%AA%E2%80%8C%D9%87%D8%A7" class="code-line" data-line="314">قابلیت‌ها:</h3>
+<ul class="code-line" data-line="315">
+<li class="code-line" data-line="315">ترجمه دقیق متون تخصصی</li>
+<li class="code-line" data-line="316">تصحیح گرامر و املا</li>
+<li class="code-line" data-line="317">بهبود روان‌نویسی</li>
+<li class="code-line" data-line="318">تنظیم لحن (رسمی/غیررسمی)</li>
+</ul>
+<h3 id="%D9%85%D8%AB%D8%A7%D9%84-1" class="code-line" data-line="320">مثال:</h3>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="code-line" data-line="321">&quot;این متن فارسی را به انگلیسی علمی و رسمی
+ترجمه کن، مناسب برای مجله IEEE&quot;
+</code></pre>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="326"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="25" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="25" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="326" data-marp-vscode-content-end-line="341">
+<h2 id="5-%D8%A7%DB%8C%D8%AF%D9%87%E2%80%8C%D9%BE%D8%B1%D8%AF%D8%A7%D8%B2%DB%8C-%D9%88-%D8%B7%D9%88%D9%81%D8%A7%D9%86-%D9%81%DA%A9%D8%B1%DB%8C" class="code-line" data-line="328">5. ایده‌پردازی و طوفان فکری</h2>
+<h3 id="%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF%D9%87%D8%A7-1" class="code-line" data-line="330">کاربردها:</h3>
+<ul class="code-line" data-line="331">
+<li class="code-line" data-line="331">تولید ایده‌های پژوهشی جدید</li>
+<li class="code-line" data-line="332">بررسی شکاف‌های پژوهشی (Research Gaps)</li>
+<li class="code-line" data-line="333">پیشنهاد ترکیب روش‌های مختلف</li>
+<li class="code-line" data-line="334">شناسایی روندهای نوظهور</li>
+</ul>
+<h3 id="%D9%85%D8%AB%D8%A7%D9%84-2" class="code-line" data-line="336">مثال:</h3>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="code-line" data-line="337">&quot;در حوزه NLP چه موضوعات کم‌کار شده‌ای وجود دارد
+که برای یک رساله دکتری مناسب باشد؟&quot;
+</code></pre>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="342"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="26" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" class="lead" data-marpit-pagination="26" style="--paginate:true;--class:lead;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="342" data-marp-vscode-content-end-line="347">
+<h1 id="%D8%A8%D8%AE%D8%B4-%D9%BE%D9%86%D8%AC%D9%85" class="code-line" data-line="345">بخش پنجم</h1>
+<h2 id="%DA%86%D8%A7%D9%84%D8%B4%E2%80%8C%D9%87%D8%A7-%D9%88-%D9%85%D9%84%D8%A7%D8%AD%D8%B8%D8%A7%D8%AA-%D8%A7%D8%AE%D9%84%D8%A7%D9%82%DB%8C" class="code-line" data-line="346">چالش‌ها و ملاحظات اخلاقی</h2>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="348"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="27" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="27" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="348" data-marp-vscode-content-end-line="362">
+<h2 id="1-%D8%AA%D9%88%D9%87%D9%85%E2%80%8C%D8%B2%D8%A7%DB%8C%DB%8C-hallucination" class="code-line" data-line="350">1. توهم‌زایی (Hallucination)</h2>
+<h3 id="%E2%9A%A0%EF%B8%8F-%D9%85%D8%B4%DA%A9%D9%84" class="code-line" data-line="352"><img class="emoji" draggable="false" alt="⚠️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" data-marp-twemoji=""/> مشکل:</h3>
+<ul class="code-line" data-line="353">
+<li class="code-line" data-line="353">AI ممکن است اطلاعات غلط یا ساختگی تولید کند</li>
+<li class="code-line" data-line="354">منابع و ارجاعات جعلی</li>
+<li class="code-line" data-line="355">آمار و ارقام نادرست</li>
+</ul>
+<h3 id="%E2%9C%85-%D8%B1%D8%A7%D9%87%E2%80%8C%D8%AD%D9%84" class="code-line" data-line="357"><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> راه‌حل:</h3>
+<ul class="code-line" data-line="358">
+<li class="code-line" data-line="358"><strong>همیشه راستی‌آزمایی کنید</strong></li>
+<li class="code-line" data-line="359">منابع را دوباره بررسی کنید</li>
+<li class="code-line" data-line="360">از چند منبع استفاده کنید</li>
+<li class="code-line" data-line="361">به AI اعتماد کورکورانه نداشته باشید</li>
+</ul>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="363"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="28" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="28" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="363" data-marp-vscode-content-end-line="377">
+<h2 id="2-%D8%AD%D8%B1%DB%8C%D9%85-%D8%AE%D8%B5%D9%88%D8%B5%DB%8C-%D9%88-%D8%A7%D9%85%D9%86%DB%8C%D8%AA" class="code-line" data-line="365">2. حریم خصوصی و امنیت</h2>
+<h3 id="%F0%9F%9A%AB-%DA%86%DB%8C%D8%B2%D9%87%D8%A7%DB%8C%DB%8C-%DA%A9%D9%87-%D9%86%D8%A8%D8%A7%DB%8C%D8%AF-%D9%88%D8%A7%D8%B1%D8%AF-%DA%A9%D9%86%DB%8C%D8%AF" class="code-line" data-line="367"><img class="emoji" draggable="false" alt="🚫" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f6ab.svg" data-marp-twemoji=""/> چیزهایی که نباید وارد کنید:</h3>
+<ul class="code-line" data-line="368">
+<li class="code-line" data-line="368">اطلاعات شخصی و محرمانه</li>
+<li class="code-line" data-line="369">کدهای حساس و اختصاصی</li>
+<li class="code-line" data-line="370">داده‌های بیمار یا شرکت</li>
+<li class="code-line" data-line="371">نتایج منتشر نشده</li>
+</ul>
+<h3 id="%E2%9C%85-%D8%B1%D8%A7%D9%87%E2%80%8C%D8%AD%D9%84-1" class="code-line" data-line="373"><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> راه‌حل:</h3>
+<ul class="code-line" data-line="374">
+<li class="code-line" data-line="374">استفاده از نسخه‌های Enterprise</li>
+<li class="code-line" data-line="375">اجرای مدل‌های محلی (Local LLMs)</li>
+<li class="code-line" data-line="376">حذف اطلاعات حساس قبل از ورود</li>
+</ul>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="378"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="29" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="29" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="378" data-marp-vscode-content-end-line="392">
+<h2 id="3-%D8%B3%D8%B1%D9%82%D8%AA-%D8%A7%D8%AF%D8%A8%DB%8C-plagiarism" class="code-line" data-line="380">3. سرقت ادبی (Plagiarism)</h2>
+<h3 id="%E2%9A%A0%EF%B8%8F-%D8%AE%D8%B7%D8%B1%D8%A7%D8%AA" class="code-line" data-line="382"><img class="emoji" draggable="false" alt="⚠️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" data-marp-twemoji=""/> خطرات:</h3>
+<ul class="code-line" data-line="383">
+<li class="code-line" data-line="383">استفاده مستقیم از خروجی AI بدون ویرایش</li>
+<li class="code-line" data-line="384">عدم ذکر کمک AI در مقالات</li>
+<li class="code-line" data-line="385">نقض قوانین مجلات و کنفرانس‌ها</li>
+</ul>
+<h3 id="%E2%9C%85-%D8%B1%D8%A7%D9%87%E2%80%8C%D8%AD%D9%84-2" class="code-line" data-line="387"><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> راه‌حل:</h3>
+<ul class="code-line" data-line="388">
+<li class="code-line" data-line="388"><strong>AI را ابزار کمکی ببینید، نه جایگزین</strong></li>
+<li class="code-line" data-line="389">محتوای تولیدشده را بازنویسی کنید</li>
+<li class="code-line" data-line="390">در صورت لزوم، کمک AI را ذکر کنید</li>
+<li class="code-line" data-line="391">اصالت و خلاقیت خود را حفظ کنید</li>
+</ul>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="393"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="30" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="30" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="393" data-marp-vscode-content-end-line="407">
+<h2 id="4-%D9%88%D8%A7%D8%A8%D8%B3%D8%AA%DA%AF%DB%8C-%D8%A8%DB%8C%D8%B4-%D8%A7%D8%B2-%D8%AD%D8%AF" class="code-line" data-line="395">4. وابستگی بیش از حد</h2>
+<h3 id="%E2%9A%A0%EF%B8%8F-%D9%85%D8%B4%DA%A9%D9%84-1" class="code-line" data-line="397"><img class="emoji" draggable="false" alt="⚠️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" data-marp-twemoji=""/> مشکل:</h3>
+<ul class="code-line" data-line="398">
+<li class="code-line" data-line="398">کاهش تفکر انتقادی</li>
+<li class="code-line" data-line="399">از دست دادن مهارت‌های پایه</li>
+<li class="code-line" data-line="400">عدم درک عمیق موضوع</li>
+</ul>
+<h3 id="%E2%9C%85-%D8%B1%D8%A7%D9%87%E2%80%8C%D8%AD%D9%84-3" class="code-line" data-line="402"><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> راه‌حل:</h3>
+<ul class="code-line" data-line="403">
+<li class="code-line" data-line="403">AI ابزار است، نه جایگزین محقق</li>
+<li class="code-line" data-line="404">از AI برای <strong>یادگیری</strong> استفاده کنید</li>
+<li class="code-line" data-line="405">مفاهیم را خودتان درک کنید</li>
+<li class="code-line" data-line="406">تفکر انتقادی را حفظ کنید</li>
+</ul>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="408"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="31" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="31" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="408" data-marp-vscode-content-end-line="421">
+<h2 id="5-%D8%AA%D8%B9%D8%B5%D8%A8%D8%A7%D8%AA-bias-%D8%AF%D8%B1-%D9%85%D8%AF%D9%84%E2%80%8C%D9%87%D8%A7" class="code-line" data-line="410">5. تعصبات (Bias) در مدل‌ها</h2>
+<h3 id="%E2%9A%A0%EF%B8%8F-%D9%85%D8%B4%DA%A9%D9%84-2" class="code-line" data-line="412"><img class="emoji" draggable="false" alt="⚠️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/26a0.svg" data-marp-twemoji=""/> مشکل:</h3>
+<ul class="code-line" data-line="413">
+<li class="code-line" data-line="413">مدل‌ها بر اساس داده‌های موجود آموزش دیده‌اند</li>
+<li class="code-line" data-line="414">ممکن است تعصبات فرهنگی، جنسیتی یا نژادی داشته باشند</li>
+<li class="code-line" data-line="415">محدودیت در دانش (تاریخ قطع آموزش)</li>
+</ul>
+<h3 id="%E2%9C%85-%D8%B1%D8%A7%D9%87%E2%80%8C%D8%AD%D9%84-4" class="code-line" data-line="417"><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> راه‌حل:</h3>
+<ul class="code-line" data-line="418">
+<li class="code-line" data-line="418">آگاه از محدودیت‌ها باشید</li>
+<li class="code-line" data-line="419">نتایج را با دید انتقادی بررسی کنید</li>
+<li class="code-line" data-line="420">از منابع متنوع استفاده کنید</li>
+</ul>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="422"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="32" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" class="lead" data-marpit-pagination="32" style="--paginate:true;--class:lead;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="422" data-marp-vscode-content-end-line="427">
+<h1 id="%D8%A8%D8%AE%D8%B4-%D8%B4%D8%B4%D9%85" class="code-line" data-line="425">بخش ششم</h1>
+<h2 id="%D8%A8%D9%87%D8%AA%D8%B1%DB%8C%D9%86-%D8%B4%DB%8C%D9%88%D9%87%E2%80%8C%D9%87%D8%A7-best-practices" class="code-line" data-line="426">بهترین شیوه‌ها (Best Practices)</h2>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="428"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="33" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="33" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="428" data-marp-vscode-content-end-line="441">
+<h2 id="%D8%AA%D9%88%D8%B5%DB%8C%D9%87%E2%80%8C%D9%87%D8%A7%DB%8C-%DA%A9%D9%84%DB%8C%D8%AF%DB%8C" class="code-line" data-line="430">توصیه‌های کلیدی</h2>
+<h3 id="%E2%9C%85-%D8%A8%D8%B1%D8%A7%DB%8C-%DB%8C%D8%A7%D8%AF%DA%AF%DB%8C%D8%B1%DB%8C-%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%DA%A9%D9%86%DB%8C%D8%AF" class="code-line" data-line="432"><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> <strong>برای یادگیری استفاده کنید</strong></h3>
+<ul class="code-line" data-line="433">
+<li class="code-line" data-line="433">از AI بخواهید مفاهیم را «توضیح» دهد</li>
+<li class="code-line" data-line="434">گام‌به‌گام یاد بگیرید</li>
+<li class="code-line" data-line="435">برای ایده‌پردازی عالی است</li>
+</ul>
+<h3 id="%E2%9C%85-%D9%87%D9%85%DB%8C%D8%B4%D9%87-%D8%B1%D8%A7%D8%B3%D8%AA%DB%8C%E2%80%8C%D8%A2%D8%B2%D9%85%D8%A7%DB%8C%DB%8C-%DA%A9%D9%86%DB%8C%D8%AF" class="code-line" data-line="437"><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> <strong>همیشه راستی‌آزمایی کنید</strong></h3>
+<ul class="code-line" data-line="438">
+<li class="code-line" data-line="438">منابع را بررسی کنید</li>
+<li class="code-line" data-line="439">اطلاعات را تایید کنید</li>
+<li class="code-line" data-line="440">به یک منبع بسنده نکنید</li>
+</ul>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="442"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="34" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="34" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="442" data-marp-vscode-content-end-line="454">
+<h2 id="%D8%AA%D9%88%D8%B5%DB%8C%D9%87%E2%80%8C%D9%87%D8%A7%DB%8C-%DA%A9%D9%84%DB%8C%D8%AF%DB%8C-%D8%A7%D8%AF%D8%A7%D9%85%D9%87" class="code-line" data-line="444">توصیه‌های کلیدی (ادامه)</h2>
+<h3 id="%E2%9C%85-%D8%AD%D8%B1%DB%8C%D9%85-%D8%AE%D8%B5%D9%88%D8%B5%DB%8C-%D8%B1%D8%A7-%D8%B1%D8%B9%D8%A7%DB%8C%D8%AA-%DA%A9%D9%86%DB%8C%D8%AF" class="code-line" data-line="446"><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> <strong>حریم خصوصی را رعایت کنید</strong></h3>
+<ul class="code-line" data-line="447">
+<li class="code-line" data-line="447">اطلاعات حساس وارد نکنید</li>
+<li class="code-line" data-line="448">از نسخه‌های امن استفاده کنید</li>
+</ul>
+<h3 id="%E2%9C%85-%D8%AA%D9%88%D8%B3%D8%B9%D9%87-%D8%AA%DA%A9%D8%B1%D8%A7%D8%B1%DB%8C-%D9%BE%D8%B1%D8%A7%D9%85%D9%BE%D8%AA" class="code-line" data-line="450"><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> <strong>توسعه تکراری پرامپت</strong></h3>
+<ul class="code-line" data-line="451">
+<li class="code-line" data-line="451">پرامپت را آزمایش کنید</li>
+<li class="code-line" data-line="452">بهبود دهید</li>
+<li class="code-line" data-line="453">دوباره امتحان کنید</li>
+</ul>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="455"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="35" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="35" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="455" data-marp-vscode-content-end-line="470">
+<h2 id="%D9%85%D9%86%D8%A7%D8%A8%D8%B9-%D8%B1%D8%A7%DB%8C%DA%AF%D8%A7%D9%86" class="code-line" data-line="457">منابع رایگان</h2>
+<h3 id="%F0%9F%8E%93-%D8%AF%D8%B3%D8%AA%D8%B1%D8%B3%DB%8C-%D8%B1%D8%A7%DB%8C%DA%AF%D8%A7%D9%86-github-copilot" class="code-line" data-line="459"><img class="emoji" draggable="false" alt="🎓" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f393.svg" data-marp-twemoji=""/> <strong>دسترسی رایگان GitHub Copilot:</strong></h3>
+<ul class="code-line" data-line="460">
+<li class="code-line" data-line="460">برای دانشجویان و اساتید</li>
+<li class="code-line" data-line="461"><a href="https://docs.github.com/en/copilot/get-started/plans">github.com/education</a></li>
+</ul>
+<h3 id="%F0%9F%93%9A-%D8%A2%D9%85%D9%88%D8%B2%D8%B4%E2%80%8C%D9%87%D8%A7%DB%8C-%D8%B1%D8%A7%DB%8C%DA%AF%D8%A7%D9%86" class="code-line" data-line="463"><img class="emoji" draggable="false" alt="📚" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f4da.svg" data-marp-twemoji=""/> <strong>آموزش‌های رایگان:</strong></h3>
+<ul class="code-line" data-line="464">
+<li class="code-line" data-line="464">دوره‌های مکتب‌خونه</li>
+<li class="code-line" data-line="465">مستندات GitHub Copilot</li>
+<li class="code-line" data-line="466">دوره‌های Coursera و edX</li>
+</ul>
+<h3 id="%F0%9F%94%97-%D9%84%DB%8C%D9%86%DA%A9%E2%80%8C%D9%87%D8%A7%DB%8C-%D9%85%D9%81%DB%8C%D8%AF" class="code-line" data-line="468"><img class="emoji" draggable="false" alt="🔗" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f517.svg" data-marp-twemoji=""/> <strong>لینک‌های مفید:</strong></h3>
+<p class="code-line" data-line="469">در اسلایدهای قبلی ذکر شد</p>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="471"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="36" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" class="lead" data-marpit-pagination="36" style="--paginate:true;--class:lead;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="471" data-marp-vscode-content-end-line="475">
+<h1 id="%D8%AC%D9%85%D8%B9%E2%80%8C%D8%A8%D9%86%D8%AF%DB%8C" class="code-line" data-line="474">جمع‌بندی</h1>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="476"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="37" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="37" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="476" data-marp-vscode-content-end-line="485">
+<h2 id="%D9%86%DA%A9%D8%A7%D8%AA-%DA%A9%D9%84%DB%8C%D8%AF%DB%8C" class="code-line" data-line="478">نکات کلیدی</h2>
+<ol class="code-line" data-line="480">
+<li class="code-line" data-line="480"><strong>هوش مصنوعی ابزاری قدرتمند است</strong> که می‌تواند پژوهش را تسریع کند</li>
+<li class="code-line" data-line="481"><strong>مهندسی پرامپت</strong> کلید استفاده موثر از AI است</li>
+<li class="code-line" data-line="482"><strong>فرصت‌های زیادی</strong> در کدنویسی، تحلیل داده، و نگارش وجود دارد</li>
+<li class="code-line" data-line="483"><strong>چالش‌های اخلاقی</strong> جدی هستند و باید مدیریت شوند</li>
+<li class="code-line" data-line="484"><strong>راستی‌آزمایی</strong> و <strong>تفکر انتقادی</strong> ضروری است</li>
+</ol>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="486"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="38" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="38" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="486" data-marp-vscode-content-end-line="496">
+<h2 id="%D9%BE%DB%8C%D8%A7%D9%85-%D9%86%D9%87%D8%A7%DB%8C%DB%8C" class="code-line" data-line="488">پیام نهایی</h2>
+<h3 id="%F0%9F%8E%AF-ai-%D8%B1%D8%A7-%D8%A8%D9%87-%D8%B9%D9%86%D9%88%D8%A7%D9%86-%D8%AF%D8%B3%D8%AA%DB%8C%D8%A7%D8%B1-%D8%A8%D8%A8%DB%8C%D9%86%DB%8C%D8%AF%D8%8C-%D9%86%D9%87-%D8%AC%D8%A7%DB%8C%DA%AF%D8%B2%DB%8C%D9%86" class="code-line" data-line="490"><img class="emoji" draggable="false" alt="🎯" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f3af.svg" data-marp-twemoji=""/> <strong>AI را به عنوان دستیار ببینید، نه جایگزین</strong></h3>
+<ul class="code-line" data-line="492">
+<li class="code-line" data-line="492">خلاقیت و تفکر انتقادی شما جایگزین‌ناپذیر است</li>
+<li class="code-line" data-line="493">از AI برای تسریع و بهبود کار خود استفاده کنید</li>
+<li class="code-line" data-line="494">مسئولیت‌پذیری و اخلاق را فراموش نکنید</li>
+<li class="code-line" data-line="495">با آزمایش و یادگیری شروع کنید</li>
+</ul>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="497"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="39" data-paginate="true" data-class="lead" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" class="lead" data-marpit-pagination="39" style="--paginate:true;--class:lead;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="497" data-marp-vscode-content-end-line="508">
+<h1 id="%D9%BE%D8%B1%D8%B3%D8%B4-%D9%88-%D9%BE%D8%A7%D8%B3%D8%AE" class="code-line" data-line="500">پرسش و پاسخ</h1>
+<p class="code-line" data-line="502"><strong>دکتر محمود امین‌طوسی</strong></p>
+<p class="code-line" data-line="504"><a href="https://mamintoosi.github.io/">mamintoosi.github.io</a><br />
+<a href="https://mamintoosi.github.io/presentations/">mamintoosi.github.io/presentations</a></p>
+<p class="code-line" data-line="507">با تشکر از توجه شما <img class="emoji" draggable="false" alt="🙏" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f64f.svg" data-marp-twemoji=""/></p>
+</section>
+</foreignObject></svg></div><div data-marp-vscode-slide-wrapper="" class="code-line" data-line="509"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720">
+<section id="40" data-paginate="true" data-theme="default" data-style="section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+" data-marpit-pagination="40" style="--paginate:true;--theme:default;--style:section {
+  font-family: 'B Nazanin', 'Tahoma', sans-serif;
+  direction: rtl;
+  text-align: right;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+code {
+  direction: ltr;
+  text-align: left;
+}
+;" data-marpit-pagination-total="40" data-marp-vscode-content-start-line="509" data-marp-vscode-content-end-line="522">
+<h2 id="%D9%85%D9%86%D8%A7%D8%A8%D8%B9-%D9%88-%D9%84%DB%8C%D9%86%DA%A9%E2%80%8C%D9%87%D8%A7%DB%8C-%D9%85%D9%81%DB%8C%D8%AF" class="code-line" data-line="511">منابع و لینک‌های مفید</h2>
+<ul class="code-line" data-line="513">
+<li class="code-line" data-line="513">Consensus: <a href="https://consensus.app/">https://consensus.app/</a></li>
+<li class="code-line" data-line="514">Elicit: <a href="https://elicit.com/">https://elicit.com/</a></li>
+<li class="code-line" data-line="515">Connected Papers: <a href="https://www.connectedpapers.com/">https://www.connectedpapers.com/</a></li>
+<li class="code-line" data-line="516">Editage: <a href="https://app.editage.com/">https://app.editage.com/</a></li>
+<li class="code-line" data-line="517">GitHub Copilot: <a href="https://docs.github.com/en/copilot">https://docs.github.com/en/copilot</a></li>
+<li class="code-line" data-line="518">DeepSeek: <a href="https://chat.deepseek.com/">https://chat.deepseek.com/</a></li>
+<li class="code-line" data-line="519">ChatGPT: <a href="https://chatgpt.com/">https://chatgpt.com/</a></li>
+</ul>
+<p class="code-line" data-line="521"><strong>این اسلاید‌ها:</strong> [لینک گیت‌هاب شما]</p>
+</section>
+</foreignObject></svg></div></div>
+            
+            <script async type="text/javascript">
+/* From extension marp-team.marp-vscode */
+(()=>{var G=Object.defineProperty;var J=(f,u,_)=>u in f?G(f,u,{enumerable:!0,configurable:!0,writable:!0,value:_}):f[u]=_;var r=(f,u)=>G(f,"name",{value:u,configurable:!0});var w=(f,u,_)=>J(f,typeof u!="symbol"?u+"":u,_);(()=>{var f={32:(S,E,h)=>{S.exports=h(924)},924:(S,E)=>{"use strict";var h;h={value:!0};const b={h1:{proto:r(()=>HTMLHeadingElement,"proto"),attrs:{role:"heading","aria-level":"1"},style:"display: block; font-size: 2em; margin-block-start: 0.67em; margin-block-end: 0.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h2:{proto:r(()=>HTMLHeadingElement,"proto"),attrs:{role:"heading","aria-level":"2"},style:"display: block; font-size: 1.5em; margin-block-start: 0.83em; margin-block-end: 0.83em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h3:{proto:r(()=>HTMLHeadingElement,"proto"),attrs:{role:"heading","aria-level":"3"},style:"display: block; font-size: 1.17em; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h4:{proto:r(()=>HTMLHeadingElement,"proto"),attrs:{role:"heading","aria-level":"4"},style:"display: block; margin-block-start: 1.33em; margin-block-end: 1.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h5:{proto:r(()=>HTMLHeadingElement,"proto"),attrs:{role:"heading","aria-level":"5"},style:"display: block; font-size: 0.83em; margin-block-start: 1.67em; margin-block-end: 1.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h6:{proto:r(()=>HTMLHeadingElement,"proto"),attrs:{role:"heading","aria-level":"6"},style:"display: block; font-size: 0.67em; margin-block-start: 2.33em; margin-block-end: 2.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},span:{proto:r(()=>HTMLSpanElement,"proto")},pre:{proto:r(()=>HTMLElement,"proto"),style:"display: block; font-family: monospace; white-space: pre; margin: 1em 0; --marp-auto-scaling-white-space: pre;"}},z="data-marp-auto-scaling-wrapper",M="data-marp-auto-scaling-svg",T="data-marp-auto-scaling-container",j=class j extends HTMLElement{constructor(){super();w(this,"container");w(this,"containerSize");w(this,"containerObserver");w(this,"svg");w(this,"svgComputedStyle");w(this,"svgPreserveAspectRatio","xMinYMid meet");w(this,"wrapper");w(this,"wrapperSize");w(this,"wrapperObserver");const n=r(s=>([t])=>{const{width:i,height:o}=t.contentRect;this[s]={width:i,height:o},this.updateSVGRect()},"e");this.attachShadow({mode:"open"}),this.containerObserver=new ResizeObserver(n("containerSize")),this.wrapperObserver=new ResizeObserver((...s)=>{n("wrapperSize")(...s),this.flushSvgDisplay()})}static get observedAttributes(){return["data-downscale-only"]}connectedCallback(){this.shadowRoot.innerHTML=`
+<style>
+  svg[${M}] { display: block; width: 100%; height: auto; vertical-align: top; }
+  span[${T}] { display: table; white-space: var(--marp-auto-scaling-white-space, nowrap); width: max-content; }
+</style>
+<div ${z}>
+  <svg part="svg" ${M}>
+    <foreignObject><span ${T}><slot></slot></span></foreignObject>
+  </svg>
+</div>
+    `.split(/\n\s*/).join(""),this.wrapper=this.shadowRoot.querySelector(`div[${z}]`)??void 0;const n=this.svg;this.svg=this.wrapper?.querySelector(`svg[${M}]`)??void 0,this.svg!==n&&(this.svgComputedStyle=this.svg?window.getComputedStyle(this.svg):void 0),this.container=this.svg?.querySelector(`span[${T}]`)??void 0,this.observe()}disconnectedCallback(){this.svg=void 0,this.svgComputedStyle=void 0,this.wrapper=void 0,this.container=void 0,this.observe()}attributeChangedCallback(){this.observe()}flushSvgDisplay(){const{svg:n}=this;n&&(n.style.display="inline",requestAnimationFrame(()=>{n.style.display=""}))}observe(){this.containerObserver.disconnect(),this.wrapperObserver.disconnect(),this.wrapper&&this.wrapperObserver.observe(this.wrapper),this.container&&this.containerObserver.observe(this.container),this.svgComputedStyle&&this.observeSVGStyle(this.svgComputedStyle)}observeSVGStyle(n){const s=r(()=>{const t=(()=>{const i=n.getPropertyValue("--preserve-aspect-ratio");return i?i.trim():`x${(({textAlign:o,direction:p})=>{if(o.endsWith("left"))return"Min";if(o.endsWith("right"))return"Max";if(o==="start"||o==="end"){let m=p==="rtl";return o==="end"&&(m=!m),m?"Max":"Min"}return"Mid"})(n)}YMid meet`})();t!==this.svgPreserveAspectRatio&&(this.svgPreserveAspectRatio=t,this.updateSVGRect()),n===this.svgComputedStyle&&requestAnimationFrame(s)},"t");s()}updateSVGRect(){let n=Math.ceil(this.containerSize?.width??0);const s=Math.ceil(this.containerSize?.height??0);this.dataset.downscaleOnly!==void 0&&(n=Math.max(n,this.wrapperSize?.width??0));const t=this.svg?.querySelector(":scope > foreignObject");if(t?.setAttribute("width",`${n}`),t?.setAttribute("height",`${s}`),this.svg&&(this.svg.setAttribute("viewBox",`0 0 ${n} ${s}`),this.svg.setAttribute("preserveAspectRatio",this.svgPreserveAspectRatio),this.svg.style.height=n<=0||s<=0?"0":""),this.container){const i=this.svgPreserveAspectRatio.toLowerCase();this.container.style.marginLeft=i.startsWith("xmid")||i.startsWith("xmax")?"auto":"0",this.container.style.marginRight=i.startsWith("xmi")?"auto":"0"}}};r(j,"s");let k=j;const F=r((d,{attrs:v={},style:n})=>class extends d{constructor(...s){super(...s);for(const[t,i]of Object.entries(v))this.hasAttribute(t)||this.setAttribute(t,i);this._shadow()}static get observedAttributes(){return["data-auto-scaling"]}connectedCallback(){this._update()}attributeChangedCallback(){this._update()}_shadow(){if(!this.shadowRoot)try{this.attachShadow({mode:"open"})}catch(s){if(!(s instanceof Error&&s.name==="NotSupportedError"))throw s}return this.shadowRoot}_update(){const s=this._shadow();if(s){const t=n?`<style>:host { ${n} }</style>`:"";let i="<slot></slot>";const{autoScaling:o}=this.dataset;o!==void 0&&(i=`<marp-auto-scaling exportparts="svg:auto-scaling" ${o==="downscale-only"?"data-downscale-only":""}>${i}</marp-auto-scaling>`),s.innerHTML=t+i}}},"r");let L;const R=Symbol();let H;const C="marpitSVGPolyfill:setZoomFactor,",a=Symbol(),l=Symbol(),e=r(()=>{const d=navigator.vendor==="Apple Computer, Inc.",v=d?[g]:[],n={then:r(s=>(d?(async()=>{if(H===void 0){const t=document.createElement("canvas");t.width=10,t.height=10;const i=t.getContext("2d"),o=new Image(10,10),p=new Promise(m=>{o.addEventListener("load",()=>m())});o.crossOrigin="anonymous",o.src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%2210%22%20viewBox%3D%220%200%201%201%22%3E%3CforeignObject%20width%3D%221%22%20height%3D%221%22%20requiredExtensions%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%3E%3Cdiv%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%20style%3D%22width%3A%201px%3B%20height%3A%201px%3B%20background%3A%20red%3B%20position%3A%20relative%22%3E%3C%2Fdiv%3E%3C%2FforeignObject%3E%3C%2Fsvg%3E",await p,i.drawImage(o,0,0),H=i.getImageData(5,5,1,1).data[3]<128}return H})().then(t=>{s?.(t?[g]:[])}):s?.([]),n),"then")};return Object.assign(v,n)},"g");let c,y;function g(d){const v=typeof d=="object"&&d.target||document,n=typeof d=="object"?d.zoom:d;window[l]||(Object.defineProperty(window,l,{configurable:!0,value:!0}),document.body.style.zoom=1.0001,document.body.offsetHeight,document.body.style.zoom=1,window.addEventListener("message",({data:t,origin:i})=>{if(i===window.origin)try{if(t&&typeof t=="string"&&t.startsWith(C)){const[,o]=t.split(","),p=Number.parseFloat(o);Number.isNaN(p)||(y=p)}}catch(o){console.error(o)}}));let s=!1;Array.from(v.querySelectorAll("svg[data-marpit-svg]"),t=>{var i,o,p,m;t.style.transform||(t.style.transform="translateZ(0)");const x=n||y||t.currentScale||1;c!==x&&(c=x,s=x);const B=t.getBoundingClientRect(),{length:Y}=t.children;for(let N=0;N<Y;N+=1){const $=t.children[N];if($.getScreenCTM){const A=$.getScreenCTM();if(A){const Z=(o=(i=$.x)===null||i===void 0?void 0:i.baseVal.value)!==null&&o!==void 0?o:0,U=(m=(p=$.y)===null||p===void 0?void 0:p.baseVal.value)!==null&&m!==void 0?m:0,X=$.children.length;for(let P=0;P<X;P+=1){const W=$.children[P];if(W.tagName==="SECTION"){const{style:D}=W;D.transformOrigin||(D.transformOrigin=`${-Z}px ${-U}px`),D.transform=`scale(${x}) matrix(${A.a}, ${A.b}, ${A.c}, ${A.d}, ${A.e-B.left}, ${A.f-B.top}) translateZ(0.0001px)`;break}}}}}}),s!==!1&&Array.from(v.querySelectorAll("iframe"),({contentWindow:t})=>{t?.postMessage(`${C}${s}`,window.origin==="null"?"*":window.origin)})}r(g,"u");function O({once:d=!1,target:v=document}={}){const n=function(s=document){if(s[a])return s[a];let t=!0;const i=r(()=>{t=!1,delete s[a]},"i");Object.defineProperty(s,a,{configurable:!0,value:i});let o=[],p=!1;(async()=>{try{o=await e()}finally{p=!0}})();const m=r(()=>{for(const x of o)x({target:s});p&&o.length===0||t&&window.requestAnimationFrame(m)},"r");return m(),i}(v);return d?(n(),()=>{}):n}r(O,"v"),c=1,y=void 0;const I=O,q=Symbol(),V=r((d=document)=>{if(typeof window>"u")throw new Error("Marp Core's browser script is valid only in browser context.");if(((t=document)=>{const i=window[R];i||customElements.define("marp-auto-scaling",k);for(const o of Object.keys(b)){const p=`marp-${o}`,m=b[o].proto();(L??(L=!!document.createElement("div",{is:"marp-auto-scaling"}).outerHTML.startsWith("<div is"),L))&&m!==HTMLElement?i||customElements.define(p,F(m,{style:b[o].style}),{extends:o}):(i||customElements.define(p,F(HTMLElement,b[o])),t.querySelectorAll(`${o}[is="${p}"]`).forEach(x=>{x.outerHTML=x.outerHTML.replace(new RegExp(`^<${o}`,"i"),`<${p}`).replace(new RegExp(`</${o}>$`,"i"),`</${p}>`)}))}window[R]=!0})(d),d[q])return d[q];const v=O({target:d}),n=r(()=>{v(),delete d[q]},"n"),s=Object.assign(n,{cleanup:n,update:r(()=>V(d),"update")});return Object.defineProperty(d,q,{configurable:!0,value:s}),s},"y");E.browser=V,h=V,h=I}},u={};function _(S){var E=u[S];if(E!==void 0)return E.exports;var h=u[S]={exports:{}};return f[S](h,h.exports,_),h.exports}r(_,"__webpack_require__");var K={};(()=>{"use strict";var S=_(32);const E="marp_vscode_content_section",h="data-marp-vscode-content-start-line",b="data-marp-vscode-content-end-line";function z(a){a.core.ruler.push(E,l=>{if(l.inlineMode)return;let e=null,c=0,y=0;for(const g of l.tokens)g.map&&(c=g.map[0],y=Math.max(y,...g.map)),g.type==="marpit_slide_open"&&(e&&(e.map&&e.attrSet(h,e.map[0]),e.attrSet(b,c-1)),e=g);e&&(e.map&&e.attrSet(h,e.map[0]),e.attrSet(b,y))})}r(z,"marpVSCodeContentSection");const M="marp-vscode.overflowTracker",T=r(a=>typeof a=="object"&&a!=null&&"type"in a&&a.type===M&&"overflowElements"in a&&Array.isArray(a.overflowElements),"isOverflowTrackerEvent"),C=class C{constructor(l){this.postMessage=l,this.delay=150,this.update()}update(){window.setTimeout(()=>this.detectOverflowElements(),this.delay)}cleanup(){}detectOverflowElements(){const l=[];for(const e of document.querySelectorAll(`section[${h}][${b}]`)){const c=e.scrollWidth-e.clientWidth,y=e.scrollHeight-e.clientHeight;if(c<=0&&y<=0)continue;const g=parseInt(e.getAttribute(h)||"",10),O=parseInt(e.getAttribute(b)||"",10);Number.isNaN(g)||Number.isNaN(O)||l.push({startLine:g,endLine:O})}this.postMessage(M,{overflowElements:l})}};r(C,"OverflowTracker");let k=C;function F(){let a;const l=window.cspAlerter?._messaging?.postMessage||window.styleLoadingMonitor?._poster?.postMessage,e=r(()=>{const c=document.getElementById("__marp-vscode");!!a!=!!c?(document.body.classList.toggle("marp-vscode",!!c),c?a={browser:(0,S.browser)(),overflowTracker:l?new k(l):void 0}:(a?.browser.cleanup(),a?.overflowTracker?.cleanup(),a=void 0)):(a?.browser.update(),a?.overflowTracker?.update()),a?(c&&L(c),R()):H()},"updateCallback");window.addEventListener("load",()=>window.setTimeout(e,100)),window.addEventListener("vscode.markdown.updateContent",e),e()}r(F,"preview");const L=r(a=>{a.querySelectorAll("[is]").forEach(l=>{if(l.nodeName.includes("-")||document.createElement(l.nodeName).constructor!==l.constructor)return;const{outerHTML:c}=l;l.outerHTML=c,console.debug("[marp-vscode] Custom element has been upgraded forcibly:",c.slice(0,c.indexOf(">")+1||void 0))})},"forceUpgradeCustomElements"),R=r(()=>{const a=document.querySelectorAll("style:not(#__marp-vscode-style,#_defaultStyles,[data-marp-vscode-body])"),l=document.querySelectorAll('link[rel="stylesheet"][href]:not([href*="marp-vscode"])');a.forEach(e=>{e.closest("#__marp-vscode")||(e.dataset.marpVscodeBody=e.textContent??"",e.textContent="")}),l.forEach(e=>{if(e.closest("#__marp-vscode"))return;const{href:c}=e;e.dataset.marpVscodeHref=c,e.removeAttribute("href")})},"removeStyles"),H=r(()=>{const a=document.querySelectorAll("style[data-marp-vscode-body]"),l=document.querySelectorAll("link[data-marp-vscode-href]");a.forEach(e=>{e.textContent=e.dataset.marpVscodeBody||"",delete e.dataset.marpVscodeBody}),l.forEach(e=>{e.href=e.dataset.marpVscodeHref||"",delete e.dataset.marpVscodeHref})},"restoreStyles");F()})()})();})();
+
+</script>
+
+        </body>
+        </html>
