@@ -367,6 +367,16 @@ age, income, education بخواند و همبستگی بین
 
 <!-- _class: lead -->
 # بخش پنجم
+
+## ابزارهای تولید کلپپ
+
+- [](https://hailuoai.video/)
+- [](https://pika.art/)
+
+---
+
+<!-- _class: lead -->
+# بخش ششم
 ## چالش‌ها و ملاحظات اخلاقی
 
 ---
